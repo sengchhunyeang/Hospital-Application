@@ -62,7 +62,7 @@
                                             <div class="text-right">
                                                 <?php
                                                     //code for summing up number of out patients 
-                                                    $result ="SELECT count(*) FROM his_patients  ";
+                                                    $result ="SELECT count(*) FROM hmisphp.his_patients  ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
                                                     $stmt->bind_result($patient);
