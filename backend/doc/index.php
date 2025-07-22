@@ -6,7 +6,7 @@
         $doc_number = $_POST['doc_number'];
         //$doc_email = $_POST['doc_ea']
         $doc_pwd = sha1(md5($_POST['doc_pwd']));//double encrypt to increase security
-        $stmt=$mysqli->prepare("SELECT doc_number, doc_pwd, doc_id FROM his_docs WHERE  doc_number=? AND doc_pwd=? ");//sql to log in user
+        $stmt=$mysqli->prepare("SELECT doc_number, doc_pwd, doc_id FROM hmisphp.his_docs WHERE  doc_number=? AND doc_pwd=? ");//sql to log in user
         $stmt->bind_param('ss', $doc_number, $doc_pwd);//bind fetched parameters
         $stmt->execute();//execute bind
         $stmt -> bind_result($doc_number, $doc_pwd ,$doc_id);//bind result

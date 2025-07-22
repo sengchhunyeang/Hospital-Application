@@ -1,7 +1,7 @@
 <?php
     $doc_id = $_SESSION['doc_id'];
     $doc_number = $_SESSION['doc_number'];
-    $ret="SELECT * FROM  his_docs WHERE doc_id = ? AND doc_number = ?";
+    $ret="SELECT * FROM  hmisphp.his_docs WHERE doc_id = ? AND doc_number = ?";
     $stmt= $mysqli->prepare($ret) ;
     $stmt->bind_param('is',$doc_id, $doc_number);
     $stmt->execute() ;//ok
