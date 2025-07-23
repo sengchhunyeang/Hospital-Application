@@ -114,7 +114,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_prescriptions ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_prescriptions ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

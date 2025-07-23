@@ -103,7 +103,7 @@
                                                     <!--Fetch All Pharmaceutical Categories-->
                                                     <?php
                                                    
-                                                        $ret="SELECT * FROM  his_pharmaceuticals_categories ORDER BY RAND() "; 
+                                                        $ret="SELECT * FROM  hmisphp.his_pharmaceuticals_categories ORDER BY RAND() ";
                                                         $stmt= $mysqli->prepare($ret) ;
                                                         $stmt->execute() ;//ok
                                                         $res=$stmt->get_result();
@@ -120,7 +120,7 @@
                                                     <select id="inputState" required="required" name="phar_vendor" class="form-control">
                                                     <?php
                                                     
-                                                        $ret="SELECT * FROM  his_vendor ORDER BY RAND() "; 
+                                                        $ret="SELECT * FROM  hmisphp.his_vendor ORDER BY RAND() ";
                                                         //sql code to get to ten docs  randomly
                                                         $stmt= $mysqli->prepare($ret) ;
                                                         $stmt->execute() ;//ok

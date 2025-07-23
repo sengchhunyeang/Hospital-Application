@@ -110,7 +110,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_patients  WHERE pat_discharge_status !='Discharged' AND  pat_type = 'InPatient' "; 
+                                                $ret="SELECT * FROM  hmisphp.his_patients  WHERE pat_discharge_status !='Discharged' AND  pat_type = 'InPatient' ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

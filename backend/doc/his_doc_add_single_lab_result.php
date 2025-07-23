@@ -57,7 +57,7 @@
             <!-- ============================================================== -->
             <?php
                 $lab_number = $_GET['lab_number'];
-                $ret="SELECT  * FROM his_laboratory WHERE lab_number=?";
+                $ret="SELECT  * FROM hmisphp.his_laboratory WHERE lab_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$lab_number);
                 $stmt->execute() ;//ok

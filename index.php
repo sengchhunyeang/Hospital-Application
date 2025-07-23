@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Hospital Management System</title>
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/images/logo/left.png" type="image/x-icon" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
@@ -119,7 +119,7 @@
 <header class="header-area">
     <div class="container d-flex justify-content-between align-items-center">
         <a href="index.php">
-            <img src="assets/images/logo/favicon.png" alt="Logo" height="40">
+            <img src="assets/images/logo/left.png" alt="Logo" height="72">
         </a>
         <ul class="nav-menu">
             <li><a href="index.php">Home</a></li>

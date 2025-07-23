@@ -10,7 +10,7 @@
             
             
             //sql to insert captured values
-			$query="INSERT INTO his_pharmaceuticals_categories (pharm_cat_name, pharm_cat_vendor, pharm_cat_desc) VALUES (?,?,?)";
+			$query="INSERT INTO hmisphp.his_pharmaceuticals_categories (pharm_cat_name, pharm_cat_vendor, pharm_cat_desc) VALUES (?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sss', $pharm_cat_name, $pharm_cat_vendor, $pharm_cat_desc);
 			$stmt->execute();
@@ -95,7 +95,7 @@
                                                     <select id="inputState" required="required" name="pharm_cat_vendor" class="form-control">
                                                     <?php
                                                     
-                                                        $ret="SELECT * FROM  his_vendor ORDER BY RAND() "; 
+                                                        $ret="SELECT * FROM  hmisphp.his_vendor ORDER BY RAND() ";
                                                         //sql code to get to ten docs  randomly
                                                         $stmt= $mysqli->prepare($ret) ;
                                                         $stmt->execute() ;//ok
@@ -115,7 +115,7 @@
 
                                             <div class="form-group">
                                                 <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label>
-                                                <textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"></textarea>
+                                                <label for="editor"></label><textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"></textarea>
                                             </div>
 
                                            <button type="submit" name="add_pharmaceutical_category" class="ladda-button btn btn-success" data-style="expand-right">Add Category</button>

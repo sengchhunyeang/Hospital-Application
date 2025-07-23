@@ -112,7 +112,7 @@
                                             </thead>
                                             <?php
                                                 $pay_doc_number = $_SESSION['doc_number'];
-                                                $ret="SELECT  * FROM his_payrolls WHERE pay_doc_number = ?";
+                                                $ret="SELECT  * FROM hmisphp.his_payrolls WHERE pay_doc_number = ?";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->bind_param('s',$pay_doc_number);
                                                 $stmt->execute() ;//ok

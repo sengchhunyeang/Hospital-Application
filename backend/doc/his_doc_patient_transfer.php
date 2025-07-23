@@ -110,7 +110,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_patients WHERE  pat_type = 'InPatient' "; 
+                                                $ret="SELECT * FROM  hmisphp.his_patients WHERE  pat_type = 'InPatient' ";
                                                
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -188,7 +188,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_patient_transfers "; 
+                                                $ret="SELECT * FROM  hmisphp.his_patient_transfers ";
                                                
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

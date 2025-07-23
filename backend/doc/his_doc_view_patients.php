@@ -1,5 +1,6 @@
 <?php
-  session_start();
+global $mysqli;
+session_start();
   include('assets/inc/config.php');
   include('assets/inc/checklogin.php');
   check_login();
@@ -93,7 +94,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_patients ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

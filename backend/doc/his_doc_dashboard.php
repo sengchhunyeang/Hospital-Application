@@ -1,5 +1,6 @@
 <?php
-  session_start();
+global $mysqli;
+session_start();
   include('assets/inc/config.php');
   include('assets/inc/checklogin.php');
   check_login();
@@ -94,7 +95,7 @@
                                                     /* 
                                                      * code for summing up number of assets,
                                                      */ 
-                                                    $result ="SELECT count(*) FROM his_equipments ";
+                                                    $result ="SELECT count(*) FROM hmisphp.his_equipments ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
                                                     $stmt->bind_result($assets);
@@ -125,7 +126,7 @@
                                                     /* 
                                                      * code for summing up number of pharmaceuticals,
                                                      */ 
-                                                    $result ="SELECT count(*) FROM his_pharmaceuticals ";
+                                                    $result ="SELECT count(*) FROM hmisphp.his_pharmaceuticals ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
                                                     $stmt->bind_result($phar);
@@ -215,7 +216,7 @@
                                                 </tr>
                                             </thead>
                                             <?php
-                                                $ret="SELECT * FROM his_patients ORDER BY RAND() LIMIT 100 "; 
+                                                $ret="SELECT * FROM hmisphp.his_patients ORDER BY RAND() LIMIT 100 "; 
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

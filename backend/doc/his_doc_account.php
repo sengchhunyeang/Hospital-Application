@@ -33,7 +33,7 @@
             <!--Get Details Of A Single User And Display Them Here-->
             <?php
                 $doc_number=$_SESSION['doc_number'];
-                $ret="SELECT  * FROM his_docs WHERE doc_number=?";
+                $ret="SELECT  * FROM hmisphp.his_docs WHERE doc_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$doc_number);
                 $stmt->execute() ;//ok
@@ -100,7 +100,7 @@
                                         </thead>
                                         <?php
                                             $vit_pat_number =$_SESSION['doc_number'];
-                                            $ret="SELECT  * FROM his_vitals WHERE vit_pat_number =?";
+                                            $ret="SELECT  * FROM hmisphp.his_vitals WHERE vit_pat_number =?";
                                             $stmt= $mysqli->prepare($ret) ;
                                             $stmt->bind_param('i',$vit_pat_number );
                                             $stmt->execute() ;//ok
