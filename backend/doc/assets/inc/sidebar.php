@@ -142,9 +142,21 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            
-
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-cash-refund "></i>
+                                    <span> Prescription </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="his_doc_add_presc.php">Add Prescription</a>
+                                    </li>
+                                    <li>
+                                        <a href="his_doc_view_presc.php">View Prescription</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
 
                     </div>
