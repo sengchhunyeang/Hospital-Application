@@ -196,66 +196,66 @@ session_start();
 
                         
                         <!--Recently Employed Employees-->
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card-box">
-                                    <h4 class="header-title mb-3">Patients</h4>
+                        <div class="flex flex-wrap">
+                            <div class="w-full">
+                                <div class="bg-white rounded shadow p-4 mb-4">
+                                    <h4 class="text-lg font-semibold text-black mb-3">Patients</h4>
 
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-hover table-centered m-0">
-
-                                            <thead class="thead-light ">
-                                                <tr class="">
-                                                    <th>Name</th>
-                                                    <th>Address</th>
-                                                    <th>Mobile Phone</th>
-                                                    <th>Category</th>
-                                                    <th>Ailment</th>
-                                                    <th>Age</th>
-                                                    <th>Action</th>
-                                                </tr>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full border-collapse">
+                                            <thead class="bg-gray-100">
+                                            <tr class="">
+                                                <th class="p-3 text-left text-black font-medium">Name</th>
+                                                <th class="p-3 text-left text-black font-medium">Address</th>
+                                                <th class="p-3 text-left text-black font-medium">Mobile Phone</th>
+                                                <th class="p-3 text-left text-black font-medium">Category</th>
+                                                <th class="p-3 text-left text-black font-medium">Ailment</th>
+                                                <th class="p-3 text-left text-black font-medium">Age</th>
+                                                <th class="p-3 text-left text-black font-medium">Action</th>
+                                            </tr>
                                             </thead>
                                             <?php
-                                                $ret="SELECT * FROM hmisphp.his_patients ORDER BY RAND() LIMIT 100 "; 
-                                                //sql code to get to ten docs  randomly
-                                                $stmt= $mysqli->prepare($ret) ;
-                                                $stmt->execute() ;//ok
-                                                $res=$stmt->get_result();
-                                                $cnt=1;
-                                                while($row=$res->fetch_object())
-                                                {
-                                            ?>
-                                            <tbody>
-                                                <tr>
-                                                    
-                                                    <td>
+                                            $ret="SELECT * FROM hmisphp.his_patients ORDER BY RAND() LIMIT 100 ";
+                                            //sql code to get to ten docs  randomly
+                                            $stmt= $mysqli->prepare($ret) ;
+                                            $stmt->execute() ;//ok
+                                            $res=$stmt->get_result();
+                                            $cnt=1;
+                                            while($row=$res->fetch_object())
+                                            {
+                                                ?>
+                                                <tbody>
+                                                <tr class="hover:bg-gray-50">
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>
                                                     </td>
-                                                    <td>
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_addr;?>
-                                                    </td>    
-                                                    <td>
+                                                    </td>
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_phone;?>
                                                     </td>
-                                                    <td>
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_type;?>
                                                     </td>
-                                                    <td>
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_ailment;?>
                                                     </td>
-                                                    <td>
+                                                    <td class="p-3 border-t text-black">
                                                         <?php echo $row->pat_age;?> Years
                                                     </td>
-                                                    <td>
-                                                        <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>&&pat_name=<?php echo $row->pat_fname;?>_<?php echo $row->pat_lname;?>" class="btn btn-xs btn-success"><i class="mdi mdi-eye"></i> View</a>
-                                                    </td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                                    <td class="p-3 border-t text-black">
+                                                        <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>&&pat_name=<?php echo $row->pat_fname;?>_<?php echo $row->pat_lname;?>" class="inline-block px-3 py-1 bg-blue-700 text-white rounded text-xs hover:bg-green-600">
+                                                            <i class="mdi mdi-eye"></i> View
+                                                        </a>
+                                                    </td>
                                                 </tr>
-                                            </tbody>
+                                                </tbody>
                                             <?php }?>
                                         </table>
                                     </div>
                                 </div>
-                            </div> <!-- end col -->                                                                                                                                                                                                                                         
+                            </div>
                         </div>
                         <!-- end row -->
                         
