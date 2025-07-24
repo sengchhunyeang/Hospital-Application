@@ -111,6 +111,10 @@
                         <i class="fe-hard-drive mr-1"></i>
                         <span>Laboratory Report</span>
                     </a>
+                    <a href="his_doc_view_presc.php" class="dropdown-item">
+                        <i class="fe-file-text mr-1"></i>
+                        <span>Prescription</span>
+                    </a>
 
                     
                     <div class="dropdown-divider"></div>
