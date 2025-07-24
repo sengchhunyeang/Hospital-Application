@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $pay_number = $_GET['pay_number'];
-                $ret="SELECT  * FROM his_payrolls WHERE pay_number = ?";
+                $ret="SELECT  * FROM hmisphp.his_payrolls WHERE pay_number = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pay_number);
                 $stmt->execute() ;//ok
@@ -119,7 +119,7 @@
                                                             <td>
                                                                 <?php
                                                                     $doc_number = $_SESSION['doc_number'];
-                                                                    $ret="SELECT  * FROM his_docs WHERE doc_number = ?";
+                                                                    $ret="SELECT  * FROM hmisphp.his_docs WHERE doc_number = ?";
                                                                     $stmt= $mysqli->prepare($ret) ;
                                                                     $stmt->bind_param('s',$doc_number);
                                                                     $stmt->execute() ;//ok
@@ -133,7 +133,7 @@
                                                                 </td>
                                                                 <?php
                                                                     $pay_number = $_GET['pay_number'];
-                                                                    $ret="SELECT  * FROM his_payrolls WHERE pay_number = ?";
+                                                                    $ret="SELECT  * FROM hmisphp.his_payrolls WHERE pay_number = ?";
                                                                     $stmt= $mysqli->prepare($ret) ;
                                                                     $stmt->bind_param('s',$pay_number);
                                                                     $stmt->execute() ;//ok

@@ -12,7 +12,7 @@
 		    move_uploaded_file($_FILES["doc_dpic"]["tmp_name"],"assets/images/users/".$_FILES["doc_dpic"]["name"]);
 
             //sql to insert captured values
-			$query="UPDATE his_docs SET doc_fname=?, doc_lname=?,  doc_email=?, doc_dpic=? WHERE doc_id = ?";
+			$query="UPDATE hmisphp.his_docs SET doc_fname=?, doc_lname=?,  doc_email=?, doc_dpic=? WHERE doc_id = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssi', $doc_fname, $doc_lname, $doc_email, $doc_dpic, $doc_id);
 			$stmt->execute();
@@ -38,7 +38,7 @@
             $doc_pwd=sha1(md5($_POST['doc_pwd']));//double encrypt 
             
             //sql to insert captured values
-			$query="UPDATE his_doc SET doc_pwd =? WHERE doc_number = ?";
+			$query="UPDATE hmisphp.his_doc SET doc_pwd =? WHERE doc_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('si', $doc_pwd, $doc_number);
 			$stmt->execute();
@@ -79,7 +79,7 @@
             <!-- ============================================================== -->
             <?php
                 $doc_id=$_SESSION['doc_id'];
-                $ret="SELECT * FROM  his_docs where doc_id=?";
+                $ret="SELECT * FROM  hmisphp.his_docs where doc_id=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$doc_id);
                 $stmt->execute() ;//ok

@@ -13,7 +13,8 @@ session_start();
     
     <!--Head Code-->
     <?php include("assets/inc/head.php");?>
-
+<!--update link tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <body>
 
         <!-- Begin page -->
@@ -38,16 +39,15 @@ session_start();
                     <div class="container-fluid">
                         
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    
-                                    <h4 class="page-title">Hospital Management Information System Dashboard</h4>
+                        <div class="flex flex-wrap -mx-4">
+                            <div class="w-full px-4">
+                                <div class="mb-6"> <!-- Adjust margin as needed -->
+                                    <h4 class="text-xl font-semibold text-gray-800">Hospital-Application Dashboard</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
-                        
+                        </div>
+                        <!-- end page title -->
+
 
                         <div class="row">
                             <!--Start OutPatients-->
@@ -62,7 +62,7 @@ session_start();
                                         <div class="col-6">
                                             <div class="text-right">
                                                 <?php
-                                                    //code for summing up number of out patients 
+                                                    //code for summing up number of out patients
                                                     $result ="SELECT count(*) FROM hmisphp.his_patients  ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
@@ -70,8 +70,8 @@ session_start();
                                                     $stmt->fetch();
                                                     $stmt->close();
                                                 ?>
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"><?php echo $patient;?></span></h3>
-                                                <p class="text-muted mb-1 text-truncate">Patients</p>
+                                                <h3 class="text-black"><span data-plugin="counterup"><?php echo $patient;?></span></h3>
+                                                <p class="text-black mb-1 text-truncate">Patients</p>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
@@ -92,9 +92,9 @@ session_start();
                                         <div class="col-6">
                                             <div class="text-right">
                                                 <?php
-                                                    /* 
+                                                    /*
                                                      * code for summing up number of assets,
-                                                     */ 
+                                                     */
                                                     $result ="SELECT count(*) FROM hmisphp.his_equipments ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
@@ -102,8 +102,8 @@ session_start();
                                                     $stmt->fetch();
                                                     $stmt->close();
                                                 ?>
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"><?php echo $assets;?></span></h3>
-                                                <p class="text-muted mb-1 text-truncate">Corporation Assets</p>
+                                                <h3 class="text-black mt-1"><span data-plugin="counterup"><?php echo $assets;?></span></h3>
+                                                <p class="text-black mb-1 text-truncate">Corporation Assets</p>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
@@ -123,9 +123,9 @@ session_start();
                                         <div class="col-6">
                                             <div class="text-right">
                                                 <?php
-                                                    /* 
+                                                    /*
                                                      * code for summing up number of pharmaceuticals,
-                                                     */ 
+                                                     */
                                                     $result ="SELECT count(*) FROM hmisphp.his_pharmaceuticals ";
                                                     $stmt = $mysqli->prepare($result);
                                                     $stmt->execute();
@@ -133,15 +133,15 @@ session_start();
                                                     $stmt->fetch();
                                                     $stmt->close();
                                                 ?>
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"><?php echo $phar;?></span></h3>
-                                                <p class="text-muted mb-1 text-truncate">Pharmaceuticals</p>
+                                                <h3 class="text-black mt-1"><span data-plugin="counterup"><?php echo $phar;?></span></h3>
+                                                <p class=" mb-1 text-truncate text-black">Pharmaceuticals</p>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
                                 </div> <!-- end widget-rounded-circle-->
                             </div> <!-- end col-->
                             <!--End Pharmaceuticals-->
-                        
+
                         </div>
 
                         <div class="row">
@@ -159,8 +159,8 @@ session_start();
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-right">
-                                                    <h3 class="text-dark mt-1"></span></h3>
-                                                    <p class="text-muted mb-1 text-truncate">My Profile</p>
+                                                    <h3 class="text-black mt-1"></span></h3>
+                                                    <p class="text-black mb-1 text-truncate">My Profile</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -182,8 +182,8 @@ session_start();
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-right">
-                                                    <h3 class="text-dark mt-1"></span></h3>
-                                                    <p class="text-muted mb-1 text-truncate">My Payroll</p>
+                                                    <h3 class="text-black mt-1"></span></h3>
+                                                    <p class="text-black mb-1 text-truncate">My Payroll</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -204,8 +204,8 @@ session_start();
                                     <div class="table-responsive">
                                         <table class="table table-borderless table-hover table-centered m-0">
 
-                                            <thead class="thead-light">
-                                                <tr>
+                                            <thead class="thead-light ">
+                                                <tr class="">
                                                     <th>Name</th>
                                                     <th>Address</th>
                                                     <th>Mobile Phone</th>
