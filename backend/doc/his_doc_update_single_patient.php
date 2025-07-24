@@ -15,7 +15,7 @@
             $pat_dob = $_POST['pat_dob'];
             $pat_ailment = $_POST['pat_ailment'];
             //sql to insert captured values
-			$query="UPDATE  his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?,  pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_number=?";
+			$query="UPDATE  hmisphp.his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?,  pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_number=?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssssss', $pat_fname, $pat_lname, $pat_age, $pat_dob,  $pat_phone, $pat_type, $pat_addr, $pat_ailment, $pat_number);
 			$stmt->execute();
@@ -85,7 +85,7 @@
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
                             $pat_number=$_GET['pat_number'];
-                            $ret="SELECT  * FROM his_patients WHERE pat_number=?";
+                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$pat_number);
                             $stmt->execute() ;//ok
