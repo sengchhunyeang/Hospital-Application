@@ -37,7 +37,11 @@
 <!--End Patient Registration-->
 <!DOCTYPE html>
 <html lang="en">
-    
+
+        <head>
+            <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+
     <!--Head-->
     <?php include('assets/inc/head.php');?>
     <body>
