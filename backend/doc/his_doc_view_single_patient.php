@@ -10,7 +10,10 @@
 
 <!DOCTYPE html>
     <html lang="en">
-
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>view patients</title>
+</head>
     <?php include('assets/inc/head.php');?>
 
     <body>
@@ -73,28 +76,55 @@
                                     <img src="assets/images/users/patient.png" class="rounded-circle avatar-lg img-thumbnail"
                                         alt="profile-image">
 
-                                    
-                                    <div class="text-left mt-3">
-                                        
-                                        <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2"><?php echo $row->pat_phone;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Address :</strong> <span class="ml-2"><?php echo $row->pat_addr;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Date Of Birth :</strong> <span class="ml-2"><?php echo $row->pat_dob;?></span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Age :</strong> <span class="ml-2"><?php echo $row->pat_age;?> Years</span></p>
-                                        <p class="text-muted mb-2 font-13"><strong>Ailment :</strong> <span class="ml-2"><?php echo $row->pat_ailment;?></span></p>
-                                        <hr>
-                                        <p class="text-muted mb-2 font-13"><strong>Date Recorded :</strong> <span class="ml-2"><?php echo date("d/m/Y - h:m", strtotime($mysqlDateTime));?></span></p>
-                                        <hr>
 
+                                    <div class="text-left mt-4 text-black">
+                                        <!-- Patient Details -->
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Full Name:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_fname);?> <?php echo htmlspecialchars($row->pat_lname);?></span>
+                                        </p>
 
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Mobile:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_phone);?></span>
+                                        </p>
 
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Address:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_addr);?></span>
+                                        </p>
 
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Date Of Birth:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_dob);?></span>
+                                        </p>
+
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Age:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_age);?> Years</span>
+                                        </p>
+
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Ailment:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_ailment);?></span>
+                                        </p>
+
+                                        <!-- Horizontal Divider -->
+                                        <hr class="my-3 border-gray-300">
+
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Date Recorded:</strong>
+                                            <span class="ml-2"><?php echo date("d/m/Y - h:m", strtotime($mysqlDateTime));?></span>
+                                        </p>
+
+                                        <!-- Horizontal Divider -->
+                                        <hr class="my-3 border-gray-300">
                                     </div>
 
                                 </div> <!-- end card-box -->
 
                             </div> <!-- end col-->
-                            
+
                             <?php }?>
                             <div class="col-lg-8 col-xl-8">
                                 <div class="card-box">
@@ -127,7 +157,7 @@
                                                     $stmt->execute() ;//ok
                                                     $res=$stmt->get_result();
                                                     //$cnt=1;
-                                                    
+
                                                     while($row=$res->fetch_object())
                                                         {
                                                     $mysqlDateTime = $row->pres_date; //trim timestamp to date
@@ -143,7 +173,7 @@
                                                     </li>
                                                 <?php }?>
                                             </ul>
-                                           
+
                                         </div> <!-- end tab-pane -->
                                         <!-- end Prescription section content -->
 
@@ -167,7 +197,7 @@
                                                         $stmt->execute() ;//ok
                                                         $res=$stmt->get_result();
                                                         //$cnt=1;
-                                                        
+
                                                         while($row=$res->fetch_object())
                                                             {
                                                         $mysqlDateTime = $row->vit_daterec; //trim timestamp to date
@@ -198,7 +228,7 @@
                                                     $stmt->execute() ;//ok
                                                     $res=$stmt->get_result();
                                                     //$cnt=1;
-                                                    
+
                                                     while($row=$res->fetch_object())
                                                         {
                                                     $mysqlDateTime = $row->lab_date_rec; //trim timestamp to date
@@ -211,7 +241,7 @@
                                                         <h5>
                                                            Laboratory  Tests
                                                         </h5>
-                                                        
+
                                                         <p class="text-muted mt-2">
                                                             <?php echo $row->lab_pat_tests;?>
                                                         </p>
@@ -219,7 +249,7 @@
                                                         <h5>
                                                            Laboratory Results
                                                         </h5>
-                                                        
+
                                                         <p class="text-muted mt-2">
                                                             <?php echo $row->lab_pat_results;?>
                                                         </p>

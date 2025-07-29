@@ -42,7 +42,10 @@
 <!--End Patient Discharge-->
 <!DOCTYPE html>
 <html lang="en">
-    
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>view patients</title>
+</head>
     <!--Head-->
     <?php include('assets/inc/head.php');?>
     <body>

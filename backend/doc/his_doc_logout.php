@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>view patients</title>
+</head>
 <head>
         <meta charset="utf-8" />
         <title>Hospital Management Information System -A Super Responsive Information System</title>
