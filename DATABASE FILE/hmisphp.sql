@@ -210,6 +210,9 @@ CREATE TABLE `his_patients` (
   `pat_ailment` varchar(200) DEFAULT NULL,
   `pat_discharge_status` varchar(200) DEFAULT NULL
 );
+ALTER TABLE `his_patients`
+    ADD COLUMN `pat_discharge_date` DATETIME NULL AFTER `pat_discharge_status`,
+    ADD COLUMN `pat_discharge_notes` TEXT NULL AFTER `pat_discharge_date`;
 select * FROM his_patients;
 --
 -- Dumping data for table `his_patients`

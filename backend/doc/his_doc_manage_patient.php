@@ -32,11 +32,11 @@
 <html lang="en">
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Manage Patient </title>
+    <title>view patients</title>
 </head>
 <?php include('assets/inc/head.php');?>
 
-    <body>
+    <body style="color:black;">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -74,86 +74,84 @@
                                 </div>
                             </div>
                         </div>     
-                        <!-- end page title --> 
+                        <!-- end page title -->
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="header-title"></h4>
-                                    <div class="mb-2">
-                                        <div class="row">
-                                            <div class="col-12 text-sm-center form-inline" >
-                                                <div class="form-group mr-2" style="display:none">
-                                                    <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
-                                                        <option value="">Show all</option>
-                                                        <option value="Discharged">Discharged</option>
-                                                        <option value="OutPatients">OutPatients</option>
-                                                        <option value="InPatients">InPatients</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
-                                                </div>
-                                            </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h4 class="text-lg font-semibold mb-4"></h4>
+                            <div class="mb-4">
+                                <div class="flex flex-wrap -mx-2">
+                                    <div class="w-full px-2 text-center sm:text-left flex flex-col sm:flex-row items-center gap-2">
+                                        <div class="hidden">
+                                            <label for="demo-foo-filter-status"></label><select id="demo-foo-filter-status" class="border border-gray-300 rounded-md px-3 py-1 text-sm">
+                                                <option value="">Show all</option>
+                                                <option value="Discharged">Discharged</option>
+                                                <option value="OutPatients">OutPatients</option>
+                                                <option value="InPatients">InPatients</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <input id="demo-foo-search" type="text" placeholder="Search" class="border border-gray-300 rounded-md px-3 py-1 text-sm" autocomplete="on">
                                         </div>
                                     </div>
-                                    
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Patient Address</th>
-                                                <th data-hide="phone">Patient Category</th>
-                                                <th data-hide="phone">Action</th>
-                                            </tr>
-                                            </thead>
-                                            <?php
-                                            /*
-                                                *get details of allpatients
-                                                *
-                                            */
-                                                $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
-                                                //sql code to get to ten docs  randomly
-                                                $stmt= $mysqli->prepare($ret) ;
-                                                $stmt->execute() ;//ok
-                                                $res=$stmt->get_result();
-                                                $cnt=1;
-                                                while($row=$res->fetch_object())
-                                                {
-                                            ?>
+                                </div>
+                            </div>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
-                                                    <td><?php echo $row->pat_number;?></td>
-                                                    <td><?php echo $row->pat_addr;?></td>
-                                                    <td><?php echo $row->pat_type;?></td>
-                                                    
-                                                    <td>
-                                                       <!-- <a href="his_admin_manage_patient.php?delete=<?php echo $row->pat_id;?>" class="badge badge-danger"><i class=" mdi mdi-trash-can-outline "></i> Delete</a>-->
-                                                        <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View</a>
-                                                        <a href="his_doc_update_single_patient.php?pat_number=<?php echo $row->pat_number;?>" class="badge badge-primary"><i class="mdi mdi-check-box-outline "></i> Update</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
-                                            <tfoot>
-                                            <tr class="active">
-                                                <td colspan="8">
-                                                    <div class="text-right">
-                                                        <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div> <!-- end .table-responsive-->
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
+                            <div class="overflow-x-auto">
+                                <table id="demo-foo-filtering" class="w-full border-collapse border border-gray-200" data-page-size="7">
+                                    <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="border border-gray-200 px-4 py-2">#</th>
+                                        <th class="border border-gray-200 px-4 py-2" data-toggle="true">Patient Name</th>
+                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Number</th>
+                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Address</th>
+                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Category</th>
+                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <?php
+                                    /*
+                                      *get details of allpatients
+                                      *
+                                    */
+                                    $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
+                                    //sql code to get to ten docs  randomly
+                                    $stmt= $mysqli->prepare($ret) ;
+                                    $stmt->execute() ;//ok
+                                    $res=$stmt->get_result();
+                                    $cnt=1;
+                                    while($row=$res->fetch_object())
+                                    {
+                                        ?>
+                                        <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 px-4 py-2"><?php echo $cnt;?></td>
+                                            <td class="border border-gray-200 px-4 py-2"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
+                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_number;?></td>
+                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_addr;?></td>
+                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_type;?></td>
+
+                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell">
+                                                <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="bg-green-500 text-white px-2 py-1 rounded text-xs inline-block mr-1">
+                                                    View
+                                                </a>
+                                                <a href="his_doc_update_single_patient.php?pat_number=<?php echo $row->pat_number;?>" class="bg-blue-500 text-white px-2 py-1 rounded text-xs inline-block">
+                                                    Update
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <?php  $cnt = $cnt +1 ; }?>
+                                    <tfoot>
+                                    <tr class="bg-gray-100">
+                                        <td colspan="8" class="border border-gray-200 px-4 py-2">
+                                            <div class="flex justify-end">
+                                                <ul class="flex space-x-1 pagination pagination-rounded justify-end footable-pagination mt-2 mb-0"></ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                         <!-- end row -->
 

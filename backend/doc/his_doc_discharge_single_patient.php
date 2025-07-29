@@ -91,7 +91,7 @@
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
                             $pat_number=$_GET['pat_number'];
-                            $ret="SELECT  * FROM his_patients WHERE pat_number=?";
+                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$pat_number);
                             $stmt->execute() ;//ok

@@ -12,7 +12,7 @@
             
             
             //sql to insert captured values
-			$query="INSERT INTO  his_patient_transfers (t_pat_number, t_pat_name, t_date, t_hospital, t_status) VALUES(?,?,?,?,?)";
+			$query="INSERT INTO  hmisphp.his_patient_transfers (t_pat_number, t_pat_name, t_date, t_hospital, t_status) VALUES(?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssss', $t_pat_number, $t_pat_name, $t_date, $t_hospital, $t_status);
 			$stmt->execute();
@@ -85,7 +85,7 @@
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
                             $pat_number=$_GET['pat_number'];
-                            $ret="SELECT  * FROM his_patients WHERE pat_number=?";
+                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$pat_number);
                             $stmt->execute() ;//ok

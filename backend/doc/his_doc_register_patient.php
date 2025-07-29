@@ -44,7 +44,7 @@
 
     <!--Head-->
     <?php include('assets/inc/head.php');?>
-    <body>
+    <body style="color: black">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -84,73 +84,74 @@
                         </div>     
                         <!-- end page title --> 
                         <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
+                        <div class="flex flex-wrap">
+                            <div class="w-full px-4">
+                                <div class="bg-white rounded-lg shadow-md">
+                                    <div class="p-6">
+                                        <h4 class="text-lg font-semibold mb-4 text-black">Fill all fields</h4>
                                         <!--Add Patient Form-->
                                         <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">First Name</label>
-                                                    <input type="text" required="required" name="pat_fname" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                            <div class="flex flex-wrap -mx-2 ">
+                                                <div class="w-full md:w-1/2 px-2 mb-4">
+                                                    <label for="inputEmail4" class="block text-sm font-medium mb-1 text-black">First Name</label>
+                                                    <input type="text" required name="pat_fname" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputEmail4" placeholder="Patient's First Name">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Last Name</label>
-                                                    <input required="required" type="text" name="pat_lname" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Date Of Birth</label>
-                                                    <input type="text" required="required" name="pat_dob" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Age</label>
-                                                    <input required="required" type="text" name="pat_age" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+                                                <div class="w-full md:w-1/2 px-2 mb-4">
+                                                    <label for="inputPassword4" class="block text-sm font-medium mb-1 text-black">Last Name</label>
+                                                    <input required type="text" name="pat_lname" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputPassword4" placeholder="Patient's Last Name">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Address</label>
-                                                <input required="required" type="text" class="form-control" name="pat_addr" id="inputAddress" placeholder="Patient's Addresss">
+                                            <div class="flex flex-wrap -mx-2 ">
+                                                <div class="w-full md:w-1/2 px-2 mb-4">
+                                                    <label for="inputEmail4" class="block text-sm font-medium mb-1 text-black">Date Of Birth</label>
+                                                    <input type="text" required name="pat_dob" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                                </div>
+                                                <div class="w-full md:w-1/2 px-2 mb-4">
+                                                    <label for="inputPassword4" class="block text-sm font-medium mb-1 text-black">Age</label>
+                                                    <input required type="text" name="pat_age" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputPassword4" placeholder="Patient's Age">
+                                                </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Mobile Number</label>
-                                                    <input required="required" type="text" name="pat_phone" class="form-control" id="inputCity">
+                                            <div class="mb-4">
+                                                <label for="inputAddress" class="block text-sm font-medium mb-1 text-black">Address</label>
+                                                <input required type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" name="pat_addr" id="inputAddress" placeholder="Patient's Address">
+                                            </div>
+
+                                            <div class="flex flex-wrap -mx-2 mb-6">
+                                                <div class="w-full md:w-1/3 px-2 mb-4">
+                                                    <label for="inputCity" class="block text-sm font-medium mb-1 text-black">Mobile Number</label>
+                                                    <input required type="text" name="pat_phone" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputCity">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Patient Ailment</label>
-                                                    <input required="required" type="text" name="pat_ailment" class="form-control" id="inputCity">
+                                                <div class="w-full md:w-1/3 px-2 mb-4">
+                                                    <label for="inputCity" class="block text-sm font-medium mb-1 text-black">Patient Ailment</label>
+                                                    <input required type="text" name="pat_ailment" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputCity">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputState" class="col-form-label">Patient's Type</label>
-                                                    <select id="inputState" required="required" name="pat_type" class="form-control">
+                                                <div class="w-full md:w-1/3 px-2 mb-4">
+                                                    <label for="inputState" class="block text-sm font-medium mb-1 text-black">Patient's Type</label>
+                                                    <select id="inputState" required name="pat_type" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black">
                                                         <option>Choose</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-2" style="display:none">
-                                                    <?php 
-                                                        $length = 5;    
-                                                        $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
+                                                <div class="w-full md:w-1/6 px-2 mb-4 hidden">
+                                                    <?php
+                                                    $length = 5;
+                                                    $patient_number = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
                                                     ?>
-                                                    <label for="inputZip" class="col-form-label">Patient Number</label>
-                                                    <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="form-control" id="inputZip">
+                                                    <label for="inputZip" class="block text-sm font-medium mb-1 text-black">Patient Number</label>
+                                                    <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="w-full px-3 py-2 border border-gray-300 rounded-md text-black" id="inputZip">
                                                 </div>
                                             </div>
 
-                                            <button type="submit" name="add_patient" class="ladda-button btn btn-primary" data-style="expand-right">Add Patient</button>
-
+                                            <button type="submit" name="add_patient" class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-gray-700 transition-colors">
+                                                Add Patient
+                                            </button>
                                         </form>
                                         <!--End Patient Form-->
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
+                                    </div>
+                                </div>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
