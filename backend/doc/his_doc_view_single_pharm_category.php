@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>view patients</title>
+    <title>view pharm_category</title>
 </head>
 <?php include ('assets/inc/head.php');?>
 
@@ -31,7 +31,7 @@
             <!-- ============================================================== -->
             <?php
                 $pharm_cat_id=$_GET['pharm_cat_id'];
-                $ret="SELECT  * FROM his_pharmaceuticals_categories WHERE pharm_cat_id = ?";
+                $ret="SELECT  * FROM hmisphp.his_pharmaceuticals_categories WHERE pharm_cat_id = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$pharm_cat_id);
                 $stmt->execute() ;//ok
@@ -82,7 +82,7 @@
                                                 <div class="pl-xl-3 mt-3 mt-xl-0">
                                                     <h2 class="mb-3">Pharmaceutical Name: <?php echo $row->pharm_cat_name;?></h2>
                                                     <hr>
-                                                    <h6 class="text-danger">Phrmaceutical Vendor<?php echo $row->pharm_cat_vendor;?></h6>
+                                                    <h6 class="text-danger">Pharmaceutical Vendor<?php echo $row->pharm_cat_vendor;?></h6>
                                                     <hr>
                                                     <p class="text-muted mb-4">
                                                         <?php echo $row->pharm_cat_desc;?>

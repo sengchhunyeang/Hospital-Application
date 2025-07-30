@@ -7,8 +7,8 @@
 			$pharm_cat_name = $_POST['pharm_cat_name'];
 			$pharm_cat_vendor = $_POST['pharm_cat_vendor'];
 			$pharm_cat_desc=$_POST['pharm_cat_desc'];
-            
-            
+
+
             //sql to insert captured values
 			$query="INSERT INTO hmisphp.his_pharmaceuticals_categories (pharm_cat_name, pharm_cat_vendor, pharm_cat_desc) VALUES (?,?,?)";
 			$stmt = $mysqli->prepare($query);
@@ -17,7 +17,7 @@
 			/*
 			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
 			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
+			*/
 			//declare a varible which will be passed to alert function
 			if($stmt)
 			{
@@ -26,8 +26,8 @@
 			else {
 				$err = "Please Try Again Or Try Later";
 			}
-			
-			
+
+
 		}
 ?>
 <!--End Server Side-->
@@ -62,7 +62,7 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
+
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -77,58 +77,50 @@
                                     <h4 class="page-title">Create A Pharmaceutical Category</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
-                        <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
-                                        <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Pharmaceutical Category Name</label>
-                                                    <input type="text" required="required" name="pharm_cat_name" class="form-control" id="inputEmail4" >
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputState" class="col-form-label">Pharmaceutical Vendor</label>
-                                                    <select id="inputState" required="required" name="pharm_cat_vendor" class="form-control">
-                                                    <?php
-                                                    
-                                                        $ret="SELECT * FROM  hmisphp.his_vendor ORDER BY RAND() ";
-                                                        //sql code to get to ten docs  randomly
-                                                        $stmt= $mysqli->prepare($ret) ;
-                                                        $stmt->execute() ;//ok
-                                                        $res=$stmt->get_result();
-                                                        $cnt=1;
-                                                        while($row=$res->fetch_object())
-                                                        {
-                                                            //$mysqlDateTime = $row->s_pat_date;
-                                                    ?>
-                                                        <option><?php echo $row->v_name;?></option>
-
-                                                    <?php }?>   
-                                                    </select>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label>
-                                                <label for="editor"></label><textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"></textarea>
-                                            </div>
-
-                                           <button type="submit" name="add_pharmaceutical_category" class="ladda-button btn btn-success" data-style="expand-right">Add Category</button>
-
-                                        </form>
-                                     
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
                         </div>
+                        <!-- end page title -->
+                        <!-- Form row -->
+                        <div class="w-full px-4">
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h4 class="text-lg font-semibold mb-4">Fill all fields</h4>
+
+                                <form method="post">
+                                    <!-- Pharmaceutical Category Name -->
+                                    <div class="mb-4">
+                                        <label for="inputEmail4" class="block text-sm font-medium text-gray-700 mb-1">Pharmaceutical Category Name</label>
+                                        <input type="text" required name="pharm_cat_name" id="inputEmail4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 text-black" />
+                                    </div>
+
+                                    <!-- Pharmaceutical Vendor -->
+                                    <div class="mb-4">
+                                        <label for="inputState" class="block text-sm font-medium text-gray-700 mb-1">Pharmaceutical Vendor</label>
+                                        <select id="inputState" required name="pharm_cat_vendor" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 text-black">
+                                            <?php
+                                            $ret = "SELECT * FROM hmisphp.his_vendor ORDER BY RAND()";
+                                            $stmt = $mysqli->prepare($ret);
+                                            $stmt->execute();
+                                            $res = $stmt->get_result();
+                                            while ($row = $res->fetch_object()) {
+                                                ?>
+                                                <option><?php echo htmlspecialchars($row->v_name); ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+
+                                    <!-- Category Description -->
+                                    <div class="mb-4">
+                                        <label for="editor" class="block text-sm font-medium text-gray-700 mb-1">Pharmaceutical Category Description</label>
+                                        <textarea required name="pharm_cat_desc" id="editor" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 text-black"></textarea>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit" name="add_pharmaceutical_category" class="bg-blue-500 hover:bg-gray-500 text-white px-6 py-2 rounded-md transition duration-200">
+                                        Add Category
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
                         <!-- end row -->
 
                     </div> <!-- container -->
@@ -153,7 +145,7 @@
         <script type="text/javascript">
         CKEDITOR.replace('editor')
         </script>
-       
+
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
@@ -169,7 +161,7 @@
 
         <!-- Buttons init js-->
         <script src="assets/js/pages/loading-btn.init.js"></script>
-        
+
     </body>
 
 </html>
