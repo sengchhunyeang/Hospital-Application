@@ -119,7 +119,7 @@
 <header class="header-area">
     <div class="container d-flex justify-content-between align-items-center">
         <a href="index.php">
-            <img src="assets/images/logo/left.png" alt="Logo" height="72">
+            <img src="assets/images/logo/right.png" alt="Logo" height="63">
         </a>
         <ul class="nav-menu">
             <li><a href="index.php">Home</a></li>

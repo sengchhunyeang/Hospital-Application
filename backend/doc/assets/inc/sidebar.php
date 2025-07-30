@@ -22,7 +22,7 @@
                         'his_doc_register_patient.php',
                         'his_doc_view_patients.php',
                         'his_doc_manage_patient.php',
-                        'his_doc_discharge_patient.php',
+//                        'his_doc_discharge_patient.php',
                         'his_doc_patient_transfer.php'
                     ]);
                     ?>
@@ -42,7 +42,7 @@
                         <li><a href="his_doc_view_patients.php" class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_view_patients.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">View Patients</a></li>
                         <li><a href="his_doc_manage_patient.php" class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_manage_patient.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Manage Patients</a></li>
                         <li class="border-t border-gray-200 my-1"></li>
-                        <li><a href="his_doc_discharge_patient.php" class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_discharge_patient.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Discharge Patients</a></li>
+<!--                        <li><a href="his_doc_discharge_patient.php" class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_discharge_patient.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">Discharge Patients</a></li>-->
                         <li><a href="his_doc_patient_transfer.php" class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_transfer.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Patient Transfers</a></li>
                     </ul>
                 </li>
