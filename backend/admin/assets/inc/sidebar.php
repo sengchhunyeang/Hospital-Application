@@ -25,13 +25,13 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="his_admin_register_patient.php">Register Patient</a>
+                                        <a href="his_admin_register_patient.php"  >Register Patient</a>
                                     </li>
                                     <li>
                                         <a href="his_admin_view_patients.php">View Patients</a>
                                     </li>
-                                    <li>
-                                        <a href="his_admin_manage_patient.php">Manage Patients</a>
+                                    <li class="text-sm">
+                                        <a href="his_admin_manage_patient.php" >Manage Patients</a>
                                     </li>
                                     <hr>
                                     <li>

@@ -13,24 +13,24 @@
     <div class="navbar-custom">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
-            <li class="d-none d-sm-block">
-                <form class="app-search">
-                    <div class="app-search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit">
-                                    <i class="fe-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </li>
+<!--            <li class="d-none d-sm-block">-->
+<!--                <form class="app-search">-->
+<!--                    <div class="app-search-box">-->
+<!--                        <div class="input-group">-->
+<!--                            <input type="text" class="form-control" placeholder="Search...">-->
+<!--                            <div class="input-group-append">-->
+<!--                                <button class="btn" type="submit">-->
+<!--                                    <i class="fe-search"></i>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </li>-->
 
 
             <li class="dropdown notification-list ">
-                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect " data-toggle="dropdown" href="#"
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect flex d-flex justify-center items-center  " data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets/images/users/<?php echo $row->doc_dpic; ?>" alt="dpic" class="rounded-circle">
 
@@ -46,10 +46,10 @@
                     </div>
 
                     <!-- item-->
-                    <!-- <a href="his_doc_account.php" class="dropdown-item notify-item">
+                    <a href="his_doc_account.php" class="dropdown-item notify-item">
                         <i class="fas fa-user"></i>
                         <span>My Account</span>
-                    </a> -->
+                    </a>
 
                     <a href="his_doc_update-account.php" class="dropdown-item notify-item">
                         <i class="fas fa-user-tag"></i>
@@ -68,22 +68,23 @@
                 </div>
             </li>
 
-           
+
 
         </ul>
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="his_admin_dashboard.php" class="logo text-center">
-                <span class="logo-lg">
-                    <img src="assets/images/right.png" alt="" height="18">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
-                </span>
-                <span class="logo-sm">
-                    <!-- <span class="logo-sm-text-dark">U</span> -->
-                    <img src="assets/images/logo-sm-white.png" alt="" height="24">
-                </span>
-            </a>
+            <span class="logo-sm-text-dark text-white item-center">Hospital-Application</span>
+<!--            <a href="his_admin_dashboard.php" class="logo text-center">-->
+<!--                <h1>Hospital-Application</h1>-->
+<!--                <span class="logo-lg justify-center flex d-flex ">-->
+<!--                    <img src="assets/images/logo.png" alt="" height="15" width="120">-->
+<!--                </span>-->
+<!--                <span class="logo-sm">-->
+<!--                     <span class="logo-sm-text-dark">U</span> -->
+<!--                    <img src="assets/images/logo.png" alt="" height="24">-->
+<!--                </span>-->
+<!--            </a>-->
         </div>
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
@@ -96,10 +97,10 @@
             <li class="dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     Create New
-                    <i class="mdi mdi-chevron-down"></i> 
+                    <i class="mdi mdi-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu">
-                    
+
 
                     <!-- item-->
                     <a href="his_doc_register_patient.php" class="dropdown-item">
@@ -119,10 +120,10 @@
                         <span>Prescription</span>
                     </a>
 
-                    
+
                     <div class="dropdown-divider"></div>
 
-                    
+
                 </div>
             </li>
 

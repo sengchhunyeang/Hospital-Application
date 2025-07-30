@@ -10,7 +10,10 @@
 
 <!DOCTYPE html>
     <html lang="en">
-
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>My Profile</title>
+</head>
     <?php include('assets/inc/head.php');?>
 
     <body>
