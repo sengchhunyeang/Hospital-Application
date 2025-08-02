@@ -32,7 +32,7 @@
             <!-- ============================================================== -->
             <?php
                 $phar_bcode=$_GET['phar_bcode'];
-                $ret="SELECT  * FROM his_pharmaceuticals WHERE phar_bcode = ?";
+                $ret="SELECT  * FROM hmisphp.his_pharmaceuticals WHERE phar_bcode = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$phar_bcode);
                 $stmt->execute() ;//ok

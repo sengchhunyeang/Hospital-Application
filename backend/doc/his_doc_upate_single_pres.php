@@ -13,7 +13,7 @@
             $pres_ins = $_POST['pres_ins'];
             $pres_pat_ailment = $_POST['pres_pat_ailment'];
             //sql to insert captured values
-			$query="UPDATE   his_prescriptions  SET pres_pat_name = ?, pres_pat_type = ?, pres_pat_addr = ?, pres_pat_age = ?, pres_pat_ailment = ?, pres_ins = ? WHERE pres_number = ?";
+			$query="UPDATE   hmisphp.his_prescriptions  SET pres_pat_name = ?, pres_pat_type = ?, pres_pat_addr = ?, pres_pat_age = ?, pres_pat_ailment = ?, pres_ins = ? WHERE pres_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssss', $pres_pat_name, $pres_pat_type, $pres_pat_addr, $pres_pat_age,  $pres_pat_ailment, $pres_ins, $pres_number);
 			$stmt->execute();
@@ -61,7 +61,7 @@
             <!-- ============================================================== -->
             <?php
                 $pres_number = $_GET['pres_number'];
-                $ret="SELECT  * FROM his_prescriptions WHERE pres_number=?";
+                $ret="SELECT  * FROM hmisphp.his_prescriptions WHERE pres_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pres_number);
                 $stmt->execute() ;//ok

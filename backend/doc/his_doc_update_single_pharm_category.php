@@ -10,7 +10,7 @@
             
             
             //sql to update captured values
-			$query="UPDATE  his_pharmaceuticals_categories SET  pharm_cat_vendor=?, pharm_cat_desc=? WHERE pharm_cat_name = ?";
+			$query="UPDATE  hmisphp.his_pharmaceuticals_categories SET  pharm_cat_vendor=?, pharm_cat_desc=? WHERE pharm_cat_name = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sss',   $pharm_cat_vendor, $pharm_cat_desc, $pharm_cat_name);
 			$stmt->execute();
@@ -58,7 +58,7 @@
             <!-- ============================================================== -->
             <?php
                 $pharm_cat_name=$_GET['pharm_cat_name'];
-                $ret="SELECT  * FROM his_pharmaceuticals_categories WHERE pharm_cat_name=?";
+                $ret="SELECT  * FROM hmisphp.his_pharmaceuticals_categories WHERE pharm_cat_name=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pharm_cat_name);
                 $stmt->execute() ;//ok
@@ -71,59 +71,68 @@
                 <div class="content">
 
                     <!-- Start Content-->
-                    <div class="container-fluid">
-                        
+                    <div class="container mx-auto px-4 py-4">
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="his_doc_dashboard.php">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pharmaceuticals</a></li>
-                                            <li class="breadcrumb-item active">Manage Pharmaceutical Category</li>
+                        <div class="flex flex-wrap">
+                            <div class="w-full">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div class="text-right">
+                                        <ol class="flex flex-wrap list-reset text-sm text-black">
+                                            <li class="inline-block px-2">
+                                                <a href="his_doc_dashboard.php" class="text-blue-600 hover:text-blue-800">Dashboard</a>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-500">/</li>
+                                            <li class="inline-block px-2">
+                                                <a href="javascript:void(0);" class="text-blue-600 hover:text-blue-800">Pharmaceuticals</a>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-500">/</li>
+                                            <li class="inline-block px-2 font-medium text-black">Manage Pharmaceutical Category</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title"><?php echo $row->pharm_cat_name;?></h4>
+                                    <h4 class="text-xl font-semibold text-black"><?php echo $row->pharm_cat_name;?></h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
+
                         <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
+                        <div class="flex flex-wrap">
+                            <div class="w-full">
+                                <div class="bg-white rounded-lg shadow-md mb-6">
+                                    <div class="p-6">
+                                        <h4 class="text-lg font-semibold mb-4 text-black">Fill all fields</h4>
                                         <!--Add Patient Form-->
                                         <form method="post">
-                                            <div class="form-row" >
-                                                <div class="form-group col-md-6" style="display:none">
-                                                    <label for="inputEmail4" class="col-form-label">Pharmaceutical Category Name</label>
-                                                    <input  type="text" value="<?php echo $row->pharm_cat_name;?>" required="required" name="pharm_cat_name" class="form-control" id="inputEmail4" >
+                                            <div class="flex flex-wrap -mx-2">
+                                                <div class="w-full md:w-1/2 px-2 hidden">
+                                                    <div class="mb-4">
+                                                        <label for="inputEmail4" class="block mb-2 text-sm font-medium text-black">Pharmaceutical Category Name</label>
+                                                        <input type="text" value="<?php echo $row->pharm_cat_name;?>" required name="pharm_cat_name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-black" id="inputEmail4">
+                                                    </div>
                                                 </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="inputPassword4" class="col-form-label">Pharmaceutical Category Vendor</label>
-                                                    <input required="required" value="<?php echo $row->pharm_cat_vendor;?>" type="text" name="pharm_cat_vendor" class="form-control"  id="inputPassword4">
+                                                <div class="w-full px-2">
+                                                    <div class="mb-4">
+                                                        <label for="inputPassword4" class="block mb-2 text-sm font-medium text-black">Pharmaceutical Category Vendor</label>
+                                                        <input required value="<?php echo $row->pharm_cat_vendor;?>" type="text" name="pharm_cat_vendor" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-black" id="inputPassword4">
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label>
-                                                <textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"><?php echo $row->pharm_cat_desc;?></textarea>
+                                            <div class="mb-4">
+                                                <label for="inputAddress" class="block mb-2 text-sm font-medium text-black">Pharmaceutical Category Description</label>
+                                                <textarea required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-black" name="pharm_cat_desc" id="editor"><?php echo $row->pharm_cat_desc;?></textarea>
                                             </div>
 
-                                           <button type="submit" name="update_pharmaceutical_category" class="ladda-button btn btn-danger" data-style="expand-right">Update Category</button>
-
+                                            <button type="submit" name="update_pharmaceutical_category" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition duration-300">
+                                                Update Category
+                                            </button>
                                         </form>
-                                     
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- end row -->
-
-                    </div> <!-- container -->
+                    </div><!-- container -->
 
                 </div> <!-- content -->
 

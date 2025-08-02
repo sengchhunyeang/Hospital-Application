@@ -36,7 +36,7 @@
 </head>
 <?php include('assets/inc/head.php');?>
 
-    <body>
+    <body style="color: black">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -57,55 +57,64 @@
                 <div class="content">
 
                     <!-- Start Content-->
-                    <div class="container-fluid">
-                        
+                    <div class="w-full px-4">
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pharmaceuticals</a></li>
-                                            <li class="breadcrumb-item active">Manage Pharmaceutical Category</li>
+                        <div class="flex flex-wrap">
+                            <div class="w-full">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div class="text-right">
+                                        <ol class="flex flex-wrap list-reset text-sm">
+                                            <li class="inline-block px-2 text-gray-600">
+                                                <a href="javascript:void(0);" class="text-blue-500 hover:text-blue-700">Dashboard</a>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-600">
+                                                <span>/</span>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-600">
+                                                <a href="javascript:void(0);" class="text-blue-500 hover:text-blue-700">Pharmaceuticals</a>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-600">
+                                                <span>/</span>
+                                            </li>
+                                            <li class="inline-block px-2 text-gray-800 font-medium">Manage Pharmaceutical Category</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Manage Pharmaceutical Categories</h4>
+                                    <h4 class="text-xl font-semibold text-gray-800">Manage Pharmaceutical Categories</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="header-title"></h4>
-                                    <div class="mb-2">
-                                        <div class="row">
-                                            <div class="col-12 text-sm-center form-inline" >
-                                                <div class="form-group mr-2" style="display:none">
-                                                    <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                        <div class="flex flex-wrap">
+                            <div class="w-full">
+                                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                                    <h4 class="text-lg font-semibold mb-4"></h4>
+                                    <div class="mb-4">
+                                        <div class="flex flex-wrap">
+                                            <div class="w-full text-center sm:text-left flex flex-col sm:flex-row items-center">
+                                                <div class="mr-2 hidden">
+                                                    <select id="demo-foo-filter-status" class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500">
                                                         <option value="">Show all</option>
                                                         <option value="Discharged">Discharged</option>
                                                         <option value="OutPatients">OutPatients</option>
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mt-2 sm:mt-0">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500" autocomplete="on">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+
+                                    <div class="overflow-x-auto">
+                                        <table id="demo-foo-filtering" class="w-full border-collapse border border-gray-200" data-page-size="7">
+                                            <thead class="bg-gray-50">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Category Name</th>
-                                                <th data-hide="phone">Category Vendor</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="border border-gray-200 px-4 py-2">#</th>
+                                                <th class="border border-gray-200 px-4 py-2" data-toggle="true">Category Name</th>
+                                                <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Category Vendor</th>
+                                                <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Action</th>
                                             </tr>
                                             </thead>
                                             <?php
@@ -113,46 +122,61 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_pharmaceuticals_categories ORDER BY RAND() ";
-                                                $stmt= $mysqli->prepare($ret) ;
-                                                $stmt->execute() ;//ok
-                                                $res=$stmt->get_result();
-                                                $cnt=1;
-                                                while($row=$res->fetch_object())
-                                                {
-                                            ?>
+                                            $ret="SELECT * FROM  hmisphp.his_pharmaceuticals_categories ORDER BY RAND() ";
+                                            $stmt= $mysqli->prepare($ret) ;
+                                            $stmt->execute() ;//ok
+                                            $res=$stmt->get_result();
+                                            $cnt=1;
+                                            while($row=$res->fetch_object())
+                                            {
+                                                ?>
 
                                                 <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->pharm_cat_name;?></td>
-                                                    <td><?php echo $row->pharm_cat_vendor;?></td>
-                                                    <td>
-                                                        <a href="his_doc_view_single_pharm_category.php?pharm_cat_id=<?php echo $row->pharm_cat_id;?>" class="badge badge-success"><i class="far fa-eye "></i> View</a>
-                                                        <a href="his_doc_update_single_pharm_category.php?pharm_cat_name=<?php echo $row->pharm_cat_name;?>" class="badge badge-warning"><i class="fas fa-clipboard-check "></i> Update</a>
-                                                       <!-- <a href="his_admin_manage_pharm_cat.php?delete_pharm_cat=<?php echo $row->pharm_cat_id;?>" class="badge badge-danger"><i class="fas fa-trash-alt "></i> Delete</a>-->
-
-
+                                                <tr class="hover:bg-gray-50">
+                                                    <td class="border border-gray-200 px-4 py-2"><?php echo $cnt;?></td>
+                                                    <td class="border border-gray-200 px-4 py-2"><?php echo $row->pharm_cat_name;?></td>
+                                                    <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pharm_cat_vendor;?></td>
+                                                    <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell space-x-1">
+                                                        <a href="his_doc_view_single_pharm_category.php?pharm_cat_id=<?php echo $row->pharm_cat_id;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200">
+                                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                            </svg>
+                                                            View
+                                                        </a>
+                                                        <a href="his_doc_update_single_pharm_category.php?pharm_cat_name=<?php echo $row->pharm_cat_name;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
+                                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                                            </svg>
+                                                            Update
+                                                        </a>
+                                                        <!--
+                                    <a href="his_admin_manage_pharm_cat.php?delete_pharm_cat=<?php echo $row->pharm_cat_id;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800 hover:bg-red-200">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                        Delete
+                                    </a>
+                                    -->
                                                     </td>
                                                 </tr>
                                                 </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
-                                            <tfoot>
-                                            <tr class="active">
-                                                <td colspan="8">
-                                                    <div class="text-right">
-                                                        <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                                                <?php  $cnt = $cnt +1 ; }?>
+                                            <tfoot class="bg-gray-50">
+                                            <tr>
+                                                <td colspan="8" class="border border-gray-200 px-4 py-2">
+                                                    <div class="flex justify-end">
+                                                        <ul class="flex space-x-1 pagination pagination-rounded justify-end footable-pagination mt-2 mb-0"></ul>
                                                     </div>
                                                 </td>
                                             </tr>
                                             </tfoot>
                                         </table>
-                                    </div> <!-- end .table-responsive-->
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- end row -->
-
                     </div> <!-- container -->
 
                 </div> <!-- content -->

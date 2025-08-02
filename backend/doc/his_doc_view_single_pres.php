@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>view patients</title>
+    <title>View Single Prescription </title>
 </head>
 <?php include ('assets/inc/head.php');?>
 

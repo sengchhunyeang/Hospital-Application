@@ -30,7 +30,10 @@
 <!--End Login-->
 <!DOCTYPE html>
 <html lang="en">
-    
+<head>
+
+    <title>Doctor Login </title>
+</head>
 <head>
         <meta charset="utf-8" />
         <title>Hospital Management System -A Super Responsive Information System</title>
@@ -86,10 +89,10 @@
                         <div class="card bg-pattern">
 
                             <div class="card-body p-4">
-                                
+
                                 <div class="text-center w-75 m-auto">
                                     <a href="index.php">
-                                        <span><img src="assets/images/logo-dark.png" alt="" height="22"></span>
+                                        <span><img src="assets/images/right.png" alt="" height="63"></span>
                                     </a>
                                     <p class="text-muted mb-4 mt-3">Enter your email address and password to access Doctor panel.</p>
                                 </div>
@@ -113,7 +116,7 @@
                                 </form>
 
                                 <!--
-                                For Now Lets Disable This 
+                                For Now Lets Disable This
                                 This feature will be implemented on later versions
                                 <div class="text-center">
                                     <h5 class="mt-3 text-muted">Sign in with</h5>
@@ -131,7 +134,7 @@
                                             <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
                                         </li>
                                     </ul>
-                                </div> 
+                                </div>
                                 -->
 
                             </div> <!-- end card-body -->
@@ -162,7 +165,7 @@
 
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
-        
+
     </body>
 
 </html>
