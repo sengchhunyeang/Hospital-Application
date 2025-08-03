@@ -72,7 +72,7 @@
     }
 
     .banner p {
-      font-size: 18px;
+      font-size: 20px;
       max-width: 700px;
       margin: auto;
       opacity: 0.95;
