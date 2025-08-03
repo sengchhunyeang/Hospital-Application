@@ -16,117 +16,179 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  margin: 0;
+}
 
-    .preloader {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #fff;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    header {
-      background-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      padding: 15px 0;
-    }
+header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  padding: 20px 0;
+}
 
-    .nav-menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
 
-    .nav-menu a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #333;
-      transition: all 0.3s ease;
-    }
+.nav-menu a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  padding-bottom: 5px;
+  transition: 0.3s ease;
+}
 
-    .nav-menu a:hover {
-      color: #0077b6;
-    }
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00b4d8;
+  transition: width 0.3s;
+}
 
-    .banner {
-      background: linear-gradient(to right, #0077b6, #00b4d8);
-      color: white;
-      padding: 100px 20px 60px;
-      text-align: center;
-      position: relative;
-    }
+.nav-menu a:hover::after {
+  width: 100%;
+}
 
-    .banner h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
+.banner {
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: white;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    .banner p {
-      font-size: 20px;
-      max-width: 700px;
-      margin: auto;
-      opacity: 0.95;
-    }
+.banner h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
 
-    .login-buttons {
-      margin-top: 30px;
-    }
+.banner p {
+  font-size: 1.1rem;
+  max-width: 750px;
+  margin: 0 auto 15px;
+  line-height: 1.6;
+}
 
-    .login-buttons .btn {
-      margin: 10px;
-      border-radius: 50px;
-      padding: 10px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
+.login-buttons {
+  margin-top: 35px;
+}
 
-    .login-buttons .btn:hover {
-      transform: scale(1.05);
-    }
+.login-buttons .btn {
+  margin: 10px;
+  border-radius: 30px;
+  padding: 12px 35px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
 
-    .features {
-      margin-top: 50px;
-    }
+.btn-outline-light {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+}
 
-    .feature-box {
-      background: #fff;
-      padding: 25px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
+.btn-outline-light:hover {
+  background: white;
+  color: #0077b6;
+}
 
-    .feature-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
+.btn-light {
+  background-color: #fff;
+  color: #0077b6;
+  border: 2px solid #fff;
+}
 
-    .feature-icon {
-      font-size: 40px;
-      color: #0077b6;
-      margin-bottom: 15px;
-    }
+.btn-light:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid white;
+}
 
-    footer {
-      background-color: #ffffff;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 60px;
-      font-size: 14px;
-      color: #777;
-      border-top: 1px solid #eee;
-    }
+.features {
+  margin-top: 60px;
+}
+
+.feature-box {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.feature-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 42px;
+  color: #00b4d8;
+  margin-bottom: 20px;
+}
+
+.feature-box h5 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  color: #666;
+}
+
+footer {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 14px;
+  color: #888;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 2rem;
+  }
+
+  .login-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -218,10 +280,11 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.preloader').fadeOut('slow');
+  $(window).on('load', function () {
+    $('.preloader').fadeOut(600);
   });
 </script>
+
 
 </body>
 </html>
