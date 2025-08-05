@@ -92,59 +92,72 @@
                             </div>     
                             <!-- end page title --> 
                             <!-- Form row -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="header-title">Fill all fields</h4>
+                            <div class="flex flex-wrap">
+                                <div class="w-full">
+                                    <div class="bg-white rounded-lg shadow-md mb-6">
+                                        <div class="p-6">
+                                            <h4 class="text-xl font-semibold text-black mb-4">Fill all fields</h4>
                                             <!--Add Patient Form-->
                                             <form method="post">
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                        <input type="text" required="required" readonly name="lab_pat_name" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                                <div class="flex flex-wrap -mx-2 ">
+                                                    <!-- Patient Name -->
+                                                    <div class="w-full md:w-1/2 px-2 mb-4">
+                                                        <label for="inputEmail4" class="block text-sm font-medium text-black mb-1">Patient Name</label>
+                                                        <input type="text" required readonly name="lab_pat_name"
+                                                               value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>"
+                                                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black bg-gray-100"
+                                                               id="inputEmail4" placeholder="Patient's First Name">
                                                     </div>
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Ailment</label>
-                                                        <input required="required" type="text" readonly name="lab_pat_ailment" value="<?php echo $row->pat_ailment;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <!-- Patient Ailment -->
+                                                    <div class="w-full md:w-1/2 px-2">
+                                                        <label for="inputPassword4" class="block text-sm font-medium text-black mb-1">Patient Ailment</label>
+                                                        <input required type="text" readonly name="lab_pat_ailment"
+                                                               value="<?php echo $row->pat_ailment;?>"
+                                                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black bg-gray-100"
+                                                               id="inputPassword4" placeholder="Patient's Last Name">
                                                     </div>
-
                                                 </div>
 
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Number</label>
-                                                        <input type="text" required="required" readonly name="lab_pat_number" value="<?php echo $row->pat_number;?>" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                                <div class="flex flex-wrap -mx-2 ">
+                                                    <!-- Patient Number -->
+                                                    <div class="w-full px-2 mb-4">
+                                                        <label for="inputEmail4" class="block text-sm font-medium text-black mb-1">Patient Number</label>
+                                                        <input type="text" required readonly name="lab_pat_number"
+                                                               value="<?php echo $row->pat_number;?>"
+                                                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black bg-gray-100"
+                                                               id="inputEmail4" placeholder="DD/MM/YYYY">
                                                     </div>
-
-
                                                 </div>
 
-                                                
-                                                <hr>
-                                                <div class="form-row">
-                                                    
-                                            
-                                                    <div class="form-group col-md-2" style="display:none">
-                                                        <?php 
-                                                            $length = 5;    
-                                                            $pres_no =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
+                                                <hr class="my-4 border-gray-300">
+
+                                                <div class="flex flex-wrap -mx-2 ">
+                                                    <!-- Hidden Lab Test Number -->
+                                                    <div class="hidden w-full md:w-1/6 px-2 mb-4">
+                                                        <?php
+                                                        $length = 5;
+                                                        $pres_no = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
                                                         ?>
-                                                        <label for="inputZip" class="col-form-label">Lab Test Number</label>
-                                                        <input type="text" name="lab_number" value="<?php echo $pres_no;?>" class="form-control" id="inputZip">
+                                                        <label for="inputZip" class="block text-sm font-medium text-black mb-1">Lab Test Number</label>
+                                                        <input type="text" name="lab_number" value="<?php echo $pres_no;?>"
+                                                               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                                                               id="inputZip">
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                        <label for="inputAddress" class="col-form-label">Laboratory Tests</label>
-                                                        <textarea required="required"  type="text" class="form-control" name="lab_pat_tests" id="editor"></textarea>
+                                                <!-- Laboratory Tests Textarea -->
+                                                <div class="mb-4">
+                                                    <label for="inputAddress" class="block text-sm font-medium text-black mb-1">Laboratory Tests</label>
+                                                    <textarea required type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black"
+                                                              name="lab_pat_tests" id="editor"></textarea>
                                                 </div>
 
-                                                <button type="submit" name="add_patient_lab_test" class="ladda-button btn btn-success" data-style="expand-right">Add Laboratory Test</button>
-
+                                                <!-- Submit Button -->
+                                                <button type="submit" name="add_patient_lab_test"
+                                                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors">
+                                                    Add Laboratory Test
+                                                </button>
                                             </form>
                                             <!--End Patient Form-->
                                         </div> <!-- end card-body -->
