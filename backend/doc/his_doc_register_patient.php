@@ -38,6 +38,8 @@ if (isset($_POST['add_patient'])) {
 
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <!--Head-->
@@ -232,7 +234,10 @@ if (isset($_POST['add_patient'])) {
         // Show age in the input field
         document.getElementById("pat_age").value = age;
     });
+
 </script>
+<!-- In your <head> -->
+
 
 </body>
 

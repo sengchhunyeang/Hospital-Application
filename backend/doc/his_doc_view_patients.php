@@ -11,6 +11,7 @@ $doc_id = $_SESSION['doc_id']
 <html lang="en">
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>view patients </title>
 </head>
 <style>
     body, h1, h2, h3, h4, h5, h6, p, label, td, th, a, span, div {
