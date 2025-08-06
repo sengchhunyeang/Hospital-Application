@@ -122,15 +122,23 @@ if(isset($_GET['delete']))
                                         </th>
                                     </tr>
                                     </thead>
+                                    <!-- Previous code remains the same until the first table query -->
+
                                     <?php
                                     /*
-                                      *get details of allpatients
-                                      *
-                                    */
-                                    $ret = "SELECT * FROM  hmisphp.his_patients WHERE  pat_type = 'InPatient' ";
+                                     * Get details of patients awaiting transfer (InPatients not yet transferred)
+                                     */
+                                    $ret = "SELECT p.* 
+                    FROM hmisphp.his_patients p
+                    WHERE p.pat_type = 'InPatient' 
+                    AND NOT EXISTS (
+                        SELECT 1 
+                        FROM hmisphp.his_patient_transfers t 
+                        WHERE t.t_pat_number = p.pat_number
+                    )";
 
                                     $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();//ok
+                                    $stmt->execute();
                                     $res = $stmt->get_result();
                                     $cnt = 1;
                                     while ($row = $res->fetch_object()) {
@@ -142,7 +150,6 @@ if(isset($_GET['delete']))
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
-
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                 <a href="his_doc_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                    class="bg-blue-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-blue-600 transition-colors">
@@ -151,8 +158,12 @@ if(isset($_GET['delete']))
                                             </td>
                                         </tr>
                                         </tbody>
-                                        <?php $cnt = $cnt + 1;
-                                    } ?>
+                                        <?php
+                                        $cnt = $cnt + 1;
+                                    }
+                                    ?>
+
+                                    <!-- Rest of the code remains the same -->
                                     <tfoot>
                                     <tr class="bg-gray-100">
                                         <td colspan="8" class="border border-gray-200 px-4 py-2">
@@ -187,7 +198,7 @@ if(isset($_GET['delete']))
                                         </div>
                                         <div>
                                             <label for="demo-foo-search"></label>
-                                            <input id="demo-foo-search"
+                                            <input id="searchInput"
                                                    type="text"
                                                    placeholder="Search"
                                                    class="border border-gray-300 rounded-md px-3 py-1 text-sm text-black"
@@ -200,63 +211,49 @@ if(isset($_GET['delete']))
                             <hr class="my-4 border-gray-200">
 
                             <div class="overflow-x-auto">
-                                <table id="demo-foo-filtering"
-                                       class="w-full border-collapse border border-gray-200" data-page-size="7">
-                                    <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="border border-gray-200 px-4 py-2 text-black">#</th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black"
-                                            data-toggle="true">Patient Name
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Transfer Number
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Transfer Status
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Referral Hospital / Home
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Transfer Date
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <?php
-                                    /*
-                                      *get details of allpatients
-                                      *
-                                    */
-                                    $ret = "SELECT * FROM  hmisphp.his_patient_transfers ";
+                                <!-- Table with Pagination -->
+                                <div class="bg-white rounded-lg shadow overflow-hidden">
+                                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                        <div class="max-h-[500px] overflow-y-auto"> <!-- Adjust max-height as needed -->
+                                            <table id="patientTable" class="w-full border-collapse border border-gray-200">
+                                                <thead class="sticky top-0 bg-gray-100 z-10"> <!-- Sticky header -->
+                                                <tr>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black">#</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black" data-toggle="true">Patient Name</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Number</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Status</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Referral Hospital / Home</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Date</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-gray-200">
+                                                <?php
+                                                $ret = "SELECT * FROM hmisphp.his_patient_transfers";
+                                                $stmt = $mysqli->prepare($ret);
+                                                $stmt->execute();
+                                                $res = $stmt->get_result();
+                                                $cnt = 1;
+                                                while ($row = $res->fetch_object()) {
+                                                    ?>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $cnt; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->t_pat_name; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_pat_number; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_status; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_date; ?></td>
+                                                    </tr>
+                                                    <?php
+                                                    $cnt = $cnt + 1;
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
 
-                                    $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();//ok
-                                    $res = $stmt->get_result();
-                                    $cnt = 1;
-                                    while ($row = $res->fetch_object()) {
-                                        ?>
-                                        <tbody>
-                                        <tr>
-                                            <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $cnt; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->t_pat_name; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_pat_number; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_status; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_date; ?></td>
-                                        </tr>
-                                        </tbody>
-                                        <?php $cnt = $cnt + 1;
-                                    } ?>
-                                    <tfoot>
-                                    <tr class="bg-gray-100">
-                                        <td colspan="8" class="border border-gray-200 px-4 py-2">
-                                            <div class="flex justify-end">
-                                                <ul class="flex space-x-1 pagination pagination-rounded justify-end footable-pagination mt-2 mb-0"></ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                                    <!-- Pagination -->
+                                </div>
                             </div>
                         </div> <!-- end card-box -->
                     </div> <!-- end col -->
@@ -294,7 +291,33 @@ if(isset($_GET['delete']))
 
 <!-- App js -->
 <script src="assets/js/app.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('patientTable');
+        const rows = table.getElementsByTagName('tr');
 
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+                const row = rows[i];
+                const cells = row.getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent.toLowerCase();
+                    if (cellText.includes(searchTerm)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                row.style.display = found ? '' : 'none';
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -1,36 +1,42 @@
 <!--Server side code to handle  Patient Transfer-->
 <?php
-	session_start();
-	include('assets/inc/config.php');
-		if(isset($_POST['transfer_patient']))
-		{
-            $t_pat_number = $_POST['t_pat_number'];
-			$t_pat_name=$_POST['t_pat_name'];
-			$t_date=$_POST['t_date'];
-			$t_hospital=$_POST['t_hospital'];
-            $t_status=$_POST['t_status'];
-            
-            
-            //sql to insert captured values
-			$query="INSERT INTO  hmisphp.his_patient_transfers (t_pat_number, t_pat_name, t_date, t_hospital, t_status) VALUES(?,?,?,?,?)";
-			$stmt = $mysqli->prepare($query);
-			$rc=$stmt->bind_param('sssss', $t_pat_number, $t_pat_name, $t_date, $t_hospital, $t_status);
-			$stmt->execute();
-			/*
-			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
-			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
-			//declare a varible which will be passed to alert function
-			if($stmt)
-			{
-				$success = "Patient Transferred";
-			}
-			else {
-				$err = "Please Try Again Or Try Later";
-			}
-			
-			
-		}
+session_start();
+include('assets/inc/config.php');
+
+if(isset($_POST['transfer_patient'])) {
+    // Set the timezone to Cambodia (Phnom Penh)
+    date_default_timezone_set('Asia/Phnom_Penh');
+
+    $t_pat_number = $_POST['t_pat_number'];
+    $t_pat_name = $_POST['t_pat_name'];
+    $t_hospital = $_POST['t_hospital'];
+    $t_status = $_POST['t_status'];
+
+    // Get current datetime in Cambodia timezone (ICT - UTC+7)
+    $t_date = date('Y-m-d H:i:s');
+
+    // SQL to insert captured values with proper datetime
+    $query = "INSERT INTO hmisphp.his_patient_transfers (t_pat_number, t_pat_name, t_date, t_hospital, t_status) VALUES(?,?,?,?,?)";
+    $stmt = $mysqli->prepare($query);
+
+    $rc = $stmt->bind_param('sssss', $t_pat_number, $t_pat_name, $t_date, $t_hospital, $t_status);
+    $stmt->execute();
+
+    // Update patient status
+    $update_query = "UPDATE hmisphp.his_patients SET pat_type = 'Transferred' WHERE pat_number = ?";
+    $update_stmt = $mysqli->prepare($update_query);
+    $update_stmt->bind_param('s', $t_pat_number);
+    $update_stmt->execute();
+
+    if($stmt && $update_stmt) {
+        $_SESSION['success'] = "Patient Transferred Successfully at " . date('h:i A', strtotime($t_date)) . " (Cambodia Time)";
+    } else {
+        $_SESSION['err'] = "Please Try Again Or Try Later";
+    }
+
+    header("Location: his_doc_patient_transfer.php");
+    exit();
+}
 ?>
 <!--End Server Side-->
 <!--End Patient Transfer-->
