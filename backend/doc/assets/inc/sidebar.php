@@ -176,41 +176,6 @@
 
 
                 </li>
-
-                <!-- Continue with other menu items following the same pattern -->
-                <!-- Inventory -->
-                <li>
-                    <?php
-                    $inventoryActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_pharm_inventory.php', 'his_doc_equipments_inventory.php']);
-                    ?>
-                    <button type="button"
-                            class="flex items-center justify-between w-full px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                            aria-expanded="<?php echo $inventoryActive ? 'true' : 'false' ?>">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 <?php echo $inventoryActive ? 'text-blue-500' : 'text-gray-500' ?>"
-                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
-                                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
-                            </svg>
-                            <span class="ml-3">Inventory</span>
-                        </div>
-                        <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <ul class="mt-1 pl-8 space-y-1 <?php echo $inventoryActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $inventoryActive ? 'false' : 'true' ?>">
-                        <li><a href="his_doc_pharm_inventory.php"
-                               class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_pharm_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Pharmaceuticals</a>
-                        </li>
-                        <li><a href="his_doc_equipments_inventory.php"
-                               class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_equipments_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Assets</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <!-- Laboratory -->
                 <li>
                     <?php
@@ -267,6 +232,41 @@
                     </ul>
 
                 </li>
+                <!-- Continue with other menu items following the same pattern -->
+                <!-- Inventory -->
+                <li>
+                    <?php
+                    $inventoryActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_pharm_inventory.php', 'his_doc_equipments_inventory.php']);
+                    ?>
+                    <button type="button"
+                            class="flex items-center justify-between w-full px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                            aria-expanded="<?php echo $inventoryActive ? 'true' : 'false' ?>">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 <?php echo $inventoryActive ? 'text-blue-500' : 'text-gray-500' ?>"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                            </svg>
+                            <span class="ml-3">Inventory</span>
+                        </div>
+                        <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="mt-1 pl-8 space-y-1 <?php echo $inventoryActive ? '' : 'hidden' ?>"
+                        aria-hidden="<?php echo $inventoryActive ? 'false' : 'true' ?>">
+                        <li><a href="his_doc_pharm_inventory.php"
+                               class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_pharm_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Pharmaceuticals</a>
+                        </li>
+                        <li><a href="his_doc_equipments_inventory.php"
+                               class="block px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_equipments_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">Assets</a>
+                        </li>
+                    </ul>
+                </li>
+
+
 
                 <!-- Payrolls -->
                 <li>

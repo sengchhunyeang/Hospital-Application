@@ -8,5 +8,6 @@
     <orderEntry type="library" name="ckeditor" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="flatpickr" level="application" />
   </component>
 </module>
