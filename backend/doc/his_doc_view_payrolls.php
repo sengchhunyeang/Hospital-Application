@@ -5,30 +5,6 @@
   check_login();
   $doc_id = $_SESSION['doc_id'];
 
-  /*Doctor Cant delete their payrolls 
-  oh but if you need yours to be able to delete their payrolls
-  then uncomment this bunch of code
-  
-  if(isset($_GET['delete_pay_number']))
-  {
-        $id=intval($_GET['delete_pay_number']);
-        $adn="delete from his_payrolls where pay_number=?";
-        $stmt= $mysqli->prepare($adn);
-        $stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	 
-  
-          if($stmt)
-          {
-            $success = "Payroll Record Deleted";
-          }
-            else
-            {
-                $err = "Try Again Later";
-            }
-    }
-    */
-
 ?>
 
 <!DOCTYPE html>
