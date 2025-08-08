@@ -137,13 +137,13 @@
                                                     <input required="required" type="text" value="<?php echo $row->pat_phone;?>" name="pat_phone" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Ailment</label>
+                                                    <label for="inputCity" class="col-form-label">Room number</label>
                                                     <input required="required" type="text" value="<?php echo $row->pat_ailment;?>" name="pat_ailment" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="inputState" class="col-form-label">Patient's Type</label>
                                                     <select id="inputState" required="required" name="pat_type" class="form-control">
-                                                        <option>Choose</option>
+                                                        <option>Waiting</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>

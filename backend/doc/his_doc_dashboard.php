@@ -48,7 +48,7 @@ $doc_number = $_SESSION['doc_number'];
 
                 <div class="flex flex-wrap -mx-4">
                     <!--Start OutPatients-->
-                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
                         <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
                             <div class="flex items-center">
                                 <div class="w-1/2">
@@ -74,14 +74,51 @@ $doc_number = $_SESSION['doc_number'];
                         </div>
                     </div>
                     <!--End Out Patients-->
-
-                    <!--Start InPatients-->
-                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+                    <!--Waiting patient -->
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
                         <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
                             <div class="flex items-center">
                                 <div class="w-1/2">
                                     <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-flask text-xl text-red-500"></i>
+                                        <i class="mdi mdi-clock-outline text-xl text-yellow-600"></i>
+
+                                    </div>
+                                </div>
+                                <div class="w-1/2 text-right">
+                                    <?php
+                                    /*
+                                     * code for counting only inpatients
+                                     */
+                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
+                                            WHERE pat_type = 'Waiting'"; // Adjust field name as needed
+
+                                    // Alternative if you need to join with patients table:
+                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
+                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
+                                    //           WHERE p.patient_type = 'Inpatient'";
+
+                                    $stmt = $mysqli->prepare($result);
+                                    $stmt->execute();
+                                    $stmt->bind_result($choose_count);
+                                    $stmt->fetch();
+                                    $stmt->close();
+                                    ?>
+                                    <h3 class="text-2xl font-semibold text-black">
+                                        <span data-plugin="counterup"><?php echo $choose_count; ?></span>
+                                    </h3>
+                                    <p class="text-black text-sm truncate">Waiting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Start InPatients-->
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
+                            <div class="flex items-center">
+                                <div class="w-1/2">
+                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
+                                        <i class="mdi mdi-hospital text-xl text-red-600"></i>
+
                                     </div>
                                 </div>
                                 <div class="w-1/2 text-right">
@@ -113,12 +150,13 @@ $doc_number = $_SESSION['doc_number'];
                     </div>
                     <!--End InPatients-->
                     <!--                            start OPD -->
-                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
                         <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
                             <div class="flex items-center">
                                 <div class="w-1/2">
                                     <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-flask text-xl text-red-500"></i>
+                                        <i class="mdi mdi-account-outline text-xl text-green-500"></i>
+
                                     </div>
                                 </div>
                                 <div class="w-1/2 text-right">
@@ -144,6 +182,43 @@ $doc_number = $_SESSION['doc_number'];
                                         <span data-plugin="counterup"><?php echo $outpatient_count; ?></span>
                                     </h3>
                                     <p class="text-black text-sm truncate">OutPatient</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mt-2">
+                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
+                            <div class="flex items-center">
+                                <div class="w-1/2">
+                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
+                                        <i class="mdi mdi-exit-run text-xl text-red-500"></i>
+
+
+                                    </div>
+                                </div>
+                                <div class="w-1/2 text-right">
+                                    <?php
+                                    /*
+                                     * code for counting only inpatients
+                                     */
+                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
+                                            WHERE pat_type = 'Transferred'"; // Adjust field name as needed
+
+                                    // Alternative if you need to join with patients table:
+                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
+                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
+                                    //           WHERE p.patient_type = 'Inpatient'";
+
+                                    $stmt = $mysqli->prepare($result);
+                                    $stmt->execute();
+                                    $stmt->bind_result($transferred_count);
+                                    $stmt->fetch();
+                                    $stmt->close();
+                                    ?>
+                                    <h3 class="text-2xl font-semibold text-black">
+                                        <span data-plugin="counterup"><?php echo $transferred_count; ?></span>
+                                    </h3>
+                                    <p class="text-black text-sm truncate">patient Leave <br> Transferred </p>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +263,7 @@ $doc_number = $_SESSION['doc_number'];
                 </div>
 
                 <!--Recently Employed Employees-->
-                <div class="flex flex-wrap mx-4">
+                <div class="flex flex-wrap mx-4 mt-4">
 
                     <div class="w-full">
                         <div class="bg-white rounded-lg  p-4">

@@ -44,7 +44,10 @@
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
-
+                    <a href="his_doc_view_payrolls.php" class="dropdown-item notify-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>My Payroll</span>
+                    </a>
                     <!-- item-->
                     <a href="his_doc_account.php" class="dropdown-item notify-item">
                         <i class="fas fa-user"></i>
@@ -64,6 +67,7 @@
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
+
 
                 </div>
             </li>

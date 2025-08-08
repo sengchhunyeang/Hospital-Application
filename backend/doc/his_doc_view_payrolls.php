@@ -78,50 +78,48 @@
                                     </div>
                                     
                                     <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                        <table id="demo-foo-filtering" class="w-full border-collapse border" data-page-size="7">
+                                            <thead class="bg-gray-100">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">My Name</th>
-                                                <th data-toggle="true">My Number</th>
-                                                <th data-hide="phone">Payroll Number</th>
-                                                <th data-hide="phone">My Salary</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="border p-2 text-black font-semibold">#</th>
+                                                <th class="border p-2 text-black font-semibold" data-toggle="true">My Name</th>
+                                                <th class="border p-2 text-black font-semibold" data-toggle="true">My Number</th>
+                                                <th class="border p-2 text-black font-semibold" data-hide="phone">Payroll Number</th>
+                                                <th class="border p-2 text-black font-semibold" data-hide="phone">My Salary</th>
+                                                <th class="border p-2 text-black font-semibold" data-hide="phone">Action</th>
                                             </tr>
                                             </thead>
                                             <?php
-                                                $pay_doc_number = $_SESSION['doc_number'];
-                                                $ret="SELECT  * FROM hmisphp.his_payrolls WHERE pay_doc_number = ?";
-                                                $stmt= $mysqli->prepare($ret) ;
-                                                $stmt->bind_param('s',$pay_doc_number);
-                                                $stmt->execute() ;//ok
-                                                $res=$stmt->get_result();
-                                                $cnt=1;
-                                                while($row=$res->fetch_object())
-                                                {
-                                            ?>
-
+                                            $pay_doc_number = $_SESSION['doc_number'];
+                                            $ret="SELECT  * FROM hmisphp.his_payrolls WHERE pay_doc_number = ?";
+                                            $stmt= $mysqli->prepare($ret);
+                                            $stmt->bind_param('s',$pay_doc_number);
+                                            $stmt->execute();
+                                            $res=$stmt->get_result();
+                                            $cnt=1;
+                                            while($row=$res->fetch_object())
+                                            {
+                                                ?>
                                                 <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->pay_doc_name;?></td>
-                                                    <td><?php echo $row->pay_doc_number;?></td>
-                                                    <td><?php echo $row->pay_number;?></td>   
-                                                    <td>$ <?php echo $row->pay_emp_salary;?></td>
-                                                 
-                                                    <td>
-                                                        <!--<a href="his_admin_manage_payrolls.php?delete_pay_number=<?php echo $row->pay_number;?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>-->
-                                                        <a href="his_doc_view_single_payroll.php?pay_number=<?php echo $row->pay_number;?>" class="badge badge-success"><i class="fas fa-eye"></i> View | Print Payroll</a>
-
+                                                <tr class="hover:bg-gray-50">
+                                                    <td class="border p-2 text-black"><?php echo $cnt;?></td>
+                                                    <td class="border p-2 text-black"><?php echo $row->pay_doc_name;?></td>
+                                                    <td class="border p-2 text-black"><?php echo $row->pay_doc_number;?></td>
+                                                    <td class="border p-2 text-black"><?php echo $row->pay_number;?></td>
+                                                    <td class="border p-2 text-black">$ <?php echo $row->pay_emp_salary;?></td>
+                                                    <td class="border p-2 text-black">
+                                                        <a href="his_doc_view_single_payroll.php?pay_number=<?php echo $row->pay_number;?>" class="inline-block bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">
+                                                            <i class="fas fa-eye mr-1"></i> View | Print Payroll
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                <?php $cnt = $cnt +1; }?>
                                             <tfoot>
-                                            <tr class="active">
-                                                <td colspan="8">
-                                                    <div class="text-right">
-                                                        <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                                            <tr class="bg-gray-100">
+                                                <td colspan="8" class="border p-2">
+                                                    <div class="flex justify-end">
+                                                        <ul class="flex pagination rounded"></ul>
                                                     </div>
                                                 </td>
                                             </tr>
