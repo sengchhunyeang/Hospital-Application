@@ -20,7 +20,8 @@
 <!--                            <input type="text" class="form-control" placeholder="Search...">-->
 <!--                            <div class="input-group-append">-->
 <!--                                <button class="btn" type="submit">-->
-<!--                                    <i class="fe-search"></i>-->
+<!--                                    <i class="fe-search text-base sm:text-lg md:text-xl lg:text-2xl"></i>-->
+<!---->
 <!--                                </button>-->
 <!--                            </div>-->
 <!--                        </div>-->
@@ -78,17 +79,16 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <span class="logo-sm-text-dark text-white item-center">Hospital-Application</span>
-<!--            <a href="his_admin_dashboard.php" class="logo text-center">-->
-<!--                <h1>Hospital-Application</h1>-->
-<!--                <span class="logo-lg justify-center flex d-flex ">-->
-<!--                    <img src="assets/images/logo.png" alt="" height="15" width="120">-->
-<!--                </span>-->
-<!--                <span class="logo-sm">-->
-<!--                     <span class="logo-sm-text-dark">U</span> -->
-<!--                    <img src="assets/images/logo.png" alt="" height="24">-->
-<!--                </span>-->
-<!--            </a>-->
+            <a href="his_doc_dashboard.php" class="logo text-center">
+                <span class="logo-lg flex items-center space-x-2">
+<!--                    <img src="assets/images/logo.png" alt="" class="h-20 w-auto">-->
+                     <span class="logo-lg-text-light">HPS</span>
+                </span>
+                <span class="logo-sm">
+                    <!-- <span class="logo-sm-text-dark">U</span> -->
+                    <img src="assets/images/logo.png" alt="" height="24">
+                </span>
+            </a>
         </div>
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
