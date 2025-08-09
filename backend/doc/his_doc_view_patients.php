@@ -82,17 +82,17 @@ $doc_id = $_SESSION['doc_id']
                             </div>
 
                             <div class="table-responsive">
-                                <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                    <thead>
+                                <table id="demo-foo-filtering" class="min-w-full border-collapse border border-gray-200" data-page-size="7">
+                                    <thead class="bg-gray-50">
                                     <tr>
-                                        <th>#</th>
-                                        <th data-toggle="true">Patient Name</th>
-                                        <th data-hide="phone">Patient Number</th>
-                                        <th data-hide="phone">Patient Address</th>
-                                        <th data-hide="phone">Patient Phone</th>
-                                        <th data-hide="phone">Patient Age</th>
-                                        <th data-hide="phone">Patient Category</th>
-                                        <th data-hide="phone">Action</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider">#</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider" data-toggle="true">Patient Name</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Number</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden md:table-cell">Patient Address</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden md:table-cell">Patient Phone</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Age</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Category</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Action</th>
                                     </tr>
                                     </thead>
                                     <?php
@@ -109,24 +109,30 @@ $doc_id = $_SESSION['doc_id']
                                     while($row=$res->fetch_object())
                                     {
                                         ?>
-
                                         <tbody>
-                                        <tr>
-                                            <td><?php echo $cnt;?></td>
-                                            <td><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
-                                            <td><?php echo $row->pat_number;?></td>
-                                            <td><?php echo $row->pat_addr;?></td>
-                                            <td><?php echo $row->pat_phone;?></td>
-                                            <td><?php echo $row->pat_age;?> Years</td>
-                                            <td><?php echo $row->pat_type;?></td>
-
-                                            <td><a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>&&pat_name=<?php echo $row->pat_fname;?>_<?php echo $row->pat_lname;?>" class="bg-green-500 text-white px-2 py-1 rounded text-xs inline-block mr-1"><i class="mdi mdi-eye"></i> View</a></td>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black"><?php echo $cnt;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black font-medium"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->pat_number;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden md:table-cell"><?php echo $row->pat_addr;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden md:table-cell"><?php echo $row->pat_phone;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->pat_age;?> Years</td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->pat_type;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell">
+                                                <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>&&pat_name=<?php echo $row->pat_fname;?>_<?php echo $row->pat_lname;?>" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs inline-flex items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
+                                                    View
+                                                </a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                         <?php  $cnt = $cnt +1 ; }?>
                                     <tfoot>
-                                    <tr class="active">
-                                        <td colspan="8">
+                                    <tr class="active bg-gray-50">
+                                        <td  colspan="8" class="border border-gray-300 px-4 py-2">
                                             <div class="text-right">
                                                 <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
                                             </div>

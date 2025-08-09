@@ -155,7 +155,7 @@ if (isset($_POST['add_patient'])) {
                                                 Type</label>
                                             <select id="inputState" required name="pat_type"
                                                     class="w-full px-3 py-2 border border-gray-300 rounded-md text-black">
-                                                <option>Choose</option>
+                                                <option>Waiting</option>
                                                 <option>InPatient</option>
                                                 <option>OutPatient</option>
                                             </select>

@@ -105,7 +105,7 @@
                                         </p>
 
                                         <p class="mb-2 text-black">
-                                            <strong class="font-semibold">Ailment:</strong>
+                                            <strong class="font-semibold">Room number:</strong>
                                             <span class="ml-2"><?php echo htmlspecialchars($row->pat_ailment);?></span>
                                         </p>
 
