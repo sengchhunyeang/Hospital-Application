@@ -38,10 +38,11 @@
             $doc_pwd=sha1(md5($_POST['doc_pwd']));//double encrypt 
             
             //sql to insert captured values
-			$query="UPDATE hmisphp.his_doc SET doc_pwd =? WHERE doc_number = ?";
+			$query="UPDATE hmisphp.his_docs SET doc_pwd = ? WHERE doc_number = ?";
 			$stmt = $mysqli->prepare($query);
-			$rc=$stmt->bind_param('si', $doc_pwd, $doc_number);
-			$stmt->execute();
+            $rc = $stmt->bind_param('ss', $doc_pwd, $doc_number);
+
+            $stmt->execute();
 			/*
 			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
 			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";

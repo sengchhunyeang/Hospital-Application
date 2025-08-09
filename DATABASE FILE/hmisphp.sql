@@ -98,7 +98,7 @@ CREATE TABLE `his_docs` (
   `doc_dept` varchar(200) DEFAULT NULL,
   `doc_number` varchar(200) DEFAULT NULL,
   `doc_dpic` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 drop table his_docs;
 --
 -- Dumping data for table `his_docs`
