@@ -8,7 +8,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Battambang', sans-serif !important;
+        color: black;
+    }
+</style>
 <?php include('assets/inc/head.php');?>
 
     <body>
@@ -112,7 +120,7 @@
                                                     <td><?php echo $row->pat_age;?> Years</td>
                                                     <td><?php echo $row->pat_type;?></td>
                                                     
-                                                    <td><a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View</a></td>
+                                                    <td><a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="btn btn-success"><i class="mdi mdi-eye"></i> View</a></td>
                                                 </tr>
                                                 </tbody>
                                             <?php  $cnt = $cnt +1 ; }?>

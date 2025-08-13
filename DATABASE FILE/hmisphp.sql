@@ -238,7 +238,7 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
 -- Table structure for table `his_patients`
 --
 
-DROP TABLE IF EXISTS `his_patients`;
+# DROP TABLE IF EXISTS `his_patients`;
 
 CREATE TABLE `his_patients`
 (

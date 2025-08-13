@@ -38,11 +38,16 @@
 <!--End Patient Registration-->
 <!DOCTYPE html>
 <html lang="en">
-    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Battambang', sans-serif;
+    }
+</style>
     <!--Head-->
     <?php include('assets/inc/head.php');?>
-    <body>
-
         <!-- Begin page -->
         <div id="wrapper">
 
@@ -99,14 +104,17 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Date Of Birth</label>
-                                                    <input type="text" required="required" name="pat_dob" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                            <div class="row">
+                                                <!-- Date of Birth -->
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="pat_dob" class="form-label">Date Of Birth</label>
+                                                    <input type="date" required name="pat_dob" class="form-control" id="pat_dob">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Age</label>
-                                                    <input required="required" type="text" name="pat_age" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+
+                                                <!-- Age -->
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="pat_age" class="form-label">Age</label>
+                                                    <input required type="text" name="pat_age" class="form-control" id="pat_age" placeholder="Patient's Age" readonly>
                                                 </div>
                                             </div>
 
@@ -121,20 +129,20 @@
                                                     <input required="required" type="text" name="pat_phone" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Patient Ailment</label>
+                                                    <label for="inputCity" class="col-form-label">Room number</label>
                                                     <input required="required" type="text" name="pat_ailment" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="inputState" class="col-form-label">Patient's Type</label>
                                                     <select id="inputState" required="required" name="pat_type" class="form-control">
-                                                        <option>Choose</option>
+                                                        <option>Waiting</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-2" style="display:none">
-                                                    <?php 
-                                                        $length = 5;    
+                                                    <?php
+                                                        $length = 5;
                                                         $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
                                                     ?>
                                                     <label for="inputZip" class="col-form-label">Patient Number</label>
@@ -186,7 +194,23 @@
 
         <!-- Buttons init js-->
         <script src="assets/js/pages/loading-btn.init.js"></script>
-        
+        <script>
+            document.getElementById("pat_dob").addEventListener("change", function () {
+                const dob = new Date(this.value);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+
+                // Adjust if birthday hasn't occurred yet this year
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                // Show age in the input field
+                document.getElementById("pat_age").value = age;
+            });
+
+        </script>
     </body>
 
 </html>

@@ -26,10 +26,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Battambang', sans-serif !important;
+        color: black !important;
+    }
+</style>
 <?php include('assets/inc/head.php');?>
 
-    <body>
+    <body style="color: black">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -92,7 +100,7 @@
                                     </div>
                                     
                                     <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
+                                        <table style="color: black" id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -125,11 +133,30 @@
                                                     <td><?php echo $row->pat_number;?></td>
                                                     <td><?php echo $row->pat_addr;?></td>
                                                     <td><?php echo $row->pat_type;?></td>
-                                                    
-                                                    <td>
-                                                        <a href="his_admin_manage_patient.php?delete=<?php echo $row->pat_id;?>" class="badge badge-danger"><i class=" mdi mdi-trash-can-outline "></i> Delete</a>
-                                                        <a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View</a>
-                                                        <a href="his_admin_update_single_patient.php?pat_id=<?php echo $row->pat_id;?>" class="badge badge-primary"><i class="mdi mdi-check-box-outline "></i> Update</a>
+
+                                                    <td class="text-nowrap">
+                                                        <div class="d-flex flex-wrap me-n1"> <!-- Negative right margin on container -->
+                                                            <!-- Delete Button -->
+                                                            <a href="his_admin_manage_patient.php?delete=<?php echo $row->pat_id;?>"
+                                                               class="btn btn-sm btn-danger me-1"> <!-- Regular right margin -->
+                                                                <i class="mdi mdi-trash-can-outline"></i>
+                                                                <span class="d-none d-sm-inline ms-1">Delete</span>
+                                                            </a>
+
+                                                            <!-- View Button -->
+                                                            <a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>"
+                                                               class="btn btn-sm btn-success me-1">
+                                                                <i class="mdi mdi-eye"></i>
+                                                                <span class="d-none d-sm-inline ms-1">View</span>
+                                                            </a>
+
+                                                            <!-- Update Button -->
+                                                            <a href="his_admin_update_single_patient.php?pat_id=<?php echo $row->pat_id;?>"
+                                                               class="btn btn-sm btn-primary">
+                                                                <i class="mdi mdi-check-box-outline"></i>
+                                                                <span class="d-none d-sm-inline ms-1">Update</span>
+                                                            </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 </tbody>
