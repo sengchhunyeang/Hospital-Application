@@ -1,4 +1,5 @@
 <?php
+global $mysqli;
 session_start();
 include('assets/inc/config.php');
 include('assets/inc/checklogin.php');
@@ -11,7 +12,7 @@ $aid = $_SESSION['ad_id'];
 
 <?php include('assets/inc/head.php'); ?>
 
-<body>
+<body style="color: black">
 
 <!-- Begin page -->
 <div id="wrapper">
@@ -32,7 +33,7 @@ $aid = $_SESSION['ad_id'];
     <?php
     $pat_number = $_GET['pat_number'];
     $pat_id = $_GET['pat_id'];
-    $ret = "SELECT  * FROM his_patients WHERE pat_id=?";
+    $ret = "SELECT  * FROM hmisphp.his_patients WHERE pat_id=?";
     $stmt = $mysqli->prepare($ret);
     $stmt->bind_param('i', $pat_id);
     $stmt->execute();//ok
@@ -92,8 +93,8 @@ $aid = $_SESSION['ad_id'];
                                 <p class="text-muted mb-2 font-13">
                                     <strong>Date Recorded :</strong>
                                     <span class="ml-2">
-        <?php echo date("d/m/Y - H:i", strtotime($mysqlDateTime)); ?>
-    </span>
+                                        <?php echo date("d/m/Y - H:i", strtotime($mysqlDateTime)); ?>
+                                    </span>
                                 </p>
                                 <hr>
 
