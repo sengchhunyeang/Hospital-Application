@@ -266,7 +266,7 @@ $doc_number = $_SESSION['doc_number'];
                 <div class="flex flex-wrap mx-4 mt-4">
 
                     <div class="w-full">
-                        <div class="bg-white rounded-lg  p-4">
+                        <div class="bg-white rounded-lg  p-4 ">
                             <h4 class="text-lg font-semibold mb-4">Patient</h4>
                             <div class="mb-4">
                                 <div class="flex flex-wrap">
