@@ -9,5 +9,6 @@
     <orderEntry type="library" name="flatpickr" level="application" />
     <orderEntry type="library" name="animate.css" level="application" />
     <orderEntry type="library" name="flatpickr" level="application" />
+    <orderEntry type="library" name="alpinejs" level="application" />
   </component>
 </module>

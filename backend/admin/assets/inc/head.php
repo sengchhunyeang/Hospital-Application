@@ -6,7 +6,7 @@
         <meta content="MartDevelopers" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/logo.png " type="image/x-icon">
 
         <!-- Plugins css -->
         <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
@@ -23,8 +23,17 @@
 
        <!--Load Sweet Alert Javascript-->
        <script src="assets/js/swal.js"></script>
-       
-        <!--Inject SWAL-->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Battambang', sans-serif !important;
+            }
+        </style>
+
+    <!--Inject SWAL-->
         <?php if(isset($success)) {?>
         <!--This code for injecting an alert-->
                 <script>

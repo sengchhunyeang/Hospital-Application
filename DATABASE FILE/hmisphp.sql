@@ -1,7 +1,7 @@
 -- Database: hmisphp
-DROP DATABASE IF EXISTS hmisphp;
-CREATE DATABASE hmisphp;
-USE hmisphp;
+# DROP DATABASE IF EXISTS hmisphp;
+# CREATE DATABASE hmisphp;
+# USE hmisphp;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -171,8 +171,8 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
         '<ol><li>sample</li><li>sampl</li><li>sample</li><li>sample</li></ol>', '2022-10-20 17:22:15.7034');
 
 -- Table structure for table `his_patients`
-drop table his_patients;
-select * from his_patients;
+# drop table his_patients;
+# select * from his_patients;
 CREATE TABLE `his_patients`
 (
     `pat_id`               INT(20) NOT NULL AUTO_INCREMENT,
