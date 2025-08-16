@@ -69,39 +69,55 @@ $aid = $_SESSION['ad_id'];
 
                 <div class="row">
                     <div class="col-lg-4 col-xl-4">
-                        <div class="card-box text-center">
-                            <img src="assets/images/users/patient.png" class="rounded-circle avatar-lg img-thumbnail"
-                                 alt="profile-image">
+                        <div class="bg-white shadow-md rounded-xl p-6 text-center max-w-md mx-auto">
+                            <!-- Profile Image -->
+                            <img src="assets/images/users/patient.png"
+                                 alt="profile-image"
+                                 class="w-24 h-24 rounded-full mx-auto border-4 border-gray-200 shadow-sm">
 
-
-                            <div class="text-left mt-3">
-
-                                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span
-                                            class="ml-2"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></span>
+                            <!-- Details -->
+                            <div class="mt-6 text-left space-y-3">
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Full Name:</strong>
+                                    <span class="ml-2"><?php echo $row->pat_fname; ?> <?php echo $row->pat_lname; ?></span>
                                 </p>
-                                <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span
-                                            class="ml-2"><?php echo $row->pat_phone; ?></span></p>
-                                <p class="text-muted mb-2 font-13"><strong>Address :</strong> <span
-                                            class="ml-2"><?php echo $row->pat_addr; ?></span></p>
-                                <p class="text-muted mb-2 font-13"><strong>Date Of Birth :</strong> <span
-                                            class="ml-2"><?php echo $row->pat_dob; ?></span></p>
-                                <p class="text-muted mb-2 font-13"><strong>Age :</strong> <span
-                                            class="ml-2"><?php echo $row->pat_age; ?> Years</span></p>
-                                <p class="text-muted mb-2 font-13"><strong>Ailment :</strong> <span
-                                            class="ml-2"><?php echo $row->pat_ailment; ?></span></p>
-                                <hr>
-                                <p class="text-muted mb-2 font-13">
-                                    <strong>Date Recorded :</strong>
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Mobile:</strong>
+                                    <span class="ml-2"><?php echo $row->pat_phone; ?></span>
+                                </p>
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Address:</strong>
+                                    <span class="ml-2"><?php echo $row->pat_addr; ?></span>
+                                </p>
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Date Of Birth:</strong>
+                                    <span class="ml-2"><?php echo $row->pat_dob; ?></span>
+                                </p>
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Age:</strong>
+                                    <span class="ml-2"><?php echo $row->pat_age; ?> Years</span>
+                                </p>
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Room number :</strong>
+                                    <span class="ml-2"><?php echo $row->pat_ailment; ?></span>
+                                </p>
+
+                                <hr class="my-3 border-gray-200">
+
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="font-medium text-gray-900">Date Recorded:</strong>
                                     <span class="ml-2">
-                                        <?php echo date("d/m/Y - H:i", strtotime($mysqlDateTime)); ?>
-                                    </span>
+                <?php echo date("d/m/Y - H:i", strtotime($mysqlDateTime)); ?>
+            </span>
                                 </p>
-                                <hr>
-
-
                             </div>
-
-                        </div> <!-- end card-box -->
+                        </div>
+                        <!-- end card-box -->
 
                     </div> <!-- end col-->
 
@@ -110,7 +126,7 @@ $aid = $_SESSION['ad_id'];
                         <div class="card-box">
                             <ul class="nav nav-pills navtab-bg nav-justified">
                                 <li class="nav-item">
-                                    <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                    <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link active ">
                                         Prescription
                                     </a>
                                 </li>

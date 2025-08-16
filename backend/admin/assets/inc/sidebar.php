@@ -51,7 +51,7 @@
                     <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $patientsActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $patientsActive ? 'false' : 'true' ?>">
                         <?php
-                        $patientsSubmenu = ['his_admin_register_patient.php' => 'Register Patient', 'his_admin_view_patients.php' => 'View Patients', 'his_admin_manage_patient.php' => 'Manage Patients', 'his_admin_discharge_patient.php' => 'Discharge', 'his_admin_patient_transfer.php' => 'Patient Transfers'];
+                        $patientsSubmenu = ['his_admin_register_patient.php' => 'Register Patient', 'his_admin_view_patients.php' => 'View Patients', 'his_admin_manage_patient.php' => 'Manage Patients', 'his_admin_patient_transfer.php' => 'Patient Transfers'];
                         foreach ($patientsSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
                             ?>
@@ -698,7 +698,7 @@
                       hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
                                    title="<?php echo $label; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
                                     </svg>
                                     <span class="hidden md:block"><?php echo $label; ?></span>
                                 </a>
@@ -751,7 +751,7 @@
                       hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
                                    title="<?php echo $label; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
                                     </svg>
                                     <span class="hidden md:block"><?php echo $label; ?></span>
                                 </a>
@@ -802,7 +802,7 @@
                       hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
                                    title="<?php echo $label; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
                                     </svg>
                                     <span class="hidden md:block"><?php echo $label; ?></span>
                                 </a>
@@ -849,7 +849,7 @@
                       hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
                                    title="<?php echo $label; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
                                     </svg>
                                     <span class="hidden md:block"><?php echo $label; ?></span>
                                 </a>

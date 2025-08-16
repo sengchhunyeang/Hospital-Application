@@ -107,7 +107,7 @@
                                             </thead>
                                             <tbody class="divide-y divide-gray-200">
                                             <?php
-                                            $ret="SELECT * FROM  hmisphp.his_patients  WHERE pat_discharge_status !='Discharged' AND  pat_type = 'InPatient' ";
+                                            $ret="SELECT * FROM  hmisphp.his_patients  WHERE pat_type = 'InPatient' ";
                                             $stmt= $mysqli->prepare($ret);
                                             $stmt->execute();
                                             $res=$stmt->get_result();

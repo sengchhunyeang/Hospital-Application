@@ -15,7 +15,7 @@
             $pat_dob = $_POST['pat_dob'];
             $pat_ailment = $_POST['pat_ailment'];
             //sql to insert captured values
-			$query="UPDATE  his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?, pat_number=?, pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_id = ?";
+			$query="UPDATE  hmisphp.his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?, pat_number=?, pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_id = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssssssi', $pat_fname, $pat_lname, $pat_age, $pat_dob, $pat_number, $pat_phone, $pat_type, $pat_addr, $pat_ailment, $pat_id);
 			$stmt->execute();
@@ -85,7 +85,7 @@
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
                             $pat_id=$_GET['pat_id'];
-                            $ret="SELECT  * FROM his_patients WHERE pat_id=?";
+                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_id=?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$pat_id);
                             $stmt->execute() ;//ok
@@ -134,7 +134,7 @@
                                                     <input required="required" type="text" value="<?php echo $row->pat_phone;?>" name="pat_phone" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Ailment</label>
+                                                    <label for="inputCity" class="col-form-label">Room Number</label>
                                                     <input required="required" type="text" value="<?php echo $row->pat_ailment;?>" name="pat_ailment" class="form-control" id="inputCity">
                                                 </div>
                                                 <div class="form-group col-md-4">

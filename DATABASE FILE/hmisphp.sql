@@ -201,10 +201,10 @@ CREATE TABLE `his_patients`
 INSERT INTO his_patients
 (pat_fname, pat_lname, pat_dob, pat_age, pat_number, pat_addr, pat_phone, pat_type, pat_ailment, pat_discharge_status, pat_discharge_date, pat_discharge_notes)
 VALUES
-    ('John', 'Doe', '1990-01-01', '35', 'P001', '123 Main St', '555-1234', 'Inpatient', 'Flu', NULL, NULL, NULL),
-    ('Jane', 'Smith', '1985-05-05', '40', 'P002', '456 Park Ave', '555-5678', 'Outpatient', 'Cough', NULL, NULL, NULL),
-    ('Michael', 'Brown', '1978-10-15', '46', 'P003', '789 Oak Rd', '555-9876', 'Inpatient', 'Fracture', 'Recovered', '2025-08-10 14:30:00', 'Patient discharged with full recovery.'),
-    ('Emily', 'Clark', '1995-03-12', '30', 'P004', '321 Pine Ln', '555-2468', 'Outpatient', 'Allergy', NULL, NULL, NULL);
+    ('John', 'Doe', '1990-01-01', '35', 'A0001', '123 Main St', '555-1234', 'Inpatient', 'Flu', NULL, NULL, NULL),
+    ('Jane', 'Smith', '1985-05-05', '40', 'A0002', '456 Park Ave', '555-5678', 'Outpatient', 'Cough', NULL, NULL, NULL),
+    ('Michael', 'Brown', '1978-10-15', '46', 'A0003', '789 Oak Rd', '555-9876', 'Inpatient', 'Fracture', 'Recovered', '2025-08-10 14:30:00', 'Patient discharged with full recovery.'),
+    ('Emily', 'Clark', '1995-03-12', '30', 'A0004', '321 Pine Ln', '555-2468', 'Outpatient', 'Allergy', NULL, NULL, NULL);
 
 
 
