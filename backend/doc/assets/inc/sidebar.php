@@ -3,7 +3,7 @@
         <!-- Sidemenu -->
         <div class="px-2 md:px-4 py-6">
             <ul class="space-y-2">
-                <li class="px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:block">Navigation</li>
+                <li class="mt-4 px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:block">Navigation</li>
 
                 <!-- Dashboard -->
                 <li>

@@ -3,5 +3,5 @@ $dbuser="root";
 $dbpass="";
 $host="localhost";
 $db="mysql";
-$mysqli=new mysqli($host,$dbuser, $dbpass, $db);
+$mysqli=new mysqli(hostname: $host,username: $dbuser, password: $dbpass, database: $db);
 ?>

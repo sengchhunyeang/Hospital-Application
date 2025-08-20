@@ -143,6 +143,7 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="inputState" class="col-form-label">Patient's Type</label>
                                                     <select id="inputState" required="required" name="pat_type" class="form-control">
+                                                        <option></option>
                                                         <option>Waiting</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
@@ -151,7 +152,7 @@
                                                 
                                             </div>
 
-                                            <button type="submit" name="update_patient" class="ladda-button btn btn-success" data-style="expand-right">Add Patient</button>
+                                            <button type="submit" name="update_patient" class="ladda-button btn btn-success" data-style="expand-right">Update</button>
 
                                         </form>
                                         <!--End Patient Form-->

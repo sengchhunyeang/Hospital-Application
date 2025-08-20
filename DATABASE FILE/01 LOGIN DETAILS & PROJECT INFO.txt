@@ -15,7 +15,10 @@ Password: Password@123
 
 **Doctor Login Details**
 
-ID      : YDS7L
-Password: password
+ID      : pkd
+Password: pkd123
 
 
+First user password is : visal123 // visal
+Second user password is : pkd123 // pkd
+third user password is : sml123 // somaly

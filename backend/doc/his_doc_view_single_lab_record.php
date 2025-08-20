@@ -32,7 +32,7 @@
             <?php
                 $lab_number=$_GET['lab_number'];
                 $lab_id=$_GET['lab_id'];
-                $ret="SELECT  * FROM his_laboratory WHERE lab_id = ?";
+                $ret="SELECT  * FROM hmisphp.his_laboratory WHERE lab_id = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$lab_id);
                 $stmt->execute() ;//ok

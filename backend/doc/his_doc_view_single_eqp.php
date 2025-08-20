@@ -31,7 +31,7 @@
             <!-- ============================================================== -->
             <?php
                 $eqp_code=$_GET['eqp_code'];
-                $ret="SELECT  * FROM his_equipments WHERE eqp_code = ?";
+                $ret="SELECT  * FROM hmisphp.his_equipments WHERE eqp_code = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$eqp_code);
                 $stmt->execute() ;//ok

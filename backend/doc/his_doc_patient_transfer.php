@@ -24,6 +24,26 @@ if(isset($_GET['delete']))
           }
   }
   */
+
+/* 🔹 DELETE PROCESS FUNCTION */
+if (isset($_GET['delete'])) {
+    $id = intval($_GET['delete']);
+    $adn = "DELETE FROM hmisphp.his_patient_transfers WHERE t_id = ?";
+    $stmt = $mysqli->prepare($adn);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        $success = "Patient Transfer Record Removed Successfully";
+    } else {
+        $err = "Error! Please Try Again Later";
+    }
+
+    $stmt->close();
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +73,20 @@ if(isset($_GET['delete']))
 
     <div class="content-page">
         <div class="content">
+
+
+<?php if (isset($success)) { ?>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <?php echo $success; ?>
+    </div>
+<?php } ?>
+<?php if (isset($err)) { ?>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <?php echo $err; ?>
+    </div>
+<?php } ?>
+
+
 
             <!-- Start Content-->
             <div class="container-fluid">
@@ -86,8 +120,8 @@ if(isset($_GET['delete']))
                                                     class="border border-gray-300 rounded-md px-3 py-1 text-sm text-black">
                                                 <option value="">Show all</option>
                                                 <option value="Discharged">Discharged</option>
-                                                <option value="OutPatients">OutPatients</option>
-                                                <option value="InPatients">InPatients</option>
+                                                <option value="Outpatients">OutPatients</option>
+                                                <option value="Inpatients">InPatients</option>
                                             </select>
                                         </div>
                                         <div>
@@ -192,8 +226,8 @@ if(isset($_GET['delete']))
                                                     class="border border-gray-300 rounded-md px-3 py-1 text-sm text-black">
                                                 <option value="">Show all</option>
                                                 <option value="Discharged">Discharged</option>
-                                                <option value="OutPatients">OutPatients</option>
-                                                <option value="InPatients">InPatients</option>
+                                                <option value="Outpatients">OutPatients</option>
+                                                <option value="Inpatients">InPatients</option>
                                             </select>
                                         </div>
                                         <div>
@@ -224,6 +258,7 @@ if(isset($_GET['delete']))
                                                     <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Status</th>
                                                     <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Referral Hospital / Home</th>
                                                     <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Date</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="divide-y divide-gray-200">
@@ -242,6 +277,15 @@ if(isset($_GET['delete']))
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_status; ?></td>
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_date; ?></td>
+                                                        <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        <a href="his_doc_patient_transfer.php?delete=<?php echo $row->t_id; ?>"
+                                                        class="bg-red-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-red-600 transition-colors"
+                                                        onclick="return confirm('Are you sure you want to delete this record?');">
+                                                            Delete
+                                                        </a>
+
+                                                        </td>
+
                                                     </tr>
                                                     <?php
                                                     $cnt = $cnt + 1;

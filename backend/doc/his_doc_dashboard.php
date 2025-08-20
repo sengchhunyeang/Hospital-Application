@@ -39,190 +39,111 @@ $doc_number = $_SESSION['doc_number'];
                 <!-- start page title -->
                 <div class="flex flex-wrap -mx-4">
                     <div class="w-full px-4">
-                        <div class="mb-6">
-                            <h4 class="text-xl font-semibold text-gray-800">Hospital-Application Dashboard</h4>
+                        <div class="mb-3 mt-3">
+                            <h4 class="text-2xl font-semibold text-gray-800">Hospital-Application Dashboard</h4>
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
 
-                <div class="flex flex-wrap -mx-4">
-                    <!--Start OutPatients-->
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
-                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
-                            <div class="flex items-center">
-                                <div class="w-1/2">
-                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="fab fa-accessible-icon text-xl text-red-500"></i>
-                                    </div>
-                                </div>
-                                <div class="w-1/2 text-right">
-                                    <?php
-                                    //code for summing up number of out patients
-                                    $result = "SELECT count(*) FROM hmisphp.his_patients  ";
-                                    $stmt = $mysqli->prepare($result);
-                                    $stmt->execute();
-                                    $stmt->bind_result($patient);
-                                    $stmt->fetch();
-                                    $stmt->close();
-                                    ?>
-                                    <h3 class="text-2xl font-semibold text-black"><span
-                                                data-plugin="counterup"><?php echo $patient; ?></span></h3>
-                                    <p class="text-black text-sm truncate">Total Patients</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Total Patients -->
+                <div class="ml-2 bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
+                        <i class="fab fa-accessible-icon text-2xl text-red-500"></i>
                     </div>
-                    <!--End Out Patients-->
-                    <!--Waiting patient -->
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
-                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
-                            <div class="flex items-center">
-                                <div class="w-1/2">
-                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-clock-outline text-xl text-yellow-600"></i>
-
-                                    </div>
-                                </div>
-                                <div class="w-1/2 text-right">
-                                    <?php
-                                    /*
-                                     * code for counting only inpatients
-                                     */
-                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
-                                            WHERE pat_type = 'Waiting'"; // Adjust field name as needed
-
-                                    // Alternative if you need to join with patients table:
-                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
-                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
-                                    //           WHERE p.patient_type = 'Inpatient'";
-
-                                    $stmt = $mysqli->prepare($result);
-                                    $stmt->execute();
-                                    $stmt->bind_result($choose_count);
-                                    $stmt->fetch();
-                                    $stmt->close();
-                                    ?>
-                                    <h3 class="text-2xl font-semibold text-black">
-                                        <span data-plugin="counterup"><?php echo $choose_count; ?></span>
-                                    </h3>
-                                    <p class="text-black text-sm truncate">Waiting</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ml-auto text-right">
+                        <?php
+                        $result = "SELECT count(*) FROM hmisphp.his_patients";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($patient);
+                        $stmt->fetch();
+                        $stmt->close();
+                        ?>
+                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $patient; ?></h3>
+                        <p class="text-gray-500 text-sm">Total Patients</p>
                     </div>
-                    <!--Start InPatients-->
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
-                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
-                            <div class="flex items-center">
-                                <div class="w-1/2">
-                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-hospital text-xl text-red-600"></i>
+                </div>
 
-                                    </div>
-                                </div>
-                                <div class="w-1/2 text-right">
-                                    <?php
-                                    /*
-                                     * code for counting only inpatients
-                                     */
-                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
-                                            WHERE pat_type = 'Inpatient'"; // Adjust field name as needed
-
-                                    // Alternative if you need to join with patients table:
-                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
-                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
-                                    //           WHERE p.patient_type = 'Inpatient'";
-
-                                    $stmt = $mysqli->prepare($result);
-                                    $stmt->execute();
-                                    $stmt->bind_result($inpatient_count);
-                                    $stmt->fetch();
-                                    $stmt->close();
-                                    ?>
-                                    <h3 class="text-2xl font-semibold text-black">
-                                        <span data-plugin="counterup"><?php echo $inpatient_count; ?></span>
-                                    </h3>
-                                    <p class="text-black text-sm truncate">Inpatient</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Waiting -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-yellow-100 border-2 border-yellow-500 flex items-center justify-center">
+                        <i class="mdi mdi-clock-outline text-2xl text-yellow-600"></i>
                     </div>
-                    <!--End InPatients-->
-                    <!--                            start OPD -->
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
-                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
-                            <div class="flex items-center">
-                                <div class="w-1/2">
-                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-account-outline text-xl text-green-500"></i>
-
-                                    </div>
-                                </div>
-                                <div class="w-1/2 text-right">
-                                    <?php
-                                    /*
-                                     * code for counting only inpatients
-                                     */
-                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
-                                            WHERE pat_type = 'Outpatient'"; // Adjust field name as needed
-
-                                    // Alternative if you need to join with patients table:
-                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
-                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
-                                    //           WHERE p.patient_type = 'Inpatient'";
-
-                                    $stmt = $mysqli->prepare($result);
-                                    $stmt->execute();
-                                    $stmt->bind_result($outpatient_count);
-                                    $stmt->fetch();
-                                    $stmt->close();
-                                    ?>
-                                    <h3 class="text-2xl font-semibold text-black">
-                                        <span data-plugin="counterup"><?php echo $outpatient_count; ?></span>
-                                    </h3>
-                                    <p class="text-black text-sm truncate">OutPatient</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ml-auto text-right">
+                        <?php
+                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Waiting'";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($choose_count);
+                        $stmt->fetch();
+                        $stmt->close();
+                        ?>
+                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $choose_count; ?></h3>
+                        <p class="text-gray-500 text-sm">Waiting</p>
                     </div>
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mt-2">
-                        <div class="bg-white rounded-lg hover:shadow-md transition-shadow  p-4">
-                            <div class="flex items-center">
-                                <div class="w-1/2">
-                                    <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">
-                                        <i class="mdi mdi-exit-run text-xl text-red-500"></i>
+                </div>
 
-
-                                    </div>
-                                </div>
-                                <div class="w-1/2 text-right">
-                                    <?php
-                                    /*
-                                     * code for counting only inpatients
-                                     */
-                                    $result = "SELECT COUNT(*) FROM hmisphp.his_patients
-                                            WHERE pat_type = 'Transferred'"; // Adjust field name as needed
-
-                                    // Alternative if you need to join with patients table:
-                                    // $result = "SELECT COUNT(*) FROM hmisphp.his_equipments e
-                                    //           JOIN hmisphp.his_patients p ON e.patient_id = p.patient_id
-                                    //           WHERE p.patient_type = 'Inpatient'";
-
-                                    $stmt = $mysqli->prepare($result);
-                                    $stmt->execute();
-                                    $stmt->bind_result($transferred_count);
-                                    $stmt->fetch();
-                                    $stmt->close();
-                                    ?>
-                                    <h3 class="text-2xl font-semibold text-black">
-                                        <span data-plugin="counterup"><?php echo $transferred_count; ?></span>
-                                    </h3>
-                                    <p class="text-black text-sm truncate">patient Leave <br> Transferred </p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Inpatients -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
+                        <i class="mdi mdi-hospital text-2xl text-red-600"></i>
                     </div>
+                    <div class="ml-auto text-right">
+                        <?php
+                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($inpatient_count);
+                        $stmt->fetch();
+                        $stmt->close();
+                        ?>
+                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $inpatient_count; ?></h3>
+                        <p class="text-gray-500 text-sm">In-Patient</p>
+                    </div>
+                </div>
+
+                <!-- Outpatients -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-green-100 border-2 border-green-500 flex items-center justify-center">
+                        <i class="mdi mdi-account-outline text-2xl text-green-500"></i>
+                    </div>
+                    <div class="ml-auto text-right">
+                        <?php
+                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'OutPatient'";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($outpatient_count);
+                        $stmt->fetch();
+                        $stmt->close();
+                        ?>
+                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $outpatient_count; ?></h3>
+                        <p class="text-gray-500 text-sm">Out-Patient</p>
+                    </div>
+                </div>
+
+                <!-- Transferred -->
+                <div class="bg-white rounded-2xl w-46 shadow-md hover:shadow-lg transition p-6 flex items-center">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-pink-100 border-2 border-pink-500 flex items-center justify-center">
+                        <i class="mdi mdi-exit-run text-2xl text-pink-500"></i>
+                    </div>
+                    <div class="ml-auto text-right">
+                        <?php
+                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Transferred'";
+                        $stmt = $mysqli->prepare($result);
+                        $stmt->execute();
+                        $stmt->bind_result($transferred_count);
+                        $stmt->fetch();
+                        $stmt->close();
+                        ?>
+                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $transferred_count; ?></h3>
+                        <p class="text-gray-500 text-sm leading-tight">Transferred</p>
+                    </div>
+                </div>
+            </div>
+
+
                     <!-- My Profile Card -->
                     <!--                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">-->
                     <!--                                <a href="his_doc_account.php">-->
@@ -262,68 +183,41 @@ $doc_number = $_SESSION['doc_number'];
                     <!--                            </div>-->
                 </div>
 
-                <!--Recently Employed Employees-->
-                <div class="flex flex-wrap mx-4 mt-4">
-
-                    <div class="w-full">
-                        <div class="bg-white rounded-lg  p-4">
-                            <h4 class="text-lg font-semibold mb-4">Patient</h4>
-                            <div class="mb-4">
-                                <div class="flex flex-wrap">
-                                    <div class="w-full">
-                                        <div class="flex flex-col sm:flex-row gap-2 justify-start">
-                                            <!-- Changed to justify-start -->
-                                            <div class="hidden">
-                                                <select id="demo-foo-filter-status"
-                                                        class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                    <option value="">Show all</option>
-                                                    <option value="Discharged">Discharged</option>
-                                                    <option value="OutPatients">OutPatients</option>
-                                                    <option value="InPatients">InPatients</option>
-                                                </select>
-                                            </div>
-                                            <div class="w-full sm:w-auto"> <!-- Added width control -->
-                                                <input id="demo-foo-search"
-                                                       type="text"
-                                                       placeholder="Search"
-                                                       class="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                                                       autocomplete="on">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <!-- Patient Records Section -->
+            <div class="flex flex-wrap m-2 mt-3 ml-3">
+                <div class="w-full">
+                    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                                <i class="mdi mdi-account-multiple text-red-500 text-2xl"></i>
+                                Patient Records
+                            </h4>
+                            <!-- Search -->
+                            <div class="w-full sm:w-64">
+                                <input id="demo-foo-search"
+                                    type="text"
+                                    placeholder="🔍 Search patients..."
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 transition">
                             </div>
+                        </div>
 
-                            <div class="overflow-x-auto">
-                                <table id="demo-foo-filtering" class="w-full border-collapse border border-gray-200"
-                                       data-page-size="7">
-                                    <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="border border-gray-200 px-4 py-2 text-black">#</th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black" data-toggle="true">
-                                            Patient Name
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Number
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Address
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Phone
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Age
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Category
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Action
-                                        </th>
+                        <!-- Table -->
+                        <div class="overflow-x-auto rounded-lg border border-gray-200">
+                            <table id="demo-foo-filtering" class="min-w-full divide-y divide-gray-200" data-page-size="7">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">#</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">Patient Name</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Patient Number</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Address</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Phone</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Age</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Category</th>
+                                        <th class="px-4 py-3 text-center text-xs font-semibold text-gray-600">Action</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-100">
                                     <?php
                                     $ret = "SELECT * FROM hmisphp.his_patients ORDER BY RAND()";
                                     $stmt = $mysqli->prepare($ret);
@@ -331,43 +225,39 @@ $doc_number = $_SESSION['doc_number'];
                                     $res = $stmt->get_result();
                                     $cnt = 1;
                                     while ($row = $res->fetch_object()) {
-                                        ?>
-                                        <tr class="hover:bg-gray-50">
-                                            <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $cnt; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_phone; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_age; ?>
-                                                Years
-                                            </td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                                <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&&pat_number=<?php echo $row->pat_number; ?>&&pat_name=<?php echo $row->pat_fname; ?>_<?php echo $row->pat_lname; ?>"
-                                                   class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs inline-block mr-1">
-                                                    <i class="mdi mdi-eye"></i> View
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                        $cnt = $cnt + 1;
-                                    }
                                     ?>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr class="bg-gray-100">
-                                        <td colspan="8" class="border border-gray-200 px-4 py-2">
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-4 py-3 text-sm text-gray-800"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-800 font-medium"><?php echo $row->pat_fname; ?> <?php echo $row->pat_lname; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_phone; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_age; ?> Years</td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
+                                        <td class="px-4 py-3 text-center">
+                                            <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&&pat_number=<?php echo $row->pat_number; ?>&&pat_name=<?php echo $row->pat_fname; ?>_<?php echo $row->pat_lname; ?>"
+                                                class="inline-flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-medium transition">
+                                                <i class="mdi mdi-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php $cnt++; } ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="bg-gray-50">
+                                        <td colspan="8" class="px-4 py-3">
                                             <div class="flex justify-end">
-                                                <ul class="flex space-x-1 pagination pagination-rounded justify-end footable-pagination mt-2 mb-0"></ul>
+                                                <ul class="flex space-x-1 pagination pagination-rounded footable-pagination mt-2 mb-0"></ul>
                                             </div>
                                         </td>
                                     </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
+
                 <!-- end row -->
 
             </div> <!-- container -->

@@ -10,7 +10,7 @@
     while($row=$res->fetch_object())
     {
 ?>
-    <div class="navbar-custom">
+    <div class="navbar-custom bg-cyan-600">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
 <!--            <li class="d-none d-sm-block">-->
@@ -82,7 +82,7 @@
             <a href="his_doc_dashboard.php" class="logo text-center">
                 <span class="logo-lg flex items-center space-x-2">
 <!--                    <img src="assets/images/logo.png" alt="" class="h-20 w-auto">-->
-                     <span class="logo-lg-text-light">HPS</span>
+                     <span class="logo-lg-text-light">HMS</span>
                 </span>
                 <span class="logo-sm">
                     <!-- <span class="logo-sm-text-dark">U</span> -->
