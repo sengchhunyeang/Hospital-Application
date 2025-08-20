@@ -15,7 +15,7 @@
             $eqp_qty = $_POST['eqp_qty'];
                 
             //sql to insert captured values
-			$query="INSERT INTO his_equipments (eqp_code, eqp_name, eqp_vendor, eqp_desc, eqp_dept, eqp_status, eqp_qty) VALUES (?,?,?,?,?,?,?)";
+			$query="INSERT INTO hmisphp.his_equipments (eqp_code, eqp_name, eqp_vendor, eqp_desc, eqp_dept, eqp_status, eqp_qty) VALUES (?,?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssss', $eqp_code, $eqp_name, $eqp_vendor, $eqp_desc, $eqp_dept, $eqp_status, $eqp_qty);
 			$stmt->execute();
@@ -88,49 +88,68 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputEmail4" class="col-form-label">Equipment Name</label>
-                                                    <input type="text" required="required" name="eqp_name" class="form-control" id="inputEmail4" >
+                                        <form method="post" class="space-y-4">
+                                            <!-- Grid Row -->
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <!-- Equipment Name -->
+                                                <div>
+                                                    <label for="eqp_name" class="block text-sm font-medium text-gray-700">Equipment Name</label>
+                                                    <input type="text" required name="eqp_name" id="eqp_name"
+                                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputPassword4" class="col-form-label">Equipment Vendor</label>
-                                                    <input required="required" type="text" name="eqp_vendor" class="form-control"  id="inputPassword4">
+
+                                                <!-- Equipment Vendor -->
+                                                <div>
+                                                    <label for="eqp_vendor" class="block text-sm font-medium text-gray-700">Equipment Vendor</label>
+                                                    <input type="text" required name="eqp_vendor" id="eqp_vendor"
+                                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputPassword4" class="col-form-label">Equipment Quantity </label>
-                                                    <input required="required" type="text"  name="eqp_qty" class="form-control"  id="inputPassword4">
+
+                                                <!-- Equipment Quantity -->
+                                                <div>
+                                                    <label for="eqp_qty" class="block text-sm font-medium text-gray-700">Equipment Quantity</label>
+                                                    <input type="text" required name="eqp_qty" id="eqp_qty"
+                                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                                                 </div>
-                                                <div class="form-group col-md-4" style="display:none">
-                                                    <label for="inputPassword4" class="col-form-label">Equipment Department</label>
-                                                    <input required="required" type="text" value="Laboratory" name="eqp_dept" class="form-control"  id="inputPassword4">
+
+                                                <!-- Hidden Equipment Department -->
+                                                <div class="hidden">
+                                                    <label for="eqp_dept" class="block text-sm font-medium text-gray-700">Equipment Department</label>
+                                                    <input type="text" value="Laboratory" name="eqp_dept" id="eqp_dept"
+                                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
                                                 </div>
-                                                <div class="form-group col-md-6" style="display:none">
-                                                    <label for="inputPassword4" class="col-form-label">Equipment Status</label>
-                                                    <input required="required" type="text" value="Functioning" name="eqp_status" class="form-control"  id="inputPassword4">
+
+                                                <!-- Hidden Equipment Status -->
+                                                <div class="hidden">
+                                                    <label for="eqp_status" class="block text-sm font-medium text-gray-700">Equipment Status</label>
+                                                    <input type="text" value="Functioning" name="eqp_status" id="eqp_status"
+                                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
                                                 </div>
-                                                
                                             </div>
 
-                                            <div class="form-group">
-                                                    <label for="inputPassword4" class="col-form-label">Equipment Barcode(EAN-8)</label>
-                                                    <?php 
-                                                        $length = 10;    
-                                                        $bcode =  substr(str_shuffle('0123456789'),1,$length);
-                                                    ?>
-                                                    <input required="required" readonly type="text" value="<?php echo $bcode;?>" name="eqp_code" class="form-control"  id="inputPassword4">
+                                            <!-- Equipment Barcode -->
+                                            <div>
+                                                <label for="eqp_code" class="block text-sm font-medium text-gray-700">Equipment Barcode (EAN-8)</label>
+                                                <?php
+                                                $length = 10;
+                                                $bcode =  substr(str_shuffle('0123456789'),1,$length);
+                                                ?>
+                                                <input type="text" readonly value="<?php echo $bcode;?>" name="eqp_code" id="eqp_code"
+                                                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
                                             </div>
 
-                                            <div class="form-group" style="style:display-none">
-                                                <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label>
-                                                <textarea required="required" type="text" class="form-control" name="eqp_desc" id="editor"></textarea>
-                                            </div>
+                                            <!-- Description (hidden) -->
+                                            <div class="form-group" style="style:display-none"> <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label> <textarea required="required" type="text" class="form-control" name="eqp_desc" id="editor"></textarea> </div>
 
-                                           <button type="submit" name="add_equipments" class="ladda-button btn btn-success" data-style="expand-right">Add Equipment</button>
+                                            <!-- Submit Button -->
+                                            <button type="submit" name="add_equipments"
+                                                    class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
+                                                Add Equipment
+                                            </button>
 
                                         </form>
-                                     
+
+
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
                             </div> <!-- end col -->

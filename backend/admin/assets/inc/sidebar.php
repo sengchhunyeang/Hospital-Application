@@ -327,7 +327,7 @@
                     <ul class="mt-1 pl-0 md:pl-8 space-y-1 text-xs <?php echo $labActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $labActive ? 'false' : 'true' ?>">
                         <li>
-                            <a href="his_doc_patient_lab_test.php"
+                            <a href="his_admin_patient_lab_test.php"
                                class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_test.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
                                title="Patient Lab Tests">
                                 <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
@@ -340,7 +340,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="his_doc_patient_lab_result.php"
+                            <a href="his_admin_patient_lab_result.php"
                                class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_result.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
                                title="Patient Lab Results">
                                 <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
@@ -353,7 +353,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="his_doc_patient_lab_vitals.php"
+                            <a href="his_admin_patient_lab_vitals.php"
                                class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_vitals.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
                                title="Patient Vitals">
                                 <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
@@ -366,7 +366,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="his_doc_lab_report.php"
+                            <a href="his_admin_lab_report.php"
                                class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_lab_report.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
                                title="Lab Reports">
                                 <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
