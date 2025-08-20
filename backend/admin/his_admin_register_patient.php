@@ -194,27 +194,9 @@
                                             <!-- Hidden Patient Number -->
                                             <div class="hidden">
                                                 <?php
-                                                // Assume $mysqli is your MySQL connection
-
-                                                // Get last patient number
-                                                $result = $mysqli->query("SELECT pat_number FROM hmisphp.his_patients ORDER BY pat_id DESC LIMIT 1");
-                                                $last = $result->fetch_assoc();
-
-                                                if ($last) {
-                                                    $last_number = $last['pat_number']; // e.g., A0001
-                                                    $letter = $last_number[0];          // 'A'
-                                                    $num = intval(substr($last_number, 1)); // 1
-                                                    $num++;                             // increment to 2
-                                                    $patient_number = $letter . str_pad($num, 4, '0', STR_PAD_LEFT);
-                                                } else {
-                                                    // No previous patient → start from A0001
-                                                    $patient_number = 'A0001';
-                                                }
-
-                                                echo $patient_number;
+                                                $length = 5;
+                                                $patient_number = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, $length);
                                                 ?>
-
-
                                                 <label>
                                                     <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="w-full">
                                                 </label>

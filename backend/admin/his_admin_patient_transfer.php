@@ -94,47 +94,40 @@ if(isset($_GET['delete']))
                                 </div>
                             </div>
 
-                            <div class="table-responsive">
-                                <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                       data-page-size="7">
-                                    <thead>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                    <thead class="bg-gray-100">
                                     <tr>
-                                        <th>#</th>
-                                        <th data-toggle="true">Patient</th>
-                                        <th data-hide="phone">Patient Number</th>
-                                        <th data-hide="phone"> Address</th>
-                                        <th data-hide="phone"> Category</th>
-                                        <th data-hide="phone">Action</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Patient Number</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Address</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Category</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                                     </tr>
                                     </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                     <?php
-                                    /*
-                                        *get details of allpatients
-                                        *
-                                    */
-                                    $ret = "SELECT * FROM  hmisphp.his_patients WHERE  pat_type = 'InPatient' ";
-
+                                    $ret = "SELECT * FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
                                     $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();//ok
+                                    $stmt->execute();
                                     $res = $stmt->get_result();
                                     $cnt = 1;
                                     while ($row = $res->fetch_object()) {
-                                        ?>
-
-                                        <tbody>
-                                        <tr>
-                                            <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
-                                            <td><?php echo $row->pat_number; ?></td>
-                                            <td><?php echo $row->pat_addr; ?></td>
-                                            <td><?php echo $row->pat_type; ?></td>
-
-                                            <td>
-                                                <a href="his_admin_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
-                                                   class="badge badge-primary"><i
-                                                            class="mdi mdi-check-box-outline "></i> Transfer Patient</a>
-                                            </td>
-                                        </tr>
+                                    ?>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
+                                        <td class="px-4 py-2 text-sm">
+                                            <a href="his_admin_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
+                                               class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-1 rounded-md shadow-md transition">
+                                                Transfer Patient
+                                            </a>
+                                        </td>
+                                    </tr>
                                         </tbody>
                                         <?php $cnt = $cnt + 1;
                                     } ?>
@@ -155,71 +148,42 @@ if(isset($_GET['delete']))
                 <!-- end row -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="header-title">Transfered Patients</h4>
-                            <div class="mb-2">
-                                <div class="row">
-                                    <div class="col-12 text-sm-center form-inline">
-                                        <div class="form-group mr-2" style="display:none">
-                                            <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
-                                                <option value="">Show all</option>
-                                                <option value="Discharged">Discharged</option>
-                                                <option value="OutPatients">OutPatients</option>
-                                                <option value="InPatients">InPatients</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input id="demo-foo-search" type="text" placeholder="Search"
-                                                   class="form-control form-control-sm" autocomplete="on">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="table-responsive">
-                                <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                       data-page-size="7">
-                                    <thead>
+                        <div class="bg-white shadow-md rounded-md p-4">
+                            <h4 class="text-lg font-semibold mb-4">Transferred Patients</h4>
+                            <hr class="my-2">
+
+                            <div class="overflow-x-auto">
+                                <table id="demo-foo-filtering" class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                    <thead class="bg-gray-100">
                                     <tr>
-                                        <th>#</th>
-                                        <th data-toggle="true">Patient Name</th>
-                                        <th data-hide="phone">Patient Number</th>
-                                        <th data-hide="phone">Transfer Status</th>
-                                        <th data-hide="phone">Refferal Hospital</th>
-                                        <th data-hide="phone">Transfer Date</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Name</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Patient Number</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Transfer Status</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Referral Hospital</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Transfer Date</th>
                                     </tr>
                                     </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                     <?php
-                                    /*
-                                        *get details of allpatients
-                                        *
-                                    */
-                                    $ret = "SELECT * FROM  hmisphp.his_patient_transfers ";
-
+                                    $ret = "SELECT * FROM hmisphp.his_patient_transfers";
                                     $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();//ok
+                                    $stmt->execute();
                                     $res = $stmt->get_result();
                                     $cnt = 1;
                                     while ($row = $res->fetch_object()) {
-                                        ?>
-
-                                        <tbody>
-                                        <tr>
-                                            <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $row->t_pat_name; ?></td>
-                                            <td><?php echo $row->t_pat_number; ?></td>
-                                            <td><?php echo $row->t_status; ?></td>
-                                            <td><?php echo $row->t_hospital; ?></td>
-                                            <?php date_default_timezone_set('Asia/Phnom_Penh'); ?>
-                                            <td>
-                                                <?php
-                                                echo date('d-M-Y H:i', strtotime($row->t_date));
-                                                ?>
-                                            </td>
-
-
-
-                                        </tr>
+                                    date_default_timezone_set('Asia/Phnom_Penh');
+                                    ?>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->t_pat_name; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_pat_number; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_status; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
+                                            <?php echo date('d/m/Y H:i', strtotime($row->t_date)); ?>
+                                        </td>
+                                    </tr>
                                         </tbody>
                                         <?php $cnt = $cnt + 1;
                                     } ?>

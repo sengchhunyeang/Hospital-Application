@@ -221,7 +221,7 @@ CREATE TABLE `his_patient_transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-drop table his_patient_transfers;
+# drop table his_patient_transfers;
 -- Data for table `his_patient_transfers`
 INSERT INTO `his_patient_transfers`
 (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
