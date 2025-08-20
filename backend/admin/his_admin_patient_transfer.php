@@ -210,7 +210,14 @@ if(isset($_GET['delete']))
                                             <td><?php echo $row->t_pat_number; ?></td>
                                             <td><?php echo $row->t_status; ?></td>
                                             <td><?php echo $row->t_hospital; ?></td>
-                                            <td><?php echo $row->t_date; ?></td>
+                                            <?php date_default_timezone_set('Asia/Phnom_Penh'); ?>
+                                            <td>
+                                                <?php
+                                                echo date('d-M-Y H:i', strtotime($row->t_date));
+                                                ?>
+                                            </td>
+
+
 
                                         </tr>
                                         </tbody>
