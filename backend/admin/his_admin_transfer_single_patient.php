@@ -9,24 +9,27 @@ if (isset($_POST['transfer_patient'])) {
     $t_hospital = $_POST['t_hospital'];
     $t_status = $_POST['t_status'];
 
-
-    //sql to insert captured values
-    $query = "INSERT INTO  hmisphp.his_patient_transfers (t_pat_number, t_pat_name, t_date, t_hospital, t_status) VALUES(?,?,?,?,?)";
+    // 1. Insert into transfer table
+    $query = "INSERT INTO hmisphp.his_patient_transfers 
+              (t_pat_number, t_pat_name, t_date, t_hospital, t_status) 
+              VALUES(?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('sssss', $t_pat_number, $t_pat_name, $t_date, $t_hospital, $t_status);
+    $stmt->bind_param('sssss', $t_pat_number, $t_pat_name, $t_date, $t_hospital, $t_status);
     $stmt->execute();
-    /*
-    *Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
-    *echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-    */
-    //declare a varible which will be passed to alert function
+
     if ($stmt) {
-        $success = "Patient Transferred";
+        // 2. Delete patient from original table
+        $del = $mysqli->prepare("DELETE FROM hmisphp.his_patients WHERE pat_number=?");
+        $del->bind_param('s', $t_pat_number);
+        $del->execute();
+        $del->close();
+
+        // Optional: Redirect to refresh page & show updated tables
+        header("Location: his_admin_patient_transfer.php");
+        exit();
     } else {
-        $err = "Please Try Again Or Try Later";
+        $err = "Transfer failed, please try again.";
     }
-
-
 }
 ?>
 <!--End Server Side-->

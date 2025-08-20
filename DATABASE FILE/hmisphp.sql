@@ -221,10 +221,13 @@ CREATE TABLE `his_patient_transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-# drop table his_patient_transfers;
+drop table his_patient_transfers;
 -- Data for table `his_patient_transfers`
-INSERT INTO `his_patient_transfers` (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
-VALUES (1, 'Kenyatta National Hospital', '2020-01-11', 'Mart Developers', '9KXPM', 'Success');
+INSERT INTO `his_patient_transfers`
+(`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
+VALUES
+    (NULL, 'Kenyatta National Hospital', '2025-8-8 10:30:00', 'សេង ឈុនយាង', 'A0005', 'Success');
+
 
 -- Table structure for table `his_payrolls`
 CREATE TABLE `his_payrolls`
