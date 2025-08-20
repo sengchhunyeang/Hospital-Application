@@ -88,13 +88,13 @@
                                             <!-- First & Last Name -->
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <div>
-                                                    <label for="pat_fname" class="block mb-1 font-medium">First Name</label>
+                                                    <label for="pat_fname" class="block mb-1 font-medium">First Name <span class="text-red-600">*</span></label>
                                                     <input type="text" required name="pat_fname" id="pat_fname"
                                                            placeholder="Patient's First Name"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                                 <div>
-                                                    <label for="pat_lname" class="block mb-1 font-medium">Last Name</label>
+                                                    <label for="pat_lname" class="block mb-1 font-medium">Last Name <span class="text-red-600">*</span></label>
                                                     <input type="text" required name="pat_lname" id="pat_lname"
                                                            placeholder="Patient's Last Name"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -104,12 +104,12 @@
                                             <!-- Date of Birth & Age -->
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <div>
-                                                    <label for="pat_dob" class="block mb-1 font-medium">Date Of Birth</label>
+                                                    <label for="pat_dob" class="block mb-1 font-medium">Date Of Birth <span class="text-red-600">*</span></label>
                                                     <input type="date" required name="pat_dob" id="pat_dob"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                                 <div>
-                                                    <label for="pat_age" class="block mb-1 font-medium">Age</label>
+                                                    <label for="pat_age" class="block mb-1 font-medium">Age </label>
                                                     <input type="text" required name="pat_age" id="pat_age" placeholder="Patient's Age" readonly
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 cursor-not-allowed">
                                                 </div>
@@ -156,7 +156,7 @@
                                                 }
                                                 ?>
 
-                                                <label for="pat_addr" class="block mb-1 font-medium">Address</label>
+                                                <label for="pat_addr" class="block mb-1 font-medium">Address <span class="text-red-600">*</span></label>
                                                 <select name="pat_addr" id="pat_addr" class="w-full border border-gray-300 rounded-md px-3 py-2 mb-2">
                                                     <option value="">-- Select Address --</option>
                                                     <?php foreach ($addresses as $addr): ?>
@@ -170,13 +170,8 @@
                                             <!-- Mobile, Room Number & Patient Type -->
                                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                                 <div>
-                                                    <label for="pat_phone" class="block mb-1 font-medium">Mobile Number</label>
+                                                    <label for="pat_phone" class="block mb-1 font-medium">Mobile Number <span class="text-red-600">*</span></label>
                                                     <input type="text" required name="pat_phone" id="pat_phone"
-                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                </div>
-                                                <div>
-                                                    <label for="pat_ailment" class="block mb-1 font-medium">Room Number</label>
-                                                    <input type="number" required name="pat_ailment" id="pat_ailment"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                                 <div>
@@ -187,6 +182,12 @@
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>
+                                                </div>
+
+                                                <div id="room_number_div" class="hidden">
+                                                    <label for="pat_ailment" class="block mb-1 font-medium">Room Number</label>
+                                                    <input type="number" name="pat_ailment" id="pat_ailment"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
@@ -283,8 +284,18 @@
                 // Show age in the input field
                 document.getElementById("pat_age").value = age;
             });
+            const patientType = document.getElementById('pat_type');
+            const roomDiv = document.getElementById('room_number_div');
 
+            patientType.addEventListener('change', function() {
+                if (this.value === 'InPatient') {
+                    roomDiv.classList.remove('hidden'); // show input
+                } else {
+                    roomDiv.classList.add('hidden'); // hide input
+                }
+            });
         </script>
+
     </body>
 
 </html>

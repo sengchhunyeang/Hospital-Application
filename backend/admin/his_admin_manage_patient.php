@@ -117,6 +117,9 @@ if (isset($_GET['delete'])) {
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
+                                    // Get total rows
+                                    $total = $res->num_rows;
+                                    $cnt = $total; // Start numbering from total
                                     while ($row = $res->fetch_object()) {
                                     ?>
                                     <tr class="border-t border-gray-200 hover:bg-gray-50">
@@ -162,8 +165,10 @@ if (isset($_GET['delete'])) {
                                         </td>
                                     </tr>
                                     </tbody>
-                                    <?php $cnt = $cnt + 1;
-                                    } ?>
+                                    <?php
+                                    $cnt--; // Decrement for next row
+                                    }
+                                    ?>
                                     <tfoot>
                                     <tr class="active">
                                         <td colspan="8">

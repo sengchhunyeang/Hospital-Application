@@ -100,21 +100,17 @@ $aid = $_SESSION['ad_id'];
                                     </tr>
                                     </thead>
                                     <?php
-                                    /*
-                                        *get details of allpatients
-                                        *
-                                    */
-                                    $sum_patient =0;
-                                    $ret = "SELECT * FROM  hmisphp.his_patients ORDER BY created_at DESC ";
-                                    //sql code to get to ten docs  randomly
+                                    $ret = "SELECT * FROM hmisphp.his_patients ORDER BY created_at DESC";
                                     $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();//ok
+                                    $stmt->execute();
                                     $res = $stmt->get_result();
-                                    $cnt = 1;
-                                    while ($row = $res->fetch_object()) {
-                                        $sum_patient++
-                                        ?>
 
+                                    // Get total rows
+                                    $total = $res->num_rows;
+                                    $cnt = $total; // Start numbering from total
+
+                                    while ($row = $res->fetch_object()) {
+                                        ?>
                                         <tbody>
                                         <tr class="hover:bg-gray-100 text-black">
                                             <td class="px-4 py-2 whitespace-nowrap"><?php echo $cnt; ?></td>
@@ -122,38 +118,35 @@ $aid = $_SESSION['ad_id'];
                                             <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_number; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_addr; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_phone; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_age; ?>Years
-                                            </td>
+                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_age; ?> Years</td>
                                             <td class="px-4 py-2 whitespace-nowrap">
-                                                <?php if ($row->pat_type == 'OutPatient'): ?>
-                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-            <?php echo $row->pat_type; ?>
-        </span>
-                                                <?php elseif ($row->pat_type == 'InPatient'): ?>
-                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-            <?php echo $row->pat_type; ?>
-        </span>
-                                                <?php elseif ($row->pat_type == 'Waiting'): ?>
-                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
-            <?php echo $row->pat_type; ?>
-        </span>
-                                                <?php else: ?>
-                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
-            <?php echo $row->pat_type; ?>
-        </span>
-                                                <?php endif; ?>
+                                                <?php
+                                                $colors = [
+                                                        'OutPatient' => 'green',
+                                                        'InPatient' => 'blue',
+                                                        'Waiting' => 'yellow'
+                                                ];
+                                                $color = $colors[$row->pat_type] ?? 'gray';
+                                                ?>
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                <?php echo $row->pat_type; ?>
+            </span>
                                             </td>
-
                                             <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->created_at; ?></td>
-
                                         </tr>
                                         </tbody>
-                                        <?php $cnt = $cnt + 1;
-                                    } ?>
+                                        <?php
+                                        $cnt--; // Decrement for next row
+                                    }
+                                    ?>
+
 
                                     <tfoot>
                                     <tr class="active">
-                                        <div class="text-black text-bold mb-8"> <?php echo "Total patients: " . $cnt-1; ?></div>
+                                        <?php $total_patients = $res->num_rows; ?>
+                                        <div class="text-black font-bold mb-8">
+                                            <?php echo "Total patients: " . $total_patients; ?>
+                                        </div>
                                         <td colspan="8">
                                             <div class="text-right">
                                                 <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
