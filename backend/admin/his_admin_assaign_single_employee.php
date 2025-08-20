@@ -8,14 +8,14 @@
             $doc_number = $_GET['doc_number'];
 
             //sql to insert captured values
-			$query="UPDATE his_docs SET doc_dept=? WHERE doc_number = ?";
+			$query="UPDATE hmisphp.his_docs SET doc_dept=? WHERE doc_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ss', $doc_dept, $doc_number);
 			$stmt->execute();
 			/*
 			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
 			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
+			*/
 			//declare a varible which will be passed to alert function
 			if($stmt)
 			{
@@ -24,15 +24,15 @@
 			else {
 				$err = "Please Try Again Or Try Later";
 			}
-			
-			
+
+
 		}
 ?>
 <!--End Server Side-->
 <!--End Patient Registration-->
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <!--Head-->
     <?php include('assets/inc/head.php');?>
     <body>
@@ -57,7 +57,7 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
+
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -72,19 +72,18 @@
                                     <h4 class="page-title">Assign Department</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
                         <!-- Form row -->
                         <?php
-                            $doc_number=$_GET['doc_number'];
-                            $ret="SELECT  * FROM his_docs WHERE doc_number=?";
-                            $stmt= $mysqli->prepare($ret) ;
-                            $stmt->bind_param('i',$doc_number);
-                            $stmt->execute() ;//ok
-                            $res=$stmt->get_result();
-                            //$cnt=1;
-                            while($row=$res->fetch_object())
-                            {
+                        $doc_number = $_GET['doc_number'];
+                        $ret = "SELECT * FROM hmisphp.his_docs WHERE doc_number=?";
+                        $stmt = $mysqli->prepare($ret);
+                        $stmt->bind_param('s', $doc_number); // <-- 's' for string
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+
+                        while($row = $res->fetch_object()) {
                         ?>
                         <div class="row">
                             <div class="col-12">
@@ -92,38 +91,49 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post" enctype="multipart/form-data">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">First Name</label>
-                                                    <input type="text" required="required" readonly value="<?php echo $row->doc_fname;?>" name="doc_fname" class="form-control" id="inputEmail4" >
+                                        <form method="post" enctype="multipart/form-data" class="space-y-6">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div>
+                                                    <label for="inputEmail4" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                                    <input type="text" readonly value="<?php echo $row->doc_fname;?>" name="doc_fname"
+                                                           class="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Last Name</label>
-                                                    <input required="required" type="text" readonly value="<?php echo $row->doc_lname;?>" name="doc_lname" class="form-control"  id="inputPassword4">
+                                                <div>
+                                                    <label for="inputPassword4" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                                    <input type="text" readonly value="<?php echo $row->doc_lname;?>" name="doc_lname"
+                                                           class="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Email</label>
-                                                <input required="required" type="email" readonly value="<?php echo $row->doc_email;?>" class="form-control" name="doc_email" id="inputAddress">
+                                            <div>
+                                                <label for="inputAddress" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                                <input type="email" readonly value="<?php echo $row->doc_email;?>" name="doc_email"
+                                                       class="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
                                             </div>
-                                            
-                                            <div class="form-group">
-                                                    <label for="inputState" class="col-form-label">Departments</label>
-                                                    <select id="inputState" required="required" name="doc_dept" class="form-control">
-                                                        <option>Choose</option>
-                                                        <option>Patient Registration</option>
-                                                        <option>Laboratory</option>
-                                                        <option>Pharmacy</option>
-                                                        <option>Accounting</option>
-                                                        <option>Surgery | Theatre</option>
-                                                    </select>
-                                            </div>                                         
 
-                                            <button type="submit" name="assaign_dept" class="ladda-button btn btn-success" data-style="expand-right">Assign Department</button>
+                                            <div>
+                                                <label for="inputState" class="block text-sm font-medium text-gray-700 mb-1">Departments</label>
+                                                <select id="inputState" required name="doc_dept"
+                                                        class="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                                                    <option>Choose</option>
+                                                    <option>Admin</option>
+                                                    <option>IT</option>
+                                                    <option>Laboratory</option>
+                                                    <option>Pharmacy</option>
+                                                    <option>Accounting</option>
+                                                    <option>Doctor </option>
+                                                </select>
+                                            </div>
 
+                                            <div>
+                                                <button type="submit" name="assaign_dept"
+                                                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                    Assign Department
+                                                </button>
+
+                                            </div>
                                         </form>
+
                                         <!--End Patient Form-->
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
@@ -150,7 +160,7 @@
         </div>
         <!-- END wrapper -->
 
-       
+
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
@@ -166,7 +176,7 @@
 
         <!-- Buttons init js-->
         <script src="assets/js/pages/loading-btn.init.js"></script>
-        
+
     </body>
 
 </html>

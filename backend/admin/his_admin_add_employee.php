@@ -11,7 +11,7 @@
             $doc_pwd=sha1(md5($_POST['doc_pwd']));
             
             //sql to insert captured values
-			$query="INSERT INTO his_docs (doc_fname, doc_lname, doc_number, doc_email, doc_pwd) values(?,?,?,?,?)";
+			$query="INSERT INTO hmisphp.his_docs (doc_fname, doc_lname, doc_number, doc_email, doc_pwd) values(?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssss', $doc_fname, $doc_lname, $doc_number, $doc_email, $doc_pwd);
 			$stmt->execute();
@@ -84,43 +84,64 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">First Name</label>
-                                                    <input type="text" required="required" name="doc_fname" class="form-control" id="inputEmail4" >
+                                        <form method="post" class="space-y-4">
+
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="doc_fname" class="block text-base font-medium text-gray-700 mb-1">
+                                                        First Name <span class="text-red-600">*</span>
+                                                    </label>
+                                                    <input type="text" required name="doc_fname" id="doc_fname"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Last Name</label>
-                                                    <input required="required" type="text" name="doc_lname" class="form-control"  id="inputPassword4">
+                                                <div>
+                                                    <label for="doc_lname" class="block text-base font-medium text-gray-700 mb-1">
+                                                        Last Name <span class="text-red-600">*</span>
+                                                    </label>
+                                                    <input type="text" required name="doc_lname" id="doc_lname"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group col-md-2" style="display:none">
-                                                    <?php 
-                                                        $length = 5;    
-                                                        $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
-                                                    ?>
-                                                    <label for="inputZip" class="col-form-label">Doctor Number</label>
-                                                    <input type="text" name="doc_number" value="<?php echo $patient_number;?>" class="form-control" id="inputZip">
-                                                </div>
-
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Email</label>
-                                                <input required="required" type="email" class="form-control" name="doc_email" id="inputAddress">
+                                            <div class="hidden">
+                                                <?php
+                                                $length = 5;
+                                                $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
+                                                ?>
+                                                <label for="doc_number" class="block text-base font-medium text-gray-700 mb-1">
+                                                    Doctor Number <span class="text-red-600">*</span>
+                                                </label>
+                                                <input type="text" name="doc_number" value="<?php echo $patient_number;?>" id="doc_number"
+                                                       class="mt-1 block w-1/2 border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputCity" class="col-form-label">Password</label>
-                                                    <input required="required" type="password" name="doc_pwd" class="form-control" id="inputCity">
-                                                </div>
-                                                
+                                            <div>
+                                                <label for="doc_email" class="block text-base font-medium text-gray-700 mb-1">
+                                                    Email <span class="text-red-600">*</span>
+                                                </label>
+                                                <input type="email" required name="doc_email" id="doc_email"
+                                                       class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                             </div>
 
-                                            <button type="submit" name="add_doc" class="ladda-button btn btn-success" data-style="expand-right">Add Employee</button>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="doc_pwd" class="block text-base font-medium text-gray-700 mb-1">
+                                                        Password <span class="text-red-600">*</span>
+                                                    </label>
+                                                    <input type="password" required name="doc_pwd" id="doc_pwd"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <button type="submit" name="add_doc"
+                                                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                    Add Employee
+                                                </button>
+                                            </div>
 
                                         </form>
+
                                         <!--End Patient Form-->
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
