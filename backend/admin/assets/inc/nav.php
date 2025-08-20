@@ -9,23 +9,23 @@
     while($row=$res->fetch_object())
     {
 ?>
-    <div class="navbar-custom">
+    <div class="navbar-custom" >
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
-            <li class="d-none d-sm-block">
-                <form class="app-search">
-                    <div class="app-search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit">
-                                    <i class="fe-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </li>
+<!--            <li class="d-none d-sm-block">-->
+<!--                <form class="app-search">-->
+<!--                    <div class="app-search-box">-->
+<!--                        <div class="input-group">-->
+<!--                            <input type="text" class="form-control" placeholder="Search...">-->
+<!--                            <div class="input-group-append">-->
+<!--                                <button class="btn" type="submit">-->
+<!--                                    <i class="fe-search"></i>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </li>-->
 
             
             <li class="dropdown notification-list">
