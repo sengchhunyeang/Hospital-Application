@@ -70,56 +70,6 @@
                     </ul>
                 </li>
 
-
-                <!--            Employee-->
-                <li>
-                    <?php
-                    $employeeActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_employee.php', 'his_admin_view_employee.php', 'his_admin_manage_employee.php', 'his_admin_assaign_dept.php', 'his_admin_transfer_employee.php']);
-                    ?>
-                    <button type="button"
-                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
-                   hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $employeeActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                            aria-expanded="<?php echo $employeeActive ? 'true' : 'false' ?>"
-                            title="Employee">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 <?php echo $employeeActive ? 'text-blue-500' : 'text-gray-500' ?>"
-                                 fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                                      clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="ml-3 hidden md:block">Employee</span>
-                        </div>
-                        <svg class="w-4 h-4 <?php echo $employeeActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-
-                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $employeeActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $employeeActive ? 'false' : 'true' ?>">
-                        <?php
-                        $employeeSubmenu = ['his_admin_add_employee.php' => 'Add Employee', 'his_admin_view_employee.php' => 'View Employee', 'his_admin_manage_employee.php' => 'Manage Employee', 'his_admin_assaign_dept.php' => 'Assign Department', 'his_admin_transfer_employee.php' => 'Employee Transfers'];
-                        foreach ($employeeSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
-                            ?>
-                            <li class="<?php echo $label == 'Employee Transfers' ? 'border-t border-gray-200 my-1' : ''; ?>">
-                                <a href="<?php echo $file; ?>"
-                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
-                                   title="<?php echo $label; ?>">
-                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
-                                    </svg>
-                                    <span class="hidden md:block"><?php echo $label; ?></span>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-
                 <!-- Pharmacy -->
                 <li>
                     <?php
@@ -230,6 +180,56 @@
                         </li>
                     </ul>
                 </li>
+                <!--            Employee-->
+                <li>
+                    <?php
+                    $employeeActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_employee.php', 'his_admin_view_employee.php', 'his_admin_manage_employee.php', 'his_admin_assaign_dept.php', 'his_admin_transfer_employee.php']);
+                    ?>
+                    <button type="button"
+                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
+                   hover:bg-blue-50 hover:text-blue-600
+                   <?php echo $employeeActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                            aria-expanded="<?php echo $employeeActive ? 'true' : 'false' ?>"
+                            title="Employee">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 <?php echo $employeeActive ? 'text-blue-500' : 'text-gray-500' ?>"
+                                 fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="ml-3 hidden md:block">Employee</span>
+                        </div>
+                        <svg class="w-4 h-4 <?php echo $employeeActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $employeeActive ? '' : 'hidden' ?>"
+                        aria-hidden="<?php echo $employeeActive ? 'false' : 'true' ?>">
+                        <?php
+                        $employeeSubmenu = ['his_admin_add_employee.php' => 'Add Employee', 'his_admin_view_employee.php' => 'View Employee', 'his_admin_manage_employee.php' => 'Manage Employee', 'his_admin_assaign_dept.php' => 'Assign Department', 'his_admin_transfer_employee.php' => 'Employee Transfers'];
+                        foreach ($employeeSubmenu as $file => $label):
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            ?>
+                            <li class="<?php echo $label == 'Employee Transfers' ? 'border-t border-gray-200 my-1' : ''; ?>">
+                                <a href="<?php echo $file; ?>"
+                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors
+                      hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
+                                   title="<?php echo $label; ?>">
+                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
+                                    </svg>
+                                    <span class="hidden md:block"><?php echo $label; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+
+
 
                 <li>
                     <?php

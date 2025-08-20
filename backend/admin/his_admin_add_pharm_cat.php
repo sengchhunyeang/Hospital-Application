@@ -10,7 +10,7 @@
             
             
             //sql to insert captured values
-			$query="INSERT INTO his_pharmaceuticals_categories (pharm_cat_name, pharm_cat_vendor, pharm_cat_desc) VALUES (?,?,?)";
+			$query="INSERT INTO hmisphp.his_pharmaceuticals_categories (pharm_cat_name, pharm_cat_vendor, pharm_cat_desc) VALUES (?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sss', $pharm_cat_name, $pharm_cat_vendor, $pharm_cat_desc);
 			$stmt->execute();
@@ -77,55 +77,52 @@
                         </div>     
                         <!-- end page title --> 
                         <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
-                                        <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Pharmaceutical Category Name</label>
-                                                    <input type="text" required="required" name="pharm_cat_name" class="form-control" id="inputEmail4" >
-                                                </div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="bg-white shadow rounded-lg p-6">
+                                <h4 class="text-xl font-semibold mb-4">Fill all fields</h4>
+                                <!-- Add Patient Form -->
+                                <form method="post" class="space-y-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="inputEmail4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Category Name</label>
+                                            <input type="text" required name="pharm_cat_name" id="inputEmail4"
+                                                   class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:ring-indigo-500 focus:border-indigo-500">
+                                        </div>
 
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputState" class="col-form-label">Pharmaceutical Vendor</label>
-                                                    <select id="inputState" required="required" name="pharm_cat_vendor" class="form-control">
-                                                    <?php
-                                                    
-                                                        $ret="SELECT * FROM  his_vendor ORDER BY RAND() "; 
-                                                        //sql code to get to ten docs  randomly
-                                                        $stmt= $mysqli->prepare($ret) ;
-                                                        $stmt->execute() ;//ok
-                                                        $res=$stmt->get_result();
-                                                        $cnt=1;
-                                                        while($row=$res->fetch_object())
-                                                        {
-                                                            //$mysqlDateTime = $row->s_pat_date;
+                                        <div>
+                                            <label for="inputState" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Vendor</label>
+                                            <select id="inputState" required name="pharm_cat_vendor"
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:ring-indigo-500 focus:border-indigo-500">
+                                                <?php
+                                                $ret="SELECT * FROM hmisphp.his_vendor ORDER BY RAND()";
+                                                $stmt= $mysqli->prepare($ret);
+                                                $stmt->execute();
+                                                $res=$stmt->get_result();
+                                                while($row=$res->fetch_object()) {
                                                     ?>
-                                                        <option><?php echo $row->v_name;?></option>
+                                                    <option><?php echo $row->v_name;?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                                    <?php }?>   
-                                                    </select>
-                                                </div>
 
-                                            </div>
+                                    <div>
+                                        <label for="editor" class="block text-sm font-medium text-gray-700">Pharmaceutical Category Description</label>
+                                        <textarea required name="pharm_cat_desc" id="editor" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="4"></textarea>
+                                    </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Pharmaceutical Category Description</label>
-                                                <textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"></textarea>
-                                            </div>
+                                    <div>
+                                        <button type="submit" name="add_pharmaceutical_category"
+                                                class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            Add Category
+                                        </button>
+                                    </div>
 
-                                           <button type="submit" name="add_pharmaceutical_category" class="ladda-button btn btn-success" data-style="expand-right">Add Category</button>
-
-                                        </form>
-                                     
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
+                                </form>
+                            </div>
                         </div>
+
                         <!-- end row -->
 
                     </div> <!-- container -->

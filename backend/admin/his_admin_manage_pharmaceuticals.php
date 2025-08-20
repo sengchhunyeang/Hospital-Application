@@ -7,7 +7,7 @@
   if(isset($_GET['delete_pharm_name']))
   {
         $id=intval($_GET['delete_pharm_name']);
-        $adn="delete from his_pharmaceuticals where phar_id=?";
+        $adn="delete from hmisphp.his_pharmaceuticals where phar_id=?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,32 +84,36 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search"
+                                                           class="block w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500"
+                                                           autocomplete="on">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true"> Name</th>
-                                                <th data-hide="phone">Barcode</th>
-                                                <th data-hide="phone">Vendor</th>
-                                                <th data-hide="phone">Category</th>
-                                                <th data-hide="phone">Quantity</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Barcode</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Vendor</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Category</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Quantity</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_pharmaceuticals ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_pharmaceuticals ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();
@@ -118,23 +122,32 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->phar_name;?></td>
-                                                    <td><?php echo $row->phar_bcode;?></td>
-                                                    <td><?php echo $row->phar_vendor;?></td>
-                                                    <td><?php echo $row->phar_cat;?></td>
-                                                    <td><?php echo $row->phar_qty;?> Cartons</td>
-                                                    <td>
-                                                        <a href="his_admin_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>" class="badge badge-success"><i class="far fa-eye "></i> View</a>
-                                                        <a href="his_admin_update_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>" class="badge badge-warning"><i class="fas fa-clipboard-check "></i> Update</a>
-                                                        <a href="his_admin_manage_pharmaceuticals.php?delete_pharm_name=<?php echo $row->phar_id;?>" class="badge badge-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                                    <tbody>
+                                                    <tr class="border-b hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->phar_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->phar_bcode; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->phar_vendor; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->phar_cat; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->phar_qty; ?> Cartons</td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell space-x-2">
+                                                            <a href="his_admin_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>"
+                                                               class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700">
+                                                                <i class="far fa-eye mr-1"></i> View
+                                                            </a>
+                                                            <a href="his_admin_update_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>"
+                                                               class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded hover:bg-yellow-600">
+                                                                <i class="fas fa-clipboard-check mr-1"></i> Update
+                                                            </a>
+                                                            <a href="his_admin_manage_pharmaceuticals.php?delete_pharm_name=<?php echo $row->phar_id;?>"
+                                                               class="inline-flex items-center px-3 py-1 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700">
+                                                                <i class="fas fa-trash-alt mr-1"></i> Delete
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

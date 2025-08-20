@@ -12,7 +12,7 @@
             $phar_vendor = $_POST['phar_vendor'];
                 
             //sql to insert captured values
-			$query="INSERT INTO his_pharmaceuticals (phar_name, phar_bcode, phar_desc, phar_qty, phar_cat, phar_vendor) VALUES (?,?,?,?,?,?)";
+			$query="INSERT INTO hmisphp.his_pharmaceuticals (phar_name, phar_bcode, phar_desc, phar_qty, phar_cat, phar_vendor) VALUES (?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssss', $phar_name, $phar_bcode, $phar_desc, $phar_qty, $phar_cat, $phar_vendor);
 			$stmt->execute();
@@ -85,75 +85,85 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Pharmaceutical Name</label>
-                                                    <input type="text" required="required" name="phar_name" class="form-control" id="inputEmail4" >
+                                        <form method="post" class="space-y-6">
+                                            <!-- Row 1: Name & Quantity -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div>
+                                                    <label for="inputEmail4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Name</label>
+                                                    <input type="text" required name="phar_name" id="inputEmail4"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Pharmaceutical Quantity(Cartons)</label>
-                                                    <input required="required" type="text" name="phar_qty" class="form-control"  id="inputPassword4">
+
+                                                <div>
+                                                    <label for="inputPassword4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Quantity (Cartons)</label>
+                                                    <input type="text" required name="phar_qty" id="inputPassword4"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                    <label for="inputState" class="col-form-label">Pharmaceutical Category</label>
-                                                    <select id="inputState" required="required" name="phar_cat" class="form-control">
-                                                    <!--Fetch All Pharmaceutical Categories-->
-                                                    <?php
-                                                   
-                                                        $ret="SELECT * FROM  his_pharmaceuticals_categories ORDER BY RAND() "; 
-                                                        $stmt= $mysqli->prepare($ret) ;
-                                                        $stmt->execute() ;//ok
+
+                                            <!-- Row 2: Category & Vendor -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div>
+                                                    <label for="inputState" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Category</label>
+                                                    <select id="inputState" required name="phar_cat"
+                                                            class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                                        <?php
+                                                        $ret="SELECT * FROM hmisphp.his_pharmaceuticals_categories ORDER BY RAND()";
+                                                        $stmt= $mysqli->prepare($ret);
+                                                        $stmt->execute();
                                                         $res=$stmt->get_result();
-                                                        $cnt=1;
-                                                        while($row=$res->fetch_object())
-                                                        {
-                                                    ?>
-                                                        <option><?php echo $row->pharm_cat_name;?></option>
-                                                    <?php }?>    
+                                                        while($row=$res->fetch_object()) {
+                                                            ?>
+                                                            <option><?php echo $row->pharm_cat_name;?></option>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputState" class="col-form-label">Pharmaceutical Vendor</label>
-                                                    <select id="inputState" required="required" name="phar_vendor" class="form-control">
-                                                    <?php
-                                                    
-                                                        $ret="SELECT * FROM  his_vendor ORDER BY RAND() "; 
-                                                        //sql code to get to ten docs  randomly
-                                                        $stmt= $mysqli->prepare($ret) ;
-                                                        $stmt->execute() ;//ok
-                                                        $res=$stmt->get_result();
-                                                        $cnt=1;
-                                                        while($row=$res->fetch_object())
-                                                        {
-                                                            //$mysqlDateTime = $row->s_pat_date;
-                                                    ?>
-                                                        <option><?php echo $row->v_name;?></option>
 
-                                                    <?php }?>   
+                                                <div>
+                                                    <label for="inputState" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Vendor</label>
+                                                    <select id="inputState" required name="phar_vendor"
+                                                            class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                                        <?php
+                                                        $ret="SELECT * FROM hmisphp.his_vendor ORDER BY RAND()";
+                                                        $stmt= $mysqli->prepare($ret);
+                                                        $stmt->execute();
+                                                        $res=$stmt->get_result();
+                                                        while($row=$res->fetch_object()) {
+                                                            ?>
+                                                            <option><?php echo $row->v_name;?></option>
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                    <label for="inputPassword4" class="col-form-label">Pharmaceutical Barcode(EAN-8)</label>
-                                                    <?php 
-                                                        $length = 10;    
-                                                        $phar_bcode =  substr(str_shuffle('0123456789'),1,$length);
-                                                    ?>
-                                                    <input required="required" type="text" value="<?php echo $phar_bcode;?>" name="phar_bcode" class="form-control"  id="inputPassword4">
+
+                                            <!-- Barcode -->
+                                            <div>
+                                                <label for="inputPassword4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Barcode (Cambodia 885)</label>
+                                                <?php
+                                                $length = 10;
+                                                $phar_bcode = substr(str_shuffle('0123456789'), 0, $length);
+                                                ?>
+                                                <input type="text" required name="phar_bcode" value="<?php echo $phar_bcode;?>" id="inputPassword4"
+                                                       class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Pharmaceutical Description</label>
-                                                <textarea required="required" type="text" class="form-control" name="phar_desc" id="editor"></textarea>
+                                            <!-- Description -->
+                                            <div>
+                                                <label for="editor" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Description</label>
+                                                <textarea name="phar_desc" required id="editor"
+                                                          class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500" rows="4"></textarea>
                                             </div>
 
-                                           <button type="submit" name="add_pharmaceutical" class="ladda-button btn btn-success" data-style="expand-right">Add Pharmaceutical</button>
-
+                                            <!-- Submit Button -->
+                                            <div>
+                                                <button type="submit" name="add_pharmaceutical"
+                                                        class="inline-flex items-center px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                    Add Pharmaceutical
+                                                </button>
+                                            </div>
                                         </form>
-                                     
+
+
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
                             </div> <!-- end col -->

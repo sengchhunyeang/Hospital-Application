@@ -1,4 +1,4 @@
-global$mysqli; global$mysqli; global$mysqli; <!--Server side code to handle  Patient Registration-->
+
 <?php
 	session_start();
 	include('assets/inc/config.php');
@@ -96,66 +96,83 @@ global$mysqli; global$mysqli; global$mysqli; <!--Server side code to handle  Pat
                                         <div class="card-body">
                                             <h4 class="header-title">Fill all fields</h4>
                                             <!--Add Patient Form-->
-                                            <form method="post">
-                                                <div class="form-row">
+                                            <form method="post" class="space-y-6">
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                        <input type="text" required="required" readonly name="pres_pat_name" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                                <!-- Patient Name & Age -->
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    <div>
+                                                        <label class="block text-sm font-medium text-gray-700">Patient Name</label>
+                                                        <input type="text" readonly name="pres_pat_name" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient's Name" required>
                                                     </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Age</label>
-                                                        <input required="required" type="text" readonly name="pres_pat_age" value="<?php echo $row->pat_age;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Number</label>
-                                                        <input type="text" required="required" readonly name="pres_pat_number" value="<?php echo $row->pat_number;?>" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
-                                                    </div>
-
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Address</label>
-                                                        <input required="required" type="text" readonly name="pres_pat_addr" value="<?php echo $row->pat_addr;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
-                                                    </div>
-
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Type</label>
-                                                        <input required="required" readonly type="text" name="pres_pat_type" value="<?php echo $row->pat_type;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="form-group ">
-                                                        <label for="inputCity" class="col-form-label">Patient Ailment</label>
-                                                        <input required="required" type="text" value="<?php echo $row->pat_ailment;?>" name="pres_pat_ailment" class="form-control" id="inputCity">
-                                                </div>
-                                                <hr>
-                                                <div class="form-row">
-                                                    
-                                            
-                                                    <div class="form-group col-md-2" style="display:none">
-                                                        <?php 
-                                                            $length = 5;    
-                                                            $pres_no =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
-                                                        ?>
-                                                        <label for="inputZip" class="col-form-label">Prescription Number</label>
-                                                        <input type="text" name="pres_number" value="<?php echo $pres_no;?>" class="form-control" id="inputZip">
+                                                    <div>
+                                                        <label class="block text-sm font-medium text-gray-700">Patient Age</label>
+                                                        <input type="text" readonly name="pres_pat_age" value="<?php echo $row->pat_age;?>"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient Age" required>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                        <label for="inputAddress" class="col-form-label">Prescription</label>
-                                                        <textarea required="required"  type="text" class="form-control" name="pres_ins" id="editor"></textarea>
+                                                <!-- Patient Number, Address & Type -->
+                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                                    <div>
+                                                        <label class="block text-sm font-medium text-gray-700">Patient Number</label>
+                                                        <input type="text" readonly name="pres_pat_number" value="<?php echo $row->pat_number;?>"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient Number" required>
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-sm font-medium text-gray-700">Patient Address</label>
+                                                        <input type="text" readonly name="pres_pat_addr" value="<?php echo $row->pat_addr;?>"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient Address" required>
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-sm font-medium text-gray-700">Patient Type</label>
+                                                        <input type="text" readonly name="pres_pat_type" value="<?php echo $row->pat_type;?>"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient Type" required>
+                                                    </div>
                                                 </div>
 
-                                                <button type="submit" name="add_patient_presc" class="ladda-button btn btn-primary" data-style="expand-right">Add Patient Prescription</button>
+                                                <!-- Patient Ailment -->
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700">Diagosis</label>
+                                                    <input type="text" value="<?php echo $row->pat_ailment;?>" name="pres_pat_ailment"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                           required>
+                                                </div>
+
+                                                <!-- Hidden Prescription Number -->
+                                                <div class="hidden">
+                                                    <?php
+                                                    $length = 5;
+                                                    $pres_no =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
+                                                    ?>
+                                                    <label class="block text-sm font-medium text-gray-700">Prescription Number</label>
+                                                    <input type="text" name="pres_number" value="<?php echo $pres_no;?>"
+                                                           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                                </div>
+
+                                                <!-- Prescription Instructions -->
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700">Prescription</label>
+                                                    <textarea name="pres_ins" id="editor" required
+                                                              class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                              rows="4"></textarea>
+                                                </div>
+
+                                                <!-- Submit Button -->
+                                                <div>
+                                                    <button type="submit" name="add_patient_presc"
+                                                            class="inline-flex items-center px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                        Add Patient Prescription
+                                                    </button>
+                                                </div>
 
                                             </form>
+
                                             <!--End Patient Form-->
                                         </div> <!-- end card-body -->
                                     </div> <!-- end card-->
