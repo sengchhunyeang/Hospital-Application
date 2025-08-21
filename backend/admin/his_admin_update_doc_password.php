@@ -8,8 +8,8 @@
             $status = $_POST['status'];
                         
             //sql to insert captured values
-            $query="UPDATE his_docs SET doc_pwd =? WHERE doc_email = ?";
-            $query1 = "UPDATE his_pwdresets SET status =? WHERE email = ?";
+            $query="UPDATE hmisphp.his_docs SET doc_pwd =? WHERE doc_email = ?";
+            $query1 = "UPDATE hmisphp.his_pwdresets SET status =? WHERE email = ?";
             $stmt = $mysqli->prepare($query);
             $stmt1 = $mysqli->prepare($query1);
             $rc=$stmt->bind_param('ss', $pwd, $email);
@@ -75,15 +75,15 @@
                         <!-- end page title --> 
                         <!-- Form row -->
                         <?php
-                            $email=$_GET['email'];
-                            $ret="SELECT  * FROM his_pwdresets WHERE email=?";
-                            $stmt= $mysqli->prepare($ret) ;
-                            $stmt->bind_param('i',$email);
-                            $stmt->execute() ;//ok
-                            $res=$stmt->get_result();
-                            //$cnt=1;
-                            while($row=$res->fetch_object())
-                            {
+                        $email = $_GET['email'];
+                        $ret = "SELECT * FROM hmisphp.his_pwdresets WHERE email=? ";
+                        $stmt = $mysqli->prepare($ret);
+                        $stmt->bind_param('s', $email); // use 's' for string
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+
+                        if ($row = $res->fetch_object()) {
+                            // process single latest row
                         ?>
                         <div class="row">
                             <div class="col-12">
@@ -107,9 +107,15 @@
                                                     <input required="required"  type="text" value="Reset"  name="status" class="form-control" id="inputCity">
                                                 </div>  
                                                 
-                                            </div>                                            
+                                            </div>
 
-                                            <button type="submit" name="update_doc" class="ladda-button btn btn-success" data-style="expand-right">Update Password</button>
+                                            <button
+                                                    type="submit"
+                                                    name="update_doc"
+                                                    class="px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                            >
+                                                Update Password
+                                            </button>
 
                                         </form>
                                         <!--End Patient Form-->

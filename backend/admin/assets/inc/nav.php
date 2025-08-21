@@ -9,7 +9,7 @@
     while($row=$res->fetch_object())
     {
 ?>
-    <div class="navbar-custom" >
+    <div class="navbar-custom bg-cyan-600" >
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
 <!--            <li class="d-none d-sm-block">-->
@@ -29,9 +29,9 @@
 
             
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light d-flex justify-content-center align-items-center" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets/images/users/<?php echo $row->ad_dpic;?>" alt="dpic" class="rounded-circle">
-                    <span class="pro-user-name ml-1">
+                    <span class="pro-user-name ml-1 text-white">
                         <?php echo $row->ad_fname;?> <?php echo $row->ad_lname;?> <i class="mdi mdi-chevron-down"></i> 
                     </span>
                 </a>
@@ -67,12 +67,12 @@
         <div class="logo-box">
             <a href="his_admin_dashboard.php" class="logo text-center">
                 <span class="logo-lg">
-                    <img src="assets/images/logo-light.png" alt="" height="18">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+<!--                    <img src="assets/images/logo-light.png" alt="" height="18">-->
+                     <span class="logo-lg-text-light">HMS</span>
                 </span>
                 <span class="logo-sm">
                     <!-- <span class="logo-sm-text-dark">U</span> -->
-                    <img src="assets/images/logo-sm-white.png" alt="" height="24">
+                    <img src="assets/images/logo.png" alt="" height="24">
                 </span>
             </a>
         </div>
@@ -85,7 +85,7 @@
             </li>
 
             <li class="dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle waves-effect waves-light text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     Create New
                     <i class="mdi mdi-chevron-down"></i> 
                 </a>

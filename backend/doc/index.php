@@ -158,7 +158,7 @@
         <!-- end page -->
 
 
-        <?php include ("assets/inc/footer1.php");?>
+<!--        --><?php //include ("assets/inc/footer1.php");?>
 
         <!-- Vendor js -->
         <script src="assets/js/vendor.min.js"></script>
