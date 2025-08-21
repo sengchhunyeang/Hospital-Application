@@ -10,13 +10,7 @@ $aid = $_SESSION['ad_id'];
 <html lang="en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Battambang', sans-serif !important;
-        color: black;
-    }
-</style>
+
 <?php include('assets/inc/head.php'); ?>
 
 <body>

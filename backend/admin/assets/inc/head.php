@@ -29,7 +29,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap" rel="stylesheet">
         <style>
             body {
-                font-family: 'Battambang', sans-serif !important;
+                font-family: "Times New Roman", "Khmer OS Battambang", serif;
             }
         </style>
 
