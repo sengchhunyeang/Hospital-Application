@@ -66,30 +66,34 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search"
+                                                           class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                           autocomplete="on">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Name</th>
-                                                <th data-hide="phone">Number</th>
-                                                <th data-hide="phone">Email</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium">Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium">Number</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium">Email</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_docs ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_docs ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -99,16 +103,24 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
-                                                    <td><?php echo $row->doc_number;?></td>
-                                                    <td><?php echo $row->doc_email;?></td>                                                    
-                                                    <td><a href="his_admin_add_single_employee_vitals.php?doc_number=<?php echo $row->doc_number;?>" class="badge badge-success"><i class="fas fa-edit"></i> Capture Vitals</a></td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody>
+                                                    <tr class="border-b hover:bg-gray-50">
+                                                        <!-- Table cells -->
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_number;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_email;?></td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_admin_add_single_employee_vitals.php?doc_number=<?php echo $row->doc_number;?>"
+                                                               class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
+                                                                <i class="fas fa-edit mr-1"></i> Capture Vitals
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

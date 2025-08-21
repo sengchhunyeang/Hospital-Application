@@ -15,7 +15,7 @@
             $pat_dob = $_POST['pat_dob'];
             $pat_ailment = $_POST['pat_ailment'];
             //sql to insert captured values
-			$query="UPDATE  his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?, pat_number=?, pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_id = ?";
+			$query="UPDATE  hmisphp.his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?, pat_number=?, pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_id = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssssssi', $pat_fname, $pat_lname, $pat_age, $pat_dob, $pat_number, $pat_phone, $pat_type, $pat_addr, $pat_ailment, $pat_id);
 			$stmt->execute();
@@ -85,7 +85,7 @@
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
                             $pat_id=$_GET['pat_id'];
-                            $ret="SELECT  * FROM his_patients WHERE pat_id=?";
+                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_id=?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$pat_id);
                             $stmt->execute() ;//ok
@@ -97,69 +97,110 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
+                                    <div class="card bg-white shadow rounded-lg p-6">
+                                        <h4 class="text-xl font-semibold mb-6">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">First Name</label>
-                                                    <input type="text" required="required" value="<?php echo $row->pat_fname;?>" name="pat_fname" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                        <form method="post" class="space-y-6">
+
+                                            <!-- First & Last Name -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="pat_fname" class="block text-gray-700 font-medium mb-1">
+                                                        First Name <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_fname;?>" name="pat_fname" id="pat_fname"
+                                                           placeholder="Patient's First Name"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Last Name</label>
-                                                    <input required="required" type="text" value="<?php echo $row->pat_lname;?>" name="pat_lname" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                <div>
+                                                    <label for="pat_lname" class="block text-gray-700 font-medium mb-1">
+                                                        Last Name <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_lname;?>" name="pat_lname" id="pat_lname"
+                                                           placeholder="Patient's Last Name"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Date Of Birth</label>
-                                                    <input type="text" required="required" value="<?php echo $row->pat_dob;?>" name="pat_dob" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                            <!-- DOB & Age -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="pat_dob" class="block text-gray-700 font-medium mb-1">
+                                                        Date Of Birth <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_dob;?>" name="pat_dob" id="pat_dob"
+                                                           placeholder="DD/MM/YYYY"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Age</label>
-                                                    <input required="required" type="text" value="<?php echo $row->pat_age;?>" name="pat_age" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+                                                <div>
+                                                    <label for="pat_age" class="block text-gray-700 font-medium mb-1">
+                                                        Age <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_age;?>" name="pat_age" id="pat_age"
+                                                           placeholder="Patient's Age"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Address</label>
-                                                <input required="required" type="text" value="<?php echo $row->pat_addr;?>" class="form-control" name="pat_addr" id="inputAddress" placeholder="Patient's Addresss">
+                                            <!-- Address -->
+                                            <div>
+                                                <label for="pat_addr" class="block text-gray-700 font-medium mb-1">
+                                                    Address <span class="text-red-500">*</span>
+                                                </label>
+                                                <input type="text" required value="<?php echo $row->pat_addr;?>" name="pat_addr" id="pat_addr"
+                                                       placeholder="Patient's Address"
+                                                       class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Mobile Number</label>
-                                                    <input required="required" type="text" value="<?php echo $row->pat_phone;?>" name="pat_phone" class="form-control" id="inputCity">
+                                            <!-- Phone, Room Number, Type -->
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <div>
+                                                    <label for="pat_phone" class="block text-gray-700 font-medium mb-1">
+                                                        Mobile Number <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_phone;?>" name="pat_phone" id="pat_phone"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Ailment</label>
-                                                    <input required="required" type="text" value="<?php echo $row->pat_ailment;?>" name="pat_ailment" class="form-control" id="inputCity">
+                                                <div>
+                                                    <label for="pat_ailment" class="block text-gray-700 font-medium mb-1">
+                                                        Room Number <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <input type="text" required value="<?php echo $row->pat_ailment;?>" name="pat_ailment" id="pat_ailment"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputState" class="col-form-label">Patient's Type</label>
-                                                    <select id="inputState" required="required" name="pat_type" class="form-control">
-                                                        <option>Choose</option>
+                                                <div>
+                                                    <label for="pat_type" class="block text-gray-700 font-medium mb-1">
+                                                        Patient's Type <span class="text-red-500">*</span>
+                                                    </label>
+                                                    <select id="pat_type" name="pat_type" required
+                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                        <option>Waiting</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-2" style="display:none">
-                                                    <?php 
-                                                        $length = 5;    
-                                                        $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
-                                                    ?>
-                                                    <label for="inputZip" class="col-form-label">Patient Number</label>
-                                                    <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="form-control" id="inputZip">
-                                                </div>
                                             </div>
 
-                                            <button type="submit" name="update_patient" class="ladda-button btn btn-success" data-style="expand-right">Add Patient</button>
+                                            <!-- Patient Number (hidden or auto-generated) -->
+                                            <div class="form-group col-md-2" style="display:none">
+                                                <label for="inputZip" class="col-form-label">Patient Number</label>
+                                                <input type="text" name="pat_number" value="<?php echo $row->pat_number; ?>"
+                                                       class="form-control" id="inputZip" readonly>
+                                            </div>
+
+
+                                            <!-- Submit Button -->
+                                            <div>
+                                                <button type="submit" name="update_patient"
+                                                        class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md shadow-md transition">
+                                                    Add Patient
+                                                </button>
+                                            </div>
 
                                         </form>
                                         <!--End Patient Form-->
-                                    </div> <!-- end card-body -->
+                                    </div>
+                                    <!-- end card-body -->
                                 </div> <!-- end card-->
                             </div> <!-- end col -->
                         </div>

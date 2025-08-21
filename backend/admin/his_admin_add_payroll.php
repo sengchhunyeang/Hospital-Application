@@ -66,31 +66,39 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                            autocomplete="on"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Name</th>
-                                                <th data-hide="phone">Number</th>
-                                                <th data-hide="phone">Email</th>
-                                                <th data-hide="phone">Department</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left">#</th>
+                                                <th class="px-4 py-2 text-left">Name</th>
+                                                <th class="px-4 py-2 text-left">Number</th>
+                                                <th class="px-4 py-2 text-left">Email</th>
+                                                <th class="px-4 py-2 text-left">Department</th>
+                                                <th class="px-4 py-2 text-left">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_docs ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_docs ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -100,22 +108,27 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
-                                                    <td><?php echo $row->doc_number;?></td>
-                                                    <td><?php echo $row->doc_email;?></td>   
-                                                    <td><?php echo $row->doc_dept;?></td>
-                                                 
-                                                    <td>
-                                                        <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>" class="badge badge-primary"><i class="mdi mdi-eye"></i> View</a>
-                                                        <a href="his_admin_add_single_employee_payroll.php?doc_number=<?php echo $row->doc_number;?>" class="badge badge-success"><i class="fas fa-eye-dropper "></i> Add Payroll</a>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_number;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_email;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_dept;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
+                                                            <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                                                                <i class="mdi mdi-eye mr-1"></i> View
+                                                            </a>
+                                                            <a href="his_admin_add_single_employee_payroll.php?doc_number=<?php echo $row->doc_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-green-600 rounded hover:bg-green-700">
+                                                                <i class="fas fa-eye-dropper mr-1"></i> Add Payroll
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $eqp_code=$_GET['eqp_code'];
-                $ret="SELECT  * FROM his_equipments WHERE eqp_code = ?";
+                $ret="SELECT  * FROM hmisphp.his_equipments WHERE eqp_code = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$eqp_code);
                 $stmt->execute() ;//ok
@@ -76,50 +76,38 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Equipment Name : <?php echo $row->eqp_name;?></h2>
-                                                    <hr>
-                                                    <h4 class="text-danger">Equipment Vendor: <?php echo $row->eqp_vendor;?></h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Equipment Barcode: <?php echo $row->eqp_code;?></h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Equipment(s) Available : <?php echo $row->eqp_qty;?></h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Equipment Status : <?php echo $row->eqp_status;?></h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Equipment Description</h4>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->eqp_desc;?>
+                                                <div class="pl-6 mt-3">
+                                                    <h2 class="mb-3 text-2xl font-semibold text-gray-800">
+                                                        Equipment Name: <?php echo $row->eqp_name; ?>
+                                                    </h2>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h4 class="text-red-600 font-medium">
+                                                        Equipment Vendor: <?php echo $row->eqp_vendor; ?>
+                                                    </h4>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h4 class="text-red-600 font-medium">
+                                                        Equipment Barcode: <?php echo $row->eqp_code; ?>
+                                                    </h4>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h4 class="text-red-600 font-medium">
+                                                        Equipment(s) Available: <?php echo $row->eqp_qty; ?>
+                                                    </h4>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h4 class="text-red-600 font-medium">
+                                                        Equipment Status: <?php echo $row->eqp_status; ?>
+                                                    </h4>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h4 class="text-red-600 font-medium">Equipment Description</h4>
+                                                    <p class="text-gray-600 mb-4">
+                                                        <?php echo $row->eqp_desc; ?>
                                                     </p>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
-
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
-
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

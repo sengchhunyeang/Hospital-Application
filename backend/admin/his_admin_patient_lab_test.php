@@ -66,33 +66,41 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Patient Address</th>
-                                                <th data-hide="phone">Patient Ailment</th>
-                                                <th data-hide="phone">Patient Age</th>
-                                                <th data-hide="phone">Patient Category</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Number</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Address</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Ailment</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Age</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Patient Category</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_patients ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -102,20 +110,28 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
-                                                    <td><?php echo $row->pat_number;?></td>
-                                                    <td><?php echo $row->pat_addr;?></td>
-                                                    <td><?php echo $row->pat_ailment;?></td>
-                                                    <td><?php echo $row->pat_age;?> Years</td>
-                                                    <td><?php echo $row->pat_type;?></td>
-                                                    
-                                                    <td><a href="his_admin_add_single_lab_test.php?pat_number=<?php echo $row->pat_number;?>" class="badge badge-success"><i class="mdi mdi-beaker "></i> Add Lab Test</a></td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700">
+                                                            <?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>
+                                                        </td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_number;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_addr;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_ailment;?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_age;?> Years</td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_type;?></td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_admin_add_single_lab_test.php?pat_number=<?php echo $row->pat_number;?>"
+                                                               class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
+                                                                <i class="mdi mdi-beaker mr-1"></i> Add Lab Test
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

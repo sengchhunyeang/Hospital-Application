@@ -86,9 +86,14 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input id="demo-foo-search"
+                                                           type="text"
+                                                           placeholder="Search"
+                                                           autocomplete="on"
+                                                           class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +115,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_docs ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_docs ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -120,20 +125,25 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
-                                                    <td><?php echo $row->doc_number;?></td>
-                                                    <td><?php echo $row->doc_dept;?></td>
-                                                    <td><?php echo $row->doc_email;?></td>
-                                                    
-                                                    <td>
-                                                        <a href="his_admin_transfer_single_employee.php?doc_number=<?php echo $row->doc_number;?>" class="badge badge-warning"><i class="mdi mdi-check-box-outline "></i> Transfer Employee</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm font-medium text-gray-900">
+                                                            <?php echo $row->doc_fname; ?> <?php echo $row->doc_lname; ?>
+                                                        </td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_dept; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_email; ?></td>
+                                                        <td class="px-4 py-2">
+                                                            <a href="his_admin_transfer_single_employee.php?doc_number=<?php echo $row->doc_number;?>"
+                                                               class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-500 text-white hover:bg-yellow-600">
+                                                                <i class="mdi mdi-check-box-outline mr-1"></i> Transfer Employee
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

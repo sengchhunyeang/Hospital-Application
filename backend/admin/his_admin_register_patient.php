@@ -38,11 +38,8 @@
 <!--End Patient Registration-->
 <!DOCTYPE html>
 <html lang="en">
-    
     <!--Head-->
     <?php include('assets/inc/head.php');?>
-    <body>
-
         <!-- Begin page -->
         <div id="wrapper">
 
@@ -85,65 +82,133 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
-                                        <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">First Name</label>
-                                                    <input type="text" required="required" name="pat_fname" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                        <form method="post" class="space-y-6 text-black">
+
+                                            <!-- First & Last Name -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="pat_fname" class="block mb-1 font-medium">First Name <span class="text-red-600">*</span></label>
+                                                    <input type="text" required name="pat_fname" id="pat_fname"
+                                                           placeholder="Patient's First Name"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Last Name</label>
-                                                    <input required="required" type="text" name="pat_lname" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                <div>
+                                                    <label for="pat_lname" class="block mb-1 font-medium">Last Name <span class="text-red-600">*</span></label>
+                                                    <input type="text" required name="pat_lname" id="pat_lname"
+                                                           placeholder="Patient's Last Name"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Date Of Birth</label>
-                                                    <input type="text" required="required" name="pat_dob" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                            <!-- Date of Birth & Age -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label for="pat_dob" class="block mb-1 font-medium">Date Of Birth <span class="text-red-600">*</span></label>
+                                                    <input type="date" required name="pat_dob" id="pat_dob"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Age</label>
-                                                    <input required="required" type="text" name="pat_age" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+                                                <div>
+                                                    <label for="pat_age" class="block mb-1 font-medium">Age </label>
+                                                    <input type="text" required name="pat_age" id="pat_age" placeholder="Patient's Age" readonly
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 cursor-not-allowed">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Address</label>
-                                                <input required="required" type="text" class="form-control" name="pat_addr" id="inputAddress" placeholder="Patient's Addresss">
+                                            <!-- Address -->
+                                            <div>
+                                                <?php
+                                                // Example: all Cambodian addresses
+                                                $addresses = [
+                                                        "Banteay Meanchey - បន្ទាយមានជ័យ",
+                                                        "Battambang - បាត់ដំបង",
+                                                        "Kampong Cham - កំពង់ចាម",
+                                                        "Kampong Chhnang - កំពង់ឆ្នាំង",
+                                                        "Kampong Speu - កំពង់ស្ពឺ",
+                                                        "Kampong Thom - កំពង់ធំ",
+                                                        "Kampot - កំពត",
+                                                        "Kandal - កណ្ដាល",
+                                                        "Kep - កែប",
+                                                        "Koh Kong - កោះកុង",
+                                                        "Kratié - ក្រចេះ",
+                                                        "Mondulkiri - មណ្ឌលគិរី",
+                                                        "Pailin - ប៉ៃលិន",
+                                                        "Phnom Penh - ភ្នំពេញ",
+                                                        "Preah Vihear - ព្រះវិហារ",
+                                                        "Prey Veng - ព្រៃវែង",
+                                                        "Pursat - ពោធិសាត់",
+                                                        "Ratanakiri - រតនគីរី",
+                                                        "Siem Reap - សៀមរាប",
+                                                        "Sihanoukville - សីហនុ",
+                                                        "Stung Treng - ស្ទឹងត្រែង",
+                                                        "Svay Rieng - ស្វាយរៀង",
+                                                        "Takeo - តាកែវ",
+                                                        "Tboung Khmum - ទ្បូងខ្មុំ"
+                                                ];
+
+
+
+                                                // Handle form submission
+                                                $selected_address = '';
+                                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                                    $selected_address = isset($_POST['pat_addr']) ? $_POST['pat_addr'] : '';
+                                                    // Now you can insert $selected_address into your database
+                                                }
+                                                ?>
+
+                                                <label for="pat_addr" class="block mb-1 font-medium">Address <span class="text-red-600">*</span></label>
+                                                <select name="pat_addr" id="pat_addr" class="w-full border border-gray-300 rounded-md px-3 py-2 mb-2">
+                                                    <option value="">-- Select Address --</option>
+                                                    <?php foreach ($addresses as $addr): ?>
+                                                        <option value="<?php echo $addr; ?>" <?php if($addr == $selected_address) echo 'selected'; ?>>
+                                                            <?php echo $addr; ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Mobile Number</label>
-                                                    <input required="required" type="text" name="pat_phone" class="form-control" id="inputCity">
+                                            <!-- Mobile, Room Number & Patient Type -->
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <div>
+                                                    <label for="pat_phone" class="block mb-1 font-medium">Mobile Number <span class="text-red-600">*</span></label>
+                                                    <input type="text" required name="pat_phone" id="pat_phone"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputCity" class="col-form-label">Patient Ailment</label>
-                                                    <input required="required" type="text" name="pat_ailment" class="form-control" id="inputCity">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputState" class="col-form-label">Patient's Type</label>
-                                                    <select id="inputState" required="required" name="pat_type" class="form-control">
-                                                        <option>Choose</option>
+                                                <div>
+                                                    <label for="pat_type" class="block mb-1 font-medium">Patient's Type</label>
+                                                    <select id="pat_type" required name="pat_type"
+                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                        <option>Waiting</option>
                                                         <option>InPatient</option>
                                                         <option>OutPatient</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-2" style="display:none">
-                                                    <?php 
-                                                        $length = 5;    
-                                                        $patient_number =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
-                                                    ?>
-                                                    <label for="inputZip" class="col-form-label">Patient Number</label>
-                                                    <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="form-control" id="inputZip">
+
+                                                <div id="room_number_div" class="hidden">
+                                                    <label for="pat_ailment" class="block mb-1 font-medium">Room Number</label>
+                                                    <input type="number" name="pat_ailment" id="pat_ailment"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
-                                            <button type="submit" name="add_patient" class="ladda-button btn btn-primary" data-style="expand-right">Add Patient</button>
+                                            <!-- Hidden Patient Number -->
+                                            <div class="hidden">
+                                                <?php
+                                                $length = 5;
+                                                $patient_number = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, $length);
+                                                ?>
+                                                <label>
+                                                    <input type="text" name="pat_number" value="<?php echo $patient_number;?>" class="w-full">
+                                                </label>
+                                            </div>
 
+                                            <!-- Submit Button -->
+                                            <div>
+                                                <button type="submit" name="add_patient"
+                                                        class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-md transition">
+                                                    Add Patient
+                                                </button>
+                                            </div>
                                         </form>
                                         <!--End Patient Form-->
                                     </div> <!-- end card-body -->
@@ -186,7 +251,33 @@
 
         <!-- Buttons init js-->
         <script src="assets/js/pages/loading-btn.init.js"></script>
-        
+        <script>
+            document.getElementById("pat_dob").addEventListener("change", function () {
+                const dob = new Date(this.value);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+
+                // Adjust if birthday hasn't occurred yet this year
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                // Show age in the input field
+                document.getElementById("pat_age").value = age;
+            });
+            const patientType = document.getElementById('pat_type');
+            const roomDiv = document.getElementById('room_number_div');
+
+            patientType.addEventListener('change', function() {
+                if (this.value === 'InPatient') {
+                    roomDiv.classList.remove('hidden'); // show input
+                } else {
+                    roomDiv.classList.add('hidden'); // hide input
+                }
+            });
+        </script>
+
     </body>
 
 </html>

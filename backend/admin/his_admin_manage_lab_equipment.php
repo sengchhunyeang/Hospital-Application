@@ -7,7 +7,7 @@
   if(isset($_GET['delete_eqp']))
   {
         $id=intval($_GET['delete_eqp']);
-        $adn="delete from his_equipments where eqp_code=?";
+        $adn="delete from hmisphp.his_equipments where eqp_code=?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,32 +84,36 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search"
+                                                           class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                                           autocomplete="on">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700 text-left text-sm uppercase">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Name</th>
-                                                <th data-hide="phone">Vendor</th>
-                                                <th data-hide="phone">Barcode</th>
-                                                <th data-hide="phone">Status</th>
-                                                <th data-hide="phone">Quantity</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2">#</th>
+                                                <th class="px-4 py-2">Name</th>
+                                                <th class="px-4 py-2">Vendor</th>
+                                                <th class="px-4 py-2">Barcode</th>
+                                                <th class="px-4 py-2">Status</th>
+                                                <th class="px-4 py-2">Quantity</th>
+                                                <th class="px-4 py-2">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_equipments WHERE eqp_dept = 'Laboratory' ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_equipments WHERE eqp_dept = 'Laboratory' ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();

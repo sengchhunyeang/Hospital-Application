@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $acc_number=$_GET['acc_number'];
-                $ret="SELECT  * FROM his_accounts WHERE acc_number = ?";
+                $ret="SELECT  * FROM hmisphp.his_accounts WHERE acc_number = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$acc_number);
                 $stmt->execute() ;//ok
@@ -76,49 +76,22 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Account Number :  <?php echo $row->acc_number;?></h2>
-                                                    <hr>
-                                                    <h4 class="text-danger"> Account Name : <?php echo $row->acc_name;?></h6>
-                                                    <hr>
-                                                    <h4 class="text-danger">Account Amount : $ <?php echo $row->acc_amount;?> </h6>
-                                                    <hr>
-                                                    <h4 class="text-danger">Account Type :   <?php echo $row->acc_type;?> </h6>
-                                                    <hr>
-                                                    <h4 class="align-centre">Account Description</h6>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->acc_desc;?>
+                                                <div class="pl-6 mt-3">
+                                                    <h2 class="mb-3 text-lg font-semibold">Account Number: <?php echo $row->acc_number; ?></h2>
+                                                    <hr class="my-2 border-gray-300">
+                                                    <h4 class="text-red-600 font-medium">Account Name: <?php echo $row->acc_name; ?></h4>
+                                                    <hr class="my-2 border-gray-300">
+                                                    <h4 class="text-red-600 font-medium">Account Amount: $ <?php echo $row->acc_amount; ?></h4>
+                                                    <hr class="my-2 border-gray-300">
+                                                    <h4 class="text-red-600 font-medium">Account Type: <?php echo $row->acc_type; ?></h4>
+                                                    <hr class="my-2 border-gray-300">
+                                                    <h4 class="text-center font-semibold">Account Description</h4>
+                                                    <hr class="my-2 border-gray-300">
+                                                    <p class="text-gray-600 mb-4">
+                                                        <?php echo $row->acc_desc; ?>
                                                     </p>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
-
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
-
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

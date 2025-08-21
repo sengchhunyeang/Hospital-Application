@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $s_number=$_GET['s_number'];
-                $ret="SELECT  * FROM his_surgery WHERE s_number = ?";
+                $ret="SELECT  * FROM hmisphp.his_surgery WHERE s_number = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$s_number);
                 $stmt->execute() ;//ok
@@ -77,51 +77,32 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                            
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Patient's Name : <?php echo $row->s_pat_name;?></h2>
-                                                    <hr>
-                                                    <h3 class="align-centre ">Patient Number : <?php echo $row->s_pat_number;?></h3>
-                                                    <hr>
-                                                    <h3 class="align-centre ">Patient Ailment : <?php echo $row->s_pat_ailment;?></h3>
-                                                    <hr>
-                                                    <h3 class="align-centre ">Date Surgery Conducted : <?php echo date("d/m/Y", strtotime($mysqlDateTime));?></h3>
-                                                    <hr>
-                                                    <h2 class="align-centre">Surgeon :  <?php echo $row->s_doc;?> </h2>
-                                                    <hr>
-                                                    <h2 class="align-centre">Surgery Status : <span class ="btn btn-success"> <?php echo $row->s_pat_status;?></span> </h2>
-                                                    <hr>
-                                                    
-                                                    
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                                <div class="pl-4 mt-3 space-y-4">
+                                                    <h2 class="text-xl font-semibold">Patient's Name: <?php echo $row->s_pat_name; ?></h2>
+                                                    <hr class="border-gray-300">
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
+                                                    <h3 class="text-gray-700">Patient Number: <?php echo $row->s_pat_number; ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h3 class="text-gray-700">Patient Ailment: <?php echo $row->s_pat_ailment; ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h3 class="text-gray-700">Date Surgery Conducted: <?php echo date("d/m/Y", strtotime($mysqlDateTime)); ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h2 class="text-lg font-medium">Surgeon: <?php echo $row->s_doc; ?></h2>
+                                                    <hr class="border-gray-300">
+
+                                                    <h2 class="text-lg font-medium">
+                                                        Surgery Status:
+                                                        <span class="inline-block px-2 py-1 text-white bg-green-600 rounded-md">
+            <?php echo $row->s_pat_status; ?>
+        </span>
+                                                    </h2>
+                                                    <hr class="border-gray-300">
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

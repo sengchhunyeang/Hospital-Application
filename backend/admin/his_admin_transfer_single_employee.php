@@ -8,7 +8,7 @@
             $doc_number = $_GET['doc_number'];
 
             //sql to insert captured values
-			$query="UPDATE his_docs SET doc_dept=? WHERE doc_number = ?";
+			$query="UPDATE hmisphp.his_docs SET doc_dept=? WHERE doc_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ss', $doc_dept, $doc_number);
 			$stmt->execute();
@@ -76,16 +76,17 @@
                         <!-- end page title --> 
                         <!-- Form row -->
                         <?php
-                            $doc_number=$_GET['doc_number'];
-                            $ret="SELECT  * FROM his_docs WHERE doc_number=?";
-                            $stmt= $mysqli->prepare($ret) ;
-                            $stmt->bind_param('i',$doc_number);
-                            $stmt->execute() ;//ok
-                            $res=$stmt->get_result();
-                            //$cnt=1;
-                            while($row=$res->fetch_object())
-                            {
+                        $doc_number = $_GET['doc_number'];
+                        $ret = "SELECT * FROM hmisphp.his_docs WHERE doc_number=?";
+                        $stmt = $mysqli->prepare($ret);
+                        $stmt->bind_param('s', $doc_number); // <-- use 's' for string
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+
+                        if ($row = $res->fetch_object()) {
+
                         ?>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">

@@ -13,7 +13,7 @@
             //$doc_pwd=sha1(md5($_POST['doc_pwd']));
             
             //sql to insert captured values
-			$query="UPDATE  his_vendor SET v_name=?, v_adr=?,  v_email = ?, v_phone=?, v_desc=? WHERE v_number=?";
+			$query="UPDATE  hmisphp.his_vendor SET v_name=?, v_adr=?,  v_email = ?, v_phone=?, v_desc=? WHERE v_number=?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssss', $v_name, $v_adr,  $v_email, $v_phone, $v_desc, $v_number);
 			$stmt->execute();
@@ -82,7 +82,7 @@
                         <!-- Form row -->
                         <?php
                             $v_number=$_GET['v_number'];
-                            $ret="SELECT  * FROM his_vendor WHERE v_number = ?";
+                            $ret="SELECT  * FROM hmisphp.his_vendor WHERE v_number = ?";
                             $stmt= $mysqli->prepare($ret) ;
                             $stmt->bind_param('i',$v_number);
                             $stmt->execute() ;//ok
@@ -99,32 +99,67 @@
                                         <!--Add Patient Form-->
                                         <form method="post">
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputEmail4" class="col-form-label">Vendor Name</label>
-                                                    <input type="text" required="required" value="<?php echo $row->v_name;?>" name="v_name" class="form-control" id="inputEmail4" >
+                                                <!-- Vendor Name -->
+                                                <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                                                    <label for="vendorName" class="block text-sm font-medium text-gray-700 mb-1">Vendor Name</label>
+                                                    <input type="text"
+                                                           required
+                                                           name="v_name"
+                                                           id="vendorName"
+                                                           value="<?php echo $row->v_name; ?>"
+                                                           placeholder="Enter Vendor Name"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputPassword4" class="col-form-label">Vendor Phone Number</label>
-                                                    <input required="required" type="text" value="<?php echo $row->v_phone;?>" name="v_phone" class="form-control"  id="inputPassword4">
+
+                                                <!-- Vendor Phone Number -->
+                                                <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                                                    <label for="vendorPhone" class="block text-sm font-medium text-gray-700 mb-1">Vendor Phone Number</label>
+                                                    <input type="text"
+                                                           required
+                                                           name="v_phone"
+                                                           id="vendorPhone"
+                                                           value="<?php echo $row->v_phone; ?>"
+                                                           placeholder="Enter Vendor Phone"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputPassword4" class="col-form-label">Vendor Address</label>
-                                                    <input required="required" value="<?php echo $row->v_adr;?>" type="text" name="v_adr" class="form-control"  id="inputPassword4">
+
+                                                <!-- Vendor Address -->
+                                                <div class="w-full md:w-1/3 px-2">
+                                                    <label for="vendorAddress" class="block text-sm font-medium text-gray-700 mb-1">Vendor Address</label>
+                                                    <input type="text"
+                                                           required
+                                                           name="v_adr"
+                                                           id="vendorAddress"
+                                                           value="<?php echo $row->v_adr; ?>"
+                                                           placeholder="Enter Vendor Address"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
-                                            
-                                            <div class="form-group">
-                                                <label for="inputAddress" class="col-form-label">Vendor Email</label>
-                                                <input required="required" value="<?php echo $row->v_email;?>" type="email" class="form-control" name="v_email" id="inputAddress">
+
+                                            <div class="mb-4">
+                                                <label for="vendorEmail" class="block text-sm font-medium text-gray-700 mb-1">Vendor Email</label>
+                                                <input type="email"
+                                                       required
+                                                       name="v_email"
+                                                       id="vendorEmail"
+                                                       value="<?php echo $row->v_email; ?>"
+                                                       placeholder="Enter Vendor Email"
+                                                       class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label for="inputAddress" class="col-form-label">Vendor Details</label>
                                                 <textarea  type="text" class="form-control" name="v_desc" id="editor"><?php echo $row->v_desc;?></textarea>
                                             </div>
 
-                                            <button type="submit" name="update_vendor" class="ladda-button btn btn-success" data-style="expand-right">Update Vendor</button>
+                                            <button type="submit"
+                                                    name="update_vendor"
+                                                    class="inline-flex items-center px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-colors duration-200">
+                                                Update Vendor
+                                            </button>
+
 
                                         </form>
                                         <!--End Patient Form-->

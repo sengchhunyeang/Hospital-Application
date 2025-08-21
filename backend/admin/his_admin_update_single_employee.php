@@ -12,7 +12,7 @@
 		    move_uploaded_file($_FILES["doc_dpic"]["tmp_name"],"../doc/assets/images/users/".$_FILES["doc_dpic"]["name"]);
 
             //sql to insert captured values
-			$query="UPDATE his_docs SET doc_fname=?, doc_lname=?,  doc_email=?, doc_pwd=?, doc_dpic=? WHERE doc_number = ?";
+			$query="UPDATE hmisphp.his_docs SET doc_fname=?, doc_lname=?,  doc_email=?, doc_pwd=?, doc_dpic=? WHERE doc_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssss', $doc_fname, $doc_lname, $doc_email, $doc_pwd, $doc_dpic, $doc_number);
 			$stmt->execute();
@@ -79,16 +79,22 @@
                         <!-- end page title --> 
                         <!-- Form row -->
                         <?php
-                            $doc_number=$_GET['doc_number'];
-                            $ret="SELECT  * FROM his_docs WHERE doc_number=?";
-                            $stmt= $mysqli->prepare($ret) ;
-                            $stmt->bind_param('i',$doc_number);
-                            $stmt->execute() ;//ok
-                            $res=$stmt->get_result();
-                            //$cnt=1;
-                            while($row=$res->fetch_object())
-                            {
+                        if (!isset($_GET['doc_number']) || empty($_GET['doc_number'])) {
+                            die("Invalid or missing doc_number");
+                        }
+
+                        $doc_number = $_GET['doc_number'];
+
+                        // use 's' if doc_number is VARCHAR in DB
+                        $ret = "SELECT * FROM hmisphp.his_docs WHERE doc_number=?";
+                        $stmt = $mysqli->prepare($ret);
+                        $stmt->bind_param('s', $doc_number);
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+                        if ($row = $res->fetch_object()) {
+                            // display single employee
                         ?>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">

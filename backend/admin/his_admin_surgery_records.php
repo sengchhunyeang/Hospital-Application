@@ -86,32 +86,40 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                            autocomplete="on"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Patient Ailment</th>
-                                                <th data-hide="phone">Surgeon </th>
-                                                <th data-hide="phone">Surgery Date </th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Number</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Ailment</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Surgeon</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Surgery Date</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_surgery ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_surgery ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -122,23 +130,28 @@
                                                     $mysqlDateTime = $row->s_pat_date;
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->s_pat_name;?></td>
-                                                    <td><?php echo $row->s_pat_number;?></td>
-                                                    <td><?php echo $row->s_pat_ailment;?></td>
-                                                    <td><?php echo $row->s_doc;?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($mysqlDateTime));?></td>
+                                                    <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->s_pat_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->s_pat_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->s_pat_ailment; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->s_doc; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo date("d/m/Y", strtotime($mysqlDateTime)); ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700">
+                                                            <a href="his_admin_view_single_patient_surgery.php?s_number=<?php echo $row->s_number; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                                                                <i class="mdi mdi-eye mr-1"></i> View
+                                                            </a>
+                                                            <!-- <a href="his_admin_manage_theatre_patient.php?delete_s_number=<?php echo $row->s_number?>"
+               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded-md hover:bg-red-700">
+                <i class="fas fa-trash mr-1"></i> Delete Record
+            </a> -->
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    
-                                                    <td>
-                                                        <a href="his_admin_view_single_patient_surgery.php?s_number=<?php echo $row->s_number;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View</a>
-                                                        <!--<a href="his_admin_manage_theatre_patient.php?delete_s_number=<?php echo $row->s_number?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete Record</a>-->
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

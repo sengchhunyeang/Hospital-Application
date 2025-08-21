@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $v_number=$_GET['v_number'];
-                $ret="SELECT  * FROM his_vendor WHERE v_number = ?";
+                $ret="SELECT  * FROM hmisphp.his_vendor WHERE v_number = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$v_number);
                 $stmt->execute() ;//ok
@@ -75,26 +75,40 @@
                             
                                                 </div>
                                             </div> <!-- end col -->
-                                            <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Vendor Name : <?php echo $row->v_name;?></h2>
-                                                    <hr>
-                                                    <h3 class="text-danger">Vendor Contacts : <?php echo $row->v_phone;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Vendor Email : <?php echo $row->v_email;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Vendor Address : <?php echo $row->v_adr;?></h3>
-                                                    <hr>
-                                                    
-                                                    <h2 class="align-centre">Vendor Details</h2>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->v_desc;?>
+                                            <div class="w-full xl:w-7/12 px-2">
+
+                                                <div class="pl-0 xl:pl-3 mt-3 xl:mt-0">
+
+                                                    <!-- Vendor Name -->
+                                                    <h2 class="text-xl font-semibold mb-3">Vendor Name: <?php echo $row->v_name; ?></h2>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Vendor Contacts -->
+                                                    <h3 class="text-red-600 mb-3">Vendor Contacts: <?php echo $row->v_phone; ?></h3>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Vendor Email -->
+                                                    <h3 class="text-red-600 mb-3">Vendor Email: <?php echo $row->v_email; ?></h3>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Vendor Address -->
+                                                    <h3 class="text-red-600 mb-3">Vendor Address: <?php echo $row->v_adr; ?></h3>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Vendor Details Heading -->
+                                                    <h2 class="text-center text-lg font-semibold mb-3">Vendor Details</h2>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Vendor Description -->
+                                                    <p class="text-gray-500 mb-4">
+                                                        <?php echo $row->v_desc; ?>
                                                     </p>
-                                                    <hr>
-                                                   
+                                                    <hr class="border-gray-300">
+
                                                 </div>
-                                            </div> <!-- end col -->
+
+                                            </div>
+                                            <!-- end col -->
                                         </div>
                                         <!-- end row -->
 
