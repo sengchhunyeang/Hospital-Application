@@ -13,7 +13,7 @@
             $pay_descr = $_POST['pay_descr'];
             //$mdr_pat_ailment = $_POST['mdr_pat_ailment'];
             //sql to insert captured values
-			$query="INSERT INTO  his_payrolls  (pay_number, pay_doc_name, pay_doc_number, pay_doc_email, pay_emp_salary, pay_descr) VALUES(?,?,?,?,?,?)";
+			$query="INSERT INTO  hmisphp.his_payrolls  (pay_number, pay_doc_name, pay_doc_number, pay_doc_email, pay_emp_salary, pay_descr) VALUES(?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('ssssss', $pay_number, $pay_doc_name, $pay_doc_number, $pay_doc_email, $pay_emp_salary, $pay_descr);
 			$stmt->execute();
@@ -58,7 +58,7 @@
             <!-- ============================================================== -->
             <?php
                 $doc_number = $_GET['doc_number'];
-                $ret="SELECT  * FROM his_docs WHERE doc_number=?";
+                $ret="SELECT  * FROM hmisphp.his_docs WHERE doc_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$doc_number);
                 $stmt->execute() ;//ok
@@ -97,34 +97,42 @@
                                             <h4 class="header-title">Fill all fields</h4>
                                             <!--Add Patient Form-->
                                             <form method="post">
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputEmail4" class="col-form-label">Employee Name</label>
-                                                        <input type="text" required="required" readonly name="pay_doc_name" value="<?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?>" class="form-control" id="inputEmail4" placeholder="Patient's Name">
+                                                <div class="flex flex-wrap -mx-3 mb-4">
+                                                    <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                                        <label for="pay_doc_name" class="block text-sm font-medium text-gray-700 mb-1">Employee Name</label>
+                                                        <input type="text" id="pay_doc_name" name="pay_doc_name" value="<?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?>"
+                                                               readonly required
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Employee Name">
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Employee Email</label>
-                                                        <input required="required" type="text" readonly name="pay_doc_email" value="<?php echo $row->doc_email;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                                        <label for="pay_doc_email" class="block text-sm font-medium text-gray-700 mb-1">Employee Email</label>
+                                                        <input type="text" id="pay_doc_email" name="pay_doc_email" value="<?php echo $row->doc_email;?>"
+                                                               readonly required
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Employee Email">
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Employee Number</label>
-                                                        <input required="required" type="text" readonly name="pay_doc_number" value="<?php echo $row->doc_number;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <div class="w-full md:w-1/3 ">
+                                                        <label for="pay_doc_number" class="block text-sm font-medium text-gray-700 mb-1">Employee Number</label>
+                                                        <input type="text" id="pay_doc_number" name="pay_doc_number" value="<?php echo $row->doc_number;?>"
+                                                               readonly required
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Employee Number">
                                                     </div>
-
                                                 </div>
 
-                                                <div class="form-row">
 
-                                                    <div class="form-group col-md-12">
-                                                        <label for="inputEmail4" class="col-form-label">Employee Salary ($)</label>
-                                                        <input type="text" required="required"  name="pay_emp_salary"  class="form-control" id="inputEmail4" >
+                                                <div class="flex flex-wrap -mx-3 mb-4">
+                                                    <div class="w-full px-3">
+                                                        <label for="pay_emp_salary" class="block text-sm font-medium text-gray-700 mb-1">Employee Salary ($)</label>
+                                                        <input type="text" id="pay_emp_salary" name="pay_emp_salary" required
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Enter Salary">
                                                     </div>
-
-                                                    
                                                 </div>
+
                                                 <?php }?>
                                                 <hr>
                                                 <div class="form-row">
@@ -145,7 +153,11 @@
                                                         <textarea   type="text" class="form-control" name="pay_descr" id="editor"> </textarea>
                                                 </div>
 
-                                                <button type="submit" name="add_payroll" class="ladda-button btn btn-primary" data-style="expand-right">Add Payroll Record</button>
+                                                <button type="submit" name="add_payroll"
+                                                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
+                                                    Add Payroll Record
+                                                </button>
+
 
                                             </form>
                                             <!--End Patient Form-->

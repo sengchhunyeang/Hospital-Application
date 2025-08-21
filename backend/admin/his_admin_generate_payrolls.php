@@ -87,29 +87,36 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="">
+                                                    <input id="demo-foo-search"
+                                                           type="text"
+                                                           placeholder="Search"
+                                                           autocomplete="on"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
+
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700  text-sm">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Employee Name</th>
-                                                <th data-toggle="true">Employee Number</th>
-                                                <th data-hide="phone">Payroll Number</th>
-                                                <th data-hide="phone">Date Posted</th>
-                                                <th data-hide="phone">Employee Salary </th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left">#</th>
+                                                <th class="px-4 py-2 text-left">Employee Name</th>
+                                                <th class="px-4 py-2 text-left">Employee Number</th>
+                                                <th class="px-4 py-2 text-left">Payroll Number</th>
+                                                <th class="px-4 py-2 text-left">Date Posted</th>
+                                                <th class="px-4 py-2 text-left">Employee Salary</th>
+                                                <th class="px-4 py-2 text-left">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             
-                                                $ret="SELECT * FROM  his_payrolls ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_payrolls ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -120,23 +127,24 @@
                                                     $mysqlDateTime = $row->pay_date_generated;
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->pay_doc_name;?></td>
-                                                    <td><?php echo $row->pay_doc_number;?></td>
-                                                    <td><?php echo $row->pay_number;?></td> 
-                                                    <td><?php echo date("d/m/Y - h:m:s", strtotime($mysqlDateTime));?></td>
-                                                    <td>$ <?php echo $row->pay_emp_salary;?></td>
-                                                 
-                                                    <td>
-                                                       <!-- <a href="his_admin_manage_payrolls.php?delete_pay_number=<?php echo $row->pay_number;?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a> -->
-                                                        <a href="his_admin_generate_single_employee_payroll.php?pay_number=<?php echo $row->pay_number;?>&&pay_doc_number=<?php echo $row->pay_doc_number;?>" class="badge badge-success"><i class="fas fa-file-invoice-dollar "></i> Generate Payroll</a>
+                                                    <tbody>
+                                                    <tr class="border-b hover:bg-gray-50">
+                                                        <td class="px-4 py-2"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2"><?php echo $row->pay_doc_name; ?></td>
+                                                        <td class="px-4 py-2"><?php echo $row->pay_doc_number; ?></td>
+                                                        <td class="px-4 py-2"><?php echo $row->pay_number; ?></td>
+                                                        <td class="px-4 py-2"><?php echo date("d/m/Y - h:m:s", strtotime($mysqlDateTime)); ?></td>
+                                                        <td class="px-4 py-2">$ <?php echo $row->pay_emp_salary; ?></td>
+                                                        <td class="px-4 py-2">
+                                                            <a href="his_admin_generate_single_employee_payroll.php?pay_number=<?php echo $row->pay_number;?>&&pay_doc_number=<?php echo $row->pay_doc_number;?>"
+                                                               class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-2 py-1 rounded-md">
+                                                                <i class="fas fa-file-invoice-dollar"></i> Generate Payroll
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">
