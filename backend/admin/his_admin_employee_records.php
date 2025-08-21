@@ -66,9 +66,16 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-3">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +97,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_docs ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_docs ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -100,17 +107,23 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
-                                                    <td><?php echo $row->doc_number;?></td>
-                                                    <td><?php echo $row->doc_email;?></td>       
-                                                    <td><?php echo $row->doc_dept;?></td>                                                                                               
-                                                    <td><a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View</a></td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody>
+                                                    <tr class="border-b hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->doc_fname;?> <?php echo $row->doc_lname;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->doc_number;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->doc_email;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->doc_dept;?></td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                                                                <i class="mdi mdi-eye mr-1"></i> View
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

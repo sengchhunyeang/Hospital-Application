@@ -7,7 +7,7 @@
   if(isset($_GET['delete_mdr_number']))
   {
         $id=intval($_GET['delete_mdr_number']);
-        $adn="DELETE FROM his_medical_records WHERE  mdr_number = ?";
+        $adn="DELETE FROM hmisphp.his_medical_records WHERE  mdr_number = ?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,32 +84,40 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                                            autocomplete="on"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700  text-sm">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Address</th>
-                                                <th data-hide="phone">Ailment</th>
-                                                <th data-hide="phone">Age</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left">#</th>
+                                                <th class="px-4 py-2 text-left">Patient Name</th>
+                                                <th class="px-4 py-2 text-left">Patient Number</th>
+                                                <th class="px-4 py-2 text-left">Address</th>
+                                                <th class="px-4 py-2 text-left">Ailment</th>
+                                                <th class="px-4 py-2 text-left">Age</th>
+                                                <th class="px-4 py-2 text-left">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_medical_records ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_medical_records ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -119,20 +127,25 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->mdr_pat_name;?></td>
-                                                    <td><?php echo $row->mdr_pat_number;?></td>
-                                                    <td><?php echo $row->mdr_pat_adr;?></td>
-                                                    <td><?php echo $row->mdr_pat_ailment;?></td>
-                                                    <td><?php echo $row->mdr_pat_age;?> Years</td>
-                                                    <td>
-                                                        <a href="his_admin_view_single_medical_record.php?mdr_id=<?php echo $row->mdr_id;?>&&mdr_number=<?php echo $row->mdr_number;?>" class="badge badge-success"><i class="fas fa-eye"></i> View</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody>
+                                                    <tr class="border-b hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_name;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_number;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_adr;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_ailment;?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_age;?> Years</td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_admin_view_single_medical_record.php?mdr_id=<?php echo $row->mdr_id;?>&&mdr_number=<?php echo $row->mdr_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                                                                <i class="fas fa-eye mr-1"></i> View
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

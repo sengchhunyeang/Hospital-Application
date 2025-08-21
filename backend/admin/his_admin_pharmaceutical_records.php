@@ -66,8 +66,15 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <!-- Search input -->
+                                                <div class="mb-3">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                                            autocomplete="on"
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -75,15 +82,16 @@
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <!-- Table header -->
+                                            <thead class="bg-gray-50 text-gray-700 text-left text-sm font-medium">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Pharmaceutical Name</th>
-                                                <th data-hide="phone">Pharmaceutical Barcode</th>
-                                                <th data-hide="phone">Pharmaceutical Vendor</th>
-                                                <th data-hide="phone">Pharmaceutical Category</th>
-                                                <th data-hide="phone">Pharmaceutical Quantity</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2">#</th>
+                                                <th class="px-4 py-2">Pharmaceutical Name</th>
+                                                <th class="px-4 py-2">Pharmaceutical Barcode</th>
+                                                <th class="px-4 py-2">Pharmaceutical Vendor</th>
+                                                <th class="px-4 py-2">Pharmaceutical Category</th>
+                                                <th class="px-4 py-2">Pharmaceutical Quantity</th>
+                                                <th class="px-4 py-2">Action</th>
                                             </tr>
                                             </thead>
                                             <?php
@@ -91,7 +99,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_pharmaceuticals ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_pharmaceuticals ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();
@@ -100,19 +108,24 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->phar_name;?></td>
-                                                    <td><?php echo $row->phar_bcode;?></td>
-                                                    <td><?php echo $row->phar_vendor;?></td>
-                                                    <td><?php echo $row->phar_cat;?></td>
-                                                    <td><?php echo $row->phar_qty;?> Cartons</td>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->phar_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->phar_bcode; ?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->phar_vendor; ?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->phar_cat; ?></td>
+                                                        <td class="px-4 py-2 text-sm"><?php echo $row->phar_qty; ?> Cartons</td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_admin_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                                                                <i class="far fa-eye mr-1"></i> View
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    <td><a href="his_admin_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>" class="badge badge-success"><i class="far fa-eye "></i> View</a></td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

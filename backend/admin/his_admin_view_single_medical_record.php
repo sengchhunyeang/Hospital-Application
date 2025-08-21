@@ -29,7 +29,7 @@
             <?php
                 $mdr_number=$_GET['mdr_number'];
                 $mdr_id=$_GET['mdr_id'];
-                $ret="SELECT  * FROM his_medical_records WHERE mdr_id = ?";
+                $ret="SELECT  * FROM hmisphp.his_medical_records WHERE mdr_id = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$mdr_id);
                 $stmt->execute() ;//ok
@@ -78,52 +78,28 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Name : <?php echo $row->mdr_pat_name;?></h2>
-                                                    <hr>
-                                                    <h3 class="text-danger">Age : <?php echo $row->mdr_pat_age;?> Years</h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Number : <?php echo $row->mdr_pat_number;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Ailment : <?php echo $row->mdr_pat_ailment;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Date Recorded : <?php echo date("d/m/Y - h:m:s", strtotime($mysqlDateTime));?></h3>
-                                                    <hr>
-                                                    <h2 class="align-centre">Prescription</h2>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->mdr_pat_prescr;?>
-                                                    </p>
-                                                    <hr>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                <div class="p-4 mt-3 bg-white rounded-md border border-gray-200">
+                                                    <h2 class="mb-3 text-xl font-bold text-gray-800">Name: <?php echo $row->mdr_pat_name;?></h2>
+                                                    <hr class="my-2 border-gray-300">
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                                    <h3 class="text-red-600 font-medium">Age: <?php echo $row->mdr_pat_age;?> Years</h3>
+                                                    <hr class="my-2 border-gray-300">
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
+                                                    <h3 class="text-red-600 font-medium">Patient Number: <?php echo $row->mdr_pat_number;?></h3>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h3 class="text-red-600 font-medium">Patient Ailment: <?php echo $row->mdr_pat_ailment;?></h3>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h3 class="text-red-600 font-medium">Date Recorded: <?php echo date("d/m/Y - h:i:s", strtotime($mysqlDateTime));?></h3>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <h2 class="text-center text-lg font-semibold text-gray-800 mt-2">Prescription</h2>
+                                                    <hr class="my-2 border-gray-300">
+
+                                                    <p class="text-gray-700 mb-4"><?php echo $row->mdr_pat_prescr;?></p>
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->
