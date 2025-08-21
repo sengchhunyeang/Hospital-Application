@@ -7,7 +7,7 @@
   if(isset($_GET['delete_vendor_number']))
   {
         $id=intval($_GET['delete_vendor_number']);
-        $adn="delete from his_vendor where v_number=?";
+        $adn="delete from hmisphp.his_vendor where v_number=?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,30 +84,36 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="">
+                                                    <input id="demo-foo-search"
+                                                           type="text"
+                                                           placeholder="Search"
+                                                           autocomplete="on"
+                                                           class="block w-full px-3 py-2 text-sm border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Vendor Name</th>
-                                                <th data-hide="phone">Vendor Number</th>
-                                                <th data-hide="phone">Vendro Email</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left">#</th>
+                                                <th class="px-4 py-2 text-left">Vendor Name</th>
+                                                <th class="px-4 py-2 text-left">Vendor Number</th>
+                                                <th class="px-4 py-2 text-left">Vendor Email</th>
+                                                <th class="px-4 py-2 text-left">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_vendor ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_vendor ORDER BY RAND() ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -118,22 +124,38 @@
                                                     //$mysqlDateTime = $row->s_pat_date;
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->v_name;?></td>
-                                                    <td><?php echo $row->v_number;?></td>
-                                                    <td><?php echo $row->v_email;?></td>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->v_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->v_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->v_email; ?></td>
 
-                                                    
-                                                    <td>
-                                                        <a href="his_admin_view_single_vendor.php?v_number=<?php echo $row->v_number;?>" class="badge badge-success"><i class="fas fa-eye"></i> View</a>
-                                                        <a href="his_admin_update_single_vendor.php?v_number=<?php echo $row->v_number;?>" class="badge badge-success"><i class="fas fa-edit"></i> Update</a>
-                                                        <a href="his_admin_manage_vendor.php?delete_vendor_number=<?php echo $row->v_number?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete Record</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
+
+                                                            <!-- View Button (Blue) -->
+                                                            <a href="his_admin_view_single_vendor.php?v_number=<?php echo $row->v_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition-colors duration-200">
+                                                                <i class="fas fa-eye mr-1"></i> View
+                                                            </a>
+
+                                                            <!-- Update Button (Yellow) -->
+                                                            <a href="his_admin_update_single_vendor.php?v_number=<?php echo $row->v_number;?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded hover:bg-yellow-600 transition-colors duration-200">
+                                                                <i class="fas fa-edit mr-1"></i> Update
+                                                            </a>
+
+                                                            <!-- Delete Button (Red) -->
+                                                            <a href="his_admin_manage_vendor.php?delete_vendor_number=<?php echo $row->v_number?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors duration-200">
+                                                                <i class="fas fa-trash mr-1"></i> Delete
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">
