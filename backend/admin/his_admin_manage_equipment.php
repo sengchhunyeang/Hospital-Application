@@ -7,7 +7,7 @@
   if(isset($_GET['delete_eqp']))
   {
         $id=intval($_GET['delete_eqp']);
-        $adn="delete from his_equipments where eqp_code=?";
+        $adn="delete from hmisphp.his_equipments where eqp_code=?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,32 +84,35 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search" autocomplete="on"
+                                                           class="block w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Name</th>
-                                                <th data-hide="phone">Vendor</th>
-                                                <th data-hide="phone">Barcode</th>
-                                                <th data-hide="phone">Status</th>
-                                                <th data-hide="phone">Quantity</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Vendor</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Barcode</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Status</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Quantity</th>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_equipments WHERE eqp_dept = 'Surgical | Theatre' ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_equipments WHERE eqp_dept = 'Surgical | Theatre' ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();
@@ -118,24 +121,32 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->eqp_name;?></td>
-                                                    <td><?php echo $row->eqp_vendor;?></td>
-                                                    <td><?php echo $row->eqp_code;?></td>
-                                                    <td><?php echo $row->eqp_status;?></td>
-                                                    <td><?php echo $row->eqp_qty;?></td>
-                                                    <td>
-                                                        <a href="his_admin_view_single_eqp.php?eqp_code=<?php echo $row->eqp_code;?>" class="badge badge-success"><i class="far fa-eye "></i> View</a>
-                                                        <a href="his_admin_update_single_eqp.php?eqp_code=<?php echo $row->eqp_code;?>" class="badge badge-warning"><i class="fas fa-clipboard-check "></i> Update</a>
-                                                        <a href="his_admin_manage_equipment.php?delete_eqp=<?php echo $row->eqp_code;?>" class="badge badge-danger"><i class="fas fa-trash-alt "></i> Delete</a>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_vendor; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_code; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_status; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_qty; ?></td>
+                                                        <td class="px-4 py-2 space-x-1">
+                                                            <a href="his_admin_view_single_eqp.php?eqp_code=<?php echo $row->eqp_code; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                                                                <i class="far fa-eye mr-1"></i> View
+                                                            </a>
+                                                            <a href="his_admin_update_single_eqp.php?eqp_code=<?php echo $row->eqp_code; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded hover:bg-yellow-600">
+                                                                <i class="fas fa-clipboard-check mr-1"></i> Update
+                                                            </a>
+                                                            <a href="his_admin_manage_equipment.php?delete_eqp=<?php echo $row->eqp_code; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                                                                <i class="fas fa-trash-alt mr-1"></i> Delete
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">
