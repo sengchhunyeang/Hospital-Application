@@ -13,7 +13,7 @@
             $mdr_pat_prescr = $_POST['mdr_pat_prescr'];
             $mdr_pat_ailment = $_POST['mdr_pat_ailment'];
             //sql to insert captured values
-			$query="INSERT INTO  his_medical_records  (mdr_pat_name, mdr_pat_number, mdr_pat_adr, mdr_pat_age, mdr_number, mdr_pat_prescr, mdr_pat_ailment) VALUES(?,?,?,?,?,?,?)";
+			$query="INSERT INTO  hmisphp.his_medical_records  (mdr_pat_name, mdr_pat_number, mdr_pat_adr, mdr_pat_age, mdr_number, mdr_pat_prescr, mdr_pat_ailment) VALUES(?,?,?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssssss', $mdr_pat_name, $mdr_pat_number, $mdr_pat_adr, $mdr_pat_age, $mdr_number, $mdr_pat_prescr, $mdr_pat_ailment);
 			$stmt->execute();
@@ -58,7 +58,7 @@
             <!-- ============================================================== -->
             <?php
                 $pat_number = $_GET['pat_number'];
-                $ret="SELECT  * FROM his_patients WHERE pat_number=?";
+                $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pat_number);
                 $stmt->execute() ;//ok
@@ -97,45 +97,68 @@
                                             <h4 class="header-title">Fill all fields</h4>
                                             <!--Add Patient Form-->
                                             <form method="post">
-                                                <div class="form-row">
+                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                        <input type="text" required="required" readonly name="mdr_pat_name" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>" class="form-control" id="inputEmail4" placeholder="Patient's Name">
+                                                    <div>
+                                                        <label for="mdr_pat_name" class="block text-sm font-medium text-gray-700">Patient Name</label>
+                                                        <input type="text" id="mdr_pat_name" name="mdr_pat_name" readonly
+                                                               value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>"
+                                                               placeholder="Patient's Name"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               required>
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Age</label>
-                                                        <input required="required" type="text" readonly name="mdr_pat_age" value="<?php echo $row->pat_age;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <div>
+                                                        <label for="mdr_pat_age" class="block text-sm font-medium text-gray-700">Patient Age</label>
+                                                        <input type="text" id="mdr_pat_age" name="mdr_pat_age" readonly
+                                                               value="<?php echo $row->pat_age;?>"
+                                                               placeholder="Patient's Age"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               required>
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Address</label>
-                                                        <input required="required" type="text" readonly name="mdr_pat_adr" value="<?php echo $row->pat_addr;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <div>
+                                                        <label for="mdr_pat_adr" class="block text-sm font-medium text-gray-700">Patient Address</label>
+                                                        <input type="text" id="mdr_pat_adr" name="mdr_pat_adr" readonly
+                                                               value="<?php echo $row->pat_addr;?>"
+                                                               placeholder="Patient's Address"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               required>
                                                     </div>
 
                                                 </div>
 
-                                                <div class="form-row">
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Number</label>
-                                                        <input type="text" required="required" readonly name="mdr_pat_number" value="<?php echo $row->pat_number;?>" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
+                                                    <div>
+                                                        <label for="mdr_pat_number" class="block text-sm font-medium text-gray-700">Patient Number</label>
+                                                        <input type="text" id="mdr_pat_number" name="mdr_pat_number" readonly
+                                                               value="<?php echo $row->pat_number;?>"
+                                                               placeholder="DD/MM/YYYY"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               required>
                                                     </div>
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Ailment</label>
-                                                        <input required="required" type="text" readonly name="mdr_pat_ailment" value="<?php echo $row->pat_ailment;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+                                                    <div class="">
+                                                        <label for="mdr_pat_ailment" class="block text-sm font-medium text-gray-700">Patient Ailment</label>
+                                                        <input type="text" id="mdr_pat_ailment" name="mdr_pat_ailment" readonly
+                                                               value="<?php echo $row->pat_ailment;?>"
+                                                               placeholder="Patient's Ailment"
+                                                               class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               required>
                                                     </div>
+
                                                 </div>
+
                                                 <?php }?>
                                                 <hr>
                                                 <div class="form-row">
-                                                    
-                                            
+
+
                                                     <div class="form-group col-md-2" style="display:none">
-                                                        <?php 
-                                                            $length = 5;    
+                                                        <?php
+                                                            $length = 5;
                                                             $pres_no =  substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
                                                         ?>
                                                         <label for="inputZip" class="col-form-label">Medical Record Number</label>
@@ -144,7 +167,7 @@
                                                 </div>
                                                 <?php
                                                     $pres_pat_number = $_GET['pat_number'];
-                                                    $ret="SELECT  * FROM his_prescriptions WHERE pres_pat_number = ?";
+                                                    $ret="SELECT  * FROM hmisphp.his_prescriptions WHERE pres_pat_number = ?";
                                                     $stmt= $mysqli->prepare($ret) ;
                                                     $stmt->bind_param('s',$pres_pat_number);
                                                     $stmt->execute() ;//ok
@@ -153,13 +176,21 @@
                                                     while($row=$res->fetch_object())
                                                     {
                                                 ?>
-                                                <div class="form-group">
-                                                        <label for="inputAddress" class="col-form-label">Patient's Prescription</label>
-                                                        <textarea required="required"  type="text" class="form-control" name="mdr_pat_prescr" id="editor"><?php echo $row->pres_ins;?> </textarea>
-                                                </div>
-                                                <?php }?>
+                                                        <div class="mb-4 ">
+                                                            <label for="editor" class="block text-sm font-medium text-gray-700 mb-1">
+                                                                Patient's Prescription
+                                                            </label>
+                                                            <textarea required name="mdr_pat_prescr" id="editor"
+                                                                      class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                                      rows="5"><?php echo $row->pres_ins; ?></textarea>
+                                                        </div>
 
-                                                <button type="submit" name="add_patient_mdr" class="ladda-button btn btn-primary" data-style="expand-right">Add Patient Medical Record</button>
+                                                    <?php }?>
+
+                                                <button type="submit" name="add_patient_mdr"
+                                                        class=" mt-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
+                                                    Add Patient Medical Record
+                                                </button>
 
                                             </form>
                                             <!--End Patient Form-->

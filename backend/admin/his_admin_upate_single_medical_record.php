@@ -13,7 +13,7 @@
             $mdr_pat_prescr = $_POST['mdr_pat_prescr'];
             $mdr_pat_ailment = $_POST['mdr_pat_ailment'];
             //sql to insert captured values
-			$query="UPDATE  his_medical_records SET  mdr_pat_adr = ?, mdr_pat_age = ?,  mdr_pat_prescr = ?, mdr_pat_ailment = ? WHERE mdr_number = ?";
+			$query="UPDATE  hmisphp.his_medical_records SET  mdr_pat_adr = ?, mdr_pat_age = ?,  mdr_pat_prescr = ?, mdr_pat_ailment = ? WHERE mdr_number = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssss',  $mdr_pat_adr, $mdr_pat_age, $mdr_pat_prescr, $mdr_pat_ailment, $mdr_number);
 			$stmt->execute();
@@ -58,7 +58,7 @@
             <!-- ============================================================== -->
             <?php
                 $mdr_number = $_GET['mdr_number'];
-                $ret="SELECT  * FROM his_medical_records WHERE mdr_number=?";
+                $ret="SELECT  * FROM hmisphp.his_medical_records WHERE mdr_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$mdr_number);
                 $stmt->execute() ;//ok
@@ -97,38 +97,47 @@
                                             <h4 class="header-title">Fill all fields</h4>
                                             <!--Add Patient Form-->
                                             <form method="post">
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                        <input type="text" required="required" readonly name="mdr_pat_name" value="<?php echo $row->mdr_pat_name;?>" class="form-control" id="inputEmail4" placeholder="Patient's Name">
+                                                <div class="flex flex-wrap -mx-2 mb-4">
+                                                    <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                                                        <label for="mdr_pat_name" class="block text-sm font-medium text-gray-700 mb-1">Patient Name</label>
+                                                        <input type="text" id="mdr_pat_name" name="mdr_pat_name" value="<?php echo $row->mdr_pat_name;?>" readonly
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient's Name" required>
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Age</label>
-                                                        <input required="required" type="text"  name="mdr_pat_age" value="<?php echo $row->mdr_pat_age;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                                                        <label for="mdr_pat_age" class="block text-sm font-medium text-gray-700 mb-1">Patient Age</label>
+                                                        <input type="text" id="mdr_pat_age" name="mdr_pat_age" value="<?php echo $row->mdr_pat_age;?>"
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient's Age" required>
                                                     </div>
 
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Address</label>
-                                                        <input required="required" type="text"  name="mdr_pat_adr" value="<?php echo $row->mdr_pat_adr;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Number</label>
-                                                        <input type="text" required="required" readonly name="mdr_pat_number" value="<?php echo $row->mdr_pat_number;?>" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
-                                                    </div>
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Ailment</label>
-                                                        <input required="required" type="text"  name="mdr_pat_ailment" value="<?php echo $row->mdr_pat_ailment;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Age">
+                                                    <div class="w-full md:w-1/3 px-2">
+                                                        <label for="mdr_pat_adr" class="block text-sm font-medium text-gray-700 mb-1">Patient Address</label>
+                                                        <input type="text" id="mdr_pat_adr" name="mdr_pat_adr" value="<?php echo $row->mdr_pat_adr;?>"
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient's Address" required>
                                                     </div>
                                                 </div>
-                                               
+
+
+                                                <div class="flex flex-wrap -mx-2 mb-4">
+                                                    <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0">
+                                                        <label for="mdr_pat_number" class="block text-sm font-medium text-gray-700 mb-1">Patient Number</label>
+                                                        <input type="text" id="mdr_pat_number" name="mdr_pat_number" value="<?php echo $row->mdr_pat_number;?>" readonly
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="DD/MM/YYYY" required>
+                                                    </div>
+
+                                                    <div class="w-full md:w-1/2 px-2">
+                                                        <label for="mdr_pat_ailment" class="block text-sm font-medium text-gray-700 mb-1">Patient Ailment</label>
+                                                        <input type="text" id="mdr_pat_ailment" name="mdr_pat_ailment" value="<?php echo $row->mdr_pat_ailment;?>"
+                                                               class="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                               placeholder="Patient's Ailment" required>
+                                                    </div>
+                                                </div>
+
+
                                                 <hr>
                                                 <div class="form-row">
                                                     
@@ -149,7 +158,10 @@
                                                 </div>
                                                 <?php }?>
 
-                                                <button type="submit" name="update_patient_mdr" class="ladda-button btn btn-warning" data-style="expand-right">Update Patient Medical Record</button>
+                                                <button type="submit" name="update_patient_mdr"
+                                                        class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white text-sm font-medium rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-yellow-400">
+                                                    Update Patient Medical Record
+                                                </button>
 
                                             </form>
                                             <!--End Patient Form-->
