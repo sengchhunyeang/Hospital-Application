@@ -12,7 +12,7 @@
             //$acc_status=$_POST['acc_status'];
 
             //sql to insert captured values
-			$query="INSERT INTO his_accounts (acc_name, acc_desc, acc_type, acc_number, acc_amount) values(?,?,?,?,?)";
+			$query="INSERT INTO hmisphp.his_accounts (acc_name, acc_desc, acc_type, acc_number, acc_amount) values(?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssss', $acc_name, $acc_desc, $acc_type, $acc_number, $acc_amount);
 			$stmt->execute();
@@ -88,13 +88,26 @@
                                         <form method="post">
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Account Name</label>
-                                                    <input type="text" required="required" name="acc_name" class="form-control" id="inputEmail4" >
+                                                <!-- Account Name -->
+                                                <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0">
+                                                    <label for="accountName" class="block text-sm font-medium text-gray-700 mb-1">Account Name</label>
+                                                    <input type="text"
+                                                           required
+                                                           name="acc_name"
+                                                           id="accountName"
+                                                           placeholder="Enter Account Name"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Account Amount($)</label>
-                                                    <input type="text" required="required" name="acc_amount" class="form-control" id="inputEmail4" >
+
+                                                <!-- Account Amount -->
+                                                <div class="w-full md:w-1/2 px-2">
+                                                    <label for="accountAmount" class="block text-sm font-medium text-gray-700 mb-1">Account Amount ($)</label>
+                                                    <input type="text"
+                                                           required
+                                                           name="acc_amount"
+                                                           id="accountAmount"
+                                                           placeholder="Enter Account Amount"
+                                                           class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                             </div>
 
@@ -117,7 +130,12 @@
                                                 <input required="required" value="Payable Account" type="text" class="form-control" name="acc_type" id="inputAddress">
                                             </div>
 
-                                            <button type="submit" name="add_acc" class="ladda-button btn btn-success" data-style="expand-right">Add Account</button>
+                                            <button type="submit"
+                                                    name="add_acc"
+                                                    class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+                                                Add Account
+                                            </button>
+
 
                                         </form>
                                         <!--End Patient Form-->

@@ -7,7 +7,7 @@
   if(isset($_GET['delete_account']))
   {
         $id=intval($_GET['delete_account']);
-        $adn="delete from his_accounts where acc_number=?";
+        $adn="delete from hmisphp.his_accounts where acc_number=?";
         $stmt= $mysqli->prepare($adn);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -84,27 +84,33 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input type="text"
+                                                           id="demo-foo-search"
+                                                           placeholder="Search"
+                                                           autocomplete="on"
+                                                           class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Account Name</th>
-                                                <th data-hide="phone">Account Number</th>
-                                                <th data-hide="phone">Account Amount</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left">#</th>
+                                                <th class="px-4 py-2 text-left">Account Name</th>
+                                                <th class="px-4 py-2 text-left">Account Number</th>
+                                                <th class="px-4 py-2 text-left">Account Amount</th>
+                                                <th class="px-4 py-2 text-left">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             
-                                                $ret="SELECT * FROM  his_accounts WHERE acc_type = 'Receivable Account' ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_accounts WHERE acc_type = 'Receivable Account' ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();
@@ -113,23 +119,30 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->acc_name;?></td>
-                                                    <td><?php echo $row->acc_number;?></td>
-                                                    <td>$ <?php echo $row->acc_amount;?></td>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->acc_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->acc_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700">$ <?php echo $row->acc_amount; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
+                                                            <a href="his_admin_view_single_payable_account.php?acc_number=<?php echo $row->acc_number; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                                                                <i class="fas fa-eye mr-1"></i> View
+                                                            </a>
+                                                            <a href="his_admin_update_single_receivable_account.php?acc_number=<?php echo $row->acc_number; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded hover:bg-yellow-600">
+                                                                <i class="fas fa-clipboard-check mr-1"></i> Update
+                                                            </a>
+                                                            <a href="his_admin_manage_acc_receivable.php?delete_account=<?php echo $row->acc_number; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                                                                <i class="fas fa-trash-alt mr-1"></i> Delete
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
 
-                                                    <td>
-                                                        <a href="his_admin_view_single_payable_account.php?acc_number=<?php echo $row->acc_number;?>" class="badge badge-success"><i class="fas fa-eye "></i> View</a>
-                                                        <a href="his_admin_update_single_receivable_account.php?acc_number=<?php echo $row->acc_number;?>" class="badge badge-warning"><i class="fas fa-clipboard-check "></i> Update</a>
-                                                        <a href="his_admin_manage_acc_receivable.php?delete_account=<?php echo $row->acc_number;?>" class="badge badge-danger"><i class="fas fa-trash-alt "></i> Delete</a>
-
-
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">
