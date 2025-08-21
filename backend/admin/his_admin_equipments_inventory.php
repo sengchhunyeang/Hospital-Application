@@ -66,32 +66,40 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="mb-4">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-100">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Equipment Name</th>
-                                                <th data-hide="phone">Equipment Code</th>
-                                                <th data-hide="phone">Equipment Vendor</th>
-                                                <th data-hide="phone">Equipment Department</th>
-                                                <th data-hide="phone">Equipment Quantity</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">#</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Equipment Name</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Equipment Code</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Equipment Vendor</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Equipment Department</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Equipment Quantity</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  his_equipments ORDER BY RAND() "; 
+                                                $ret="SELECT * FROM  hmisphp.his_equipments ORDER BY RAND() ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();
@@ -100,20 +108,24 @@
                                                 {
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->eqp_name;?></td>
-                                                    <td><?php echo $row->eqp_code;?></td>
-                                                    <td><?php echo $row->eqp_vendor;?></td>
-                                                    <td><?php echo $row->eqp_dept;?></td>
-                                                    <td><?php echo $row->eqp_qty;?></td>
-                                                    <td>
-                                                        <a href="his_admin_view_single_eqp.php?eqp_code=<?php echo $row->eqp_code;?>" class="badge badge-success"><i class="far fa-eye "></i> View</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_code; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_vendor; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_dept; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->eqp_qty; ?></td>
+                                                        <td class="px-4 py-2">
+                                                            <a href="his_admin_view_single_eqp.php?eqp_code=<?php echo $row->eqp_code; ?>"
+                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                                                                <i class="far fa-eye mr-1"></i> View
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">
