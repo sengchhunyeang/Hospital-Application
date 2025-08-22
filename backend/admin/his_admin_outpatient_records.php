@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <?php include('assets/inc/head.php');?>
 
     <body>
@@ -33,7 +33,7 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
+
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -48,16 +48,16 @@
                                     <h4 class="page-title">OutPatient Details</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         <div class="row">
                             <div class="col-12">
                                 <div class="card-box">
                                     <h4 class="header-title"></h4>
                                     <div class="mb-2">
-                                        <div class="row">
-                                            <div class="col-12 text-sm-center form-inline" >
+                                        <div class="row flex justify-content-between align-items-center">
+                                            <div class="col-12 flex justify-between items-center flex-wrap">
                                                 <div class="form-group mr-2" style="display:none">
                                                     <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
                                                         <option value="">Show all</option>
@@ -66,7 +66,7 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="mb-4">
+                                                <div class="mb-3">
                                                     <input
                                                             id="demo-foo-search"
                                                             type="text"
@@ -75,11 +75,17 @@
                                                             class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                                     >
                                                 </div>
-
+                                                <!-- Export Button -->
+                                                <div class="mb-3 ml-2">
+                                                    <button id="exportBtn"
+                                                            class="px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+                                                        Export to Excel
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
                                             <thead class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
@@ -176,7 +182,16 @@
 
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+        <script>
+            // Export table to Excel
+            document.getElementById('exportBtn').addEventListener('click', function () {
+                var table = document.getElementById('demo-foo-filtering');
+                var wb = XLSX.utils.table_to_book(table, {sheet: "OutPatients"});
+                XLSX.writeFile(wb, 'OutPatients.xlsx');
+            });
+        </script>
     </body>
 
 </html>

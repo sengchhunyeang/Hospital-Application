@@ -10,7 +10,7 @@
             
             
             //sql to update captured values
-			$query="UPDATE  his_pharmaceuticals_categories SET  pharm_cat_vendor=?, pharm_cat_desc=? WHERE pharm_cat_name = ?";
+			$query="UPDATE  hmisphp.his_pharmaceuticals_categories SET  pharm_cat_vendor=?, pharm_cat_desc=? WHERE pharm_cat_name = ?";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sss',   $pharm_cat_vendor, $pharm_cat_desc, $pharm_cat_name);
 			$stmt->execute();
@@ -55,7 +55,7 @@
             <!-- ============================================================== -->
             <?php
                 $pharm_cat_name=$_GET['pharm_cat_name'];
-                $ret="SELECT  * FROM his_pharmaceuticals_categories WHERE pharm_cat_name=?";
+                $ret="SELECT  * FROM hmisphp.his_pharmaceuticals_categories WHERE pharm_cat_name=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pharm_cat_name);
                 $stmt->execute() ;//ok
@@ -94,15 +94,26 @@
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
                                         <form method="post">
-                                            <div class="form-row" >
-                                                <div class="form-group col-md-6" style="display:none">
-                                                    <label for="inputEmail4" class="col-form-label">Pharmaceutical Category Name</label>
-                                                    <input  type="text" value="<?php echo $row->pharm_cat_name;?>" required="required" name="pharm_cat_name" class="form-control" id="inputEmail4" >
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="inputPassword4" class="col-form-label">Pharmaceutical Category Vendor</label>
-                                                    <input required="required" value="<?php echo $row->pharm_cat_vendor;?>" type="text" name="pharm_cat_vendor" class="form-control"  id="inputPassword4">
-                                                </div>
+                                            <!-- Hidden Pharmaceutical Category Name -->
+                                            <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0 hidden">
+                                                <label for="pharmCatName" class="block text-sm font-medium text-gray-700 mb-1">Pharmaceutical Category Name</label>
+                                                <input type="text"
+                                                       id="pharmCatName"
+                                                       name="pharm_cat_name"
+                                                       value="<?php echo $row->pharm_cat_name; ?>"
+                                                       required
+                                                       class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+
+                                            <!-- Pharmaceutical Category Vendor -->
+                                            <div class="w-full px-2">
+                                                <label for="pharmCatVendor" class="block text-sm font-medium text-gray-700 mb-1">Pharmaceutical Category Vendor</label>
+                                                <input type="text"
+                                                       id="pharmCatVendor"
+                                                       name="pharm_cat_vendor"
+                                                       value="<?php echo $row->pharm_cat_vendor; ?>"
+                                                       required
+                                                       class="block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                             </div>
 
                                             <div class="form-group">
@@ -110,7 +121,11 @@
                                                 <textarea required="required" type="text" class="form-control" name="pharm_cat_desc" id="editor"><?php echo $row->pharm_cat_desc;?></textarea>
                                             </div>
 
-                                           <button type="submit" name="update_pharmaceutical_category" class="ladda-button btn btn-danger" data-style="expand-right">Update Category</button>
+                                            <button type="submit"
+                                                    name="update_pharmaceutical_category"
+                                                    class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white text-sm font-medium rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                                                Update Category
+                                            </button>
 
                                         </form>
                                      

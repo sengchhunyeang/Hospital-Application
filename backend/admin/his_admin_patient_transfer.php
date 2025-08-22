@@ -86,10 +86,13 @@ if(isset($_GET['delete']))
                                                 <option value="InPatients">InPatients</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="mb-2">
                                             <input id="demo-foo-search" type="text" placeholder="Search"
-                                                   class="form-control form-control-sm" autocomplete="on">
+                                                   autocomplete="on"
+                                                   class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md
+                bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -100,9 +103,15 @@ if(isset($_GET['delete']))
                                     <tr>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Patient Number</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Address</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Category</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient Number
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Address
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Category
+                                        </th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                                     </tr>
                                     </thead>
@@ -128,8 +137,8 @@ if(isset($_GET['delete']))
                                             </a>
                                         </td>
                                     </tr>
-                                        </tbody>
-                                        <?php $cnt = $cnt + 1;
+                                    </tbody>
+                                    <?php $cnt = $cnt + 1;
                                     } ?>
                                     <tfoot>
                                     <tr class="active">
@@ -153,15 +162,25 @@ if(isset($_GET['delete']))
                             <hr class="my-2">
 
                             <div class="overflow-x-auto">
-                                <table id="demo-foo-filtering" class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                <table id="demo-foo-filtering"
+                                       class="min-w-full border border-gray-200 divide-y divide-gray-200">
                                     <thead class="bg-gray-100">
                                     <tr>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Name</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Patient Number</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Transfer Status</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Referral Hospital</th>
-                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">Transfer Date</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Name
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient Number
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Transfer Status
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Referral Hospital
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Transfer Date
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
@@ -184,8 +203,8 @@ if(isset($_GET['delete']))
                                             <?php echo date('d/m/Y H:i', strtotime($row->t_date)); ?>
                                         </td>
                                     </tr>
-                                        </tbody>
-                                        <?php $cnt = $cnt + 1;
+                                    </tbody>
+                                    <?php $cnt = $cnt + 1;
                                     } ?>
                                     <tfoot>
                                     <tr class="active">

@@ -28,7 +28,7 @@
             <!-- ============================================================== -->
             <?php
                 $pharm_cat_id=$_GET['pharm_cat_id'];
-                $ret="SELECT  * FROM his_pharmaceuticals_categories WHERE pharm_cat_id = ?";
+                $ret="SELECT  * FROM hmisphp.his_pharmaceuticals_categories WHERE pharm_cat_id = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('i',$pharm_cat_id);
                 $stmt->execute() ;//ok
@@ -76,42 +76,49 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Pharmaceutical Name: <?php echo $row->pharm_cat_name;?></h2>
-                                                    <hr>
-                                                    <h6 class="text-danger">Phrmaceutical Vendor<?php echo $row->pharm_cat_vendor;?></h6>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->pharm_cat_desc;?>
+                                                <div class="pl-0 xl:pl-3 mt-3 xl:mt-0">
+                                                    <!-- Pharmaceutical Name -->
+                                                    <h2 class="text-xl font-semibold mb-3">Medicine Name: <?php echo $row->pharm_cat_name; ?></h2>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Pharmaceutical Vendor -->
+                                                    <h6 class="text-red-600 mb-3">Medicine Supplier: <?php echo $row->pharm_cat_vendor; ?></h6>
+                                                    <hr class="mb-3 border-gray-300">
+
+                                                    <!-- Pharmaceutical Description -->
+                                                    <p class="text-gray-500 mb-4">
+                                                        <?php echo $row->pharm_cat_desc; ?>
                                                     </p>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                    <hr class="border-gray-300">
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                                <!--
+                                                 <form class="form-inline mb-4">
+                                                     <label class="my-1 mr-2" for="quantityinput">Quantity</label>
+                                                     <select class="custom-select my-1 mr-sm-3" id="quantityinput">
+                                                         <option value="1">1</option>
+                                                         <option value="2">2</option>
+                                                         <option value="3">3</option>
+                                                         <option value="4">4</option>
+                                                         <option value="5">5</option>
+                                                         <option value="6">6</option>
+                                                         <option value="7">7</option>
+                                                     </select>
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
+                                                     <label class="my-1 mr-2" for="sizeinput">Size</label>
+                                                     <select class="custom-select my-1 mr-sm-3" id="sizeinput">
+                                                         <option selected>Small</option>
+                                                         <option value="1">Medium</option>
+                                                         <option value="2">Large</option>
+                                                         <option value="3">X-large</option>
+                                                     </select>
+                                                 </form>
+
+                                                 <div>
+                                                     <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
+                                                     <button type="button" class="btn btn-success waves-effect waves-light">
+                                                         <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
+                                                     </button>
+                                                 </div> -->
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>

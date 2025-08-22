@@ -6,7 +6,7 @@ check_login();
 $aid = $_SESSION['ad_id'];
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
-    $adn = "delete from his_patients where pat_id=?";
+    $adn = "delete from hmisphp.his_patients where pat_id=?";
     $stmt = $mysqli->prepare($adn);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -82,10 +82,15 @@ if (isset($_GET['delete'])) {
                                                 <option value="InPatients">InPatients</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="">
                                             <input id="demo-foo-search" type="text" placeholder="Search"
-                                                   class="form-control form-control-sm" autocomplete="on">
+                                                   autocomplete="on"
+                                                   class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md
+                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                bg-white text-gray-700">
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
