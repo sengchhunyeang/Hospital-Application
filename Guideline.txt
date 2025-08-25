@@ -1,8 +1,16 @@
 * Hospital management System *
 
 **Admin Login Details**
+
 Email   : chhunyeangseng@gmail.com
 Password: chhunyeang123
+
+Email   : reatrey12345com@gmail.com
+Password: rty123
+
+Email   : iankeonary@gmail.com
+Password: nary123
+
 
 
 **Doctor Login Details**
