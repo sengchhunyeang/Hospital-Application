@@ -27,145 +27,128 @@
             }
     }
 ?>
-<!--End Login-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Doctor Login </title>
+    <meta charset="utf-8" />
+    <title>Hospital Management System - Doctor Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Hospital Management System - Doctor Login Portal" name="description" />
+    <meta content="MartDevelopers" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        body {
+            background: url('assets/images/login3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
 </head>
-<head>
-        <meta charset="utf-8" />
-        <title>Hospital Management System -A Super Responsive Information System</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="" name="description" />
-        <meta content="" name="MartDevelopers" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+<body class="min-h-screen flex items-center justify-center py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-center">
+            <div class="w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
+                <div class="bg-white/80 rounded-lg overflow-hidden shadow-lg backdrop-blur-md">
 
-        <!-- App css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-        <!--Load Sweet Alert Javascript-->
-        
-        <script src="assets/js/swal.js"></script>
-        <!--Inject SWAL-->
-        <?php if(isset($success)) {?>
-        <!--This code for injecting an alert-->
-                <script>
-                            setTimeout(function () 
-                            { 
-                                swal("Success","<?php echo $success;?>","success");
-                            },
-                                100);
-                </script>
-
-        <?php } ?>
-
-        <?php if(isset($err)) {?>
-        <!--This code for injecting an alert-->
-                <script>
-                            setTimeout(function () 
-                            { 
-                                swal("Failed","<?php echo $err;?>","error");
-                            },
-                                100);
-                </script>
-
-        <?php } ?>
-
-
-
-    </head>
-
-    <body class="authentication-bg authentication-bg-pattern">
-
-        <div class="account-pages mt-5 mb-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg-pattern">
-
-                            <div class="card-body p-4">
-
-                                <div class="text-center w-75 m-auto">
-                                    <a href="index.php">
-                                        <span><img src="assets/images/right.png" alt="" height="63"></span>
-                                    </a>
-                                    <p class="text-muted mb-4 mt-3">Enter your email address and password to access Doctor panel.</p>
-                                </div>
-
-                                <form method='post' >
-
-                                    <div class="form-group mb-3">
-                                        <label for="emailaddress">Doctor Number</label>
-                                        <input class="form-control" name="doc_number" type="text" id="emailaddress" required="" placeholder="Enter your doctor number">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" name="doc_pwd" type="password" required="" id="password" placeholder="Enter your password">
-                                    </div>
-
-                                    <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-success btn-block" name="doc_login" type="submit"> Log In </button>
-                                    </div>
-
-                                </form>
-
-                                <!--
-                                For Now Lets Disable This
-                                This feature will be implemented on later versions
-                                <div class="text-center">
-                                    <h5 class="mt-3 text-muted">Sign in with</h5>
-                                    <ul class="social-list list-inline mt-3 mb-0">
-                                        <li class="list-inline-item">
-                                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                -->
-
-                            </div> <!-- end card-body -->
-                        </div>
-                        <!-- end card -->
-
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <p> <a href="his_doc_reset_pwd.php" class="text-white-50 ml-1">Forgot your password?</a></p>
-                               <!-- <p class="text-white-50">Don't have an account? <a href="his_admin_register.php" class="text-white ml-1"><b>Sign Up</b></a></p>-->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
+    <div class="p-8">
+        <div class="text-center mb-6">
+            <a href="index.php" class="inline-block">
+                <!-- <img src="assets/images/doc1.jpg" alt="Hospital Management System" class="mx-auto rounded-lg shadow-md w-full max-w-xs"> -->
+            </a>
+            <h1 class="text-2xl font-bold text-gray-800 mt-4">Doctor Login Portal</h1>
+            <p class="text-gray-600 mt-2">Access your medical dashboard</p>
         </div>
-        <!-- end page -->
+
+        <?php if(isset($err)) { ?>
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded" role="alert">
+            <p class="font-bold">Login Failed</p>
+            <p><?php echo $err; ?></p>
+        </div>
+        <?php } ?>
+
+        <form method="post">
+            <div class="mb-4">
+                <label for="doc_number" class="block text-gray-700 text-sm font-bold mb-2">
+                    <i class="fas fa-user-md mr-2 text-blue-500"></i>Doctor Number
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="doc_number" name="doc_number" type="text" placeholder="Enter your doctor number" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
+                    <i class="fas fa-lock mr-2 text-blue-500"></i>Password
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="password" name="doc_pwd" type="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-200" 
+                    type="submit" name="doc_login">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Log In
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-6">
+            <a class="inline-block text-sm text-blue-500 hover:text-blue-800 font-medium" href="his_doc_reset_pwd.php">
+                <i class="fas fa-key mr-1"></i> Forgot your password?
+            </a>
+        </div>
+    </div>
+</div>
 
 
-<!--        --><?php //include ("assets/inc/footer1.php");?>
+                <div class="text-center mt-6">
+                    <p class="text-white text-sm font-medium">
+                        &copy; <?php echo date('Y'); ?> Hospital Management System. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Vendor js -->
-        <script src="assets/js/vendor.min.js"></script>
+    <!-- SweetAlert Notifications -->
+    <?php if(isset($success)) { ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '<?php echo $success; ?>',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        });
+    </script>
+    <?php } ?>
 
-        <!-- App js -->
-        <script src="assets/js/app.min.js"></script>
-
-    </body>
-
+    <?php if(isset($err)) { ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: '<?php echo $err; ?>',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000
+            });
+        });
+    </script>
+    <?php } ?>
+</body>
 </html>
