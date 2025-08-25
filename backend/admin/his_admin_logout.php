@@ -19,7 +19,8 @@
         <!-- Logo -->
         <div class="mb-6">
             <a href="his_admin_logout.php">
-                <img src="assets/images/logo-dark.png" alt="Logo" class="mx-auto h-12">
+<!--                <img src="assets/images/logo.png" alt="Logo" class="mx-auto h-24">-->
+<!--                <div> HMS</div>-->
             </a>
         </div>
 
