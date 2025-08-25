@@ -43,264 +43,222 @@
                             <div class="col-12">
                                 <div class="page-title-box">
                                     
-                                    <h4 class="page-title">Hospital Management System Dashboard</h4>
+                                    <h4 class="page-title text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Hospital Management System Dashboard</h4>
+
                                 </div>
                             </div>
                         </div>     
                         <!-- end page title --> 
                         
 
-                        <div class="row">
-                            <!--Start OutPatients-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4">
-                                    <div class="flex">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="fab fa-accessible-icon text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                //code for summing up number of out patients
-                                                $result ="SELECT count(*) FROM hmisphp.his_patients WHERE pat_type = 'OutPatient' ";
-                                                $stmt = $mysqli->prepare($result);
-                                                $stmt->execute();
-                                                $stmt->bind_result($outpatient);
-                                                $stmt->fetch();
-                                                $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1">
-                                                    <span><?php echo $outpatient;?></span>
-                                                </h3>
-                                                <p class="text-black text-sm truncate">Out Patients</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
+
+                        <!-- Out Patients -->
+                        <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1 p-6">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center shadow-md">
+                                    <i class="fab fa-accessible-icon text-white text-2xl"></i>
                                 </div>
-                            </div> <!-- end col-->
-                            <!--End Out Patients-->
-
-
-                            <!--Start InPatients-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
-                                    <div class="flex items-center">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="mdi mdi-hotel text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                //code for summing up number of in / admitted patients
-                                                $result = "SELECT count(*) FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
-                                                $stmt = $mysqli->prepare($result);
-                                                $stmt->execute();
-                                                $stmt->bind_result($inpatient);
-                                                $stmt->fetch();
-                                                $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1">
-                                                    <span class="counter"><?php echo $inpatient; ?></span>
-                                                </h3>
-                                                <p class="text-black text-sm truncate">In Patients</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="ml-4">
+                                    <?php
+                                        $result ="SELECT count(*) FROM hmisphp.his_patients WHERE pat_type = 'OutPatient' ";
+                                        $stmt = $mysqli->prepare($result);
+                                        $stmt->execute();
+                                        $stmt->bind_result($outpatient);
+                                        $stmt->fetch();
+                                        $stmt->close();
+                                    ?>
+                                    <h3 class="text-3xl font-bold text-gray-800">
+                                        <?php echo $outpatient;?>
+                                    </h3>
+                                    <p class="text-gray-600 text-sm">Out Patients</p>
                                 </div>
-                            </div> <!-- end col-->
-                            <!--End InPatients-->
-
-                            <!--Start Employees-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
-                                    <div class="flex items-center">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="mdi mdi-hotel text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                    //code for summing up number of employees in the certain Hospital
-                                                    $result ="SELECT count(*) FROM hmisphp.his_docs ";
-                                                    $stmt = $mysqli->prepare($result);
-                                                    $stmt->execute();
-                                                    $stmt->bind_result($doc);
-                                                    $stmt->fetch();
-                                                    $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1"><span data-plugin="counterup"><?php echo $doc;?></span></h3>
-                                                <p class="text-black mb-1 text-truncate">Hospital Employees</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </div> <!-- end col-->
-                            <!--End Employees-->
-                        
+                            </div>
                         </div>
 
-                        <div class="row">
-
-                        <!--Start Vendors-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
-                                    <div class="flex items-center">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="mdi mdi-hotel text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                    /*code for summing up number of vendors whom supply eqipments, 
-                                                     *pharms or any other equipments
-                                                     */ 
-                                                    $result ="SELECT count(*) FROM hmisphp.his_vendor ";
-                                                    $stmt = $mysqli->prepare($result);
-                                                    $stmt->execute();
-                                                    $stmt->bind_result($vendor);
-                                                    $stmt->fetch();
-                                                    $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1"><span data-plugin="counterup"><?php echo $vendor;?></span></h3>
-                                                <p class="text-black mb-1 text-truncate">Vendors</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </div> <!-- end col--> 
-                            <!--End Vendors-->  
-
-                            <!--Start Corporation Assets-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
-                                    <div class="flex items-center">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="mdi mdi-hotel text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                    /* 
-                                                     * code for summing up number of assets,
-                                                     */ 
-                                                    $result ="SELECT count(*) FROM hmisphp.his_equipments ";
-                                                    $stmt = $mysqli->prepare($result);
-                                                    $stmt->execute();
-                                                    $stmt->bind_result($assets);
-                                                    $stmt->fetch();
-                                                    $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1"><span data-plugin="counterup"><?php echo $assets;?></span></h3>
-                                                <p class="text-black mb-1 text-truncate">Corporation Assets</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </div> <!-- end col-->
-                            <!--End Corporation Assets-->
-
-                            <!--Start Pharmaceuticals-->
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-2">
-                                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200">
-                                    <div class="flex items-center">
-                                        <div class="w-1/2">
-                                            <div class="w-16 h-16 mx-auto rounded-full border-2 border-blue-500 bg-blue-50 flex items-center justify-center">
-                                                <i class="mdi mdi-hotel text-blue-500 text-xl"></i>
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2">
-                                            <div class="text-right">
-                                                <?php
-                                                    /* 
-                                                     * code for summing up number of pharmaceuticals,
-                                                     */ 
-                                                    $result ="SELECT count(*) FROM hmisphp.his_pharmaceuticals ";
-                                                    $stmt = $mysqli->prepare($result);
-                                                    $stmt->execute();
-                                                    $stmt->bind_result($phar);
-                                                    $stmt->fetch();
-                                                    $stmt->close();
-                                                ?>
-                                                <h3 class="text-black text-2xl font-semibold mt-1"><span data-plugin="counterup"><?php echo $phar;?></span></h3>
-                                                <p class="text-black mb-1 text-truncate">Pharmaceuticals</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </div> <!-- end col-->
-                            <!--End Pharmaceuticals-->
-
+                        <!-- In Patients -->
+                        <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1 p-6">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center shadow-md">
+                                    <i class="mdi mdi-hospital text-white text-2xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <?php
+                                        $result = "SELECT count(*) FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
+                                        $stmt = $mysqli->prepare($result);
+                                        $stmt->execute();
+                                        $stmt->bind_result($inpatient);
+                                        $stmt->fetch();
+                                        $stmt->close();
+                                    ?>
+                                    <h3 class="text-3xl font-bold text-gray-800">
+                                        <?php echo $inpatient;?>
+                                    </h3>
+                                    <p class="text-gray-600 text-sm">In Patients</p>
+                                </div>
+                            </div>
                         </div>
-                        
 
-                        
-                        <!--Recently Employed Employees-->
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card-box">
-                                    <h4 class="header-title mb-3">Hospital Employees</h4>
+                        <!-- Employees -->
+                        <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1 p-6">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center shadow-md">
+                                    <i class="mdi mdi-account-group text-white text-2xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <?php
+                                        $result ="SELECT count(*) FROM hmisphp.his_docs";
+                                        $stmt = $mysqli->prepare($result);
+                                        $stmt->execute();
+                                        $stmt->bind_result($doc);
+                                        $stmt->fetch();
+                                        $stmt->close();
+                                    ?>
+                                    <h3 class="text-3xl font-bold text-gray-800">
+                                        <?php echo $doc;?>
+                                    </h3>
+                                    <p class="text-gray-600 text-sm">Hospital Employees</p>
+                                </div>
+                            </div>
+                        </div>
 
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-hover table-centered m-0">
+                    </div>
 
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th colspan="2">Picture</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Department</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <?php
-                                                $ret="SELECT * FROM hmisphp.his_docs ORDER BY RAND() LIMIT 10 ";
-                                                //sql code to get to ten docs  randomly
-                                                $stmt= $mysqli->prepare($ret) ;
-                                                $stmt->execute() ;//ok
-                                                $res=$stmt->get_result();
-                                                $cnt=1;
-                                                while($row=$res->fetch_object())
-                                                {
-                                            ?>
-                                            <tbody>
-                                                <tr class="text-black">
-                                                    <td>
-                                                        <img src="../doc/assets/images/users/<?php echo $row->doc_dpic;?>" alt="img" title="contact-img" class="rounded-full h-10 w-10 object-cover" />
-                                                    </td>
-                                                    <td class="px-4 py-3"></td>
-                                                    <td class="px-4 py-3 font-medium">
-                                                        <?php echo $row->doc_fname; ?> <?php echo $row->doc_lname; ?>
-                                                    </td>
-                                                    <td class="px-4 py-3">
-                                                        <?php echo $row->doc_email; ?>
-                                                    </td>
-                                                    <td class="px-4 py-3">
-                                                        <?php echo $row->doc_dept; ?>
-                                                    </td>
-                                                    <td class="px-4 py-3">
-                                                        <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id; ?>&&doc_number=<?php echo $row->doc_number; ?>"
-                                                           class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors">
-                                                            <i class="mdi mdi-eye mr-1"></i> View
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <?php }?>
-                                        </table>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
+
+                            <!-- Vendors -->
+                            <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-6">
+                                <div class="flex items-center">
+                                    <div class="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center shadow-md">
+                                        <i class="mdi mdi-truck-delivery text-white text-2xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <?php
+                                            $result ="SELECT count(*) FROM hmisphp.his_vendor";
+                                            $stmt = $mysqli->prepare($result);
+                                            $stmt->execute();
+                                            $stmt->bind_result($vendor);
+                                            $stmt->fetch();
+                                            $stmt->close();
+                                        ?>
+                                        <h3 class="text-3xl font-bold text-gray-800"><?php echo $vendor;?></h3>
+                                        <p class="text-gray-600 text-sm">Vendors</p>
                                     </div>
                                 </div>
-                            </div> <!-- end col -->                                                                                                                                                                                                                                         
+                            </div>
+
+                            <!-- Corporation Assets -->
+                            <div class="bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-6">
+                                <div class="flex items-center">
+                                    <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center shadow-md">
+                                        <i class="mdi mdi-domain text-white text-2xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <?php
+                                            $result ="SELECT count(*) FROM hmisphp.his_equipments";
+                                            $stmt = $mysqli->prepare($result);
+                                            $stmt->execute();
+                                            $stmt->bind_result($assets);
+                                            $stmt->fetch();
+                                            $stmt->close();
+                                        ?>
+                                        <h3 class="text-3xl font-bold text-gray-800"><?php echo $assets;?></h3>
+                                        <p class="text-gray-600 text-sm">Corporation Assets</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pharmaceuticals -->
+                            <div class="bg-gradient-to-r from-pink-50 to-pink-100 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-6">
+                                <div class="flex items-center">
+                                    <div class="w-16 h-16 rounded-full bg-pink-500 flex items-center justify-center shadow-md">
+                                        <i class="mdi mdi-pill text-white text-2xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <?php
+                                            $result ="SELECT count(*) FROM hmisphp.his_pharmaceuticals";
+                                            $stmt = $mysqli->prepare($result);
+                                            $stmt->execute();
+                                            $stmt->bind_result($phar);
+                                            $stmt->fetch();
+                                            $stmt->close();
+                                        ?>
+                                        <h3 class="text-3xl font-bold text-gray-800"><?php echo $phar;?></h3>
+                                        <p class="text-gray-600 text-sm">Pharmaceuticals</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+                        
+
+                        <!-- Recently Employed Employees -->
+                    <div class="row mt-6">
+                    <div class="col-xl-12">
+                        <div class="bg-white shadow-md rounded-2xl p-6">
+                        
+                        <!-- Header -->
+                        <h4 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 flex items-center">
+                            <i class="mdi mdi-account-group mr-2 text-blue-600"></i> Hospital Employees
+                        </h4>
+
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gradient-to-r from-blue-50 to-indigo-50 text-left text-gray-700 text-sm uppercase">
+                                <th class="px-4 py-3">Picture</th>
+                                <th class="px-4 py-3">Name</th>
+                                <th class="px-4 py-3">Email</th>
+                                <th class="px-4 py-3">Department</th>
+                                <th class="px-4 py-3 text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <?php
+                                $ret="SELECT * FROM hmisphp.his_docs ORDER BY RAND() LIMIT 10";
+                                $stmt= $mysqli->prepare($ret);
+                                $stmt->execute();
+                                $res=$stmt->get_result();
+                                while($row=$res->fetch_object()) {
+                                ?>
+                                <tr class="hover:bg-blue-50 transition-colors">
+                                <!-- Picture -->
+                                <td class="px-4 py-3">
+                                    <img src="../doc/assets/images/users/<?php echo $row->doc_dpic;?>" 
+                                        alt="profile" 
+                                        class="h-12 w-12 rounded-full border border-gray-300 object-cover shadow-sm">
+                                </td>
+                                <!-- Name -->
+                                <td class="px-4 py-3 font-semibold text-gray-800">
+                                    <?php echo $row->doc_fname; ?> <?php echo $row->doc_lname; ?>
+                                </td>
+                                <!-- Email -->
+                                <td class="px-4 py-3 text-gray-600">
+                                    <?php echo $row->doc_email; ?>
+                                </td>
+                                <!-- Department -->
+                                <td class="px-4 py-3 text-gray-700 font-medium">
+                                    <?php echo $row->doc_dept; ?>
+                                </td>
+                                <!-- Action -->
+                                <td class="px-2 py-2 text-center w-9">
+                                    <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id; ?>&doc_number=<?php echo $row->doc_number; ?>"
+                                    class="inline-flex items-center px-2 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg shadow hover:bg-blue-700 transition">
+                                    <i class="mdi mdi-eye mr-1 text-lg"></i> View
+                                    </a>
+                                </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
                         <!-- end row -->
                         
                     </div> <!-- container -->

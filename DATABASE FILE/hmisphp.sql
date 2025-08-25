@@ -44,14 +44,12 @@ CREATE TABLE `his_admin`
 select * from his_admin;
 -- Data for table `his_admin`
 INSERT INTO `his_admin` (`ad_id`, `ad_fname`, `ad_lname`, `ad_email`, `ad_pwd`, `ad_dpic`)
-VALUES (
-           1,
-           'Chhunyeang',
-           'Seng',
-           'chhunyeangseng@gmail.com',
-           '3555e37cac36b91bca3f566e8a976cf2e3fdf784',
-           'profile_admin.png'
-       );
+VALUES 
+    (1, 'Chhunyeang', 'Seng', 'chhunyeangseng@gmail.com', '3555e37cac36b91bca3f566e8a976cf2e3fdf784', 'profile_admin.png'),
+    (2, 'Reatrey', 'Sem', 'reatrey12345com@gmail.com', '3b5a73167daa2f5b046d8d8105690aeb9764d3c6', 'rty.jpg'),
+    (3, 'Keonary', 'Ian', 'iankeonary@gmail.com', '6efc6b289bc1c9f5ee0ea79aa4b1312ce9dcccad', 'nary.jpg');
+
+       
 
 -- Table structure for table `his_assets`
 CREATE TABLE `his_assets`
