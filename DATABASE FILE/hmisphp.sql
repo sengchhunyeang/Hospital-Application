@@ -40,7 +40,7 @@ CREATE TABLE `his_admin`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-# drop table his_admin;
+--  drop table his_admin;
 select * from his_admin;
 -- Data for table `his_admin`
 INSERT INTO `his_admin` (`ad_id`, `ad_fname`, `ad_lname`, `ad_email`, `ad_pwd`, `ad_dpic`)
@@ -179,7 +179,7 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
 
 
 -- Table structure for table `his_patients`
-# drop table his_patients;
+--  drop table his_patients;
 # select * from his_patients;
 CREATE TABLE `his_patients`
 (
@@ -218,26 +218,6 @@ VALUES ('John', 'Doe', '1990-01-01', '35', 'A0001', '123 Main St', '555-1234', '
         NULL);
 
 
--- Table structure for table `his_patient_transfers`
-CREATE TABLE `his_patient_transfers`
-(
-    `t_id`         int(20) NOT NULL AUTO_INCREMENT,
-    `t_hospital`   varchar(200) DEFAULT NULL,
-    `t_date`       varchar(200) DEFAULT NULL,
-    `t_pat_name`   varchar(200) DEFAULT NULL,
-    `t_pat_number` varchar(200) DEFAULT NULL,
-    `t_status`     varchar(200) DEFAULT NULL,
-    PRIMARY KEY (`t_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
-# drop table his_patient_transfers;
--- Data for table `his_patient_transfers`
-INSERT INTO `his_patient_transfers`
-(`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
-VALUES (NULL, 'Kenyatta National Hospital', '2025-8-8 10:30:00', 'សេង ឈុនយាង', 'A0005', 'Success');
-
-
 CREATE TABLE `his_patient_transfers`
 (
     `t_id`         int(20) NOT NULL AUTO_INCREMENT,
@@ -254,6 +234,7 @@ CREATE TABLE `his_patient_transfers`
 -- Data for table `his_patient_transfers`
 INSERT INTO `his_patient_transfers` (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
 VALUES (1, 'Khmer soviet friendship Hospital', '2025-08-16 10:00:00', 'Reatrey', '9KXPM', 'Success');
+
 -- Table structure for table `his_payrolls`
 CREATE TABLE `his_payrolls`
 (
@@ -372,7 +353,7 @@ CREATE TABLE IF NOT EXISTS his_pwdresets
     DEFAULT CHARSET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 # select * from his_pwdresets;
-# drop table his_pwdresets;
+--  drop table his_pwdresets;
 -- --------------------------------------------------------
 
 --
