@@ -107,35 +107,75 @@ if(isset($_POST['transfer_patient'])) {
                                         <h4 class="header-title">Fill all fields</h4>
                                         <!--Add Patient Form-->
                                         <form method="post">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                    <input type="text" required="required" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>" name="t_pat_name" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
-                                                </div>
-                                                
+                                            <div class="mb-4">
+                                                <label for="t_pat_name" class="block text-sm font-medium text-gray-700">Patient Name</label>
+                                                <input
+                                                        type="text"
+                                                        id="t_pat_name"
+                                                        name="t_pat_name"
+                                                        value="<?php echo $row->pat_fname; ?> <?php echo $row->pat_lname; ?>"
+                                                        required
+                                                        placeholder="Patient's First Name"
+                                                        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                >
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4" class="col-form-label">Refferal Hospital</label>
-                                                    <input type="text" required="required"  name="t_hospital" class="form-control" id="inputEmail4" placeholder="Refferal/Transfer Hospital">
+
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <!-- Referral Hospital -->
+                                                <div>
+                                                    <label for="t_hospital" class="block text-sm font-medium text-gray-700">Referral Hospital</label>
+                                                    <input
+                                                            type="text"
+                                                            id="t_hospital"
+                                                            name="t_hospital"
+                                                            required
+                                                            placeholder="Referral/Transfer Hospital"
+                                                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPassword4" class="col-form-label">Transfer Date</label>
-                                                    <input required="required" type="date"  name="t_date" class="form-control"  id="inputPassword4" placeholder="DD/MM/YYYY">
+
+                                                <!-- Transfer Date -->
+                                                <div>
+                                                    <label for="t_date" class="block text-sm font-medium text-gray-700">Transfer Date</label>
+                                                    <input
+                                                            type="date"
+                                                            id="t_date"
+                                                            name="t_date"
+                                                            required
+                                                            placeholder="DD/MM/YYYY"
+                                                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
-                                                <div class="form-group col-md-6" style="display:none">
-                                                    <label for="inputPassword4" class="col-form-label">Patient Number </label>
-                                                    <input required="required" type="text"  name="t_pat_number" value="<?php echo $row->pat_number;?>" class="form-control"  id="inputPassword4" placeholder="">
+
+                                                <!-- Hidden Patient Number -->
+                                                <div class="hidden">
+                                                    <label for="t_pat_number" class="block text-sm font-medium text-gray-700">Patient Number</label>
+                                                    <input
+                                                            type="text"
+                                                            id="t_pat_number"
+                                                            name="t_pat_number"
+                                                            value="<?php echo $row->pat_number; ?>"
+                                                            required
+                                                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700"
+                                                    >
                                                 </div>
                                             </div>
+
 
                                             <div class="form-group" style="display:none">
                                                 <label for="inputAddress" class="col-form-label">Transfer Status</label>
                                                 <input required="required" type="text" value="Success" class="form-control" name="t_status" id="inputAddress" placeholder="Patient's Addresss">
                                             </div>
 
-                                            <button type="submit" name="transfer_patient" class="ladda-button btn btn-success" data-style="expand-right">Transfer Patient</button>
+                                            <button
+                                                    type="submit"
+                                                    name="transfer_patient"
+                                                    class=" mt-2 inline-flex items-center px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition-colors duration-200"
+                                            >
+                                                Transfer Patient
+                                            </button>
+
 
                                         </form>
                                         <!--End Patient Form-->

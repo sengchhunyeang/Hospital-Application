@@ -99,32 +99,58 @@
                                             <h4 class="header-title">Fill all fields</h4>
                                             <!--Add Patient Form-->
                                             <form method="post">
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Name</label>
-                                                        <input type="text" required="required" readonly name="" value="<?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?>" class="form-control" id="inputEmail4" placeholder="Patient's First Name">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <!-- Patient Name -->
+                                                    <div>
+                                                        <label for="inputEmail4" class="block text-sm font-medium text-gray-700">Patient Name</label>
+                                                        <input
+                                                                type="text"
+                                                                id="inputEmail4"
+                                                                value="<?php echo $row->pat_fname; ?> <?php echo $row->pat_lname; ?>"
+                                                                readonly
+                                                                required
+                                                                placeholder="Patient's First Name"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
 
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Ailment</label>
-                                                        <input required="required" type="text" readonly name="" value="<?php echo $row->pat_ailment;?>" class="form-control"  id="inputPassword4" placeholder="Patient`s Last Name">
+                                                    <!-- Patient Ailment -->
+                                                    <div>
+                                                        <label for="inputPassword4" class="block text-sm font-medium text-gray-700">Patient Ailment</label>
+                                                        <input
+                                                                type="text"
+                                                                id="inputPassword4"
+                                                                value="<?php echo $row->pat_ailment; ?>"
+                                                                readonly
+                                                                required
+                                                                placeholder="Patient's Ailment"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
-
                                                 </div>
+
 
                                                 <div class="form-row">
 
                                                     <div class="form-group col-md-12">
                                                         <label for="inputEmail4" class="col-form-label">Patient Number</label>
-                                                        <input type="text" required="required" readonly name="vit_pat_number" value="<?php echo $row->pat_number;?>" class="form-control" id="inputEmail4" placeholder="DD/MM/YYYY">
+                                                        <input
+                                                                type="text"
+                                                                id="inputEmail4"
+                                                                name="vit_pat_number"
+                                                                value="<?php echo $row->pat_number; ?>"
+                                                                readonly
+                                                                required
+                                                                placeholder="DD/MM/YYYY"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
 
 
                                                 </div>
 
-                                                
-                                                <hr>
+
+                                                <hr class="my-6 border-gray-300">
                                                 <div class="form-row">
                                                     
                                             
@@ -138,31 +164,69 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-row">
-
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputEmail4" class="col-form-label">Patient Body Temperature °C</label>
-                                                        <input type="text" required="required"  name="vit_bodytemp"class="form-control" id="inputEmail4" placeholder="°C">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                                    <!-- Body Temperature -->
+                                                    <div>
+                                                        <label for="vit_bodytemp" class="block text-sm font-medium text-gray-700">Patient Body Temperature °C</label>
+                                                        <input
+                                                                type="text"
+                                                                name="vit_bodytemp"
+                                                                id="vit_bodytemp"
+                                                                required
+                                                                placeholder="°C"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
 
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Heart Pulse/Beat BPM</label>
-                                                        <input required="required" type="text"  name="vit_heartpulse"  class="form-control"  id="inputPassword4" placeholder="HeartBeats Per Minute ">
+                                                    <!-- Heart Pulse -->
+                                                    <div>
+                                                        <label for="vit_heartpulse" class="block text-sm font-medium text-gray-700">Patient Heart Pulse/Beat BPM</label>
+                                                        <input
+                                                                type="text"
+                                                                name="vit_heartpulse"
+                                                                id="vit_heartpulse"
+                                                                required
+                                                                placeholder="HeartBeats Per Minute"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
 
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Respiratory Rate bpm</label>
-                                                        <input required="required" type="text"  name="vit_resprate"  class="form-control"  id="inputPassword4" placeholder="Breathes Per Minute">
+                                                    <!-- Respiratory Rate -->
+                                                    <div>
+                                                        <label for="vit_resprate" class="block text-sm font-medium text-gray-700">Patient Respiratory Rate bpm</label>
+                                                        <input
+                                                                type="text"
+                                                                name="vit_resprate"
+                                                                id="vit_resprate"
+                                                                required
+                                                                placeholder="Breathes Per Minute"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
 
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputPassword4" class="col-form-label">Patient Blood Pressure mmHg</label>
-                                                        <input required="required" type="text"  name="vit_bloodpress"  class="form-control"  id="inputPassword4" placeholder="mmHg">
+                                                    <!-- Blood Pressure -->
+                                                    <div >
+                                                        <label for="vit_bloodpress" class="block text-sm font-medium text-gray-700">Patient Blood Pressure mmHg</label>
+                                                        <input
+                                                                type="text"
+                                                                name="vit_bloodpress"
+                                                                id="vit_bloodpress"
+                                                                required
+                                                                placeholder="mmHg"
+                                                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                        >
                                                     </div>
-
                                                 </div>
 
-                                                <button type="submit" name="add_patient_vitals" class="ladda-button btn btn-success" data-style="expand-right">Add Vitals</button>
+
+                                                <button
+                                                        type="submit"
+                                                        name="add_patient_vitals"
+                                                        class="mt-2 inline-flex items-center px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition-colors duration-200"
+                                                >
+                                                    Add Vitals
+                                                </button>
+
 
                                             </form>
                                             <!--End Patient Form-->

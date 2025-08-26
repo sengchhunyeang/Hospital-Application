@@ -70,11 +70,16 @@ $doc_id = $_SESSION['doc_id'];
                                                 <option value="InPatients">InPatients</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input id="demo-foo-search" type="text" placeholder="Search"
-                                                   class="form-control form-control-sm border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 px-3 py-1"
-                                                   autocomplete="on">
+                                        <div class="mb-3">
+                                            <input
+                                                    id="demo-foo-search"
+                                                    type="text"
+                                                    placeholder="Search"
+                                                    autocomplete="on"
+                                                    class="w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                            >
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -129,13 +134,14 @@ $doc_id = $_SESSION['doc_id'];
                                             </td>
                                             <td class="px-3 py-2 sm:px-4 sm:py-2 whitespace-nowrap text-sm text-black border-b">
                                                 <a href="his_doc_add_single_lab_test.php?pat_number=<?php echo $row->pat_number; ?>"
-                                                   class="inline-flex items-center px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200">
-                                                    <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+                                                   class="inline-flex items-center px-2 py-1 sm:px-2.5 sm:py-0.5 rounded-full text-xs font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200">
+                                                    <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-white" fill="currentColor" viewBox="0 0 8 8">
                                                         <circle cx="4" cy="4" r="3"/>
                                                     </svg>
                                                     <span class="hidden xs:inline">Add Lab Test</span>
                                                     <span class="xs:hidden">Add</span>
                                                 </a>
+
                                             </td>
                                         </tr>
                                         </tbody>

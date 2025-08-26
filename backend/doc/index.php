@@ -36,7 +36,7 @@
     <meta content="Hospital Management System - Doctor Login Portal" name="description" />
     <meta content="MartDevelopers" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/logo.png">
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>

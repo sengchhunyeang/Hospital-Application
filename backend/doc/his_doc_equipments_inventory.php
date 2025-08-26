@@ -69,9 +69,16 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -80,15 +87,16 @@
                                         <table id="demo-foo-filtering" class="w-full border-collapse" data-page-size="7">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b">#</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b" data-toggle="true">Name</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b hidden sm:table-cell" data-hide="phone">Code</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b hidden sm:table-cell" data-hide="phone">Vendor</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b hidden sm:table-cell" data-hide="phone">Department</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b hidden sm:table-cell" data-hide="phone">Qty</th>
-                                                <th class="px-2 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b hidden sm:table-cell" data-hide="phone">Action</th>
+                                                <th class="px-2 py-2 ">#</th>
+                                                <th class="px-2 py-2 ">Name</th>
+                                                <th class="px-2 py-2 ">Code</th>
+                                                <th class="px-2 py-2 ">Vendor</th>
+                                                <th class="px-2 py-2 ">Department</th>
+                                                <th class="px-2 py-2 ">Qty</th>
+                                                <th class="px-2 py-2 ">Action</th>
                                             </tr>
                                             </thead>
+
                                             <tbody>
                                             <?php
                                             $ret = "SELECT * FROM hmisphp.his_equipments ORDER BY RAND()";
@@ -100,20 +108,23 @@
                                                 ?>
                                                 <tr class="hover:bg-gray-50">
                                                     <td class="px-2 py-2 text-black border-b"><?php echo $cnt;?></td>
-                                                    <td class="px-2 py-2 font-medium text-black border-b"><?php echo htmlspecialchars($row->eqp_name); ?></td>
-                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo htmlspecialchars($row->eqp_code); ?></td>
-                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo htmlspecialchars($row->eqp_vendor); ?></td>
-                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo htmlspecialchars($row->eqp_dept); ?></td>
-                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo htmlspecialchars($row->eqp_qty); ?></td>
+                                                    <td class="px-2 py-2 font-medium text-black border-b"><?php echo $row->eqp_name; ?></td>
+                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo $row->eqp_code; ?></td>
+                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo $row->eqp_vendor; ?></td>
+                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo $row->eqp_dept; ?></td>
+                                                    <td class="px-2 py-2 text-black border-b hidden sm:table-cell"><?php echo $row->eqp_qty; ?></td>
                                                     <td class="px-2 py-2 text-black border-b hidden sm:table-cell">
                                                         <a href="his_doc_view_single_eqp.php?eqp_code=<?php echo urlencode($row->eqp_code); ?>"
-                                                           class="inline-flex items-center px-2 py-1 rounded text-xs bg-green-100 text-green-800 hover:bg-green-200">
+                                                           class="inline-flex items-center px-2 py-1 rounded text-xs bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200">
                                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                                             </svg>
                                                             View
                                                         </a>
+
+
+
                                                     </td>
                                                 </tr>
                                                 <?php $cnt = $cnt + 1; } ?>

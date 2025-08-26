@@ -81,55 +81,32 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Patient's Name : <?php echo $row->lab_pat_name;?></h2>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Number : <?php echo $row->lab_pat_number;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Ailment : <?php echo $row->lab_pat_ailment;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Date Recorded : <?php echo date("d/m/Y - h:m:s", strtotime($mysqlDateTime));?></h3>
-                                                    <hr>
-                                                    <h2 class="align-centre">Laboratory Test</h2>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->lab_pat_tests;?>
-                                                    </p>
-                                                    <hr>
-                                                    <h2 class="align-centre">Laboratory Result</h2>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->lab_pat_results;?>
-                                                    </p>
-                                                    <hr>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                <div class="pl-0 xl:pl-12 mt-3 xl:mt-0 space-y-4">
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                                    <h2 class="text-xl font-semibold">Patient's Name: <?php echo $row->lab_pat_name; ?></h2>
+                                                    <hr class="border-gray-300">
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
+                                                    <h3 class="text-red-600 font-medium">Patient Number: <?php echo $row->lab_pat_number; ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h3 class="text-red-600 font-medium">Patient Ailment: <?php echo $row->lab_pat_ailment; ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h3 class="text-red-600 font-medium">Date Recorded: <?php echo date("d/m/Y - h:i:s", strtotime($mysqlDateTime)); ?></h3>
+                                                    <hr class="border-gray-300">
+
+                                                    <h2 class="text-lg font-semibold text-center">Laboratory Test</h2>
+                                                    <hr class="border-gray-300">
+
+                                                    <p class="text-gray-600 mb-4"><?php echo $row->lab_pat_tests; ?></p>
+                                                    <hr class="border-gray-300">
+
+                                                    <h2 class="text-lg font-semibold text-center">Laboratory Result</h2>
+                                                    <p class="text-gray-600 mb-4"><?php echo $row->lab_pat_results; ?></p>
+                                                    <hr class="border-gray-300">
+
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

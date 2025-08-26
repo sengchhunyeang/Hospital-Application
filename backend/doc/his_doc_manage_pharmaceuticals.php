@@ -134,19 +134,23 @@
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_cat;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_qty;?> Cartons</td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell space-x-1">
-                                                        <a href="his_doc_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200">
+                                                        <a href="his_doc_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>"
+                                                           class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600">
                                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                                             </svg>
                                                             View
                                                         </a>
-                                                        <a href="his_doc_update_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
+
+                                                        <a href="his_doc_update_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>"
+                                                           class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-500 text-white hover:bg-yellow-600">
                                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                             </svg>
                                                             Update
                                                         </a>
+
                                                         <!--
                                 <a href="his_admin_manage_pharmaceuticals.php?delete_pharm_name=<?php echo $row->phar_id;?>" class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800 hover:bg-red-200">
                                     <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
