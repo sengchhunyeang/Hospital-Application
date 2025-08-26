@@ -273,35 +273,11 @@ CREATE TABLE `his_payrolls`
 -- Data for table `his_payrolls`
 INSERT INTO `his_payrolls` (`pay_id`, `pay_number`, `pay_doc_name`, `pay_doc_number`, `pay_doc_email`, `pay_emp_salary`,
                             `pay_date_generated`, `pay_status`, `pay_descr`)
-VALUES (2, 'HUT1B', 'Reatrey', 'N8TI0', 'reatrey@hms.org', '7555', '2025-08-14 10:20:00', 'Paid',
+VALUES (2, 'HUT1B', 'Dr.Chhun Pheakdey', 'pkd', 'pkd123@gmail.com', '7555', '2025-08-14 10:20:00', 'Paid',
         '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>'),
-       (3, 'T294L', 'Chhunyeang', 'YDS7L', 'yeang@mail.com', '15500', '2025-08-15 11:45:00', NULL,
+       (3, 'T294L', 'Dr.Sean Sokvisal', 'visal', 'visal123@gmail.com', '15500', '2025-08-15 11:45:00', NULL,
         '<p>demo demo demo demo demo</p>'),
-       (4, '3UOXY', 'Nary', '5VIFT', 'nary@mail.com', '4150', '2025-08-16 09:30:00', NULL,
-        '<p>This is a demo payroll description for test!!</p>');
-CREATE TABLE `his_payrolls`
-(
-    `pay_id`             int(20)      NOT NULL,
-    `pay_number`         varchar(200)          DEFAULT NULL,
-    `pay_doc_name`       varchar(200)          DEFAULT NULL,
-    `pay_doc_number`     varchar(200)          DEFAULT NULL,
-    `pay_doc_email`      varchar(200)          DEFAULT NULL,
-    `pay_emp_salary`     varchar(200)          DEFAULT NULL,
-    `pay_date_generated` timestamp(4) NOT NULL DEFAULT CURRENT_TIMESTAMP(4) ON UPDATE CURRENT_TIMESTAMP(4),
-    `pay_status`         varchar(200)          DEFAULT NULL,
-    `pay_descr`          longtext
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
-
--- Data for table `his_payrolls`
-INSERT INTO `his_payrolls` (`pay_id`, `pay_number`, `pay_doc_name`, `pay_doc_number`, `pay_doc_email`, `pay_emp_salary`,
-                            `pay_date_generated`, `pay_status`, `pay_descr`)
-VALUES (2, 'HUT1B', 'Henry Doe', 'N8TI0', 'henryd@hms.org', '7555', '2022-10-20 17:14:18.3708', 'Paid',
-        '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>'),
-       (3, 'T294L', 'Bryan Arreola', 'YDS7L', 'bryan@mail.com', '15500', '2022-10-20 17:14:50.5588', NULL,
-        '<p>demo demo demo demo demo</p>'),
-       (4, '3UOXY', 'Jessica Spencer', '5VIFT', 'jessica@mail.com', '4150', '2022-10-22 11:04:36.9626', NULL,
+       (4, '3UOXY', 'Dr.Chey Somaly', 'somaly', 'somaly123@gmail.com', '4150', '2025-08-16 09:30:00', NULL,
         '<p>This is a demo payroll description for test!!</p>');
 
 -- Table structure for table `his_pharmaceuticals`

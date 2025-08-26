@@ -76,7 +76,7 @@
                                         <!-- Logo & title -->
                                         <div class="clearfix">
                                             <div class="float-left">
-                                                <img src="assets/images/logo-dark.png" alt="" height="20">
+                                                <img src="assets/images/logo.png" alt="" height="30%" width="30%">
                                             </div>
                                             <div class="float-right">
                                                 <h4 class="m-0 d-print-none"><?php echo $row->pay_doc_name;?> Payroll</h4>
