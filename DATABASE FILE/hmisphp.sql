@@ -206,7 +206,7 @@ CREATE TABLE `his_patients`
   COLLATE = utf8mb4_unicode_ci;
 
 
--- ទិន្នន័យសម្រាប់តារាង `his_patients`
+-- Data for table `his_patients`
 INSERT INTO his_patients
 (pat_fname, pat_lname, pat_dob, pat_age, pat_number, pat_addr, pat_phone, pat_type, pat_ailment, pat_discharge_status,
  pat_discharge_date, pat_discharge_notes)
@@ -255,11 +255,11 @@ CREATE TABLE `his_payrolls`
 -- Data for table `his_payrolls`
 INSERT INTO `his_payrolls` (`pay_id`, `pay_number`, `pay_doc_name`, `pay_doc_number`, `pay_doc_email`, `pay_emp_salary`,
                             `pay_date_generated`, `pay_status`, `pay_descr`)
-VALUES (2, 'HUT1B', 'Dr.Chhun Pheakdey', 'pkd', 'pkd123@gmail.com', '7555', '2025-08-14 10:20:00', 'Paid',
+VALUES (2, 'HUT1B', 'Dr.Chhun Pheakdey', 'pkd', 'pkd123@gmail.com', '1200', '2025-08-14 10:20:00', 'Paid',
         '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>'),
-       (3, 'T294L', 'Dr.Sean Sokvisal', 'visal', 'visal123@gmail.com', '15500', '2025-08-15 11:45:00', NULL,
+       (3, 'T294L', 'Dr.Sean Sokvisal', 'visal', 'visal123@gmail.com', '1500', '2025-08-15 11:45:00', NULL,
         '<p>demo demo demo demo demo</p>'),
-       (4, '3UOXY', 'Dr.Chey Somaly', 'somaly', 'somaly123@gmail.com', '4150', '2025-08-16 09:30:00', NULL,
+       (4, '3UOXY', 'Dr.Chey Somaly', 'somaly', 'somaly123@gmail.com', '1300', '2025-08-16 09:30:00', NULL,
         '<p>This is a demo payroll description for test!!</p>');
 
 -- Table structure for table `his_pharmaceuticals`
