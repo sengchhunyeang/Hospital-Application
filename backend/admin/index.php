@@ -63,7 +63,7 @@ body::before {
                     <a href="index.php" class="inline-block">
                         <!-- <img src="assets/images/login3.jpg" alt="Hospital Logo" class="mx-auto w-20 h-20 rounded-full shadow-md"> -->
                     </a>
-                    <h1 class="text-2xl font-bold text-gray-800 mt-4">Admin Login Portal</h1>
+                    <h1 class="text-2xl font-bold text-gray-800 mt-4">Admin Login</h1>
                     <p class="text-gray-600 mt-2">Enter your email and password to access admin panel</p>
                 </div>
 
