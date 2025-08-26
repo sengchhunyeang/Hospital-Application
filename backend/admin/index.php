@@ -29,7 +29,7 @@ if(isset($_POST['admin_login']))
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="Hospital Management System - Admin Login Portal" name="description" />
 <meta content="MartDevelopers" name="author" />
-<link rel="shortcut icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" href="assets/images/logo.png">
 
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>

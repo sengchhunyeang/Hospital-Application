@@ -68,9 +68,16 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -78,15 +85,16 @@
                                     <div class="overflow-x-auto">
                                         <table id="demo-foo-filtering" class="w-full border-separate border-spacing-0" data-page-size="7">
                                             <thead class="bg-gray-50">
-                                            <tr>
+                                            <tr class="bg-gray-50">
                                                 <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200">#</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200" data-toggle="true">Pharmaceutical Name</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell" data-hide="phone">Barcode</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell" data-hide="phone">Vendor</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell" data-hide="phone">Category</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell" data-hide="phone">Quantity</th>
-                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell" data-hide="phone">Action</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200">Pharmaceutical Name</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell">Barcode</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell">Vendor</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell">Category</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell">Quantity</th>
+                                                <th class="px-3 py-2 text-left text-xs font-medium text-black uppercase tracking-wider border-b border-gray-200 hidden sm:table-cell">Action</th>
                                             </tr>
+
                                             </thead>
                                             <tbody>
                                             <?php
@@ -98,7 +106,7 @@
                                             while($row = $res->fetch_object()) {
                                                 ?>
                                                 <tr class="hover:bg-gray-50">
-                                                    <td class="px-3 py-2 text-sm text-black border-b border-gray-100"><?php echo $cnt;?></td>
+                                                    <td class="px-3 py-2 text-sm text-black border-b border-gray-100"><?php echo $cnt; ?></td>
                                                     <td class="px-3 py-2 text-sm font-medium text-black border-b border-gray-100"><?php echo htmlspecialchars($row->phar_name); ?></td>
                                                     <td class="px-3 py-2 text-sm text-black border-b border-gray-100 hidden sm:table-cell"><?php echo htmlspecialchars($row->phar_bcode); ?></td>
                                                     <td class="px-3 py-2 text-sm text-black border-b border-gray-100 hidden sm:table-cell"><?php echo htmlspecialchars($row->phar_vendor); ?></td>
@@ -106,7 +114,7 @@
                                                     <td class="px-3 py-2 text-sm text-black border-b border-gray-100 hidden sm:table-cell"><?php echo htmlspecialchars($row->phar_qty); ?> Cartons</td>
                                                     <td class="px-3 py-2 text-sm text-black border-b border-gray-100 hidden sm:table-cell">
                                                         <a href="his_doc_view_single_pharm.php?phar_bcode=<?php echo urlencode($row->phar_bcode); ?>"
-                                                           class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-50 text-green-700 hover:bg-green-100 border border-green-100">
+                                                           class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200">
                                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -115,6 +123,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
+
                                                 <?php $cnt = $cnt + 1; } ?>
                                             </tbody>
                                             <tfoot>

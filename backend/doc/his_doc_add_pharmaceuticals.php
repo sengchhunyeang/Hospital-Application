@@ -147,7 +147,7 @@
 
                                             </div>
 
-                                            <button type="submit" name="add_pharmaceutical" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                                            <button type="submit" name="add_pharmaceutical" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                                                 Add Pharmaceutical
                                             </button>
                                         </form>

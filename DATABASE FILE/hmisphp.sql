@@ -79,6 +79,7 @@ CREATE TABLE `his_docs`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 select * from his_docs;
+# drop table his_docs;
 -- Data for table `his_docs`
 INSERT INTO `his_docs` (`doc_id`, `doc_fname`, `doc_lname`, `doc_email`, `doc_pwd`, `doc_dept`, `doc_number`,
                         `doc_dpic`)
