@@ -64,7 +64,7 @@
             <a href="index.php" class="inline-block">
                 <!-- <img src="assets/images/doc1.jpg" alt="Hospital Management System" class="mx-auto rounded-lg shadow-md w-full max-w-xs"> -->
             </a>
-            <h1 class="text-2xl font-bold text-gray-800 mt-4">Doctor Login Portal</h1>
+            <h1 class="text-2xl font-bold text-gray-800 mt-4">Doctor Login</h1>
             <p class="text-gray-600 mt-2">Access your medical dashboard</p>
         </div>
 
