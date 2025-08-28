@@ -69,25 +69,33 @@
                                                         <option value="InPatients">InPatients</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                <div class="">
+                                                    <input
+                                                            id="demo-foo-search"
+                                                            type="text"
+                                                            placeholder="Search"
+                                                            autocomplete="on"
+                                                            class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
-                                            <thead>
+                                            <thead class="bg-gray-50">
                                             <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Patient Ailment</th>
-                                                <th data-hide="phone">Date Lab Test Conducted</th>
-                                                <th data-hide="phone">Action</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient Name</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient Number</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient Ailment</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Lab Test Conducted</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                                             </tr>
                                             </thead>
+
                                             <?php
                                             /*
                                                 *get details of allpatients
@@ -104,17 +112,24 @@
                                                     $mysqlDateTime = $row->lab_date_rec;
                                             ?>
 
-                                                <tbody>
-                                                <tr>
-                                                    <td><?php echo $cnt;?></td>
-                                                    <td><?php echo $row->lab_pat_name;?></td>
-                                                    <td><?php echo $row->lab_pat_number;?></td>
-                                                    <td><?php echo $row->lab_pat_ailment;?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($mysqlDateTime));?></td>
-                                                    <td><a href="his_doc_view_single_lab_record.php?lab_id=<?php echo $row->lab_id ;?>&&lab_number=<?php echo $row->lab_number ;?>" class="badge badge-success"><i class="mdi mdi-eye"></i> View Lab Report</a></td>
-                                                </tr>
-                                                </tbody>
-                                            <?php  $cnt = $cnt +1 ; }?>
+                                                    <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_ailment; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo date("d/m/Y", strtotime($mysqlDateTime)); ?></td>
+                                                        <td class="px-4 py-2 text-sm">
+                                                            <a href="his_doc_view_single_lab_record.php?lab_id=<?php echo $row->lab_id; ?>&lab_number=<?php echo $row->lab_number; ?>"
+                                                               class="inline-flex items-center px-2 py-1 bg-blue-500 text-white text-xs font-medium rounded hover:bg-blue-600 transition-colors duration-200">
+                                                                <i class="mdi mdi-eye mr-1"></i> View Lab Report
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+                                                    <?php  $cnt = $cnt +1 ; }?>
                                             <tfoot>
                                             <tr class="active">
                                                 <td colspan="8">

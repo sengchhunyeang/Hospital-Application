@@ -47,7 +47,7 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/logo.png">
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -96,9 +96,9 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <a href="his_doc_reset_pwd.php">
-                                        <span><img src="assets/images/logo-dark.png" alt="" height="22"></span>
+                                        <span><img src="assets/images/logo.png" alt="" height="102"></span>
                                     </a>
-                                    <p class="text-muted mb-4 mt-3">Enter your email address and we'll send you an email with instructions to reset your password.</p>
+                                    <p class="text-muted mb-4 mt-3">Enter your email address, and we'll email you with instructions to reset your password.</p>
                                 </div>
 
                                 <form method="post" >
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="form-group mb-3" style="display:none">
                                         <label for="emailaddress">Status</label>
-                                        <input class="form-control" name="status" type="text" id="emailaddress" required="" value="Pending">
+                                        <input class="form-control bg-blue-500 hover:bg-blue-500" name="status" type="text" id="emailaddress" required="" value="Pending">
                                     </div>
 
                                     <div class="form-group mb-0 text-center">

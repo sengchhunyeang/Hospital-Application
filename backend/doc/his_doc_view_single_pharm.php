@@ -80,47 +80,23 @@
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Pharmaceutical Name : <?php echo $row->phar_name;?></h2>
-                                                    <hr>
-                                                    <h4 class="text-danger">Pharmaceutical Vendor : <?php echo $row->phar_vendor;?></h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Pharmaceutical Quantity : <?php echo $row->phar_qty;?> Cartons</h4>
-                                                    <hr>
-                                                    <h4 class="text-danger">Pharmaceutical Description</h4>
+                                                <div class="pl-0 xl:pl-12 mt-3 xl:mt-0 space-y-4">
 
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->phar_desc;?>
-                                                    </p>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                    <h2 class="text-xl font-semibold">Pharmaceutical Name: <?php echo $row->phar_name; ?></h2>
+                                                    <hr class="border-gray-300">
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Vendor: <?php echo $row->phar_vendor; ?></h4>
+                                                    <hr class="border-gray-300">
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
+                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Quantity: <?php echo $row->phar_qty; ?> Cartons</h4>
+                                                    <hr class="border-gray-300">
+
+                                                    <h4 class="text-gray-700 font-semibold">Pharmaceutical Description</h4>
+                                                    <p class="text-gray-600 mb-4"><?php echo $row->phar_desc; ?></p>
+                                                    <hr class="border-gray-300">
+
                                                 </div>
+
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

@@ -131,10 +131,10 @@
                                             <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_type;?></td>
 
                                             <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell">
-                                                <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="bg-green-500 text-white px-2 py-1 rounded text-xs inline-block mr-1">
+                                                <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="bg-blue-500 text-white px-2 py-1 rounded text-xs inline-block mr-1">
                                                     View
                                                 </a>
-                                                <a href="his_doc_update_single_patient.php?pat_number=<?php echo $row->pat_number;?>" class="bg-blue-500 text-white px-2 py-1 rounded text-xs inline-block">
+                                                <a href="his_doc_update_single_patient.php?pat_number=<?php echo $row->pat_number;?>" class="bg-yellow-500 text-white px-2 py-1 rounded text-xs inline-block">
                                                     Update
                                                 </a>
                                             </td>

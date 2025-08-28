@@ -36,7 +36,7 @@
     <meta content="Hospital Management System - Doctor Login Portal" name="description" />
     <meta content="MartDevelopers" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/logo.png">
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -64,7 +64,7 @@
             <a href="index.php" class="inline-block">
                 <!-- <img src="assets/images/doc1.jpg" alt="Hospital Management System" class="mx-auto rounded-lg shadow-md w-full max-w-xs"> -->
             </a>
-            <h1 class="text-2xl font-bold text-gray-800 mt-4">Doctor Login Portal</h1>
+            <h1 class="text-2xl font-bold text-gray-800 mt-4">Doctor Login </h1>
             <p class="text-gray-600 mt-2">Access your medical dashboard</p>
         </div>
 
@@ -80,7 +80,7 @@
                 <label for="doc_number" class="block text-gray-700 text-sm font-bold mb-2">
                     <i class="fas fa-user-md mr-2 text-blue-500"></i>Doctor Number
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                <input class=" appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="doc_number" name="doc_number" type="text" placeholder="Enter your doctor number" required>
             </div>
 
@@ -88,12 +88,12 @@
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
                     <i class="fas fa-lock mr-2 text-blue-500"></i>Password
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                <input class=" appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                     id="password" name="doc_pwd" type="password" placeholder="Enter your password" required>
             </div>
 
             <div class="flex items-center justify-between">
-                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-200" 
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-200"
                     type="submit" name="doc_login">
                     <i class="fas fa-sign-in-alt mr-2"></i> Log In
                 </button>
