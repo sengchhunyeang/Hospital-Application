@@ -492,14 +492,14 @@
                                 <span>Pharmaceutical Records</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="his_admin_accounting_records.php"
-                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_accounting_records.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span>Accounting Records</span>
-                            </a>
-                        </li>
+<!--                        <li>-->
+<!--                            <a href="his_admin_accounting_records.php"-->
+<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_accounting_records.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span>Accounting Records</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
                         <li>
                             <a href="his_admin_medical_records.php"
                                class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors

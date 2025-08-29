@@ -29,7 +29,7 @@
             <?php
                 $pres_number=$_GET['pres_number'];
                 $pres_id = $_GET['pres_id'];
-                $ret="SELECT  * FROM his_prescriptions WHERE pres_number = ? AND pres_id = ?";
+                $ret="SELECT  * FROM hmisphp.his_prescriptions WHERE pres_number = ? AND pres_id = ?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('ii',$pres_number,$pres_id);
                 //$stmt->bind_param('i',$pres_id);
@@ -65,136 +65,86 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="card-box">
-                                        <div class="row">
-                                            <div class="col-xl-5">
+                                    <div class="max-w-4xl mx-auto bg-gradient-to-b from-white to-blue-50 rounded-2xl p-8 print:p-10 print:rounded-none print:bg-white border border-blue-100 print:text-[18px]">
 
-                                                <div class="tab-content pt-0">
-
-                                                    <div class="tab-pane active show" id="product-1-item">
-                                                        <img src="assets/images/users/patient.png" alt="" class="img-fluid mx-auto d-block rounded">
-                                                    </div>
-                            
+                                        <!-- Header: Logo & Clinic Info -->
+                                        <div class="flex justify-between items-center mb-8">
+                                            <div class="flex items-center gap-4">
+                                                <img src="./assets/images/logo.png" alt="Logo"
+                                                     class="h-20 w-20 object-contain rounded-full border-2 border-blue-200">
+                                                <div>
+                                                    <h1 class="text-3xl font-bold text-blue-800">Happy Health Clinic</h1>
+                                                    <p class="text-lg text-blue-500">123 Wellness St, City, Country</p>
                                                 </div>
-                                            </div> <!-- end col -->
-                                            <div class="col-xl-7">
-                                                <div class="pl-xl-3 mt-3 mt-xl-0">
-                                                    <h2 class="mb-3">Name : <?php echo $row->pres_pat_name;?></h2>
-                                                    <hr>
-                                                    <h3 class="text-danger">Age : <?php echo $row->pres_pat_age;?> Years</h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Number : <?php echo $row->pres_pat_number;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Category : <?php echo $row->pres_pat_type;?></h3>
-                                                    <hr>
-                                                    <h3 class="text-danger ">Patient Ailment : <?php echo $row->pres_pat_ailment;?></h3>
-                                                    <hr>
-                                                    <h2 class="align-centre">Prescription</h2>
-                                                    <hr>
-                                                    <p class="text-muted mb-4">
-                                                        <?php echo $row->pres_ins;?>
-                                                    </p>
-                                                    <hr>
-                                                   <!--
-                                                    <form class="form-inline mb-4">
-                                                        <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                            </div>
 
-                                                        <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                        <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                            <option selected>Small</option>
-                                                            <option value="1">Medium</option>
-                                                            <option value="2">Large</option>
-                                                            <option value="3">X-large</option>
-                                                        </select>
-                                                    </form>
+                                            <!-- Print Button -->
+                                            <button onclick="window.print()"
+                                                    class="flex items-center gap-1 px-3 py-1 bg-gray-400 hover:bg-gray-500 text-white font-medium rounded-md shadow-sm print:hidden transition transform hover:-translate-y-0.5 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor"
+                                                     viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd"
+                                                          d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
 
-                                                    <div>
-                                                        <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                        <button type="button" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                        </button>
-                                                    </div> -->
-                                                </div>
-                                            </div> <!-- end col -->
                                         </div>
-                                        <!-- end row -->
 
-                                        <!--
-                                        <div class="table-responsive mt-4">
-                                            <table class="table table-bordered table-centered mb-0">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th>Outlets</th>
-                                                        <th>Price</th>
-                                                        <th>Stock</th>
-                                                        <th>Revenue</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>ASOS Ridley Outlet - NYC</td>
-                                                        <td>$139.58</td>
-                                                        <td>
-                                                            <div class="progress-w-percent mb-0">
-                                                                <span class="progress-value">478 </span>
-                                                                <div class="progress progress-sm">
-                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 56%;" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>$1,89,547</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Marco Outlet - SRT</td>
-                                                        <td>$149.99</td>
-                                                        <td>
-                                                            <div class="progress-w-percent mb-0">
-                                                                <span class="progress-value">73 </span>
-                                                                <div class="progress progress-sm">
-                                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 16%;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>$87,245</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chairtest Outlet - HY</td>
-                                                        <td>$135.87</td>
-                                                        <td>
-                                                            <div class="progress-w-percent mb-0">
-                                                                <span class="progress-value">781 </span>
-                                                                <div class="progress progress-sm">
-                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>$5,87,478</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Nworld Group - India</td>
-                                                        <td>$159.89</td>
-                                                        <td>
-                                                            <div class="progress-w-percent mb-0">
-                                                                <span class="progress-value">815 </span>
-                                                                <div class="progress progress-sm">
-                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>$55,781</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div> -->
+                                        <!-- Patient Info -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-lg">
+                                            <div>
+                                                <h2 class="text-base font-semibold text-blue-600">Name</h2>
+                                                <p class="text-2xl font-medium text-blue-900"><?= htmlspecialchars($row->pres_pat_name); ?></p>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-base font-semibold text-blue-600">Age</h2>
+                                                <p class="text-2xl font-medium text-red-500"><?= htmlspecialchars($row->pres_pat_age); ?>
+                                                    Years</p>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-base font-semibold text-blue-600">Patient Number</h2>
+                                                <p class="text-2xl font-medium text-red-500"><?= htmlspecialchars($row->pres_pat_number); ?></p>
+                                            </div>
+                                            <div>
+                                                <h2 class="text-base font-semibold text-blue-600">Category</h2>
+                                                <span class="inline-block px-4 py-2 rounded-full text-white font-medium text-lg
+        <?php if ($row->pres_pat_type == "Waiting") {
+                                                    echo 'bg-yellow-400';
+                                                } elseif ($row->pres_pat_type == "InPatient") {
+                                                    echo 'bg-green-400';
+                                                } else {
+                                                    echo 'bg-blue-400';
+                                                } ?>">
+        <?= htmlspecialchars($row->pres_pat_type); ?>
+      </span>
+                                            </div>
+                                            <div class="md:col-span-2">
+                                                <h2 class="text-base font-semibold text-blue-600">Ailment / Room</h2>
+                                                <p class="text-2xl font-medium text-red-500"><?= htmlspecialchars($row->pres_pat_ailment ?? 'NA'); ?></p>
+                                            </div>
+                                        </div>
+
+                                        <hr class="my-6 border-blue-200">
+
+                                        <!-- Prescription Instructions -->
+                                        <div>
+                                            <h2 class="text-2xl font-bold text-center text-blue-700 mb-4 border-b border-blue-200 pb-2">
+                                                Prescription</h2>
+                                            <p class="text-xl text-blue-800 whitespace-pre-wrap leading-relaxed">
+                                                <?= ($row->pres_ins); ?>
+                                            </p>
+                                        </div>
+
+                                        <!-- Footer: Doctor / Date -->
+                                        <div class="mt-12 flex justify-between items-center print:mt-8 text-lg">
+                                            <div>
+                                                <p class="text-blue-700 font-medium">Doctor: ____________________</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-blue-700 font-medium">Date: <?= date('d/m/Y'); ?></p>
+                                            </div>
+                                        </div>
 
                                     </div> <!-- end card-->
                                 </div> <!-- end col-->
