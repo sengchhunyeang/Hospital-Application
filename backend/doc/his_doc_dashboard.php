@@ -47,141 +47,146 @@ $doc_number = $_SESSION['doc_number'];
                 <!-- end page title -->
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Total Patients -->
-                <div class="ml-2 bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
-                        <i class="fab fa-accessible-icon text-2xl text-red-500"></i>
+                    <!-- Total Patients -->
+                    <div class="ml-2 bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
+                            <i class="fab fa-accessible-icon text-2xl text-red-500"></i>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <?php
+                            $result = "SELECT count(*) FROM hmisphp.his_patients";
+                            $stmt = $mysqli->prepare($result);
+                            $stmt->execute();
+                            $stmt->bind_result($patient);
+                            $stmt->fetch();
+                            $stmt->close();
+                            ?>
+                            <h3 class="text-3xl font-bold text-gray-800"
+                                data-plugin="counterup"><?php echo $patient; ?></h3>
+                            <p class="text-gray-500 text-sm">Total Patients</p>
+                        </div>
                     </div>
-                    <div class="ml-auto text-right">
-                        <?php
-                        $result = "SELECT count(*) FROM hmisphp.his_patients";
-                        $stmt = $mysqli->prepare($result);
-                        $stmt->execute();
-                        $stmt->bind_result($patient);
-                        $stmt->fetch();
-                        $stmt->close();
-                        ?>
-                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $patient; ?></h3>
-                        <p class="text-gray-500 text-sm">Total Patients</p>
+
+                    <!-- Waiting -->
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-yellow-100 border-2 border-yellow-500 flex items-center justify-center">
+                            <i class="mdi mdi-clock-outline text-2xl text-yellow-600"></i>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <?php
+                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Waiting'";
+                            $stmt = $mysqli->prepare($result);
+                            $stmt->execute();
+                            $stmt->bind_result($choose_count);
+                            $stmt->fetch();
+                            $stmt->close();
+                            ?>
+                            <h3 class="text-3xl font-bold text-gray-800"
+                                data-plugin="counterup"><?php echo $choose_count; ?></h3>
+                            <p class="text-gray-500 text-sm">Waiting</p>
+                        </div>
+                    </div>
+
+                    <!-- Inpatients -->
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
+                            <i class="mdi mdi-hospital text-2xl text-red-600"></i>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <?php
+                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
+                            $stmt = $mysqli->prepare($result);
+                            $stmt->execute();
+                            $stmt->bind_result($inpatient_count);
+                            $stmt->fetch();
+                            $stmt->close();
+                            ?>
+                            <h3 class="text-3xl font-bold text-gray-800"
+                                data-plugin="counterup"><?php echo $inpatient_count; ?></h3>
+                            <p class="text-gray-500 text-sm">In-Patient</p>
+                        </div>
+                    </div>
+
+                    <!-- Outpatients -->
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-green-100 border-2 border-green-500 flex items-center justify-center">
+                            <i class="mdi mdi-account-outline text-2xl text-green-500"></i>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <?php
+                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'OutPatient'";
+                            $stmt = $mysqli->prepare($result);
+                            $stmt->execute();
+                            $stmt->bind_result($outpatient_count);
+                            $stmt->fetch();
+                            $stmt->close();
+                            ?>
+                            <h3 class="text-3xl font-bold text-gray-800"
+                                data-plugin="counterup"><?php echo $outpatient_count; ?></h3>
+                            <p class="text-gray-500 text-sm">Out-Patient</p>
+                        </div>
+                    </div>
+
+                    <!-- Transferred -->
+                    <div class="bg-white rounded-2xl w-46 shadow-md hover:shadow-lg transition p-6 flex items-center">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-pink-100 border-2 border-pink-500 flex items-center justify-center">
+                            <i class="mdi mdi-exit-run text-2xl text-pink-500"></i>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <?php
+                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Transferred'";
+                            $stmt = $mysqli->prepare($result);
+                            $stmt->execute();
+                            $stmt->bind_result($transferred_count);
+                            $stmt->fetch();
+                            $stmt->close();
+                            ?>
+                            <h3 class="text-3xl font-bold text-gray-800"
+                                data-plugin="counterup"><?php echo $transferred_count; ?></h3>
+                            <p class="text-gray-500 text-sm leading-tight">Transferred</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Waiting -->
-                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-yellow-100 border-2 border-yellow-500 flex items-center justify-center">
-                        <i class="mdi mdi-clock-outline text-2xl text-yellow-600"></i>
-                    </div>
-                    <div class="ml-auto text-right">
-                        <?php
-                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Waiting'";
-                        $stmt = $mysqli->prepare($result);
-                        $stmt->execute();
-                        $stmt->bind_result($choose_count);
-                        $stmt->fetch();
-                        $stmt->close();
-                        ?>
-                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $choose_count; ?></h3>
-                        <p class="text-gray-500 text-sm">Waiting</p>
-                    </div>
-                </div>
 
-                <!-- Inpatients -->
-                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center">
-                        <i class="mdi mdi-hospital text-2xl text-red-600"></i>
-                    </div>
-                    <div class="ml-auto text-right">
-                        <?php
-                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
-                        $stmt = $mysqli->prepare($result);
-                        $stmt->execute();
-                        $stmt->bind_result($inpatient_count);
-                        $stmt->fetch();
-                        $stmt->close();
-                        ?>
-                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $inpatient_count; ?></h3>
-                        <p class="text-gray-500 text-sm">In-Patient</p>
-                    </div>
-                </div>
+                <!-- My Profile Card -->
+                <!--                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">-->
+                <!--                                <a href="his_doc_account.php">-->
+                <!--                                    <div class="bg-white rounded-lg  p-4 hover:shadow-md transition-shadow">-->
+                <!--                                        <div class="flex items-center">-->
+                <!--                                            <div class="w-1/2">-->
+                <!--                                                <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">-->
+                <!--                                                    <i class="fas fa-user-tag text-xl text-red-500"></i>-->
+                <!--                                                </div>-->
+                <!--                                            </div>-->
+                <!--                                            <div class="w-1/2 text-right">-->
+                <!--                                                <h3 class="text-2xl font-semibold text-black"></h3>-->
+                <!--                                                <p class="text-black text-sm truncate">My Profile</p>-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </a>-->
+                <!--                            </div>-->
 
-                <!-- Outpatients -->
-                <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 flex items-center">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-green-100 border-2 border-green-500 flex items-center justify-center">
-                        <i class="mdi mdi-account-outline text-2xl text-green-500"></i>
-                    </div>
-                    <div class="ml-auto text-right">
-                        <?php
-                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'OutPatient'";
-                        $stmt = $mysqli->prepare($result);
-                        $stmt->execute();
-                        $stmt->bind_result($outpatient_count);
-                        $stmt->fetch();
-                        $stmt->close();
-                        ?>
-                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $outpatient_count; ?></h3>
-                        <p class="text-gray-500 text-sm">Out-Patient</p>
-                    </div>
-                </div>
-
-                <!-- Transferred -->
-                <div class="bg-white rounded-2xl w-46 shadow-md hover:shadow-lg transition p-6 flex items-center">
-                    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-pink-100 border-2 border-pink-500 flex items-center justify-center">
-                        <i class="mdi mdi-exit-run text-2xl text-pink-500"></i>
-                    </div>
-                    <div class="ml-auto text-right">
-                        <?php
-                        $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Transferred'";
-                        $stmt = $mysqli->prepare($result);
-                        $stmt->execute();
-                        $stmt->bind_result($transferred_count);
-                        $stmt->fetch();
-                        $stmt->close();
-                        ?>
-                        <h3 class="text-3xl font-bold text-gray-800" data-plugin="counterup"><?php echo $transferred_count; ?></h3>
-                        <p class="text-gray-500 text-sm leading-tight">Transferred</p>
-                    </div>
-                </div>
+                <!-- My Payroll Card -->
+                <!--                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">-->
+                <!--                                <a href="his_doc_view_payrolls.php">-->
+                <!--                                    <div class="bg-white rounded-lg  p-4 hover:shadow-md transition-shadow">-->
+                <!--                                        <div class="flex items-center">-->
+                <!--                                            <div class="w-1/2">-->
+                <!--                                                <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">-->
+                <!--                                                    <i class="mdi mdi-flask text-xl text-red-500"></i>-->
+                <!--                                                </div>-->
+                <!--                                            </div>-->
+                <!--                                            <div class="w-1/2 text-right">-->
+                <!--                                                <h3 class="text-2xl font-semibold text-black"></h3>-->
+                <!--                                                <p class="text-black text-sm truncate">My Payroll</p>-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </a>-->
+                <!--                            </div>-->
             </div>
-
-
-                    <!-- My Profile Card -->
-                    <!--                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">-->
-                    <!--                                <a href="his_doc_account.php">-->
-                    <!--                                    <div class="bg-white rounded-lg  p-4 hover:shadow-md transition-shadow">-->
-                    <!--                                        <div class="flex items-center">-->
-                    <!--                                            <div class="w-1/2">-->
-                    <!--                                                <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">-->
-                    <!--                                                    <i class="fas fa-user-tag text-xl text-red-500"></i>-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="w-1/2 text-right">-->
-                    <!--                                                <h3 class="text-2xl font-semibold text-black"></h3>-->
-                    <!--                                                <p class="text-black text-sm truncate">My Profile</p>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </a>-->
-                    <!--                            </div>-->
-
-                    <!-- My Payroll Card -->
-                    <!--                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">-->
-                    <!--                                <a href="his_doc_view_payrolls.php">-->
-                    <!--                                    <div class="bg-white rounded-lg  p-4 hover:shadow-md transition-shadow">-->
-                    <!--                                        <div class="flex items-center">-->
-                    <!--                                            <div class="w-1/2">-->
-                    <!--                                                <div class="w-16 h-16 rounded-full bg-red-100 border-2 border-red-500 flex items-center justify-center mx-auto">-->
-                    <!--                                                    <i class="mdi mdi-flask text-xl text-red-500"></i>-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="w-1/2 text-right">-->
-                    <!--                                                <h3 class="text-2xl font-semibold text-black"></h3>-->
-                    <!--                                                <p class="text-black text-sm truncate">My Payroll</p>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </a>-->
-                    <!--                            </div>-->
-                </div>
 
             <!-- Patient Records Section -->
             <div class="flex flex-wrap m-2 mt-3 ml-3">
@@ -196,61 +201,86 @@ $doc_number = $_SESSION['doc_number'];
                             <!-- Search -->
                             <div class="w-full sm:w-64">
                                 <input id="demo-foo-search"
-                                    type="text"
-                                    placeholder="🔍 Search patients..."
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 transition">
+                                       type="text"
+                                       placeholder="🔍 Search patients..."
+                                       class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 transition">
                             </div>
                         </div>
 
                         <!-- Table -->
                         <div class="overflow-x-auto rounded-lg border border-gray-200">
-                            <table id="demo-foo-filtering" class="min-w-full divide-y divide-gray-200" data-page-size="7">
+                            <table id="demo-foo-filtering" class="min-w-full divide-y divide-gray-200"
+                                   data-page-size="7">
                                 <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">#</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">Patient Name</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Patient Number</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Address</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Phone</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Age</th>
-                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">Category</th>
-                                        <th class="px-4 py-3 text-center text-xs font-semibold text-gray-600">Action</th>
-                                    </tr>
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">#</th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600">Patient Name
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">
+                                        Patient Number
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">
+                                        Address
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">
+                                        Phone
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">
+                                        Age
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 hidden sm:table-cell">
+                                        Category
+                                    </th>
+                                    <th class="px-4 py-3 text-center text-xs font-semibold text-gray-600">Action</th>
+                                </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y divide-gray-100">
-                                    <?php
-                                    $ret = "SELECT * FROM hmisphp.his_patients ORDER BY RAND()";
-                                    $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute();
-                                    $res = $stmt->get_result();
-                                    $cnt = 1;
-                                    while ($row = $res->fetch_object()) {
+                                <tbody class="bg-white divide-y divide-gray-100 border border-2">
+                                <?php
+                                $ret = "SELECT * FROM hmisphp.his_patients ORDER BY RAND()";
+                                $stmt = $mysqli->prepare($ret);
+                                $stmt->execute();
+                                $res = $stmt->get_result();
+                                $cnt = 1;
+                                while ($row = $res->fetch_object()) {
                                     ?>
                                     <tr class="hover:bg-gray-50 transition">
-                                        <td class="px-4 py-3 text-sm text-gray-800"><?php echo $cnt; ?></td>
-                                        <td class="px-4 py-3 text-sm text-gray-800 font-medium"><?php echo $row->pat_fname; ?> <?php echo $row->pat_lname; ?></td>
-                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
-                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
-                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_phone; ?></td>
-                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_age; ?> Years</td>
-                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
-                                        <td class="px-4 py-3 text-center">
+                                        <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-800 font-medium border border-gray-200"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell border border-gray-200"><?php echo $row->pat_number; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell border border-gray-200"><?php echo $row->pat_addr; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell border border-gray-200"><?php echo $row->pat_phone; ?></td>
+                                        <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell border border-gray-200"><?php echo $row->pat_age; ?>
+                                            Years
+                                        </td>
+                                        <td class="px-4 py-2 whitespace-nowrap">
+                                            <?php
+                                            $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                            $color = $colors[$row->pat_type] ?? 'gray';
+                                            ?>
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                <?php echo $row->pat_type; ?>
+            </span>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-center border border-gray-200">
                                             <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&&pat_number=<?php echo $row->pat_number; ?>&&pat_name=<?php echo $row->pat_fname; ?>_<?php echo $row->pat_lname; ?>"
-                                                class="inline-flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-medium transition">
+                                               class="inline-flex items-center gap-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg text-xs font-medium transition">
                                                 <i class="mdi mdi-eye"></i> View
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $cnt++; } ?>
+
+                                    <?php $cnt++;
+                                } ?>
                                 </tbody>
                                 <tfoot>
-                                    <tr class="bg-gray-50">
-                                        <td colspan="8" class="px-4 py-3">
-                                            <div class="flex justify-end">
-                                                <ul class="flex space-x-1 pagination pagination-rounded footable-pagination mt-2 mb-0"></ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr class="bg-gray-50">
+                                    <td colspan="8" class="px-4 py-3">
+                                        <div class="flex justify-end">
+                                            <ul class="flex space-x-1 pagination pagination-rounded footable-pagination mt-2 mb-0"></ul>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -258,21 +288,21 @@ $doc_number = $_SESSION['doc_number'];
                 </div>
             </div>
 
-                <!-- end row -->
+            <!-- end row -->
 
-            </div> <!-- container -->
+        </div> <!-- container -->
 
-        </div> <!-- content -->
+    </div> <!-- content -->
 
-        <!-- Footer Start -->
-        <?php include('assets/inc/footer.php'); ?>
-        <!-- end Footer -->
+    <!-- Footer Start -->
+    <?php include('assets/inc/footer.php'); ?>
+    <!-- end Footer -->
 
-    </div>
+</div>
 
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
 
 
 </div>

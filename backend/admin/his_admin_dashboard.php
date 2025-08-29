@@ -131,7 +131,8 @@
                             <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-6">
                                 <div class="flex items-center">
                                     <div class="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center shadow-md">
-                                        <i class="mdi mdi-truck-delivery text-white text-2xl"></i>
+                                        <i class="mdi mdi-account-clock text-yellow-500 text-2xl"></i>
+
                                     </div>
                                     <div class="ml-4">
                                         <?php
@@ -154,11 +155,12 @@
                             <div class="bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-6">
                                 <div class="flex items-center">
                                     <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center shadow-md">
-                                        <i class="mdi mdi-domain text-white text-2xl"></i>
+                                        <i class="mdi mdi-account-multiple text-white text-2xl"></i>
+
                                     </div>
                                     <div class="ml-4">
                                         <?php
-                                            $result ="SELECT count(*) FROM hmisphp.his_equipments";
+                                            $result ="SELECT count(*) FROM hmisphp.his_patients";
                                             $stmt = $mysqli->prepare($result);
                                             $stmt->execute();
                                             $stmt->bind_result($assets);
@@ -166,7 +168,7 @@
                                             $stmt->close();
                                         ?>
                                         <h3 class="text-3xl font-bold text-gray-800"><?php echo $assets;?></h3>
-                                        <p class="text-gray-600 text-sm">Corporation Assets</p>
+                                        <p class="text-gray-600 text-sm">All Patient</p>
                                     </div>
                                 </div>
                             </div>
@@ -176,10 +178,11 @@
                                 <div class="flex items-center">
                                     <div class="w-16 h-16 rounded-full bg-pink-500 flex items-center justify-center shadow-md">
                                         <i class="mdi mdi-pill text-white text-2xl"></i>
+
                                     </div>
                                     <div class="ml-4">
                                         <?php
-                                            $result ="SELECT count(*) FROM hmisphp.his_pharmaceuticals";
+                                            $result ="SELECT count(*) FROM hmisphp.his_prescriptions";
                                             $stmt = $mysqli->prepare($result);
                                             $stmt->execute();
                                             $stmt->bind_result($phar);
@@ -187,7 +190,7 @@
                                             $stmt->close();
                                         ?>
                                         <h3 class="text-3xl font-bold text-gray-800"><?php echo $phar;?></h3>
-                                        <p class="text-gray-600 text-sm">Pharmaceuticals</p>
+                                        <p class="text-gray-600 text-sm">All prescriptions</p>
                                     </div>
                                 </div>
                             </div>

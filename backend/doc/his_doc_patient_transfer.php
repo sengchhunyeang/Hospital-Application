@@ -183,7 +183,12 @@ if (isset($_GET['delete'])) {
                                             <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
+                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php
+                                                $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                                $color = $colors[$row->pat_type] ?? 'gray';
+                                                ?>
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                                                <?php echo $row->pat_type; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                 <a href="his_doc_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                    class="bg-blue-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-blue-600 transition-colors">
