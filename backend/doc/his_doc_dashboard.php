@@ -199,12 +199,9 @@ $doc_number = $_SESSION['doc_number'];
                                 Patient Records
                             </h4>
                             <!-- Search -->
-                            <div class="w-full sm:w-64">
-                                <input id="demo-foo-search"
-                                       type="text"
-                                       placeholder="🔍 Search patients..."
-                                       class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 transition">
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">-->
+<!--                            </div>-->
                         </div>
 
                         <!-- Table -->
