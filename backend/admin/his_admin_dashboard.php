@@ -135,15 +135,17 @@
                                     </div>
                                     <div class="ml-4">
                                         <?php
-                                            $result ="SELECT count(*) FROM hmisphp.his_vendor";
-                                            $stmt = $mysqli->prepare($result);
-                                            $stmt->execute();
-                                            $stmt->bind_result($vendor);
-                                            $stmt->fetch();
-                                            $stmt->close();
+                                        $result = "SELECT count(*) FROM hmisphp.his_patients WHERE pat_type = 'Waiting'";
+                                        $stmt = $mysqli->prepare($result);
+                                        $stmt->execute();
+                                        $stmt->bind_result($inpatient);
+                                        $stmt->fetch();
+                                        $stmt->close();
                                         ?>
-                                        <h3 class="text-3xl font-bold text-gray-800"><?php echo $vendor;?></h3>
-                                        <p class="text-gray-600 text-sm">Vendors</p>
+                                        <h3 class="text-3xl font-bold text-gray-800">
+                                            <?php echo $inpatient;?>
+                                        </h3>
+                                        <p class="text-gray-600 text-sm">Waiting Patient</p>
                                     </div>
                                 </div>
                             </div>

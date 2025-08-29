@@ -231,74 +231,74 @@
 
 
 
-                <li>
-                    <?php
-                    $accountingActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_acc.payable.php', 'his_admin_manage_acc_payable.php', 'his_admin_add_acc_receivable.php', 'his_admin_manage_acc_receivable.php']);
-                    ?>
-                    <button type="button"
-                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
-                   hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $accountingActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                            aria-expanded="<?php echo $accountingActive ? 'true' : 'false' ?>"
-                            title="Accounting">
-                        <div class="flex items-center">
-                            <!-- Cash Multiple Icon -->
-                            <svg class="w-5 h-5 <?php echo $accountingActive ? 'text-blue-500' : 'text-gray-500' ?>"
-                                 fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M21 7H3a1 1 0 00-1 1v9a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM3 6a2 2 0 012-2h14a2 2 0 012 2v1H3V6z"/>
-                            </svg>
-                            <span class="ml-3 hidden md:block">Accounting</span>
-                        </div>
-                        <!-- Dropdown arrow -->
-                        <svg class="w-4 h-4 <?php echo $accountingActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-
-                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $accountingActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $accountingActive ? 'false' : 'true' ?>">
-
-                        <!-- Accounts Payable -->
-                        <li>
-                            <a href="his_admin_add_acc.payable.php"
-                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc.payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span>Add Acc. Payable</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_admin_manage_acc_payable.php"
-                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span>Manage Acc. Payable</span>
-                            </a>
-                        </li>
-
-                        <li class="border-t border-gray-200 my-1"></li>
-
-                        <!-- Accounts Receivable -->
-                        <li>
-                            <a href="his_admin_add_acc_receivable.php"
-                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span>Add Acc. Receivable</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_admin_manage_acc_receivable.php"
-                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span>Manage Acc. Receivable</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+<!--                <li>-->
+<!--                    --><?php
+//                    $accountingActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_acc.payable.php', 'his_admin_manage_acc_payable.php', 'his_admin_add_acc_receivable.php', 'his_admin_manage_acc_receivable.php']);
+//                    ?>
+<!--                    <button type="button"-->
+<!--                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                   hover:bg-blue-50 hover:text-blue-600-->
+<!--                   --><?php //echo $accountingActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+<!--                            aria-expanded="--><?php //echo $accountingActive ? 'true' : 'false' ?><!--"-->
+<!--                            title="Accounting">-->
+<!--                        <div class="flex items-center">-->
+<!--                            < Cash Multiple Icon -->
+<!--                            <svg class="w-5 h-5 --><?php //echo $accountingActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
+<!--                                 fill="currentColor" viewBox="0 0 24 24">-->
+<!--                                <path d="M21 7H3a1 1 0 00-1 1v9a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM3 6a2 2 0 012-2h14a2 2 0 012 2v1H3V6z"/>-->
+<!--                            </svg>-->
+<!--                            <span class="ml-3 hidden md:block">Accounting</span>-->
+<!--                        </div>-->
+<!--                        <! Dropdown arrow -->
+<!--                        <svg class="w-4 h-4 --><?php //echo $accountingActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                  d="M19 9l-7 7-7-7"></path>-->
+<!--                        </svg>-->
+<!--                    </button>-->
+<!---->
+<!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 --><?php //echo $accountingActive ? '' : 'hidden' ?><!--"-->
+<!--                        aria-hidden="--><?php //echo $accountingActive ? 'false' : 'true' ?><!--">-->
+<!---->
+<!--                        <! Accounts Payable -->
+<!--                        <li>-->
+<!--                            <a href="his_admin_add_acc.payable.php"-->
+<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc.payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span>Add Acc. Payable</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="his_admin_manage_acc_payable.php"-->
+<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span>Manage Acc. Payable</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!---->
+<!--                        <li class="border-t border-gray-200 my-1"></li>-->
+<!---->
+<!--                        <!-- Accounts Receivable -->
+<!--                        <li>-->
+<!--                            <a href="his_admin_add_acc_receivable.php"-->
+<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span>Add Acc. Receivable</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="his_admin_manage_acc_receivable.php"-->
+<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span>Manage Acc. Receivable</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
 
                 <!-- Laboratory -->
 <!--                <li>-->
