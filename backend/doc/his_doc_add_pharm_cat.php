@@ -114,7 +114,7 @@
                                     </div>
 
                                     <!-- Submit Button -->
-                                    <button type="submit" name="add_pharmaceutical_category" class="bg-blue-500 hover:bg-gray-500 text-white px-6 py-2 rounded-md transition duration-200">
+                                    <button type="submit" name="add_pharmaceutical_category" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200">
                                         Add Category
                                     </button>
                                 </form>

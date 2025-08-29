@@ -90,15 +90,14 @@ if(isset($_POST['transfer_patient'])) {
                         <!-- Form row -->
                         <!--LETS GET DETAILS OF SINGLE PATIENT GIVEN THEIR ID-->
                         <?php
-                            $pat_number=$_GET['pat_number'];
-                            $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
-                            $stmt= $mysqli->prepare($ret) ;
-                            $stmt->bind_param('i',$pat_number);
-                            $stmt->execute() ;//ok
-                            $res=$stmt->get_result();
-                            //$cnt=1;
-                            while($row=$res->fetch_object())
-                            {
+                        $pat_number = $_GET['pat_number'];
+                        $ret = "SELECT * FROM hmisphp.his_patients WHERE pat_number = ?";
+                        $stmt = $mysqli->prepare($ret);
+                        $stmt->bind_param('s', $pat_number); // 's' because pat_number is VARCHAR
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+
+                        while($row = $res->fetch_object()) {
                         ?>
                         <div class="row">
                             <div class="col-12">
@@ -143,9 +142,10 @@ if(isset($_POST['transfer_patient'])) {
                                                             id="t_date"
                                                             name="t_date"
                                                             required
-                                                            placeholder="DD/MM/YYYY"
+                                                            value="<?php echo date('Y-m-d'); ?>"
                                                             class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                                    >
+                                                    />
+
                                                 </div>
 
                                                 <!-- Hidden Patient Number -->

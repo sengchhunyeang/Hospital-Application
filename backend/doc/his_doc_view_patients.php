@@ -117,7 +117,12 @@ $doc_id = $_SESSION['doc_id']
                                             <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden md:table-cell"><?php echo $row->pat_addr;?></td>
                                             <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden md:table-cell"><?php echo $row->pat_phone;?></td>
                                             <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->pat_age;?> Years</td>
-                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->pat_type;?></td>
+                                            <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell"><?php
+                                                $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                                $color = $colors[$row->pat_type] ?? 'gray';
+                                                ?>
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                                                <?php echo $row->pat_type; ?></td>
                                             <td class="border border-gray-300 px-4 py-2 text-sm text-black hidden sm:table-cell">
                                                 <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>&&pat_name=<?php echo $row->pat_fname;?>_<?php echo $row->pat_lname;?>" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs inline-flex items-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

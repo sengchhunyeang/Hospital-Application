@@ -85,7 +85,7 @@
                                                 <th class="border border-gray-200 px-4 py-2 text-black" data-toggle="true">Patient Name</th>
                                                 <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Patient Number</th>
                                                 <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Patient Address</th>
-                                                <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Patient Ailment</th>
+                                                <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Room Number</th>
                                                 <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Patient Age</th>
                                                 <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Patient Category</th>
                                                 <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Action</th>
@@ -112,7 +112,11 @@
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_ailment;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_age;?> Years</td>
-                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_type;?></td>
+                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                                $color = $colors[$row->pat_type] ?? 'gray';
+                                                ?>
+                                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                                                        <?php echo $row->pat_type; ?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                         <a href="his_doc_add_single_pres.php?pat_number=<?php echo $row->pat_number;?>"
                                                            class="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600">

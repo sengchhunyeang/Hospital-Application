@@ -112,7 +112,11 @@
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pres_pat_addr;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pres_pat_ailment;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pres_pat_age;?> Years</td>
-                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pres_pat_type;?></td>
+                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php
+                                                        $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                                        $color = $colors[$row->pres_pat_type] ?? 'gray';
+                                                        ?>
+                                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800"><?php echo $row->pres_pat_type;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                         <a href="his_doc_view_single_pres.php?pres_number=<?php echo $row->pres_number;?>&&pres_id=<?php echo $row->pres_id;?>"
                                                            class="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600">
