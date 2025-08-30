@@ -124,21 +124,22 @@ if (isset($_GET['delete_pay_number'])) {
                                             <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pay_number; ?></td>
                                             <td class="px-4 py-2 text-sm text-gray-700">
                                                 $ <?php echo $row->pay_emp_salary; ?></td>
-                                            <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    <div class="flex flex-wrap gap-2 sm:flex-nowrap">
+                                        <!-- Delete Button -->
+                                        <a href="his_admin_manage_payrolls.php?delete_pay_number=<?php echo $row->pay_number; ?>"
+                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors duration-200 w-full sm:w-auto">
+                                        <i class="fas fa-trash mr-1"></i> Delete
+                                        </a>
 
-                                                <!-- Delete Button -->
-                                                <a href="his_admin_manage_payrolls.php?delete_pay_number=<?php echo $row->pay_number; ?>"
-                                                   class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors duration-200">
-                                                    <i class="fas fa-trash mr-1"></i> Delete
-                                                </a>
+                                        <!-- Update Payroll Button -->
+                                        <a href="his_admin_update_single_employee_payroll.php?pay_number=<?php echo $row->pay_number; ?>"
+                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors duration-200 w-full sm:w-auto">
+                                        <i class="fas fa-edit mr-1"></i> Update Payroll
+                                        </a>
+                                    </div>
+                                    </td>
 
-                                                <!-- Update Payroll Button -->
-                                                <a href="his_admin_update_single_employee_payroll.php?pay_number=<?php echo $row->pay_number; ?>"
-                                                   class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded hover:bg-yellow-600 transition-colors duration-200">
-                                                    <i class="fas fa-edit mr-1"></i> Update Payroll
-                                                </a>
-
-                                            </td>
                                         </tr>
                                         </tbody>
 

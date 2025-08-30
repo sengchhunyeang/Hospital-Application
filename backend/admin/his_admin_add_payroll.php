@@ -115,16 +115,22 @@
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_number;?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_email;?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->doc_dept;?></td>
-                                                        <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
-                                                            <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>"
-                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
-                                                                <i class="mdi mdi-eye mr-1"></i> View
-                                                            </a>
-                                                            <a href="his_admin_add_single_employee_payroll.php?doc_number=<?php echo $row->doc_number;?>"
-                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-green-600 rounded hover:bg-green-700">
-                                                                <i class="fas fa-eye-dropper mr-1"></i> Add Payroll
-                                                            </a>
-                                                        </td>
+                                        <td class="px-4 py-2 text-sm text-gray-700">
+                                            <div class="flex flex-wrap gap-2 sm:flex-nowrap">
+                                                <!-- View Button -->
+                                                <a href="his_admin_view_single_employee.php?doc_id=<?php echo $row->doc_id;?>&&doc_number=<?php echo $row->doc_number;?>"
+                                                class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-200 w-full sm:w-auto">
+                                                <i class="mdi mdi-eye mr-1"></i> View
+                                                </a>
+
+                                                <!-- Add Payroll Button -->
+                                                <a href="his_admin_add_single_employee_payroll.php?doc_number=<?php echo $row->doc_number;?>"
+                                                class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition duration-200 w-full sm:w-auto">
+                                                <i class="fas fa-eye-dropper mr-1"></i> Add Payroll
+                                                </a>
+                                            </div>
+                                            </td>
+
                                                     </tr>
                                                     </tbody>
 

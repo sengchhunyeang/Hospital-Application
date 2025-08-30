@@ -135,9 +135,9 @@
                                                         <td class="px-4 py-2"><?php echo $row->pay_number; ?></td>
                                                         <td class="px-4 py-2"><?php echo date("d/m/Y - h:m:s", strtotime($mysqlDateTime)); ?></td>
                                                         <td class="px-4 py-2">$ <?php echo $row->pay_emp_salary; ?></td>
-                                                        <td class="px-4 py-2">
+                                                        <td class="px-2 py-2">
                                                             <a href="his_admin_generate_single_employee_payroll.php?pay_number=<?php echo $row->pay_number;?>&&pay_doc_number=<?php echo $row->pay_doc_number;?>"
-                                                               class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-2 py-1 rounded-md">
+                                                               class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-1 py-1 rounded-md">
                                                                 <i class="fas fa-file-invoice-dollar"></i> Generate Payroll
                                                             </a>
                                                         </td>
