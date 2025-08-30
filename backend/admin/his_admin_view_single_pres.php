@@ -142,7 +142,9 @@
                                                 <p class="text-blue-700 font-medium">Doctor: ____________________</p>
                                             </div>
                                             <div>
-                                                <p class="text-blue-700 font-medium">Date: <?= date('d/m/Y'); ?></p>
+<!--                                                <p class="text-blue-700 font-medium">Date: --><?php //= (new DateTime($row->pres_date))->format('Y-m-d H:i'); ?><!--</p>-->
+                                                <p class="text-blue-700 font-medium">Date: <?= date('F j, Y g:i A', strtotime($row->pres_date)); ?></p>
+                                                <!-- Output: August 30, 2025 1:31 PM -->
                                             </div>
                                         </div>
 

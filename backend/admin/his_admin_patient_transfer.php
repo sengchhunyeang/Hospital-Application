@@ -112,6 +112,9 @@ if(isset($_GET['delete']))
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
                                             Category
                                         </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient WalkIn
+                                        </th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                                     </tr>
                                     </thead>
@@ -129,7 +132,20 @@ if(isset($_GET['delete']))
                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
                                         <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
                                         <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
-                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_type; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
+                                            <?php
+                                            $colors = [
+                                                    'OutPatient' => 'green',
+                                                    'InPatient' => 'blue',
+                                                    'Waiting' => 'yellow'
+                                            ];
+                                            $color = $colors[$row->pat_type] ?? 'gray';
+                                            ?>
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                <?php echo $row->pat_type; ?>
+            </span>
+                                        </td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->created_at; ?></td>
                                         <td class="px-4 py-2 text-sm">
                                             <a href="his_admin_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-1 rounded-md shadow-md transition">

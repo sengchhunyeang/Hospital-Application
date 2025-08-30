@@ -165,7 +165,7 @@
                                                     <label for="pat_ailment" class="block text-gray-700 font-medium mb-1">
                                                         Room Number <span class="text-red-500">*</span>
                                                     </label>
-                                                    <input type="text" required value="<?php echo $row->pat_ailment;?>" name="pat_ailment" id="pat_ailment"
+                                                    <input type="text"  value="<?php echo $row->pat_ailment;?>" name="pat_ailment" id="pat_ailment"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
                                                 <div>
@@ -192,7 +192,7 @@
                                             <!-- Submit Button -->
                                             <div>
                                                 <button type="submit" name="update_patient"
-                                                        class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-md shadow-md transition">
+                                                        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-md shadow-md transition">
                                                     Add Patient
                                                 </button>
                                             </div>
