@@ -128,7 +128,12 @@
                                             <td class="border border-gray-200 px-4 py-2"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
                                             <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_number;?></td>
                                             <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_addr;?></td>
-                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php echo $row->pat_type;?></td>
+                                            <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell"><?php
+                                                $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                                $color = $colors[$row->pat_type] ?? 'gray';
+                                                ?>
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                                                <?php echo $row->pat_type; ?></td>
 
                                             <td class="border border-gray-200 px-4 py-2 hidden sm:table-cell">
                                                 <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="bg-blue-500 text-white px-2 py-1 rounded text-xs inline-block mr-1">

@@ -204,7 +204,7 @@ CREATE TABLE `his_patients`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-
+select * from his_patients;
 
 -- Data for table `his_patients`
 INSERT INTO his_patients

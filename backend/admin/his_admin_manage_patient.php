@@ -96,7 +96,7 @@ if (isset($_GET['delete'])) {
                             </div>
 
                             <div class="table-responsive">
-                                <table id="demo-foo-filtering" class="min-w-full border border-gray-300 text-black mb-4"
+                                <table id="demo-foo-filtering" class="min-w-full border border-gray-500 text-black mb-4 "
                                        data-page-size="7">
                                     <thead class="bg-gray-100 text-gray-700 uppercase text-sm font-semibold">
                                     <tr>

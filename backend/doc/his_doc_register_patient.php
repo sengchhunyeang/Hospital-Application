@@ -96,14 +96,14 @@ if (isset($_POST['add_patient'])) {
                                             <label for="inputEmail4" class="block text-sm font-medium mb-1 text-black">First
                                                 Name</label>
                                             <input type="text" required name="pat_fname"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:ring-2 focus:ring-blue-500 outline-none"
                                                    id="inputEmail4" placeholder="Patient's First Name">
                                         </div>
                                         <div class="w-full md:w-1/2 px-2 mb-4">
                                             <label for="inputPassword4"
                                                    class="block text-sm font-medium mb-1 text-black">Last Name</label>
                                             <input required type="text" name="pat_lname"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:ring-2 focus:ring-blue-500 outline-none"
                                                    id="inputPassword4" placeholder="Patient's Last Name">
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@ if (isset($_POST['add_patient'])) {
                                             <label for="pat_dob" class="block text-sm font-medium mb-1 text-black">Date
                                                 Of Birth</label>
                                             <input type="date" required name="pat_dob"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:ring-2 focus:ring-blue-500 outline-none"
                                                    id="pat_dob">
                                         </div>
 
@@ -123,43 +123,65 @@ if (isset($_POST['add_patient'])) {
                                             <label for="pat_age"
                                                    class="block text-sm font-medium mb-1 text-black">Age</label>
                                             <input required type="text" name="pat_age"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black
+              focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
                                                    id="pat_age" placeholder="Patient's Age" readonly>
                                         </div>
                                     </div>
 
-                                    <div class="mb-4">
-                                        <label for="inputAddress" class="block text-sm font-medium mb-1 text-black">Address</label>
-                                        <input required type="text"
-                                               class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
-                                               name="pat_addr" id="inputAddress" placeholder="Patient's Address">
+                                    <div>
+                                        <?php
+                                        // Example: all Cambodian addresses
+                                        $addresses = ["Banteay Meanchey - បន្ទាយមានជ័យ", "Battambang - បាត់ដំបង", "Kampong Cham - កំពង់ចាម", "Kampong Chhnang - កំពង់ឆ្នាំង", "Kampong Speu - កំពង់ស្ពឺ", "Kampong Thom - កំពង់ធំ", "Kampot - កំពត", "Kandal - កណ្ដាល", "Kep - កែប", "Koh Kong - កោះកុង", "Kratié - ក្រចេះ", "Mondulkiri - មណ្ឌលគិរី", "Pailin - ប៉ៃលិន", "Phnom Penh - ភ្នំពេញ", "Preah Vihear - ព្រះវិហារ", "Prey Veng - ព្រៃវែង", "Pursat - ពោធិសាត់", "Ratanakiri - រតនគីរី", "Siem Reap - សៀមរាប", "Sihanoukville - សីហនុ", "Stung Treng - ស្ទឹងត្រែង", "Svay Rieng - ស្វាយរៀង", "Takeo - តាកែវ", "Tboung Khmum - ទ្បូងខ្មុំ"];
+
+
+                                        // Handle form submission
+                                        $selected_address = '';
+                                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                            $selected_address = isset($_POST['pat_addr']) ? $_POST['pat_addr'] : '';
+                                            // Now you can insert $selected_address into your database
+                                        }
+                                        ?>
+
+                                        <label for="pat_addr" class="block mb-1 font-medium">Address <span
+                                                    class="text-red-600 focus:ring-blue-500">*</span></label>
+                                        <select name="pat_addr" id="pat_addr"
+                                                class="w-full border border-gray-300 rounded-md px-3 py-2 mb-2">
+                                            <option value="">-- Select Address --</option>
+                                            <?php foreach ($addresses as $addr): ?>
+                                                <option value="<?php echo $addr; ?>" <?php if ($addr == $selected_address) echo 'selected'; ?>>
+                                                    <?php echo $addr; ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
 
-                                    <div class="flex flex-wrap -mx-2 mb-6">
-                                        <div class="w-full md:w-1/3 px-2 mb-4">
-                                            <label for="inputCity" class="block text-sm font-medium mb-1 text-black">Mobile
-                                                Number</label>
-                                            <input required type="text" name="pat_phone"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
-                                                   id="inputCity">
-                                        </div>
-                                        <div class="w-full md:w-1/3 px-2 mb-4">
-                                            <label for="inputCity" class="block text-sm font-medium mb-1 text-black">Room
-                                                number </label>
-                                            <input type="text" name="pat_ailment"
-                                                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-black"
-                                                   id="inputCity">
-                                        </div>
-                                        <div class="w-full md:w-1/3 px-2 mb-4">
-                                            <label for="inputState" class="block text-sm font-medium mb-1 text-black">Patient's
-                                                Type</label>
-                                            <select id="inputState" required name="pat_type"
-                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md text-black">
-                                                <option></option>
-                                                <option>Waiting</option>
-                                                <option>Inpatients</option>
-                                                <option>Outpatients</option>
-                                            </select>
+                                    <div class="flex flex-wrap gap-6 mb-6">
+
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div>
+                                                <label for="pat_phone" class="block mb-1 font-medium">Mobile Number
+                                                    <span class="text-red-600">*</span></label>
+                                                <input type="text" required name="pat_phone" id="pat_phone"
+                                                       class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+                                            <div>
+                                                <label for="pat_type" class="block mb-1 font-medium">Patient's
+                                                    Type</label>
+                                                <select id="pat_type" required name="pat_type"
+                                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                    <option>Waiting</option>
+                                                    <option>InPatient</option>
+                                                    <option>OutPatient</option>
+                                                </select>
+                                            </div>
+
+                                            <div id="room_number_div" class="hidden">
+                                                <label for="pat_ailment" class="block mb-1 font-medium">Room
+                                                    Number</label>
+                                                <input type="number" name="pat_ailment" id="pat_ailment"
+                                                       class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
                                         </div>
                                         <div class="w-full md:w-1/6 px-2 mb-4 hidden">
                                             <?php
@@ -175,7 +197,7 @@ if (isset($_POST['add_patient'])) {
                                     </div>
 
                                     <button type="submit" name="add_patient"
-                                            class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-gray-700 transition-colors">
+                                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors mt-2">
                                         Add Patient
                                     </button>
                                 </form>
@@ -235,11 +257,31 @@ if (isset($_POST['add_patient'])) {
         // Show age in the input field
         document.getElementById("pat_age").value = age;
     });
+    document.getElementById("pat_dob").addEventListener("change", function () {
+        const dob = new Date(this.value);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
 
+        // Adjust if birthday hasn't occurred yet this year
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+
+        // Show age in the input field
+        document.getElementById("pat_age").value = age;
+    });
+    const patientType = document.getElementById('pat_type');
+    const roomDiv = document.getElementById('room_number_div');
+
+    patientType.addEventListener('change', function () {
+        if (this.value === 'InPatient') {
+            roomDiv.classList.remove('hidden'); // show input
+        } else {
+            roomDiv.classList.add('hidden'); // hide input
+        }
+    });
 </script>
-<!-- In your <head> -->
-
-
 </body>
 
 </html>

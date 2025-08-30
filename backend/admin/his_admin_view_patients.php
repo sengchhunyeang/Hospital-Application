@@ -110,15 +110,15 @@ $aid = $_SESSION['ad_id'];
 
                                     while ($row = $res->fetch_object()) {
                                         ?>
-                                        <tbody>
-                                        <tr class="hover:bg-gray-100 text-black">
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $cnt; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_number; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_addr; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_phone; ?></td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->pat_age; ?> Years</td>
-                                            <td class="px-4 py-2 whitespace-nowrap">
+                                        <tbody class="border border-gray-300">
+                                        <tr class="hover:bg-gray-100 text-black border-b border-gray-300">
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $cnt; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_number; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_addr; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_phone; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_age; ?> Years</td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300">
                                                 <?php
                                                 $colors = [
                                                         'OutPatient' => 'green',
@@ -131,9 +131,10 @@ $aid = $_SESSION['ad_id'];
                 <?php echo $row->pat_type; ?>
             </span>
                                             </td>
-                                            <td class="px-4 py-2 whitespace-nowrap"><?php echo $row->created_at; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->created_at; ?></td>
                                         </tr>
                                         </tbody>
+
                                         <?php
                                         $cnt--; // Decrement for next row
                                     }
