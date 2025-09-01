@@ -120,7 +120,7 @@ if(isset($_GET['delete']))
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <?php
-                                    $ret = "SELECT * FROM hmisphp.his_patients WHERE pat_type = 'InPatient'";
+                                    $ret = "SELECT * FROM hmisphp.his_patients ";
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
@@ -149,7 +149,7 @@ if(isset($_GET['delete']))
                                         <td class="px-4 py-2 text-sm">
                                             <a href="his_admin_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-1 rounded-md shadow-md transition">
-                                                Transfer Patient
+                                                Discharge Patient
                                             </a>
                                         </td>
                                     </tr>
@@ -189,19 +189,19 @@ if(isset($_GET['delete']))
                                             Patient Number
                                         </th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
-                                            Transfer Status
+                                           WalkIn Date
                                         </th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
-                                            Referral Hospital
+                                            Discharge
                                         </th>
                                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
-                                            Transfer Date
+                                           WalkOut Date
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <?php
-                                    $ret = "SELECT * FROM hmisphp.his_patient_transfers";
+                                    $ret = "SELECT * FROM hmisphp.his_patient_transfers ";
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
@@ -213,7 +213,12 @@ if(isset($_GET['delete']))
                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->t_pat_name; ?></td>
                                         <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_pat_number; ?></td>
-                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_status; ?></td>
+                                        <!-- WalkIn Date -->
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
+                                            <?php echo !empty($row->created_at) ? date('d/m/Y H:i', strtotime($row->created_at)) : 'NA'; ?>
+                                        </td>
+
+                                        <!--                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">--><?php //echo $row->t_status; ?><!--</td>-->
                                         <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
                                         <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
                                             <?php echo date('d/m/Y H:i', strtotime($row->t_date)); ?>

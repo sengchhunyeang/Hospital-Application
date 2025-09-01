@@ -90,6 +90,7 @@ $aid = $_SESSION['ad_id'];
                                         <th class="px-4 py-2 text-left">No</th>
                                         <th class="px-4 py-2 text-left">Name</th>
                                         <th class="px-4 py-2 text-left">Number Patient</th>
+                                        <th class="px-4 py-2 text-left">Room Patient</th>
                                         <th class="px-4 py-2 text-left hidden sm:table-cell">Address</th>
                                         <th class="px-4 py-2 text-left hidden sm:table-cell">Phone</th>
                                         <th class="px-4 py-2 text-left">Age</th>
@@ -115,6 +116,11 @@ $aid = $_SESSION['ad_id'];
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $cnt; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_number; ?></td>
+                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300">
+                                                <?php echo !empty($row->pat_ailment) ? $row->pat_ailment : 'NA'; ?>
+                                            </td>
+
+
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_addr; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_phone; ?></td>
                                             <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->pat_age; ?> Years</td>
