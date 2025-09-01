@@ -206,6 +206,7 @@ CREATE TABLE `his_patients`
   COLLATE = utf8mb4_unicode_ci;
 select * from his_patients;
 
+
 -- ទិន្នន័យសម្រាប់តារាង `his_patients`
 INSERT INTO his_patients
 (pat_fname, pat_lname, pat_dob, pat_age, pat_number, pat_addr, pat_phone, pat_type, pat_ailment, pat_discharge_status,
@@ -238,24 +239,6 @@ INSERT INTO `his_patient_transfers`
 (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
 VALUES (NULL, 'Kenyatta National Hospital', '2025-8-8 10:30:00', 'សេង ឈុនយាង', 'A0005', 'Success');
 
-
-CREATE TABLE `his_patient_transfers`
-(
-    `t_id`         int(20) NOT NULL AUTO_INCREMENT,
-    `t_hospital`   varchar(200) DEFAULT NULL,
-    `t_date`       varchar(200) DEFAULT NULL,
-    `t_pat_name`   varchar(200) DEFAULT NULL,
-    `t_pat_number` varchar(200) DEFAULT NULL,
-    `t_status`     varchar(200) DEFAULT NULL,
-    PRIMARY KEY (`t_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
-
--- Data for table `his_patient_transfers`
-INSERT INTO `his_patient_transfers` (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
-VALUES (1, 'Khmer soviet friendship Hospital', '2025-08-16 10:00:00', 'Reatrey', '9KXPM', 'Success');
--- Table structure for table `his_payrolls`
 CREATE TABLE `his_payrolls`
 (
     `pay_id`             int(20)      NOT NULL,

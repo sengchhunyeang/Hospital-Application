@@ -652,60 +652,60 @@
                     </ul>
                 </li>
                 <!-- Surgical / Theatre -->
-                <li>
-                    <?php
-                    $surgActive = in_array(basename($_SERVER['PHP_SELF']), [
-                            'his_admin_add_equipment.php',
-                            'his_admin_manage_equipment.php',
-                            'his_admin_add_theatre_patient.php',
-                            'his_admin_manage_theatre_patient.php',
-                            'his_admin_surgery_records.php'
-                    ]);
-                    ?>
-                    <button type="button"
-                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
-                   hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $surgActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                            aria-expanded="<?php echo $surgActive ? 'true' : 'false' ?>"
-                            title="Surgical / Theatre">
-                        <div class="flex items-center">
-                            <i class="mdi mdi-scissors-cutting <?php echo $surgActive ? 'text-blue-500' : 'text-gray-500' ?> text-lg"></i>
-                            <span class="ml-3 hidden md:block">Surgical / Theatre</span>
-                        </div>
-                        <svg class="w-4 h-4 <?php echo $surgActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-
-                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $surgActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $surgActive ? 'false' : 'true' ?>">
-                        <?php
-                        $surgSubmenu = [
-                                'his_admin_add_equipment.php' => 'Add Equipment',
-                                'his_admin_manage_equipment.php' => 'Manage Equipments',
-                                'his_admin_add_theatre_patient.php' => 'Add Patient',
-                                'his_admin_manage_theatre_patient.php' => 'Manage Patients',
-                                'his_admin_surgery_records.php' => 'Surgery Records'
-                        ];
-                        foreach ($surgSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
-                            ?>
-                            <li>
-                                <a href="<?php echo $file; ?>"
-                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600 <?php echo $active ?>"
-                                   title="<?php echo $label; ?>">
-                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
-                                    </svg>
-                                    <span class="hidden md:block"><?php echo $label; ?></span>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
+<!--                <li>-->
+<!--                    --><?php
+//                    $surgActive = in_array(basename($_SERVER['PHP_SELF']), [
+//                            'his_admin_add_equipment.php',
+//                            'his_admin_manage_equipment.php',
+//                            'his_admin_add_theatre_patient.php',
+//                            'his_admin_manage_theatre_patient.php',
+//                            'his_admin_surgery_records.php'
+//                    ]);
+//                    ?>
+<!--                    <button type="button"-->
+<!--                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                   hover:bg-blue-50 hover:text-blue-600-->
+<!--                   --><?php //echo $surgActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+<!--                            aria-expanded="--><?php //echo $surgActive ? 'true' : 'false' ?><!--"-->
+<!--                            title="Surgical / Theatre">-->
+<!--                        <div class="flex items-center">-->
+<!--                            <i class="mdi mdi-scissors-cutting --><?php //echo $surgActive ? 'text-blue-500' : 'text-gray-500' ?><!-- text-lg"></i>-->
+<!--                            <span class="ml-3 hidden md:block">Surgical / Theatre</span>-->
+<!--                        </div>-->
+<!--                        <svg class="w-4 h-4 --><?php //echo $surgActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                  d="M19 9l-7 7-7-7"></path>-->
+<!--                        </svg>-->
+<!--                    </button>-->
+<!---->
+<!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 --><?php //echo $surgActive ? '' : 'hidden' ?><!--"-->
+<!--                        aria-hidden="--><?php //echo $surgActive ? 'false' : 'true' ?><!--">-->
+<!--                        --><?php
+//                        $surgSubmenu = [
+//                                'his_admin_add_equipment.php' => 'Add Equipment',
+//                                'his_admin_manage_equipment.php' => 'Manage Equipments',
+//                                'his_admin_add_theatre_patient.php' => 'Add Patient',
+//                                'his_admin_manage_theatre_patient.php' => 'Manage Patients',
+//                                'his_admin_surgery_records.php' => 'Surgery Records'
+//                        ];
+//                        foreach ($surgSubmenu as $file => $label):
+//                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+//                            ?>
+<!--                            <li>-->
+<!--                                <a href="--><?php //echo $file; ?><!--"-->
+<!--                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600 --><?php //echo $active ?><!--"-->
+<!--                                   title="--><?php //echo $label; ?><!--">-->
+<!--                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">-->
+<!--                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>-->
+<!--                                    </svg>-->
+<!--                                    <span class="hidden md:block">--><?php //echo $label; ?><!--</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        --><?php //endforeach; ?>
+<!--                    </ul>-->
+<!--                </li>-->
 
 
                 <!-- Payrolls -->
