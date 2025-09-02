@@ -111,7 +111,7 @@
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_bcode;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_vendor;?></td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_cat;?></td>
-                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_qty;?> Cartons</td>
+                                                    <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->phar_qty;?> Box</td>
                                                     <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                         <a href="his_doc_view_single_pharm.php?phar_bcode=<?php echo $row->phar_bcode;?>"
                                                            class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600">

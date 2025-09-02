@@ -95,7 +95,7 @@
                                                     <input type="text" required name="phar_name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-black" id="inputEmail4">
                                                 </div>
                                                 <div class="w-full md:w-1/2 px-2 mb-4">
-                                                    <label for="inputPassword4" class="block mb-2 text-sm font-medium text-black">Pharmaceutical Quantity (Cartons)</label>
+                                                    <label for="inputPassword4" class="block mb-2 text-sm font-medium text-black">Pharmaceutical Quantity (Box)</label>
                                                     <input required type="text" name="phar_qty" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-black" id="inputPassword4">
                                                 </div>
                                             </div>

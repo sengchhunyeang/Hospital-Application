@@ -54,15 +54,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h4 class="text-primary font-weight-bold">✨ Dedicated to Your Health & Wellbeing</h4>
-                    <h1 class="display-4 font-weight-bold">Empowering Healthcare with Excellence</h1>
+                    <h4 class="text-primary font-weight-bold">✨ Caring for Your Health</h4>
+                    <h1 class="display-4 font-weight-bold">Smart Hospital System</h1>
                     <p class="lead">
-                        Our <strong>Hospital Management System (HMS)</strong> is a next-generation solution 
-                        designed to seamlessly integrate hospital operations. From patient records and staff management 
-                        to advanced analytics and decision support, HMS helps hospitals deliver better care, streamline workflows, 
-                        and achieve greater efficiency.
+                        Our <strong>Hospital Management System (HMS)</strong> helps hospitals keep patient records,
+                        support doctors and staff, and make services faster and easier. With HMS, hospitals can give
+                        better care and save time.
                     </p>
                 </div>
+
             </div>
         </div>
     </section>
