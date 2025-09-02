@@ -105,8 +105,12 @@
                                         </p>
 
                                         <p class="mb-2 text-black">
-                                            <strong class="font-semibold">Room number:</strong>
+                                            <strong class="font-semibold">Patient Ailment:</strong>
                                             <span class="ml-2"><?php echo htmlspecialchars($row->pat_ailment);?></span>
+                                        </p>
+                                        <p class="mb-2 text-black">
+                                            <strong class="font-semibold">Room number:</strong>
+                                            <span class="ml-2"><?php echo htmlspecialchars($row->pat_room_number);?></span>
                                         </p>
 
                                         <!-- Horizontal Divider -->

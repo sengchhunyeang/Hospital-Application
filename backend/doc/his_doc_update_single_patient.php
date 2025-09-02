@@ -14,15 +14,33 @@
             $pat_age = $_POST['pat_age'];
             $pat_dob = $_POST['pat_dob'];
             $pat_ailment = $_POST['pat_ailment'];
+            $pat_room_number = $_POST['pat_room_number'];
+
             //sql to insert captured values
-			$query="UPDATE  hmisphp.his_patients  SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?,  pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=? WHERE pat_number=?";
-			$stmt = $mysqli->prepare($query);
-			$rc=$stmt->bind_param('sssssssss', $pat_fname, $pat_lname, $pat_age, $pat_dob,  $pat_phone, $pat_type, $pat_addr, $pat_ailment, $pat_number);
-			$stmt->execute();
+            $query = "UPDATE hmisphp.his_patients  
+          SET pat_fname=?, pat_lname=?, pat_age=?, pat_dob=?,  
+              pat_phone=?, pat_type=?, pat_addr=?, pat_ailment=?, pat_room_number=? 
+          WHERE pat_number=?";
+
+            $stmt = $mysqli->prepare($query);
+            $rc = $stmt->bind_param(
+                    'ssssssssss',   // 10 placeholders → 10 types
+                    $pat_fname,
+                    $pat_lname,
+                    $pat_age,
+                    $pat_dob,
+                    $pat_phone,
+                    $pat_type,
+                    $pat_addr,
+                    $pat_ailment,
+                    $pat_room_number,  // ✅ Added
+                    $pat_number        // ✅ WHERE condition
+            );
+            $stmt->execute();
 			/*
 			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
 			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
+			*/
 			//declare a varible which will be passed to alert function
 			if($stmt)
 			{
@@ -195,15 +213,27 @@
                                                     >
                                                 </div>
 
-                                                <!-- Room Number -->
+                                                <!-- Patient ailment -->
                                                 <div>
-                                                    <label for="pat_ailment" class="block text-sm font-medium text-gray-700">Room Number</label>
+                                                    <label for="pat_ailment" class="block text-sm font-medium text-gray-700">Ailment</label>
                                                     <input
                                                             type="text"
                                                             id="pat_ailment"
                                                             name="pat_ailment"
                                                             value="<?php echo $row->pat_ailment; ?>"
-                                                            placeholder="Room Number"
+                                                            placeholder="Ailment"
+                                                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                    >
+                                                </div>
+                                                <!-- Room Number -->
+                                                <div>
+                                                    <label for="pat_ailment" class="block text-sm font-medium text-gray-700">Room Number</label>
+                                                    <input
+                                                            type="text"
+                                                            id="pat_room_number"
+                                                            name="pat_room_number"
+                                                            value="<?php echo $row->pat_room_number; ?>"
+                                                            placeholder="pat_room_number"
                                                             class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                                     >
                                                 </div>

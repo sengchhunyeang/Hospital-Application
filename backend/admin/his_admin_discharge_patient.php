@@ -1,188 +1,281 @@
 <?php
-  session_start();
-  include('assets/inc/config.php');
-  include('assets/inc/checklogin.php');
-  check_login();
-  $aid=$_SESSION['ad_id'];
-  /*
-  if(isset($_GET['delete']))
-  {
-        $id=intval($_GET['delete']);
-        $adn="delete from his_patients where pat_id=?";
-        $stmt= $mysqli->prepare($adn);
-        $stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	 
-  
-          if($stmt)
+session_start();
+include('assets/inc/config.php');
+include('assets/inc/checklogin.php');
+check_login();
+$aid = $_SESSION['ad_id'];
+/*
+if(isset($_GET['delete']))
+{
+      $id=intval($_GET['delete']);
+      $adn="delete from his_patients where pat_id=?";
+      $stmt= $mysqli->prepare($adn);
+      $stmt->bind_param('i',$id);
+      $stmt->execute();
+      $stmt->close();
+
+        if($stmt)
+        {
+          $success = "Vehicle Removed";
+        }
+          else
           {
-            $success = "Vehicle Removed";
+              $err = "Try Again Later";
           }
-            else
-            {
-                $err = "Try Again Later";
-            }
-    }
-    */
+  }
+  */
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    
-<?php include('assets/inc/head.php');?>
 
-    <body>
+<?php include('assets/inc/head.php'); ?>
 
-        <!-- Begin page -->
-        <div id="wrapper">
+<body>
 
-            <!-- Topbar Start -->
-                <?php include('assets/inc/nav.php');?>
-            <!-- end Topbar -->
+<!-- Begin page -->
+<div id="wrapper">
 
-            <!-- ========== Left Sidebar Start ========== -->
-                <?php include("assets/inc/sidebar.php");?>
-            <!-- Left Sidebar End -->
+    <!-- Topbar Start -->
+    <?php include('assets/inc/nav.php'); ?>
+    <!-- end Topbar -->
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
+    <!-- ========== Left Sidebar Start ========== -->
+    <?php include("assets/inc/sidebar.php"); ?>
+    <!-- Left Sidebar End -->
 
-            <div class="content-page">
-                <div class="content">
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Patients</a></li>
-                                            <li class="breadcrumb-item active">Discharge Patients</li>
-                                        </ol>
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Patients</a></li>
+                                    <li class="breadcrumb-item active">Transfer Patients</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Transfer Patients</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <h4 class="header-title">Patient's Awaiting Transfers</h4>
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 text-sm-center form-inline">
+                                        <div class="form-group mr-2" style="display:none">
+                                            <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                                                <option value="">Show all</option>
+                                                <option value="Discharged">Discharged</option>
+                                                <option value="OutPatients">OutPatients</option>
+                                                <option value="InPatients">InPatients</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-2">
+                                            <input id="demo-foo-search" type="text" placeholder="Search"
+                                                   autocomplete="on"
+                                                   class="w-full px-2 py-1 text-sm border border-gray-300 rounded-md
+                bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        </div>
+
                                     </div>
-                                    <h4 class="page-title">Discharge Patients</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="header-title"></h4>
-                                    <div class="mb-2">
-                                        <div class="row">
-                                            <div class="col-12 text-sm-center form-inline" >
-                                                <div class="form-group mr-2" style="display:none">
-                                                    <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
-                                                        <option value="">Show all</option>
-                                                        <option value="Discharged">Discharged</option>
-                                                        <option value="OutPatients">OutPatients</option>
-                                                        <option value="InPatients">InPatients</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="min-w-full border border-gray-200 rounded-lg shadow-sm">
-                                            <thead class="bg-gray-100">
-                                            <tr>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">#</th>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Patient Name</th>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Patient Number</th>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Patient Address</th>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Patient Category</th>
-                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="divide-y divide-gray-200">
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                    <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient Number
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Address
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Category
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient WalkIn
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <?php
+                                    $ret = "SELECT * FROM hmisphp.his_patients ";
+                                    $stmt = $mysqli->prepare($ret);
+                                    $stmt->execute();
+                                    $res = $stmt->get_result();
+                                    $cnt = 1;
+                                    while ($row = $res->fetch_object()) {
+                                    ?>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_fname . ' ' . $row->pat_lname; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
                                             <?php
-                                            $ret="SELECT * FROM  hmisphp.his_patients  WHERE pat_type = 'InPatient' ";
-                                            $stmt= $mysqli->prepare($ret);
-                                            $stmt->execute();
-                                            $res=$stmt->get_result();
-                                            $cnt=1;
-                                            while($row=$res->fetch_object())
-                                            {
-                                                ?>
-                                                <tr class="hover:bg-gray-50">
-                                                    <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt;?></td>
-                                                    <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
-                                                    <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_number;?></td>
-                                                    <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_addr;?></td>
-                                                    <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_type;?></td>
-                                                    <td class="px-4 py-2 text-sm">
-                                                        <a href="his_admin_discharge_single_patient.php?pat_id=<?php echo $row->pat_id;?>"
-                                                           class="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
-                                                            <i class="mdi mdi-check-box-outline mr-1"></i> Discharge
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <?php  $cnt = $cnt +1 ; } ?>
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <td colspan="6" class="px-4 py-3 text-right">
-                                                    <div class="flex justify-end">
-                                                        <ul class="flex space-x-1">
-                                                            <!-- pagination will be injected here -->
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
+                                            $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
+                                            $color = $colors[$row->pat_type] ?? 'gray';
+                                            ?>
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                <?php echo $row->pat_type; ?>
+            </span>
+                                        </td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->created_at; ?></td>
+                                        <td class="px-4 py-2 text-sm">
+                                            <a href="his_admin_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
+                                               class="bg-blue-500 hover:bg-blue-600
+              text-white font-medium
+              text-xs px-2 py-1
+              rounded shadow-sm
+              transition">
+                                                Discharge Patient
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <?php $cnt = $cnt + 1;
+                                    } ?>
+                                    <tfoot>
+                                    <tr class="active">
+                                        <td colspan="8">
+                                            <div class="text-right">
+                                                <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-white shadow-md rounded-md p-4">
+                            <h4 class="text-lg font-semibold mb-4">Transferred Patients</h4>
+                            <hr class="my-2">
 
-                                    </div> <!-- end .table-responsive-->
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
+                            <div class="overflow-x-auto">
+                                <table id="demo-foo-filtering"
+                                       class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                    <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Patient Name
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Patient Number
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Status
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            Discharge
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 hidden sm:table-cell">
+                                            WalkOut Date
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <?php
+                                    $ret = "SELECT * FROM hmisphp.his_patient_transfers ";
+                                    $stmt = $mysqli->prepare($ret);
+                                    $stmt->execute();
+                                    $res = $stmt->get_result();
+                                    $cnt = 1;
+                                    while ($row = $res->fetch_object()) {
+                                    date_default_timezone_set('Asia/Phnom_Penh');
+                                    ?>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->t_pat_name; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_pat_number; ?></td>
+                                        <!-- WalkIn Date -->
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell text-green-500">
+                                            <?php echo $row->t_status; ?>
+                                        </td>
 
-                    </div> <!-- container -->
+                                        <!--                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">-->
+                                        <?php //echo $row->t_status; ?><!--</td>-->
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
+                                        <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell">
+                                            <?php echo date('d/m/Y H:i', strtotime($row->t_date)); ?>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <?php $cnt = $cnt + 1;
+                                    } ?>
+                                    <tfoot>
+                                    <tr class="active">
+                                        <td colspan="8">
+                                            <div class="text-right">
+                                                <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+            </div> <!-- container -->
 
-                </div> <!-- content -->
+        </div> <!-- content -->
 
-                <!-- Footer Start -->
-                 <?php include('assets/inc/footer.php');?>
-                <!-- end Footer -->
+        <!-- Footer Start -->
+        <?php include('assets/inc/footer.php'); ?>
+        <!-- end Footer -->
 
-            </div>
+    </div>
 
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
 
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+</div>
+<!-- END wrapper -->
 
-        <!-- Vendor js -->
-        <script src="assets/js/vendor.min.js"></script>
 
-        <!-- Footable js -->
-        <script src="assets/libs/footable/footable.all.min.js"></script>
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
 
-        <!-- Init js -->
-        <script src="assets/js/pages/foo-tables.init.js"></script>
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
 
-        <!-- App js -->
-        <script src="assets/js/app.min.js"></script>
-        
-    </body>
+<!-- Footable js -->
+<script src="assets/libs/footable/footable.all.min.js"></script>
+
+<!-- Init js -->
+<script src="assets/js/pages/foo-tables.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.min.js"></script>
+
+</body>
 
 </html>

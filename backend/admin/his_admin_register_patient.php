@@ -1,39 +1,51 @@
 <!--Server side code to handle  Patient Registration-->
 <?php
-	session_start();
-	include('assets/inc/config.php');
-		if(isset($_POST['add_patient']))
-		{
-			$pat_fname=$_POST['pat_fname'];
-			$pat_lname=$_POST['pat_lname'];
-			$pat_number=$_POST['pat_number'];
-            $pat_phone=$_POST['pat_phone'];
-            $pat_type=$_POST['pat_type'];
-            $pat_addr=$_POST['pat_addr'];
-            $pat_age = $_POST['pat_age'];
-            $pat_dob = $_POST['pat_dob'];
-            $pat_ailment = $_POST['pat_ailment'];
-            //sql to insert captured values
-			$query="insert into hmisphp.his_patients (pat_fname, pat_ailment, pat_lname, pat_age, pat_dob, pat_number, pat_phone, pat_type, pat_addr) values(?,?,?,?,?,?,?,?,?)";
-			$stmt = $mysqli->prepare($query);
-			$rc=$stmt->bind_param('sssssssss', $pat_fname, $pat_ailment, $pat_lname, $pat_age, $pat_dob, $pat_number, $pat_phone, $pat_type, $pat_addr);
-			$stmt->execute();
-			/*
-			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
-			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
-			//declare a varible which will be passed to alert function
-			if($stmt)
-			{
-				$success = "Patient Details Added";
-			}
-			else {
-				$err = "Please Try Again Or Try Later";
-			}
-			
+session_start();
+include('assets/inc/config.php');
 
-		}
+if(isset($_POST['add_patient']))
+{
+    $pat_fname = $_POST['pat_fname'];
+    $pat_lname = $_POST['pat_lname'];
+    $pat_number = $_POST['pat_number'];
+    $pat_phone = $_POST['pat_phone'];
+    $pat_type = $_POST['pat_type'];
+    $pat_addr = $_POST['pat_addr'];
+    $pat_age = $_POST['pat_age'];
+    $pat_dob = $_POST['pat_dob'];
+    $pat_ailment = $_POST['pat_ailment'];
+    $pat_room_number = $_POST['pat_room_number']; // added room number
+
+    // SQL to insert captured values including room number
+    $query = "INSERT INTO hmisphp.his_patients 
+        (pat_fname, pat_ailment, pat_lname, pat_age, pat_dob, pat_number, pat_phone, pat_type, pat_addr, pat_room_number) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $mysqli->prepare($query);
+    $rc = $stmt->bind_param(
+            'ssssssssss',
+            $pat_fname,
+            $pat_ailment,
+            $pat_lname,
+            $pat_age,
+            $pat_dob,
+            $pat_number,
+            $pat_phone,
+            $pat_type,
+            $pat_addr,
+            $pat_room_number
+    );
+
+    $stmt->execute();
+
+    if($stmt) {
+        $success = "Patient Details Added";
+    } else {
+        $err = "Please Try Again Or Try Later";
+    }
+}
 ?>
+
 <!--End Server Side-->
 <!--End Patient Registration-->
 <!DOCTYPE html>
@@ -168,12 +180,14 @@
                                             </div>
 
                                             <!-- Mobile, Room Number & Patient Type -->
-                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                                                 <div>
-                                                    <label for="pat_phone" class="block mb-1 font-medium">Mobile Number <span class="text-red-600">*</span></label>
+                                                    <label for="pat_phone" class="block mb-1 font-medium">Mobile Number
+                                                        <span class="text-red-600">*</span></label>
                                                     <input type="text" required name="pat_phone" id="pat_phone"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
+
                                                 <div>
                                                     <label for="pat_type" class="block mb-1 font-medium">Patient's Type</label>
                                                     <select id="pat_type" required name="pat_type"
@@ -184,11 +198,20 @@
                                                     </select>
                                                 </div>
 
-                                                <div id="room_number_div" class="hidden">
-                                                    <label for="pat_ailment" class="block mb-1 font-medium">Room Number</label>
-                                                    <input type="number" name="pat_ailment" id="pat_ailment"
+                                                <!-- Ailment (hidden by default) -->
+                                                <div id="pat_ailment_div" class="hidden">
+                                                    <label for="pat_ailment" class="block mb-1 font-medium">Patient Ailment</label>
+                                                    <input type="text" name="pat_ailment" id="pat_ailment"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
+
+                                                <!-- Room Number (hidden by default) -->
+                                                <div id="room_number_div" class="hidden">
+                                                    <label for="pat_room_number" class="block mb-1 font-medium">Room Number</label>
+                                                    <input type="text" name="pat_room_number" id="pat_room_number"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                </div>
+
                                             </div>
 
                                             <!-- Hidden Patient Number -->
@@ -266,14 +289,18 @@
                 // Show age in the input field
                 document.getElementById("pat_age").value = age;
             });
+
             const patientType = document.getElementById('pat_type');
+            const ailmentDiv = document.getElementById('pat_ailment_div');
             const roomDiv = document.getElementById('room_number_div');
 
-            patientType.addEventListener('change', function() {
+            patientType.addEventListener('change', function () {
                 if (this.value === 'InPatient') {
-                    roomDiv.classList.remove('hidden'); // show input
+                    ailmentDiv.classList.remove('hidden');
+                    roomDiv.classList.remove('hidden');
                 } else {
-                    roomDiv.classList.add('hidden'); // hide input
+                    ailmentDiv.classList.add('hidden');
+                    roomDiv.classList.add('hidden');
                 }
             });
         </script>

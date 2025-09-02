@@ -181,27 +181,30 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
 
 
 -- Table structure for table `his_patients`
---  drop table his_patients;
-# select * from his_patients;
+ drop table his_patients;
+select * from his_patients;
 CREATE TABLE `his_patients`
 (
-    `pat_id`          INT(20)      NOT NULL AUTO_INCREMENT,
-    `pat_fname`       VARCHAR(200)          DEFAULT NULL,
-    `pat_lname`       VARCHAR(200)          DEFAULT NULL,
-    `pat_dob`         VARCHAR(200)          DEFAULT NULL,
-    `pat_age`         VARCHAR(200)          DEFAULT NULL,
-    `pat_number`      VARCHAR(200)          DEFAULT NULL,
-    `pat_addr`        VARCHAR(200)          DEFAULT NULL,
-    `pat_phone`       VARCHAR(200)          DEFAULT NULL,
-    `pat_type`        VARCHAR(200)          DEFAULT NULL,
-    `pat_date_joined` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    `pat_ailment`     VARCHAR(200)          DEFAULT NULL,
-    `pat_room_number` VARCHAR(50)           DEFAULT NULL,
-    `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `pat_id`            INT(20) NOT NULL AUTO_INCREMENT,
+    `pat_fname`         VARCHAR(200) DEFAULT NULL,
+    `pat_lname`         VARCHAR(200) DEFAULT NULL,
+    `pat_dob`           VARCHAR(200) DEFAULT NULL,
+    `pat_age`           VARCHAR(200) DEFAULT NULL,
+    `pat_number`        VARCHAR(200) DEFAULT NULL,
+    `pat_addr`          VARCHAR(200) DEFAULT NULL,
+    `pat_phone`         VARCHAR(200) DEFAULT NULL,
+    `pat_type`          VARCHAR(200) DEFAULT NULL,
+    `pat_date_joined`   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `pat_walk_out_date` DATETIME DEFAULT NULL,
+    `pat_ailment`       VARCHAR(200) DEFAULT NULL,
+    `pat_room_number`   VARCHAR(50) DEFAULT NULL,
+    `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`pat_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
 
+drop table his_patient_transfers;
 CREATE TABLE `his_patient_transfers`
 (
     `t_id`         int(20) NOT NULL AUTO_INCREMENT,
@@ -214,7 +217,6 @@ CREATE TABLE `his_patient_transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-
 -- Data for table `his_patient_transfers`
 INSERT INTO `his_patient_transfers` (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
 VALUES (1, 'Khmer soviet friendship Hospital', '2025-08-16 10:00:00', 'Reatrey', '9KXPM', 'Success');
@@ -308,7 +310,8 @@ CREATE TABLE `his_prescriptions`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-SELECT * from his_prescriptions;
+SELECT *
+from his_prescriptions;
 drop table his_prescriptions;
 -- Data for table `his_prescriptions`
 INSERT INTO `his_prescriptions` (`pres_id`, `pres_pat_name`, `pres_pat_age`, `pres_pat_number`, `pres_number`,
@@ -498,11 +501,13 @@ CREATE TABLE his_prescription_medicines
 (
     id            INT AUTO_INCREMENT PRIMARY KEY,
     pres_id       INT          NOT NULL,
-    pres_number   INT          NOT NULL,
+    pres_number   INT          NOT NULL UNIQUE,
     medicine_name VARCHAR(255) NOT NULL,
     medicine_qty  VARCHAR(100) NOT NULL,
     medicine_time VARCHAR(100) NOT NULL,
     FOREIGN KEY (pres_id) REFERENCES his_prescriptions (pres_id) ON DELETE CASCADE,
     FOREIGN KEY (pres_number) REFERENCES his_prescriptions (pres_number) ON DELETE CASCADE
 );
-SHOW CREATE TABLE his_prescriptions;
+
+select *
+From his_prescription_medicines;

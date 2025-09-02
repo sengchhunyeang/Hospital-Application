@@ -1,8 +1,8 @@
-<div class="left-side-menu fixed left-0 top-0 bottom-0 w-16 md:w-64 bg-white shadow-md z-10 transition-all duration-300">
+<div class="left-side-menu fixed left-0  top-0 bottom-0 w-16 md:w-64  shadow-md z-10 transition-all duration-300">
 
-    <div class="h-full overflow-y-auto">
+    <div class="h-full overflow-y-auto  ">
         <!-- Sidemenu -->
-        <div class="px-2 md:px-4 py-6 bg-gray-100 font-bold ">
+        <div class="px-2 md:px-4 py-6 font-bold ">
             <ul class="space-y-2 text-white">
                 <li class="px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:block">
                     Navigation
@@ -60,7 +60,7 @@
                                 'his_admin_register_patient.php' => 'Register Patient',
                                 'his_admin_view_patients.php' => 'View Patients',
                                 'his_admin_manage_patient.php' => 'Manage Patients',
-                                'his_admin_patient_transfer.php' => 'Patient Transfers'
+                                'his_admin_patient_transfer.php' => 'Discharge'
                         ];
                         foreach ($patientsSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
@@ -256,7 +256,8 @@
                     <?php
                     $reportingActive = in_array(basename($_SERVER['PHP_SELF']), [
                             'his_admin_inpatient_records.php', 'his_admin_outpatient_records.php', 'his_admin_employee_records.php',
-                            'his_admin_pharmaceutical_records.php', 'his_admin_accounting_records.php', 'his_admin_medical_records.php'
+                            'his_admin_pharmaceutical_records.php', 'his_admin_accounting_records.php', 'his_admin_medical_records.php','his_admin_discharge_records.php'
+
                     ]);
                     ?>
                     <button type="button"
@@ -290,7 +291,8 @@
                                 'his_admin_outpatient_records.php' => 'OutPatient Records',
                                 'his_admin_employee_records.php' => 'Employee Records',
                                 'his_admin_pharmaceutical_records.php' => 'Pharmaceutical Records',
-                                'his_admin_medical_records.php' => 'Medical Records'
+                                'his_admin_medical_records.php' => 'Medical Records',
+                                'his_admin_discharge_records.php' => 'Discharge Records'
                         ];
                         foreach ($reportingSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';

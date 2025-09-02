@@ -12,7 +12,7 @@
             //$pres_ins = $_POST['pres_ins'];
             //$pres_pat_ailment = $_POST['pres_pat_ailment'];
             //sql to insert captured values
-			$query="INSERT INTO  his_laboratory  (lab_pat_name, lab_pat_ailment, lab_pat_number, lab_pat_tests, lab_number ) VALUES(?,?,?,?,?)";
+			$query="INSERT INTO  hmisphp.his_laboratory  (lab_pat_name, lab_pat_ailment, lab_pat_number, lab_pat_tests, lab_number ) VALUES(?,?,?,?,?)";
 			$stmt = $mysqli->prepare($query);
 			$rc=$stmt->bind_param('sssss', $lab_pat_name, $lab_pat_ailment, $lab_pat_number, $lab_pat_tests, $lab_number);
 			$stmt->execute();
