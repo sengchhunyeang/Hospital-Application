@@ -32,24 +32,24 @@ VALUES (1, 'Individual Retirement Account',
 CREATE TABLE `his_admin`
 (
     `ad_id`    int(20) NOT NULL,
-    `ad_fname` varchar(200) DEFAULT NULL,
-    `ad_lname` varchar(200) DEFAULT NULL,
-    `ad_email` varchar(200) DEFAULT NULL,
-    `ad_pwd`   varchar(200) DEFAULT NULL,
+    `ad_fname` varchar(200)  DEFAULT NULL,
+    `ad_lname` varchar(200)  DEFAULT NULL,
+    `ad_email` varchar(200)  DEFAULT NULL,
+    `ad_pwd`   varchar(200)  DEFAULT NULL,
     `ad_dpic`  varchar(1000) DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 --  drop table his_admin;
-select * from his_admin;
+select *
+from his_admin;
 -- Data for table `his_admin`
 INSERT INTO `his_admin` (`ad_id`, `ad_fname`, `ad_lname`, `ad_email`, `ad_pwd`, `ad_dpic`)
-VALUES 
-    (1, 'Chhunyeang', 'Seng', 'chhunyeangseng@gmail.com', '3555e37cac36b91bca3f566e8a976cf2e3fdf784', 'profile_admin.png'),
-    (2, 'Reatrey', 'Sem', 'reatrey12345com@gmail.com', '3b5a73167daa2f5b046d8d8105690aeb9764d3c6', 'rty.jpg'),
-    (3, 'Keonary', 'Ian', 'iankeonary@gmail.com', '6efc6b289bc1c9f5ee0ea79aa4b1312ce9dcccad', 'nary.jpg');
+VALUES (1, 'Chhunyeang', 'Seng', 'chhunyeangseng@gmail.com', '3555e37cac36b91bca3f566e8a976cf2e3fdf784',
+        'profile_admin.png'),
+       (2, 'Reatrey', 'Sem', 'reatrey12345com@gmail.com', '3b5a73167daa2f5b046d8d8105690aeb9764d3c6', 'rty.jpg'),
+       (3, 'Keonary', 'Ian', 'iankeonary@gmail.com', '6efc6b289bc1c9f5ee0ea79aa4b1312ce9dcccad', 'nary.jpg');
 
-       
 
 -- Table structure for table `his_assets`
 CREATE TABLE `his_assets`
@@ -78,7 +78,8 @@ CREATE TABLE `his_docs`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-select * from his_docs;
+select *
+from his_docs;
 # drop table his_docs;
 -- Data for table `his_docs`
 INSERT INTO `his_docs` (`doc_id`, `doc_fname`, `doc_lname`, `doc_email`, `doc_pwd`, `doc_dept`, `doc_number`,
@@ -184,40 +185,22 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
 # select * from his_patients;
 CREATE TABLE `his_patients`
 (
-    `pat_id`               INT(20)      NOT NULL AUTO_INCREMENT,
-    `pat_fname`            VARCHAR(200)          DEFAULT NULL,
-    `pat_lname`            VARCHAR(200)          DEFAULT NULL,
-    `pat_dob`              VARCHAR(200)          DEFAULT NULL,
-    `pat_age`              VARCHAR(200)          DEFAULT NULL,
-    `pat_number`           VARCHAR(200)          DEFAULT NULL,
-    `pat_addr`             VARCHAR(200)          DEFAULT NULL,
-    `pat_phone`            VARCHAR(200)          DEFAULT NULL,
-    `pat_type`             VARCHAR(200)          DEFAULT NULL,
-    `pat_date_joined`      TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    `pat_ailment`          VARCHAR(200)          DEFAULT NULL,
-    `pat_discharge_status` VARCHAR(200)          DEFAULT NULL,
-    `pat_discharge_date`   DATETIME              DEFAULT NULL,
-    `pat_discharge_notes`  TEXT                  DEFAULT NULL,
-    `created_at`           DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at`           DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `pat_id`          INT(20)      NOT NULL AUTO_INCREMENT,
+    `pat_fname`       VARCHAR(200)          DEFAULT NULL,
+    `pat_lname`       VARCHAR(200)          DEFAULT NULL,
+    `pat_dob`         VARCHAR(200)          DEFAULT NULL,
+    `pat_age`         VARCHAR(200)          DEFAULT NULL,
+    `pat_number`      VARCHAR(200)          DEFAULT NULL,
+    `pat_addr`        VARCHAR(200)          DEFAULT NULL,
+    `pat_phone`       VARCHAR(200)          DEFAULT NULL,
+    `pat_type`        VARCHAR(200)          DEFAULT NULL,
+    `pat_date_joined` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `pat_ailment`     VARCHAR(200)          DEFAULT NULL,
+    `pat_room_number` VARCHAR(50)           DEFAULT NULL,
+    `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`pat_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
-select * from his_patients;
-
--- Data for table `his_patients`
-INSERT INTO his_patients
-(pat_fname, pat_lname, pat_dob, pat_age, pat_number, pat_addr, pat_phone, pat_type, pat_ailment, pat_discharge_status,
- pat_discharge_date, pat_discharge_notes)
-VALUES ('John', 'Doe', '1990-01-01', '35', 'A0001', '123 Main St', '555-1234', 'Inpatient', 'Flu', NULL, NULL, NULL),
-       ('Jane', 'Smith', '1985-05-05', '40', 'A0002', '456 Park Ave', '555-5678', 'Outpatient', 'Cough', NULL, NULL,
-        NULL),
-       ('Michael', 'Brown', '1978-10-15', '46', 'A0003', '789 Oak Rd', '555-9876', 'Inpatient', 'Fracture', 'Recovered',
-        '2025-08-10 14:30:00', 'Patient discharged with full recovery.'),
-       ('Emily', 'Clark', '1995-03-12', '30', 'A0004', '321 Pine Ln', '555-2468', 'Outpatient', 'Allergy', NULL, NULL,
-        NULL);
-
+  DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `his_patient_transfers`
 (
@@ -510,17 +493,15 @@ ALTER TABLE `his_vitals`
     MODIFY `vit_id` int(20) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 7;
 
-CREATE TABLE his_medicines (
-                                       med_id INT AUTO_INCREMENT PRIMARY KEY,
-                                       med_name VARCHAR(100) NOT NULL,
-                                       med_description TEXT,
-                                       med_stock INT DEFAULT 0
+CREATE TABLE his_prescription_medicines
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    pres_id       INT          NOT NULL,
+    pres_number   INT          NOT NULL,
+    medicine_name VARCHAR(255) NOT NULL,
+    medicine_qty  VARCHAR(100) NOT NULL,
+    medicine_time VARCHAR(100) NOT NULL,
+    FOREIGN KEY (pres_id) REFERENCES his_prescriptions (pres_id) ON DELETE CASCADE,
+    FOREIGN KEY (pres_number) REFERENCES his_prescriptions (pres_number) ON DELETE CASCADE
 );
-INSERT INTO his_medicines (med_name, med_description, med_stock) VALUES
-                                                                     ('Paracetamol', 'Pain reliever / fever reducer', 100),
-                                                                     ('Amoxicillin', 'Antibiotic for infections', 50),
-                                                                     ('Vitamin C', 'Supplement', 200),
-                                                                     ('Ibuprofen', 'Anti-inflammatory', 150),
-                                                                     ('Metformin', 'For diabetes', 80);
 
-select * from his_medicines;

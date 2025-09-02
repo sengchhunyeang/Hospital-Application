@@ -13,9 +13,7 @@ $doc_id = $_SESSION['doc_id'];
     <title>view patients</title>
 </head>
 <?php include('assets/inc/head.php'); ?>
-
 <body>
-
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -122,9 +120,10 @@ $doc_id = $_SESSION['doc_id'];
                                     AND NOT EXISTS (
                                         SELECT 1 
                                         FROM hmisphp.his_patient_transfers t 
-                                        WHERE t.t_pat_number = p.pat_number
+                                        WHERE t.t_pat_number COLLATE utf8mb4_unicode_ci = p.pat_number
                                     )
                                     ORDER BY p.pat_id DESC";
+
 
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();

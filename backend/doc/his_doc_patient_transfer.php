@@ -143,16 +143,11 @@ if (isset($_GET['delete'])) {
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Patient Number
                                         </th>
-
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Patient Address
                                         </th>
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            WalkIn Date
-
-                                        </th>
-                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Status
+                                            Patient Category
                                         </th>
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Action
@@ -167,11 +162,11 @@ if (isset($_GET['delete'])) {
                                      */
                                     $ret = "SELECT p.* 
         FROM hmisphp.his_patients p
-        WHERE p.pat_type IN ('InPatient', 'OutPatient')
+        WHERE p.pat_type = 'InPatient' 
         AND NOT EXISTS (
             SELECT 1 
             FROM hmisphp.his_patient_transfers t 
-            WHERE t.t_pat_number = p.pat_number
+            WHERE t.t_pat_number COLLATE utf8mb4_unicode_ci = p.pat_number
         )";
 
 
@@ -187,8 +182,6 @@ if (isset($_GET['delete'])) {
                                             <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
-                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->created_at; ?></td>
-
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php
                                                 $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
                                                 $color = $colors[$row->pat_type] ?? 'gray';
@@ -198,7 +191,7 @@ if (isset($_GET['delete'])) {
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                 <a href="his_doc_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                    class="bg-blue-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-blue-600 transition-colors">
-                                                    Discharge
+                                                    Transfer Patient
                                                 </a>
                                             </td>
                                         </tr>
