@@ -85,12 +85,12 @@ $aid = $_SESSION['ad_id'];
                                 <table id="demo-foo-filtering"
                                        class="min-w-full border border-black text-black mb-4 rounded-lg "
                                        data-page-size="7">
-                                    <thead class="bg-gray-100 text-gray-700 uppercase text-sm font-semibold">
+                                    <thead class="bg-gray-100 text-gray-700  text-sm font-semibold">
                                     <tr>
                                         <th class="px-4 py-2 text-left">No</th>
                                         <th class="px-4 py-2 text-left">Name</th>
-                                        <th class="px-4 py-2 text-left">Number Patient</th>
-                                        <th class="px-4 py-2 text-left">Room Patient</th>
+                                        <th class="px-4 py-2 text-left text-wrap">Number Patient</th>
+                                        <th class="px-4 py-2 text-left text-wrap">Room Patient</th>
                                         <th class="px-4 py-2 text-left hidden sm:table-cell">Address</th>
                                         <th class="px-4 py-2 text-left hidden sm:table-cell">Phone</th>
                                         <th class="px-4 py-2 text-left">Age</th>

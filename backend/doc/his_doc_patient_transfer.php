@@ -43,7 +43,6 @@ if (isset($_GET['delete'])) {
 }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -75,17 +74,16 @@ if (isset($_GET['delete'])) {
         <div class="content">
 
 
-<?php if (isset($success)) { ?>
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-        <?php echo $success; ?>
-    </div>
-<?php } ?>
-<?php if (isset($err)) { ?>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-        <?php echo $err; ?>
-    </div>
-<?php } ?>
-
+            <?php if (isset($success)) { ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                    <?php echo $success; ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($err)) { ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                    <?php echo $err; ?>
+                </div>
+            <?php } ?>
 
 
             <!-- Start Content-->
@@ -145,11 +143,16 @@ if (isset($_GET['delete'])) {
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Patient Number
                                         </th>
+
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Patient Address
                                         </th>
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                            Patient Category
+                                            WalkIn Date
+
+                                        </th>
+                                        <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                            Patient Status
                                         </th>
                                         <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                             Action
@@ -163,13 +166,14 @@ if (isset($_GET['delete'])) {
                                      * Get details of patients awaiting transfer (InPatients not yet transferred)
                                      */
                                     $ret = "SELECT p.* 
-                    FROM hmisphp.his_patients p
-                    WHERE p.pat_type = 'InPatient' 
-                    AND NOT EXISTS (
-                        SELECT 1 
-                        FROM hmisphp.his_patient_transfers t 
-                        WHERE t.t_pat_number = p.pat_number
-                    )";
+        FROM hmisphp.his_patients p
+        WHERE p.pat_type IN ('InPatient', 'OutPatient')
+        AND NOT EXISTS (
+            SELECT 1 
+            FROM hmisphp.his_patient_transfers t 
+            WHERE t.t_pat_number = p.pat_number
+        )";
+
 
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
@@ -183,6 +187,8 @@ if (isset($_GET['delete'])) {
                                             <td class="border border-gray-200 px-4 py-2 text-black"><?php echo $row->pat_fname; ?><?php echo $row->pat_lname; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_number; ?></td>
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->pat_addr; ?></td>
+                                            <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->created_at; ?></td>
+
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php
                                                 $colors = ['OutPatient' => 'green', 'InPatient' => 'blue', 'Waiting' => 'yellow'];
                                                 $color = $colors[$row->pat_type] ?? 'gray';
@@ -254,16 +260,29 @@ if (isset($_GET['delete'])) {
                                 <div class="bg-white rounded-lg shadow overflow-hidden">
                                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                                         <div class="max-h-[500px] overflow-y-auto"> <!-- Adjust max-height as needed -->
-                                            <table id="patientTable" class="w-full border-collapse border border-gray-200">
+                                            <table id="patientTable"
+                                                   class="w-full border-collapse border border-gray-200">
                                                 <thead class="sticky top-0 bg-gray-100 z-10"> <!-- Sticky header -->
                                                 <tr>
                                                     <th class="border border-gray-200 px-4 py-2 text-black">#</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black" data-toggle="true">Patient Name</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Number</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Status</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Referral Hospital / Home</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Transfer Date</th>
-                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">Action</th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black"
+                                                        data-toggle="true">Patient Name
+                                                    </th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        Transfer Number
+                                                    </th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        Transfer Status
+                                                    </th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        Referral Hospital / Home
+                                                    </th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        Transfer Date
+                                                    </th>
+                                                    <th class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
+                                                        Action
+                                                    </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="divide-y divide-gray-200">
@@ -283,11 +302,11 @@ if (isset($_GET['delete'])) {
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_hospital; ?></td>
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell"><?php echo $row->t_date; ?></td>
                                                         <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
-                                                        <a href="his_doc_patient_transfer.php?delete=<?php echo $row->t_id; ?>"
-                                                        class="bg-red-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-red-600 transition-colors"
-                                                        onclick="return confirm('Are you sure you want to delete this record?');">
-                                                            Delete
-                                                        </a>
+                                                            <a href="his_doc_patient_transfer.php?delete=<?php echo $row->t_id; ?>"
+                                                               class="bg-red-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-red-600 transition-colors"
+                                                               onclick="return confirm('Are you sure you want to delete this record?');">
+                                                                Delete
+                                                            </a>
 
                                                         </td>
 
@@ -341,12 +360,12 @@ if (isset($_GET['delete'])) {
 <!-- App js -->
 <script src="assets/js/app.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchInput');
         const table = document.getElementById('patientTable');
         const rows = table.getElementsByTagName('tr');
 
-        searchInput.addEventListener('keyup', function() {
+        searchInput.addEventListener('keyup', function () {
             const searchTerm = this.value.toLowerCase();
 
             for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header row

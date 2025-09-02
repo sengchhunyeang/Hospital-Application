@@ -143,7 +143,7 @@
                                                         "Stung Treng - ស្ទឹងត្រែង",
                                                         "Svay Rieng - ស្វាយរៀង",
                                                         "Takeo - តាកែវ",
-                                                        "Tboung Khmum - ទ្បូងខ្មុំ"
+                                                        "Tboung Khmum - ត្បូងឃ្មុំ"
                                                 ];
 
 

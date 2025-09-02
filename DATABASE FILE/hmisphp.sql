@@ -40,7 +40,7 @@ CREATE TABLE `his_admin`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-# drop table his_admin;
+--  drop table his_admin;
 select * from his_admin;
 -- Data for table `his_admin`
 INSERT INTO `his_admin` (`ad_id`, `ad_fname`, `ad_lname`, `ad_email`, `ad_pwd`, `ad_dpic`)
@@ -180,7 +180,7 @@ VALUES (1, 'ZNXI4', 'John Doe', '12 900 Los Angeles', '35', 'Malaria', 'RAV6C',
 
 
 -- Table structure for table `his_patients`
-# drop table his_patients;
+--  drop table his_patients;
 # select * from his_patients;
 CREATE TABLE `his_patients`
 (
@@ -206,8 +206,7 @@ CREATE TABLE `his_patients`
   COLLATE = utf8mb4_unicode_ci;
 select * from his_patients;
 
-
--- ទិន្នន័យសម្រាប់តារាង `his_patients`
+-- Data for table `his_patients`
 INSERT INTO his_patients
 (pat_fname, pat_lname, pat_dob, pat_age, pat_number, pat_addr, pat_phone, pat_type, pat_ailment, pat_discharge_status,
  pat_discharge_date, pat_discharge_notes)
@@ -220,7 +219,6 @@ VALUES ('John', 'Doe', '1990-01-01', '35', 'A0001', '123 Main St', '555-1234', '
         NULL);
 
 
--- Table structure for table `his_patient_transfers`
 CREATE TABLE `his_patient_transfers`
 (
     `t_id`         int(20) NOT NULL AUTO_INCREMENT,
@@ -233,12 +231,12 @@ CREATE TABLE `his_patient_transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-# drop table his_patient_transfers;
+
 -- Data for table `his_patient_transfers`
-INSERT INTO `his_patient_transfers`
-(`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
-VALUES (NULL, 'Kenyatta National Hospital', '2025-8-8 10:30:00', 'សេង ឈុនយាង', 'A0005', 'Success');
+INSERT INTO `his_patient_transfers` (`t_id`, `t_hospital`, `t_date`, `t_pat_name`, `t_pat_number`, `t_status`)
+VALUES (1, 'Khmer soviet friendship Hospital', '2025-08-16 10:00:00', 'Reatrey', '9KXPM', 'Success');
 
+-- Table structure for table `his_payrolls`
 CREATE TABLE `his_payrolls`
 (
     `pay_id`             int(20)      NOT NULL,
@@ -257,35 +255,11 @@ CREATE TABLE `his_payrolls`
 -- Data for table `his_payrolls`
 INSERT INTO `his_payrolls` (`pay_id`, `pay_number`, `pay_doc_name`, `pay_doc_number`, `pay_doc_email`, `pay_emp_salary`,
                             `pay_date_generated`, `pay_status`, `pay_descr`)
-VALUES (2, 'HUT1B', 'Reatrey', 'N8TI0', 'reatrey@hms.org', '7555', '2025-08-14 10:20:00', 'Paid',
+VALUES (2, 'HUT1B', 'Dr.Chhun Pheakdey', 'pkd', 'pkd123@gmail.com', '1200', '2025-08-14 10:20:00', 'Paid',
         '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>'),
-       (3, 'T294L', 'Chhunyeang', 'YDS7L', 'yeang@mail.com', '15500', '2025-08-15 11:45:00', NULL,
+       (3, 'T294L', 'Dr.Sean Sokvisal', 'visal', 'visal123@gmail.com', '1500', '2025-08-15 11:45:00', NULL,
         '<p>demo demo demo demo demo</p>'),
-       (4, '3UOXY', 'Nary', '5VIFT', 'nary@mail.com', '4150', '2025-08-16 09:30:00', NULL,
-        '<p>This is a demo payroll description for test!!</p>');
-CREATE TABLE `his_payrolls`
-(
-    `pay_id`             int(20)      NOT NULL,
-    `pay_number`         varchar(200)          DEFAULT NULL,
-    `pay_doc_name`       varchar(200)          DEFAULT NULL,
-    `pay_doc_number`     varchar(200)          DEFAULT NULL,
-    `pay_doc_email`      varchar(200)          DEFAULT NULL,
-    `pay_emp_salary`     varchar(200)          DEFAULT NULL,
-    `pay_date_generated` timestamp(4) NOT NULL DEFAULT CURRENT_TIMESTAMP(4) ON UPDATE CURRENT_TIMESTAMP(4),
-    `pay_status`         varchar(200)          DEFAULT NULL,
-    `pay_descr`          longtext
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
-
--- Data for table `his_payrolls`
-INSERT INTO `his_payrolls` (`pay_id`, `pay_number`, `pay_doc_name`, `pay_doc_number`, `pay_doc_email`, `pay_emp_salary`,
-                            `pay_date_generated`, `pay_status`, `pay_descr`)
-VALUES (2, 'HUT1B', 'Henry Doe', 'N8TI0', 'henryd@hms.org', '7555', '2022-10-20 17:14:18.3708', 'Paid',
-        '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>'),
-       (3, 'T294L', 'Bryan Arreola', 'YDS7L', 'bryan@mail.com', '15500', '2022-10-20 17:14:50.5588', NULL,
-        '<p>demo demo demo demo demo</p>'),
-       (4, '3UOXY', 'Jessica Spencer', '5VIFT', 'jessica@mail.com', '4150', '2022-10-22 11:04:36.9626', NULL,
+       (4, '3UOXY', 'Dr.Chey Somaly', 'somaly', 'somaly123@gmail.com', '1300', '2025-08-16 09:30:00', NULL,
         '<p>This is a demo payroll description for test!!</p>');
 
 -- Table structure for table `his_pharmaceuticals`
@@ -380,7 +354,7 @@ CREATE TABLE IF NOT EXISTS his_pwdresets
     DEFAULT CHARSET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 # select * from his_pwdresets;
-# drop table his_pwdresets;
+--  drop table his_pwdresets;
 -- --------------------------------------------------------
 
 --
@@ -535,3 +509,18 @@ ALTER TABLE `his_vendor`
 ALTER TABLE `his_vitals`
     MODIFY `vit_id` int(20) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 7;
+
+CREATE TABLE his_medicines (
+                                       med_id INT AUTO_INCREMENT PRIMARY KEY,
+                                       med_name VARCHAR(100) NOT NULL,
+                                       med_description TEXT,
+                                       med_stock INT DEFAULT 0
+);
+INSERT INTO his_medicines (med_name, med_description, med_stock) VALUES
+                                                                     ('Paracetamol', 'Pain reliever / fever reducer', 100),
+                                                                     ('Amoxicillin', 'Antibiotic for infections', 50),
+                                                                     ('Vitamin C', 'Supplement', 200),
+                                                                     ('Ibuprofen', 'Anti-inflammatory', 150),
+                                                                     ('Metformin', 'For diabetes', 80);
+
+select * from his_medicines;

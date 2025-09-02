@@ -88,7 +88,7 @@
                                                     <h4 class="text-red-600 font-medium">Pharmaceutical Vendor: <?php echo $row->phar_vendor; ?></h4>
                                                     <hr class="border-gray-300">
 
-                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Quantity: <?php echo $row->phar_qty; ?> Cartons</h4>
+                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Quantity: <?php echo $row->phar_qty; ?> Box</h4>
                                                     <hr class="border-gray-300">
 
                                                     <h4 class="text-gray-700 font-semibold">Pharmaceutical Description</h4>

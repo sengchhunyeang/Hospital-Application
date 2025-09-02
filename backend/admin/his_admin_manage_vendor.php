@@ -131,27 +131,28 @@
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->v_number; ?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->v_email; ?></td>
 
-                                                        <td class="px-4 py-2 text-sm text-gray-700 space-x-2">
+                                <td class="px-2 py-1 text-gray-700">
+                                        <div class="flex flex-wrap gap-2 sm:flex-nowrap">
+                                            <!-- View Button (Blue) -->
+                                            <a href="his_admin_view_single_vendor.php?v_number=<?php echo $row->v_number;?>"
+                                            class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-200 w-full sm:w-auto">
+                                            <i class="fas fa-eye mr-1"></i> View
+                                            </a>
 
-                                                            <!-- View Button (Blue) -->
-                                                            <a href="his_admin_view_single_vendor.php?v_number=<?php echo $row->v_number;?>"
-                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition-colors duration-200">
-                                                                <i class="fas fa-eye mr-1"></i> View
-                                                            </a>
+                                            <!-- Update Button (Yellow) -->
+                                            <a href="his_admin_update_single_vendor.php?v_number=<?php echo $row->v_number;?>"
+                                            class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-200 w-full sm:w-auto">
+                                            <i class="fas fa-edit mr-1"></i> Update
+                                            </a>
 
-                                                            <!-- Update Button (Yellow) -->
-                                                            <a href="his_admin_update_single_vendor.php?v_number=<?php echo $row->v_number;?>"
-                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-yellow-500 rounded hover:bg-yellow-600 transition-colors duration-200">
-                                                                <i class="fas fa-edit mr-1"></i> Update
-                                                            </a>
+                                            <!-- Delete Button (Red) -->
+                                            <a href="his_admin_manage_vendor.php?delete_vendor_number=<?php echo $row->v_number;?>"
+                                            class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition duration-200 w-full sm:w-auto">
+                                            <i class="fas fa-trash mr-1"></i> Delete
+                                            </a>
+                                        </div>
+                                        </td>
 
-                                                            <!-- Delete Button (Red) -->
-                                                            <a href="his_admin_manage_vendor.php?delete_vendor_number=<?php echo $row->v_number?>"
-                                                               class="inline-flex items-center px-2 py-1 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors duration-200">
-                                                                <i class="fas fa-trash mr-1"></i> Delete
-                                                            </a>
-
-                                                        </td>
                                                     </tr>
                                                     </tbody>
 
