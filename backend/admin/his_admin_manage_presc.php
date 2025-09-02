@@ -5,10 +5,10 @@ include('assets/inc/checklogin.php');
 check_login();
 $aid = $_SESSION['ad_id'];
 if (isset($_GET['delete_pres_number'])) {
-    $id = intval($_GET['delete_pres_number']);
+    $id = $_GET['delete_pres_number']; // keep as string
     $adn = "DELETE FROM hmisphp.his_prescriptions WHERE pres_number=?";
     $stmt = $mysqli->prepare($adn);
-    $stmt->bind_param('i', $id);
+    $stmt->bind_param('s', $id); // 's' for string
     $stmt->execute();
     $stmt->close();
 
@@ -18,6 +18,7 @@ if (isset($_GET['delete_pres_number'])) {
         $err = "Try Again Later";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

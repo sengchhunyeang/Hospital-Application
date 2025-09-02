@@ -308,7 +308,8 @@ CREATE TABLE `his_prescriptions`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-
+SELECT * from his_prescriptions;
+drop table his_prescriptions;
 -- Data for table `his_prescriptions`
 INSERT INTO `his_prescriptions` (`pres_id`, `pres_pat_name`, `pres_pat_age`, `pres_pat_number`, `pres_number`,
                                  `pres_pat_addr`, `pres_pat_type`, `pres_date`, `pres_pat_ailment`, `pres_ins`)
@@ -492,7 +493,7 @@ ALTER TABLE `his_vendor`
 ALTER TABLE `his_vitals`
     MODIFY `vit_id` int(20) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 7;
-
+DROP TABLE IF EXISTS his_prescription_medicines;
 CREATE TABLE his_prescription_medicines
 (
     id            INT AUTO_INCREMENT PRIMARY KEY,
@@ -504,4 +505,4 @@ CREATE TABLE his_prescription_medicines
     FOREIGN KEY (pres_id) REFERENCES his_prescriptions (pres_id) ON DELETE CASCADE,
     FOREIGN KEY (pres_number) REFERENCES his_prescriptions (pres_number) ON DELETE CASCADE
 );
-
+SHOW CREATE TABLE his_prescriptions;

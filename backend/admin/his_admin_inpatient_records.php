@@ -107,6 +107,7 @@ $aid = $_SESSION['ad_id'];
                                         <th class="px-4 py-2 text-left text-sm font-semibold">Patient Address</th>
                                         <th class="px-4 py-2 text-left text-sm font-semibold">Patient Phone</th>
                                         <th class="px-4 py-2 text-left text-sm font-semibold">Patient Age</th>
+                                        <th class="px-4 py-2 text-left text-sm font-semibold">Patient Join</th>
                                         <th class="px-4 py-2 text-left text-sm font-semibold">Action</th>
                                     </tr>
                                     </thead>
@@ -130,6 +131,11 @@ $aid = $_SESSION['ad_id'];
                                             <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_phone; ?></td>
                                             <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->pat_age; ?>
                                                 Years
+                                            </td>
+                                            <td class="px-4 py-2 text-sm text-gray-700">
+                                                <?php echo date("d-M-Y g:ia", strtotime($row->pat_date_joined)); ?>
+                                            </td>
+
                                             </td>
                                             <td class="px-4 py-2">
                                                 <a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&&pat_number=<?php echo $row->pat_number; ?>"

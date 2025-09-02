@@ -191,7 +191,7 @@ if (isset($_GET['delete'])) {
                                             <td class="border border-gray-200 px-4 py-2 text-black hidden sm:table-cell">
                                                 <a href="his_doc_transfer_single_patient.php?pat_number=<?php echo $row->pat_number; ?>"
                                                    class="bg-blue-500 text-white px-3 py-1 rounded text-sm inline-block hover:bg-blue-600 transition-colors">
-                                                    Transfer Patient
+                                                    Discharge
                                                 </a>
                                             </td>
                                         </tr>
