@@ -1,25 +1,24 @@
 <div class="left-side-menu fixed left-0 top-0 bottom-0 w-16 md:w-64 bg-white shadow-md z-10 transition-all duration-300">
+
     <div class="h-full overflow-y-auto">
         <!-- Sidemenu -->
-        <div class="px-2 md:px-4 py-6">
-            <ul class="space-y-2">
+        <div class="px-2 md:px-4 py-6 bg-gray-100 font-bold ">
+            <ul class="space-y-2 text-white">
                 <li class="px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:block">
                     Navigation
                 </li>
 
                 <!-- Dashboard -->
-                <li>
-                    <a href="his_admin_dashboard.php"
-                       class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                       title="Dashboard">
+                <li class="text-white"><a href="his_admin_dashboard.php"
+                                          class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                                          title="Dashboard">
                         <svg class="w-5 h-5 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'text-blue-500' : 'text-gray-500' ?>"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
-                        <span class="ml-3 hidden md:block">Dashboard</span>
-                    </a>
-                </li>
+                        <span class="ml-3 hidden md:block ">Dashboard</span> </a></li>
+
 
                 <!-- Patients -->
                 <li>
@@ -230,156 +229,173 @@
                 </li>
 
 
-
-<!--                <li>-->
-<!--                    --><?php
-//                    $accountingActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_acc.payable.php', 'his_admin_manage_acc_payable.php', 'his_admin_add_acc_receivable.php', 'his_admin_manage_acc_receivable.php']);
-//                    ?>
-<!--                    <button type="button"-->
-<!--                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                   hover:bg-blue-50 hover:text-blue-600-->
-<!--                   --><?php //echo $accountingActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
-<!--                            aria-expanded="--><?php //echo $accountingActive ? 'true' : 'false' ?><!--"-->
-<!--                            title="Accounting">-->
-<!--                        <div class="flex items-center">-->
-<!--                            < Cash Multiple Icon -->
-<!--                            <svg class="w-5 h-5 --><?php //echo $accountingActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
-<!--                                 fill="currentColor" viewBox="0 0 24 24">-->
-<!--                                <path d="M21 7H3a1 1 0 00-1 1v9a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM3 6a2 2 0 012-2h14a2 2 0 012 2v1H3V6z"/>-->
-<!--                            </svg>-->
-<!--                            <span class="ml-3 hidden md:block">Accounting</span>-->
-<!--                        </div>-->
-<!--                        <! Dropdown arrow -->
-<!--                        <svg class="w-4 h-4 --><?php //echo $accountingActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
-<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-<!--                                  d="M19 9l-7 7-7-7"></path>-->
-<!--                        </svg>-->
-<!--                    </button>-->
-<!---->
-<!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 --><?php //echo $accountingActive ? '' : 'hidden' ?><!--"-->
-<!--                        aria-hidden="--><?php //echo $accountingActive ? 'false' : 'true' ?><!--">-->
-<!---->
-<!--                        <! Accounts Payable -->
-<!--                        <li>-->
-<!--                            <a href="his_admin_add_acc.payable.php"-->
-<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600-->
-<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc.payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
-<!--                                <span>Add Acc. Payable</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_manage_acc_payable.php"-->
-<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600-->
-<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
-<!--                                <span>Manage Acc. Payable</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!---->
-<!--                        <li class="border-t border-gray-200 my-1"></li>-->
-<!---->
-<!--                        <!-- Accounts Receivable -->
-<!--                        <li>-->
-<!--                            <a href="his_admin_add_acc_receivable.php"-->
-<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600-->
-<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
-<!--                                <span>Add Acc. Receivable</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_manage_acc_receivable.php"-->
-<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600-->
-<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
-<!--                                <span>Manage Acc. Receivable</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    --><?php
+                //                    $accountingActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_acc.payable.php', 'his_admin_manage_acc_payable.php', 'his_admin_add_acc_receivable.php', 'his_admin_manage_acc_receivable.php']);
+                //                    ?>
+                <!--                    <button type="button"-->
+                <!--                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                   hover:bg-blue-50 hover:text-blue-600-->
+                <!--                   -->
+                <?php //echo $accountingActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+                <!--                            aria-expanded="-->
+                <?php //echo $accountingActive ? 'true' : 'false' ?><!--"-->
+                <!--                            title="Accounting">-->
+                <!--                        <div class="flex items-center">-->
+                <!--                            < Cash Multiple Icon -->
+                <!--                            <svg class="w-5 h-5 -->
+                <?php //echo $accountingActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
+                <!--                                 fill="currentColor" viewBox="0 0 24 24">-->
+                <!--                                <path d="M21 7H3a1 1 0 00-1 1v9a2 2 0 002 2h16a2 2 0 002-2V8a1 1 0 00-1-1zM3 6a2 2 0 012-2h14a2 2 0 012 2v1H3V6z"/>-->
+                <!--                            </svg>-->
+                <!--                            <span class="ml-3 hidden md:block">Accounting</span>-->
+                <!--                        </div>-->
+                <!--                        <! Dropdown arrow -->
+                <!--                        <svg class="w-4 h-4 -->
+                <?php //echo $accountingActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+                <!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+                <!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                                  d="M19 9l-7 7-7-7"></path>-->
+                <!--                        </svg>-->
+                <!--                    </button>-->
+                <!---->
+                <!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 -->
+                <?php //echo $accountingActive ? '' : 'hidden' ?><!--"-->
+                <!--                        aria-hidden="-->
+                <?php //echo $accountingActive ? 'false' : 'true' ?><!--">-->
+                <!---->
+                <!--                        <! Accounts Payable -->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_add_acc.payable.php"-->
+                <!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                      hover:bg-blue-50 hover:text-blue-600-->
+                <!--                      -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc.payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+                <!--                                <span>Add Acc. Payable</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_manage_acc_payable.php"-->
+                <!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                      hover:bg-blue-50 hover:text-blue-600-->
+                <!--                      -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_payable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+                <!--                                <span>Manage Acc. Payable</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!---->
+                <!--                        <li class="border-t border-gray-200 my-1"></li>-->
+                <!---->
+                <!--                        <!-- Accounts Receivable -->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_add_acc_receivable.php"-->
+                <!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                      hover:bg-blue-50 hover:text-blue-600-->
+                <!--                      -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_add_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+                <!--                                <span>Add Acc. Receivable</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_manage_acc_receivable.php"-->
+                <!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                      hover:bg-blue-50 hover:text-blue-600-->
+                <!--                      -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_manage_acc_receivable.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+                <!--                                <span>Manage Acc. Receivable</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
 
                 <!-- Laboratory -->
-<!--                <li>-->
-<!--                    --><?php
-//                    $labActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_patient_lab_test.php', 'his_doc_patient_lab_result.php', 'his_doc_patient_lab_vitals.php', 'his_doc_lab_report.php']);
-//                    ?>
-<!--                    <button type="button"-->
-<!--                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 --><?php //echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
-<!--                            aria-expanded="--><?php //echo $labActive ? 'true' : 'false' ?><!--"-->
-<!--                            title="Laboratory">-->
-<!--                        <div class="flex items-center">-->
-<!--                            <svg class="w-5 h-5 --><?php //echo $labActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
-<!--                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                <path fill-rule="evenodd"-->
-<!--                                      d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"-->
-<!--                                      clip-rule="evenodd"></path>-->
-<!--                            </svg>-->
-<!--                            <span class="ml-3 hidden md:block">Laboratory</span>-->
-<!--                        </div>-->
-<!--                        <svg class="w-4 h-4 --><?php //echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
-<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-<!--                                  d="M19 9l-7 7-7-7"></path>-->
-<!--                        </svg>-->
-<!--                    </button>-->
-<!--                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 text-xs --><?php //echo $labActive ? '' : 'hidden' ?><!--"-->
-<!--                        aria-hidden="--><?php //echo $labActive ? 'false' : 'true' ?><!--">-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_patient_lab_test.php"-->
-<!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_test.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
-<!--                               title="Patient Lab Tests">-->
-<!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
-<!--                                     xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path fill-rule="evenodd"-->
-<!--                                          d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"-->
-<!--                                          clip-rule="evenodd"></path>-->
-<!--                                </svg>-->
-<!--                                <span class="hidden md:block">Patient Lab Tests</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_patient_lab_result.php"-->
-<!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_result.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
-<!--                               title="Patient Lab Results">-->
-<!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
-<!--                                     xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path fill-rule="evenodd"-->
-<!--                                          d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"-->
-<!--                                          clip-rule="evenodd"></path>-->
-<!--                                </svg>-->
-<!--                                <span class="hidden md:block">Patient Lab Results</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_patient_lab_vitals.php"-->
-<!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_vitals.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
-<!--                               title="Patient Vitals">-->
-<!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
-<!--                                     xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path fill-rule="evenodd"-->
-<!--                                          d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"-->
-<!--                                          clip-rule="evenodd"></path>-->
-<!--                                </svg>-->
-<!--                                <span class="hidden md:block">Patient Vitals</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="his_admin_lab_report.php"-->
-<!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_lab_report.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
-<!--                               title="Lab Reports">-->
-<!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
-<!--                                     xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path fill-rule="evenodd"-->
-<!--                                          d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"-->
-<!--                                          clip-rule="evenodd"></path>-->
-<!--                                </svg>-->
-<!--                                <span class="hidden md:block">Lab Reports</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    --><?php
+                //                    $labActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_patient_lab_test.php', 'his_doc_patient_lab_result.php', 'his_doc_patient_lab_vitals.php', 'his_doc_lab_report.php']);
+                //                    ?>
+                <!--                    <button type="button"-->
+                <!--                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 -->
+                <?php //echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+                <!--                            aria-expanded="--><?php //echo $labActive ? 'true' : 'false' ?><!--"-->
+                <!--                            title="Laboratory">-->
+                <!--                        <div class="flex items-center">-->
+                <!--                            <svg class="w-5 h-5 -->
+                <?php //echo $labActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
+                <!--                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                <path fill-rule="evenodd"-->
+                <!--                                      d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"-->
+                <!--                                      clip-rule="evenodd"></path>-->
+                <!--                            </svg>-->
+                <!--                            <span class="ml-3 hidden md:block">Laboratory</span>-->
+                <!--                        </div>-->
+                <!--                        <svg class="w-4 h-4 -->
+                <?php //echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+                <!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+                <!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                                  d="M19 9l-7 7-7-7"></path>-->
+                <!--                        </svg>-->
+                <!--                    </button>-->
+                <!--                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 text-xs -->
+                <?php //echo $labActive ? '' : 'hidden' ?><!--"-->
+                <!--                        aria-hidden="--><?php //echo $labActive ? 'false' : 'true' ?><!--">-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_patient_lab_test.php"-->
+                <!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_test.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
+                <!--                               title="Patient Lab Tests">-->
+                <!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
+                <!--                                     xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                    <path fill-rule="evenodd"-->
+                <!--                                          d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"-->
+                <!--                                          clip-rule="evenodd"></path>-->
+                <!--                                </svg>-->
+                <!--                                <span class="hidden md:block">Patient Lab Tests</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_patient_lab_result.php"-->
+                <!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_result.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
+                <!--                               title="Patient Lab Results">-->
+                <!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
+                <!--                                     xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                    <path fill-rule="evenodd"-->
+                <!--                                          d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"-->
+                <!--                                          clip-rule="evenodd"></path>-->
+                <!--                                </svg>-->
+                <!--                                <span class="hidden md:block">Patient Lab Results</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_patient_lab_vitals.php"-->
+                <!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_vitals.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
+                <!--                               title="Patient Vitals">-->
+                <!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
+                <!--                                     xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                    <path fill-rule="evenodd"-->
+                <!--                                          d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"-->
+                <!--                                          clip-rule="evenodd"></path>-->
+                <!--                                </svg>-->
+                <!--                                <span class="hidden md:block">Patient Vitals</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="his_admin_lab_report.php"-->
+                <!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 -->
+                <?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_lab_report.php' ? 'bg-blue-50 text-blue-600' : '' ?><!--"-->
+                <!--                               title="Lab Reports">-->
+                <!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"-->
+                <!--                                     xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                    <path fill-rule="evenodd"-->
+                <!--                                          d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"-->
+                <!--                                          clip-rule="evenodd"></path>-->
+                <!--                                </svg>-->
+                <!--                                <span class="hidden md:block">Lab Reports</span>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
 
                 <!-- Inventory -->
                 <li>
@@ -492,14 +508,15 @@
                                 <span>Pharmaceutical Records</span>
                             </a>
                         </li>
-<!--                        <li>-->
-<!--                            <a href="his_admin_accounting_records.php"-->
-<!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600-->
-<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_accounting_records.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
-<!--                                <span>Accounting Records</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
+                        <!--                        <li>-->
+                        <!--                            <a href="his_admin_accounting_records.php"-->
+                        <!--                               class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                        <!--                      hover:bg-blue-50 hover:text-blue-600-->
+                        <!--                      -->
+                        <?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_accounting_records.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+                        <!--                                <span>Accounting Records</span>-->
+                        <!--                            </a>-->
+                        <!--                        </li>-->
                         <li>
                             <a href="his_admin_medical_records.php"
                                class="flex items-center px-2 md:px-3 py-2 rounded-lg transition-colors
@@ -652,70 +669,71 @@
                     </ul>
                 </li>
                 <!-- Surgical / Theatre -->
-<!--                <li>-->
-<!--                    --><?php
-//                    $surgActive = in_array(basename($_SERVER['PHP_SELF']), [
-//                            'his_admin_add_equipment.php',
-//                            'his_admin_manage_equipment.php',
-//                            'his_admin_add_theatre_patient.php',
-//                            'his_admin_manage_theatre_patient.php',
-//                            'his_admin_surgery_records.php'
-//                    ]);
-//                    ?>
-<!--                    <button type="button"-->
-<!--                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                   hover:bg-blue-50 hover:text-blue-600-->
-<!--                   --><?php //echo $surgActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
-<!--                            aria-expanded="--><?php //echo $surgActive ? 'true' : 'false' ?><!--"-->
-<!--                            title="Surgical / Theatre">-->
-<!--                        <div class="flex items-center">-->
-<!--                            <i class="mdi mdi-scissors-cutting --><?php //echo $surgActive ? 'text-blue-500' : 'text-gray-500' ?><!-- text-lg"></i>-->
-<!--                            <span class="ml-3 hidden md:block">Surgical / Theatre</span>-->
-<!--                        </div>-->
-<!--                        <svg class="w-4 h-4 --><?php //echo $surgActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
-<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
-<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
-<!--                                  d="M19 9l-7 7-7-7"></path>-->
-<!--                        </svg>-->
-<!--                    </button>-->
-<!---->
-<!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 --><?php //echo $surgActive ? '' : 'hidden' ?><!--"-->
-<!--                        aria-hidden="--><?php //echo $surgActive ? 'false' : 'true' ?><!--">-->
-<!--                        --><?php
-//                        $surgSubmenu = [
-//                                'his_admin_add_equipment.php' => 'Add Equipment',
-//                                'his_admin_manage_equipment.php' => 'Manage Equipments',
-//                                'his_admin_add_theatre_patient.php' => 'Add Patient',
-//                                'his_admin_manage_theatre_patient.php' => 'Manage Patients',
-//                                'his_admin_surgery_records.php' => 'Surgery Records'
-//                        ];
-//                        foreach ($surgSubmenu as $file => $label):
-//                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
-//                            ?>
-<!--                            <li>-->
-<!--                                <a href="--><?php //echo $file; ?><!--"-->
-<!--                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors-->
-<!--                      hover:bg-blue-50 hover:text-blue-600 --><?php //echo $active ?><!--"-->
-<!--                                   title="--><?php //echo $label; ?><!--">-->
-<!--                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">-->
-<!--                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>-->
-<!--                                    </svg>-->
-<!--                                    <span class="hidden md:block">--><?php //echo $label; ?><!--</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        --><?php //endforeach; ?>
-<!--                    </ul>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    --><?php
+                //                    $surgActive = in_array(basename($_SERVER['PHP_SELF']), [
+                //                            'his_admin_add_equipment.php',
+                //                            'his_admin_manage_equipment.php',
+                //                            'his_admin_add_theatre_patient.php',
+                //                            'his_admin_manage_theatre_patient.php',
+                //                            'his_admin_surgery_records.php'
+                //                    ]);
+                //                    ?>
+                <!--                    <button type="button"-->
+                <!--                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                   hover:bg-blue-50 hover:text-blue-600-->
+                <!--                   -->
+                <?php //echo $surgActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+                <!--                            aria-expanded="--><?php //echo $surgActive ? 'true' : 'false' ?><!--"-->
+                <!--                            title="Surgical / Theatre">-->
+                <!--                        <div class="flex items-center">-->
+                <!--                            <i class="mdi mdi-scissors-cutting -->
+                <?php //echo $surgActive ? 'text-blue-500' : 'text-gray-500' ?><!-- text-lg"></i>-->
+                <!--                            <span class="ml-3 hidden md:block">Surgical / Theatre</span>-->
+                <!--                        </div>-->
+                <!--                        <svg class="w-4 h-4 -->
+                <?php //echo $surgActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+                <!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+                <!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                                  d="M19 9l-7 7-7-7"></path>-->
+                <!--                        </svg>-->
+                <!--                    </button>-->
+                <!---->
+                <!--                    <ul class="mt-1 space-y-1 pl-0 md:pl-8 -->
+                <?php //echo $surgActive ? '' : 'hidden' ?><!--"-->
+                <!--                        aria-hidden="--><?php //echo $surgActive ? 'false' : 'true' ?><!--">-->
+                <!--                        --><?php
+                //                        $surgSubmenu = [
+                //                                'his_admin_add_equipment.php' => 'Add Equipment',
+                //                                'his_admin_manage_equipment.php' => 'Manage Equipments',
+                //                                'his_admin_add_theatre_patient.php' => 'Add Patient',
+                //                                'his_admin_manage_theatre_patient.php' => 'Manage Patients',
+                //                                'his_admin_surgery_records.php' => 'Surgery Records'
+                //                        ];
+                //                        foreach ($surgSubmenu as $file => $label):
+                //                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                //                            ?>
+                <!--                            <li>-->
+                <!--                                <a href="--><?php //echo $file; ?><!--"-->
+                <!--                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors-->
+                <!--                      hover:bg-blue-50 hover:text-blue-600 --><?php //echo $active ?><!--"-->
+                <!--                                   title="--><?php //echo $label; ?><!--">-->
+                <!--                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">-->
+                <!--                                        <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>-->
+                <!--                                    </svg>-->
+                <!--                                    <span class="hidden md:block">-->
+                <?php //echo $label; ?><!--</span>-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                        --><?php //endforeach; ?>
+                <!--                    </ul>-->
+                <!--                </li>-->
 
 
                 <!-- Payrolls -->
                 <li>
                     <?php
-                    $payrollActive = in_array(basename($_SERVER['PHP_SELF']), [
-                            'his_admin_add_payroll.php',
-                            'his_admin_manage_payrolls.php',
-                            'his_admin_generate_payrolls.php'
-                    ]);
+                    $payrollActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_payroll.php', 'his_admin_manage_payrolls.php', 'his_admin_generate_payrolls.php']);
                     ?>
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
@@ -737,11 +755,7 @@
                     <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $payrollActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $payrollActive ? 'false' : 'true' ?>">
                         <?php
-                        $payrollSubmenu = [
-                                'his_admin_add_payroll.php' => 'Add Payroll',
-                                'his_admin_manage_payrolls.php' => 'Manage Payrolls',
-                                'his_admin_generate_payrolls.php' => 'Generate Payrolls'
-                        ];
+                        $payrollSubmenu = ['his_admin_add_payroll.php' => 'Add Payroll', 'his_admin_manage_payrolls.php' => 'Manage Payrolls', 'his_admin_generate_payrolls.php' => 'Generate Payrolls'];
                         foreach ($payrollSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
                             ?>
@@ -764,10 +778,7 @@
                 <!-- Vendors -->
                 <li>
                     <?php
-                    $vendorActive = in_array(basename($_SERVER['PHP_SELF']), [
-                            'his_admin_add_vendor.php',
-                            'his_admin_manage_vendor.php'
-                    ]);
+                    $vendorActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_add_vendor.php', 'his_admin_manage_vendor.php']);
                     ?>
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
@@ -789,10 +800,7 @@
                     <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $vendorActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $vendorActive ? 'false' : 'true' ?>">
                         <?php
-                        $vendorSubmenu = [
-                                'his_admin_add_vendor.php' => 'Add Vendor',
-                                'his_admin_manage_vendor.php' => 'Manage Vendors'
-                        ];
+                        $vendorSubmenu = ['his_admin_add_vendor.php' => 'Add Vendor', 'his_admin_manage_vendor.php' => 'Manage Vendors'];
                         foreach ($vendorSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
                             ?>
@@ -837,9 +845,7 @@
                     <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $pwActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $pwActive ? 'false' : 'true' ?>">
                         <?php
-                        $pwSubmenu = [
-                                'his_admin_manage_password_resets.php' => 'Manage'
-                        ];
+                        $pwSubmenu = ['his_admin_manage_password_resets.php' => 'Manage'];
                         foreach ($pwSubmenu as $file => $label):
                             $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
                             ?>
@@ -897,7 +903,7 @@
 <!---->
 <!--    <div class="slimscroll-menu">-->
 <!---->
-<!--        <!--- Sidemenu -->-->
+<!--        <!--- Sidemenu -->
 <!--        <div id="sidebar-menu">-->
 <!---->
 <!--            <ul class="metismenu" id="side-menu">-->
@@ -1203,11 +1209,11 @@
 <!--            </ul>-->
 <!---->
 <!--        </div>-->
-<!--        <!-- End Sidebar -->-->
+<!--        <End Sidebar -->
 <!---->
 <!--        <div class="clearfix"></div>-->
 <!---->
 <!--    </div>-->
-<!--    <!-- Sidebar -left -->-->
+<!--    < Sidebar -left -->
 <!---->
 <!--</div>-->

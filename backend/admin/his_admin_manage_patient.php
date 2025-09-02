@@ -96,7 +96,8 @@ if (isset($_GET['delete'])) {
                             </div>
 
                             <div class="table-responsive">
-                                <table id="demo-foo-filtering" class="min-w-full border border-gray-500 text-black mb-4 "
+                                <table id="demo-foo-filtering"
+                                       class="min-w-full border border-gray-500 text-black mb-4 "
                                        data-page-size="7">
                                     <thead class="bg-gray-100 text-gray-700 uppercase text-sm font-semibold">
                                     <tr>
@@ -147,21 +148,32 @@ if (isset($_GET['delete'])) {
                                         </td>
 
                                         <td class="px-4 py-2">
-                                            <div class="flex flex-wrap gap-2">
+                                            <div class="flex flex-nowrap gap-2">
                                                 <a href="his_admin_manage_patient.php?delete=<?php echo $row->pat_id; ?>"
-                                                   class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs flex items-center">
+                                                   class="px-2 py-1 bg-red-500 text-white rounded
+                  hover:bg-red-600
+                  text-xs sm:text-sm
+                  flex items-center transition">
                                                     <i class="mdi mdi-trash-can-outline mr-1"></i> Delete
                                                 </a>
                                                 <a href="his_admin_view_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&&pat_number=<?php echo $row->pat_number; ?>"
-                                                   class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-xs flex items-center">
+                                                   class="px-2 py-1 bg-blue-500 text-white rounded
+                  hover:bg-blue-600
+                  text-xs sm:text-sm
+                  flex items-center transition">
                                                     <i class="mdi mdi-eye mr-1"></i> View
                                                 </a>
                                                 <a href="his_admin_update_single_patient.php?pat_id=<?php echo $row->pat_id; ?>"
-                                                   class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-xs flex items-center">
+                                                   class="px-2 py-1 bg-yellow-500 text-white rounded
+                  hover:bg-yellow-600
+                  text-xs sm:text-sm
+                  flex items-center transition">
                                                     <i class="mdi mdi-check-box-outline mr-1"></i> Update
                                                 </a>
                                             </div>
                                         </td>
+
+
                                     </tr>
                                     </tbody>
                                     <?php

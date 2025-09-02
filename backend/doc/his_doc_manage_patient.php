@@ -104,7 +104,7 @@
                                         <th class="border border-gray-200 px-4 py-2" data-toggle="true">Patient Name</th>
                                         <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Number</th>
                                         <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Address</th>
-                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Category</th>
+                                        <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Patient Status</th>
                                         <th class="border border-gray-200 px-4 py-2 hidden sm:table-cell">Action</th>
                                     </tr>
                                     </thead>
@@ -113,7 +113,7 @@
                                       *get details of allpatients
                                       *
                                     */
-                                    $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
+                                    $ret="SELECT * FROM  hmisphp.his_patients ORDER BY pat_id DESC ";
                                     //sql code to get to ten docs  randomly
                                     $stmt= $mysqli->prepare($ret) ;
                                     $stmt->execute() ;//ok

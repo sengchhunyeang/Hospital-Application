@@ -71,10 +71,11 @@ $aid = $_SESSION['ad_id'];
         <!-- Logo & title -->
         <div class="clearfix">
             <div class="float-left">
-                <img src="assets/images/logo-dark.png" alt="" height="124">
+                <img src="assets/images/logo.png" alt="" height="50" width="160">
+                <div class="text-center font-bold text-black">HMS</div>
             </div>
             <div class="float-right">
-                <h4 class="m-0 d-print-none"><?php echo $row->pay_doc_name; ?> Payroll</h4>
+                <h4 class="m-0 "><?php echo $row->pay_doc_name; ?> Payroll</h4>
             </div>
         </div>
 

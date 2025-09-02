@@ -91,7 +91,7 @@ $doc_id = $_SESSION['doc_id']
                                         <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden md:table-cell">Patient Address</th>
                                         <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden md:table-cell">Patient Phone</th>
                                         <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Age</th>
-                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Category</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Patient Status</th>
                                         <th class="border border-gray-300 px-4 py-2 text-left text-xs font-medium text-black uppercase tracking-wider hidden sm:table-cell">Action</th>
                                     </tr>
                                     </thead>
@@ -100,7 +100,7 @@ $doc_id = $_SESSION['doc_id']
                                         *get details of allpatients
                                         *
                                     */
-                                    $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
+                                    $ret="SELECT * FROM  hmisphp.his_patients order by pat_id DESC ";
                                     //sql code to get to ten docs  randomly
                                     $stmt= $mysqli->prepare($ret) ;
                                     $stmt->execute() ;//ok

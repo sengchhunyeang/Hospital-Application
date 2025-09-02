@@ -128,10 +128,10 @@
                     </a>
 
                     <!-- item-->
-                    <a href="his_admin_surgery_records.php" class="dropdown-item">
-                        <i class="fe-anchor mr-1"></i>
-                        <span>Surgical/Theatre Report</span>
-                    </a>
+<!--                    <a href="his_admin_surgery_records.php" class="dropdown-item">-->
+<!--                        <i class="fe-anchor mr-1"></i>-->
+<!--                        <span>Surgical/Theatre Report</span>-->
+<!--                    </a>-->
 
                     
                     <div class="dropdown-divider"></div>

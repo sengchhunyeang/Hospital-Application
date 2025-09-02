@@ -509,3 +509,18 @@ ALTER TABLE `his_vendor`
 ALTER TABLE `his_vitals`
     MODIFY `vit_id` int(20) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 7;
+
+CREATE TABLE his_medicines (
+                                       med_id INT AUTO_INCREMENT PRIMARY KEY,
+                                       med_name VARCHAR(100) NOT NULL,
+                                       med_description TEXT,
+                                       med_stock INT DEFAULT 0
+);
+INSERT INTO his_medicines (med_name, med_description, med_stock) VALUES
+                                                                     ('Paracetamol', 'Pain reliever / fever reducer', 100),
+                                                                     ('Amoxicillin', 'Antibiotic for infections', 50),
+                                                                     ('Vitamin C', 'Supplement', 200),
+                                                                     ('Ibuprofen', 'Anti-inflammatory', 150),
+                                                                     ('Metformin', 'For diabetes', 80);
+
+select * from his_medicines;
