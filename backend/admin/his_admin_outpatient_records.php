@@ -116,7 +116,7 @@
                                             ?>
 
                                                     <tbody>
-                                                    <tr class="border-b hover:bg-gray-50">
+                                                    <tr class="border-b hover:bg-gray-50 text-black ">
                                                         <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_number;?></td>

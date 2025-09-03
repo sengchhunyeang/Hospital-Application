@@ -124,11 +124,10 @@
                                                     <label for="inputState" class="col-form-label">Transfer Department</label>
                                                     <select id="inputState" required="required" name="doc_dept" class="form-control">
                                                         <option>Choose</option>
-                                                        <option>Patient Registration</option>
                                                         <option>Laboratory</option>
                                                         <option>Pharmacy</option>
                                                         <option>Accounting</option>
-                                                        <option>Surgery | Theatre</option>
+                                                        <option>IT</option>
                                                     </select>
                                             </div>                                         
 

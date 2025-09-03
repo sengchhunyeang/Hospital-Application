@@ -138,7 +138,7 @@ if (isset($_GET['deleteRequest'])) {
                                         }
                                         ?>
 
-                                        <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
+                                        <tbody class="divide-y divide-gray-200 text-sm text-gray-700 text-black ">
                                         <tr class="hover:bg-gray-50">
                                             <td class="px-4 py-2"><?php echo $cnt; ?></td>
                                             <td class="px-4 py-2"><?php echo $row->email; ?></td>

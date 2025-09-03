@@ -4,24 +4,26 @@
   include('assets/inc/checklogin.php');
   check_login();
   $aid=$_SESSION['ad_id'];
-  if(isset($_GET['delete_vendor_number']))
-  {
-        $id=intval($_GET['delete_vendor_number']);
-        $adn="delete from hmisphp.his_vendor where v_number=?";
-        $stmt= $mysqli->prepare($adn);
-        $stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	 
-  
-          if($stmt)
-          {
-            $success = "Vendor Records Deleted";
-          }
-            else
-            {
-                $err = "Try Again Later";
-            }
+if(isset($_GET['delete_vendor_number']))
+{
+    $v_number = $_GET['delete_vendor_number']; // keep as string
+    $adn = "DELETE FROM hmisphp.his_vendor WHERE v_number = ?";
+    $stmt = $mysqli->prepare($adn);
+    $stmt->bind_param('s', $v_number); // 's' for string
+    $stmt->execute();
+
+    if($stmt->affected_rows > 0)
+    {
+        $success = "Vendor Records Deleted";
     }
+    else
+    {
+        $err = "Try Again Later";
+    }
+
+    $stmt->close();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +115,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_vendor ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_vendor  ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

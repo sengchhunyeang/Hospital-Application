@@ -116,7 +116,7 @@
 
                                             <?php
                                             
-                                                $ret="SELECT * FROM  hmisphp.his_payrolls ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_payrolls  ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

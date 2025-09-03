@@ -117,7 +117,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_medical_records ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_medical_records  ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -128,7 +128,7 @@
                                             ?>
 
                                                     <tbody>
-                                                    <tr class="border-b hover:bg-gray-50">
+                                                    <tr class="border-b hover:bg-gray-50 text-black">
                                                         <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_name;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->mdr_pat_number;?></td>

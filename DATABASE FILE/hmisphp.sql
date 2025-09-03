@@ -343,8 +343,8 @@ CREATE TABLE IF NOT EXISTS his_pwdresets
     ENGINE = InnoDB
     DEFAULT CHARSET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
-# select * from his_pwdresets;
---  drop table his_pwdresets;
+select * from his_pwdresets;
+ drop table his_pwdresets;
 -- --------------------------------------------------------
 
 --

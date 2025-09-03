@@ -223,7 +223,7 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 <?php
-                                $ret="SELECT * FROM hmisphp.his_docs ORDER BY RAND() LIMIT 10";
+                                $ret="SELECT * FROM hmisphp.his_docs LIMIT 10";
                                 $stmt= $mysqli->prepare($ret);
                                 $stmt->execute();
                                 $res=$stmt->get_result();
