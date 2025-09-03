@@ -107,14 +107,26 @@
                                             ?>
 
                                                     <tbody>
-                                                    <tr class="border-b hover:bg-gray-50">
+                                                    <tr class="border-b hover:bg-gray-50 text-black ">
                                                         <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_fname;?> <?php echo $row->pat_lname;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_number;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_addr;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_phone;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->pat_age;?> Years</td>
-                                                        <td class="px-4 py-2 text-sm"><?php echo $row->pat_type;?></td>
+                                                        <td class="px-4 py-2 whitespace-nowrap border border-gray-300">
+                                                            <?php
+                                                            $colors = [
+                                                                    'OutPatient' => 'green',
+                                                                    'InPatient' => 'blue',
+                                                                    'Waiting' => 'yellow'
+                                                            ];
+                                                            $color = $colors[$row->pat_type] ?? 'gray';
+                                                            ?>
+                                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-<?php echo $color; ?>-100 text-<?php echo $color; ?>-800">
+                <?php echo $row->pat_type; ?>
+            </span>
+                                                        </td>
                                                         <td class="px-4 py-2 text-sm">
                                                             <a href="his_admin_add_single_patient_medical_record.php?pat_number=<?php echo $row->pat_number;?>"
                                                                class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">

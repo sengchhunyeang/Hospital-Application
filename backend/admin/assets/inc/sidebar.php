@@ -372,7 +372,8 @@
                     $labActive = in_array(basename($_SERVER['PHP_SELF']), [
                             'his_admin_patient_lab_test.php', 'his_admin_patient_lab_result.php',
                             'his_admin_patient_lab_vitals.php', 'his_admin_employee_lab_vitals.php',
-                            'his_admin_lab_report.php', 'his_admin_add_lab_equipment.php', 'his_admin_manage_lab_equipment.php'
+                            'his_admin_lab_report.php',
+//                            'his_admin_add_lab_equipment.php', 'his_admin_manage_lab_equipment.php'
                     ]);
                     ?>
                     <button type="button"
@@ -409,8 +410,8 @@
                                 'his_admin_employee_lab_vitals.php' => 'Employee Vitals',
                                 'his_admin_lab_report.php' => 'Lab Reports',
                                 'divider1' => 'divider',
-                                'his_admin_add_lab_equipment.php' => 'Add Lab Equipment',
-                                'his_admin_manage_lab_equipment.php' => 'Manage Lab Equipments'
+//                                'his_admin_add_lab_equipment.php' => 'Add Lab Equipment',
+//                                'his_admin_manage_lab_equipment.php' => 'Manage Lab Equipments'
                         ];
 
                         foreach ($labSubmenu as $file => $label):

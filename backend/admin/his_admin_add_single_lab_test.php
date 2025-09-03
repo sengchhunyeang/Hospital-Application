@@ -13,14 +13,16 @@
             //$pres_ins = $_POST['pres_ins'];
             //$pres_pat_ailment = $_POST['pres_pat_ailment'];
             //sql to insert captured values
-			$query="INSERT INTO  his_laboratory  (lab_pat_name, lab_pat_ailment, lab_pat_number, lab_pat_tests, lab_number ) VALUES(?,?,?,?,?)";
-			$stmt = $mysqli->prepare($query);
-			$rc=$stmt->bind_param('sssss', $lab_pat_name, $lab_pat_ailment, $lab_pat_number, $lab_pat_tests, $lab_number);
-			$stmt->execute();
-			/*
-			*Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
-			*echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
-			*/ 
+            $lab_id = 1; // generate unique value
+            $query = "INSERT INTO hmisphp.his_laboratory (lab_id, lab_pat_name, lab_pat_ailment, lab_pat_number, lab_pat_tests, lab_number) VALUES (?,?,?,?,?,?)";
+            $stmt = $mysqli->prepare($query);
+            $rc = $stmt->bind_param('isssss', $lab_id, $lab_pat_name, $lab_pat_ailment, $lab_pat_number, $lab_pat_tests, $lab_number);
+            $stmt->execute();
+
+            /*
+            *Use Sweet Alerts Instead Of This Fucked Up Javascript Alerts
+            *echo"<script>alert('Successfully Created Account Proceed To Log In ');</script>";
+            */
 			//declare a varible which will be passed to alert function
 			if($stmt)
 			{
@@ -58,7 +60,7 @@
             <!-- ============================================================== -->
             <?php
                 $pat_number = $_GET['pat_number'];
-                $ret="SELECT  * FROM his_patients WHERE pat_number=?";
+                $ret="SELECT  * FROM hmisphp.his_patients WHERE pat_number=?";
                 $stmt= $mysqli->prepare($ret) ;
                 $stmt->bind_param('s',$pat_number);
                 $stmt->execute() ;//ok

@@ -128,7 +128,7 @@
                                             ?>
 
                                                     <tbody>
-                                                    <tr class="border-b hover:bg-gray-50">
+                                                    <tr class="border-b hover:bg-gray-50 text-black ">
                                                         <td class="px-4 py-2"><?php echo $cnt; ?></td>
                                                         <td class="px-4 py-2"><?php echo $row->pay_doc_name; ?></td>
                                                         <td class="px-4 py-2"><?php echo $row->pay_doc_number; ?></td>
@@ -137,7 +137,7 @@
                                                         <td class="px-4 py-2">$ <?php echo $row->pay_emp_salary; ?></td>
                                                         <td class="px-2 py-2">
                                                             <a href="his_admin_generate_single_employee_payroll.php?pay_number=<?php echo $row->pay_number;?>&&pay_doc_number=<?php echo $row->pay_doc_number;?>"
-                                                               class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-1 py-1 rounded-md">
+                                                               class="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xs px-1 py-1 rounded-md">
                                                                 <i class="fas fa-file-invoice-dollar"></i> Generate Payroll
                                                             </a>
                                                         </td>

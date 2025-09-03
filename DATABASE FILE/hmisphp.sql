@@ -128,7 +128,10 @@ CREATE TABLE `his_laboratory`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
+ALTER TABLE his_laboratory
+    MODIFY lab_id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY;
 
+drop table his_laboratory;
 -- Data for table `his_laboratory`
 INSERT INTO `his_laboratory` (`lab_id`, `lab_pat_name`, `lab_pat_ailment`, `lab_pat_number`, `lab_pat_tests`,
                               `lab_pat_results`, `lab_number`, `lab_date_rec`)

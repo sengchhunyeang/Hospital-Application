@@ -110,7 +110,7 @@
                                                     $mysqlDateTime = $row->lab_date_rec;
                                             ?>
 
-                                                    <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tbody class="bg-white divide-y divide-gray-200 text-black ">
                                                     <tr class="hover:bg-gray-50">
                                                         <td class="px-4 py-2 text-sm"><?php echo $cnt;?></td>
                                                         <td class="px-4 py-2 text-sm"><?php echo $row->lab_pat_name;?></td>

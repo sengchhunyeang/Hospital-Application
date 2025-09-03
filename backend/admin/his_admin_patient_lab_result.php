@@ -83,21 +83,22 @@
                                     <div class="table-responsive">
                                         <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
                                             <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th data-toggle="true">Patient Name</th>
-                                                <th data-hide="phone">Patient Number</th>
-                                                <th data-hide="phone">Patient Ailment</th>
-                                                <th data-hide="phone">Date Lab Test Conducted</th>
-                                                <th data-hide="phone">Action</th>
+                                            <tr class="bg-gray-100 text-left text-sm font-medium text-gray-700">
+                                                <th class="px-4 py-2">#</th>
+                                                <th class="px-4 py-2">Patient Name</th>
+                                                <th class="px-4 py-2 hidden sm:table-cell">Patient Number</th>
+                                                <th class="px-4 py-2 hidden sm:table-cell">Patient Ailment</th>
+                                                <th class="px-4 py-2 hidden sm:table-cell">Date Lab</th>
+                                                <th class="px-4 py-2 hidden sm:table-cell">Action</th>
                                             </tr>
+
                                             </thead>
                                             <?php
                                             /*
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_laboratory ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_laboratory ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
@@ -109,20 +110,22 @@
                                             ?>
 
                                                     <tbody>
-                                                    <tr>
-                                                        <td><?php echo $cnt;?></td>
-                                                        <td><?php echo $row->lab_pat_name;?></td>
-                                                        <td><?php echo $row->lab_pat_number;?></td>
-                                                        <td><?php echo $row->lab_pat_ailment;?></td>
-                                                        <td><?php echo date("d/m/Y", strtotime($mysqlDateTime));?></td>
-                                                        <td>
-                                                            <a href="his_admin_add_single_lab_result.php?lab_number=<?php echo $row->lab_number ;?>"
+                                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                                        <td class="px-4 py-2 text-sm text-black"><?php echo $cnt; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-black"><?php echo $row->lab_pat_name; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->lab_pat_number; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-black hidden sm:table-cell"><?php echo $row->lab_pat_ailment; ?></td>
+                                                        <td class="px-4 py-2 text-sm text-black hidden sm:table-cell">
+                                                            <?php echo date("d-M-Y h:iA", strtotime($row->lab_date_rec)); ?>
+                                                        </td>
+                                                        <td class="px-4 py-2">
+                                                            <a href="his_admin_add_single_lab_result.php?lab_number=<?php echo $row->lab_number; ?>"
                                                                class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500">
                                                                 <i class="mdi mdi-flask mr-1"></i> Add Lab Result
                                                             </a>
-
                                                         </td>
                                                     </tr>
+
                                                     </tbody>
 
                                                     <?php  $cnt = $cnt +1 ; }?>

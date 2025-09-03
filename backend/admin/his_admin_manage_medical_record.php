@@ -125,7 +125,7 @@ if (isset($_GET['delete_mdr_number'])) {
                                                 {
                                             ?>
 
-                                                    <tbody class="divide-y divide-gray-200">
+                                                    <tbody class="divide-y divide-gray-200 text-black">
                                                     <tr class="bg-white hover:bg-gray-50">
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $cnt;?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->mdr_pat_name;?></td>
