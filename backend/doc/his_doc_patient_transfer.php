@@ -23,7 +23,7 @@ if(isset($_GET['pat_number'])){
 
 
     $_SESSION['success'] = "Patient discharged successfully!";
-    header("Location: his_admin_patient_transfer.php");
+    header("Location: his_doc_patient_transfer.php");
     exit();
 }
 ?>
@@ -123,7 +123,7 @@ if(isset($_GET['pat_number'])){
                                                 <td class="px-4 py-2 text-sm hidden sm:table-cell"><?php echo $row->pat_room_number; ?></td>
                                                 <td class="px-4 py-2 text-sm">
                                                     <?php if(!$row->pat_walk_out_date){ ?>
-                                                        <a href="his_admin_patient_transfer.php?pat_number=<?php echo $row->pat_number; ?>"
+                                                        <a href="his_doc_patient_transfer.php?pat_number=<?php echo $row->pat_number; ?>"
                                                            class="bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded">
                                                             Discharge
                                                         </a>

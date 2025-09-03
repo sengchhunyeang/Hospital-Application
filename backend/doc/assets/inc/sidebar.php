@@ -22,7 +22,33 @@
                 <!-- Patients -->
                 <li>
                     <?php
-                    $patientsActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_register_patient.php', 'his_doc_view_patients.php', 'his_doc_manage_patient.php', 'his_doc_patient_transfer.php']);
+                    $patientsPages = [
+                            [
+                                    'file'  => 'his_doc_register_patient.php',
+                                    'label' => 'Register Patient',
+                                    'icon'  => '<path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>'
+                            ],
+                            [
+                                    'file'  => 'his_doc_view_patients.php',
+                                    'label' => 'View Patients',
+                                    'icon'  => '<path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>'
+                            ],
+                            [
+                                    'file'  => 'his_doc_manage_patient.php',
+                                    'label' => 'Manage Patients',
+                                    'icon'  => '<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>'
+                            ],
+                            [
+                                    'file'  => 'his_doc_patient_transfer.php',
+                                    'label' => 'Patient Discharge',
+                                    'icon'  => '<path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>'
+                            ],
+                    ];
+
+                    $patientsActive = in_array(
+                            basename($_SERVER['PHP_SELF']),
+                            array_column($patientsPages, 'file')
+                    );
                     ?>
                     <button type="button"
                             class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $patientsActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
@@ -38,63 +64,49 @@
                             <span class="ml-3 hidden md:block">Patients</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $patientsActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $patientsActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $patientsActive ? 'false' : 'true' ?>">
-                        <li>
-                            <a href="his_doc_register_patient.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_register_patient.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Register Patient">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Register Patient</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_view_patients.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_view_patients.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="View Patients">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">View Patients</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_manage_patient.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_manage_patient.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Manage Patients">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                </svg>
-                                <span class="hidden md:block">Manage Patients</span>
-                            </a>
-                        </li>
-                        <li class="border-t border-gray-200 my-1"></li>
-                        <li>
-                            <a href="his_doc_patient_transfer.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_transfer.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Patient Transfers">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Patient Discharge</span>
-                            </a>
-                        </li>
+                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $patientsActive ? '' : 'hidden' ?>">
+                        <?php foreach ($patientsPages as $page): ?>
+                            <li>
+                                <a href="<?php echo $page['file']; ?>"
+                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
+                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
+                                        <?php echo $page['icon']; ?>
+                                    </svg>
+                                    <span class="hidden md:block pl-4"><?php echo $page['label']; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
+
 
                 <!-- Pharmacy -->
                 <li>
                     <?php
-                    $pharmacyActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_add_pharm_cat.php', 'his_doc_view_pharm_cat.php', 'his_doc_manage_pharm_cat.php', 'his_doc_add_pharmaceuticals.php', 'his_doc_view_pharmaceuticals.php', 'his_doc_manage_pharmaceuticals.php', 'his_doc_add_presc.php', 'his_doc_view_presc.php', 'his_doc_manage_presc.php']);
+                    $pharmacyPages = [
+                            ['file' => 'his_doc_add_pharm_cat.php', 'label' => 'Add Pharm Category'],
+                            ['file' => 'his_doc_view_pharm_cat.php', 'label' => 'View Pharm Category'],
+                            ['file' => 'his_doc_manage_pharm_cat.php', 'label' => 'Manage Pharm Category'],
+                            'divider',
+                            ['file' => 'his_doc_add_pharmaceuticals.php', 'label' => 'Add Pharmaceuticals'],
+                            ['file' => 'his_doc_view_pharmaceuticals.php', 'label' => 'View Pharmaceuticals'],
+                            ['file' => 'his_doc_manage_pharmaceuticals.php', 'label' => 'Manage Pharmaceuticals'],
+                            'divider',
+                            ['file' => 'his_doc_add_presc.php', 'label' => 'Add Prescriptions'],
+                            ['file' => 'his_doc_view_presc.php', 'label' => 'View Prescriptions'],
+                            ['file' => 'his_doc_manage_presc.php', 'label' => 'Manage Prescriptions'],
+                    ];
+
+                    $currentPage = basename($_SERVER['PHP_SELF']);
+                    $pharmacyActive = in_array($currentPage, array_column(array_filter($pharmacyPages, fn($p) => $p !== 'divider'), 'file'));
                     ?>
+
+                    <!-- Main Button -->
                     <button type="button"
                             class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $pharmacyActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $pharmacyActive ? 'true' : 'false' ?>"
@@ -114,113 +126,54 @@
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
+
+                    <!-- Submenu -->
                     <ul class="mt-1 space-y-1 pl-0 md:pl-8 <?php echo $pharmacyActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $pharmacyActive ? 'false' : 'true' ?>">
-                        <li>
-                            <a href="his_doc_add_pharm_cat.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_add_pharm_cat.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Add Pharm Category">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Add Pharm Category</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_view_pharm_cat.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_view_pharm_cat.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="View Pharm Category">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">View Pharm Category</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_manage_pharm_cat.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_manage_pharm_cat.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Manage Pharm Category">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                </svg>
-                                <span class="hidden md:block">Manage Pharm Category</span>
-                            </a>
-                        </li>
-                        <li class="border-t border-gray-200 my-1"></li>
-                        <li>
-                            <a href="his_doc_add_pharmaceuticals.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_add_pharmaceuticals.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Add Pharmaceuticals">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Add Pharmaceuticals</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_view_pharmaceuticals.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_view_pharmaceuticals.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="View Pharmaceuticals">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">View Pharmaceuticals</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_manage_pharmaceuticals.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_manage_pharmaceuticals.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Manage Pharmaceuticals">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                </svg>
-                                <span class="hidden md:block">Manage Pharmaceuticals</span>
-                            </a>
-                        </li>
-                        <li class="border-t border-gray-200 my-1"></li>
-                        <li>
-                            <a href="his_doc_add_presc.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_add_presc.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Add Prescriptions">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Add Prescriptions</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_view_presc.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_view_presc.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="View Prescriptions">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">View Prescriptions</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_manage_presc.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_manage_presc.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Manage Prescriptions">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                </svg>
-                                <span class="hidden md:block">Manage Prescriptions</span>
-                            </a>
-                        </li>
+
+                        <?php foreach ($pharmacyPages as $page): ?>
+                            <?php if ($page === 'divider'): ?>
+                                <li class="border-t border-gray-200 my-1"></li>
+                            <?php else: ?>
+                                <li>
+                                    <a href="<?php echo $page['file']; ?>"
+                                       class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors
+                              hover:bg-blue-50 hover:text-blue-600
+                              <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                                       title="<?php echo $page['label']; ?>">
+                                        <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                  clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="hidden md:block pl-4"><?php echo $page['label']; ?></span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
+
 
                 <!-- Laboratory -->
                 <li>
                     <?php
-                    $labActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_patient_lab_test.php', 'his_doc_patient_lab_result.php', 'his_doc_patient_lab_vitals.php', 'his_doc_lab_report.php']);
+                    $labPages = [
+                            ['file' => 'his_doc_patient_lab_test.php', 'label' => 'Patient Lab Tests'],
+                            ['file' => 'his_doc_patient_lab_result.php', 'label' => 'Patient Lab Results'],
+                            ['file' => 'his_doc_patient_lab_vitals.php', 'label' => 'Patient Vitals'],
+                            ['file' => 'his_doc_lab_report.php', 'label' => 'Lab Reports'],
+                    ];
+
+                    $currentPage = basename($_SERVER['PHP_SELF']);
+                    $labActive = in_array($currentPage, array_column($labPages, 'file'));
                     ?>
+
+                    <!-- Main Button -->
                     <button type="button"
-                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg
+                   transition-colors hover:bg-blue-50 hover:text-blue-600
+                   <?php echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $labActive ? 'true' : 'false' ?>"
                             title="Laboratory">
                         <div class="flex items-center">
@@ -232,64 +185,57 @@
                             </svg>
                             <span class="ml-3 hidden md:block">Laboratory</span>
                         </div>
-                        <svg class="w-4 h-4 <?php echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
+                        <svg class="w-4 h-4 <?php echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?>
+                           transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 text-xs <?php echo $labActive ? '' : 'hidden' ?>"
+
+                    <!-- Submenu -->
+                    <ul class="mt-1 pl-0 md:pl-8 space-y-1 text-sm <?php echo $labActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $labActive ? 'false' : 'true' ?>">
-                        <li>
-                            <a href="his_doc_patient_lab_test.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_test.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
-                               title="Patient Lab Tests">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Patient Lab Tests</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_patient_lab_result.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_result.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
-                               title="Patient Lab Results">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Patient Lab Results</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_patient_lab_vitals.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_patient_lab_vitals.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
-                               title="Patient Vitals">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Patient Vitals</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_doc_lab_report.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors text-gray-600 hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_lab_report.php' ? 'bg-blue-50 text-blue-600' : '' ?>"
-                               title="Lab Reports">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Lab Reports</span>
-                            </a>
-                        </li>
+
+                        <?php foreach ($labPages as $page): ?>
+                            <li>
+                                <a href="<?php echo $page['file']; ?>"
+                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg
+                          transition-colors hover:bg-blue-50 hover:text-blue-600
+                          <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                                   title="<?php echo $page['label']; ?>">
+                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="hidden md:block pl-4 text-sm"><?php echo $page['label']; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
+
 
                 <!-- Inventory -->
                 <li>
                     <?php
-                    $inventoryActive = in_array(basename($_SERVER['PHP_SELF']), ['his_doc_pharm_inventory.php', 'his_doc_equipments_inventory.php']);
+                    $inventoryPages = [
+                            ['file' => 'his_doc_pharm_inventory.php', 'label' => 'Pharmaceuticals'],
+                        // Uncomment or add more items as needed
+                        // ['file' => 'his_doc_equipments_inventory.php', 'label' => 'Assets'],
+                    ];
+
+                    $currentPage = basename($_SERVER['PHP_SELF']);
+                    $inventoryActive = in_array($currentPage, array_column($inventoryPages, 'file'));
                     ?>
+
+                    <!-- Main Button -->
                     <button type="button"
-                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                            class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg
+                   transition-colors hover:bg-blue-50 hover:text-blue-600
+                   <?php echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $inventoryActive ? 'true' : 'false' ?>"
                             title="Inventory">
                         <div class="flex items-center">
@@ -300,34 +246,35 @@
                             </svg>
                             <span class="ml-3 hidden md:block">Inventory</span>
                         </div>
-                        <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
+                        <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?>
+                           transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
+
+                    <!-- Submenu -->
                     <ul class="mt-1 pl-0 md:pl-8 space-y-1 <?php echo $inventoryActive ? '' : 'hidden' ?>"
                         aria-hidden="<?php echo $inventoryActive ? 'false' : 'true' ?>">
-                        <li><a href="his_doc_pharm_inventory.php"
-                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_pharm_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>"
-                               title="Pharmaceuticals">
-                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="hidden md:block">Pharmaceuticals</span>
-                            </a>
-                        </li>
-<!--                        <li><a href="his_doc_equipments_inventory.php"-->
-<!--                               class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_doc_equipments_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--"-->
-<!--                               title="Assets">-->
-<!--                                <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path fill-rule="evenodd" d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" clip-rule="evenodd"></path>-->
-<!--                                </svg>-->
-<!--                                <span class="hidden md:block">Assets</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
+                        <?php foreach ($inventoryPages as $page): ?>
+                            <li>
+                                <a href="<?php echo $page['file']; ?>"
+                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg
+                          transition-colors hover:bg-blue-50 hover:text-blue-600
+                          <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                                   title="<?php echo $page['label']; ?>">
+                                    <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="hidden md:block pl-4"><?php echo $page['label']; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </div>

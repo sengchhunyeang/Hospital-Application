@@ -92,7 +92,7 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_pharmaceuticals_categories ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_pharmaceuticals_categories ";
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok
                                                 $res=$stmt->get_result();

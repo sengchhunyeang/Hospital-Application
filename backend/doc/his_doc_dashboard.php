@@ -134,7 +134,7 @@ $doc_number = $_SESSION['doc_number'];
                         </div>
                         <div class="ml-auto text-right">
                             <?php
-                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_type = 'Transferred'";
+                            $result = "SELECT COUNT(*) FROM hmisphp.his_patients WHERE pat_walk_out_date IS NOT NULL";
                             $stmt = $mysqli->prepare($result);
                             $stmt->execute();
                             $stmt->bind_result($transferred_count);
@@ -143,7 +143,7 @@ $doc_number = $_SESSION['doc_number'];
                             ?>
                             <h3 class="text-3xl font-bold text-gray-800"
                                 data-plugin="counterup"><?php echo $transferred_count; ?></h3>
-                            <p class="text-gray-500 text-sm leading-tight">Transferred</p>
+                            <p class="text-gray-500 text-sm leading-tight">Discharged-Patient </p>
                         </div>
                     </div>
                 </div>
