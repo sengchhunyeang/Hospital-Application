@@ -137,7 +137,9 @@ $aid = $_SESSION['ad_id'];
                 <?php echo $row->pat_type; ?>
             </span>
                                             </td>
-                                            <td class="px-4 py-2 whitespace-nowrap border border-gray-300"><?php echo $row->created_at; ?></td>
+                                            <td class="px-4 py-2 text-sm hidden sm:table-cell"><?php echo date("d-M-Y h:iA", strtotime($row->pat_date_joined)); ?></td>
+
+
                                         </tr>
                                         </tbody>
 

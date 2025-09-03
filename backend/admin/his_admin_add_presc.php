@@ -96,7 +96,8 @@
                                                 *get details of allpatients
                                                 *
                                             */
-                                                $ret="SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
+                                                $ret="SELECT * FROM  hmisphp.his_patients 
+                                                WHERE pat_type IN ('Inpatient', 'Outpatient') ORDER BY pat_id DESC ";
                                                 //sql code to get to ten docs  randomly
                                                 $stmt= $mysqli->prepare($ret) ;
                                                 $stmt->execute() ;//ok

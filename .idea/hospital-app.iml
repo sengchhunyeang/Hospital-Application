@@ -8,7 +8,6 @@
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="flatpickr" level="application" />
     <orderEntry type="library" name="flatpickr" level="application" />
-    <orderEntry type="library" name="alpinejs" level="application" />
     <orderEntry type="library" name="xlsx" level="application" />
     <orderEntry type="library" name="xlsx" level="application" />
   </component>

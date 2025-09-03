@@ -4,24 +4,22 @@
   include('assets/inc/checklogin.php');
   check_login();
   $aid=$_SESSION['ad_id'];
-  if(isset($_GET['delete_mdr_number']))
-  {
-        $id=intval($_GET['delete_mdr_number']);
-        $adn="DELETE FROM hmisphp.his_medical_records WHERE  mdr_number = ?";
-        $stmt= $mysqli->prepare($adn);
-        $stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	 
-  
-          if($stmt)
-          {
-            $success = "Medical Records Deleted";
-          }
-            else
-            {
-                $err = "Try Again Later";
-            }
+if (isset($_GET['delete_mdr_number'])) {
+    $id = $_GET['delete_mdr_number']; // keep as string
+    $adn = "DELETE FROM hmisphp.his_medical_records WHERE mdr_number = ?";
+    $stmt = $mysqli->prepare($adn);
+    $stmt->bind_param('s', $id);  // <-- bind as string
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        $success = "Medical Record Deleted";
+    } else {
+        $err = "Try Again Later";
     }
+
+    $stmt->close();
+}
+
 ?>
 
 <!DOCTYPE html>

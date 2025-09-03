@@ -204,51 +204,51 @@
 
 
                 <!-- Inventory -->
-                <li>
-                    <?php
-                    $inventoryActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_pharm_inventory.php', 'his_admin_equipments_inventory.php']);
-                    ?>
-                    <button type="button"
-                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
-                   hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
-                            aria-expanded="<?php echo $inventoryActive ? 'true' : 'false' ?>"
-                            title="Inventory">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 <?php echo $inventoryActive ? 'text-blue-500' : 'text-gray-500' ?>"
-                                 fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M3 7a1 1 0 011-1h16a1 1 0 011 1v11a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-                                <path d="M3 7V5a2 2 0 012-2h14a2 2 0 012 2v2H3z"/>
-                            </svg>
-                            <span class="ml-3 hidden md:block">Inventory</span>
-                        </div>
-                        <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
-                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-
-                    <ul class="mt-1 pl-0 space-y-1 <?php echo $inventoryActive ? '' : 'hidden' ?>"
-                        aria-hidden="<?php echo $inventoryActive ? 'false' : 'true' ?>">
-                        <li>
-                            <a href="his_admin_pharm_inventory.php"
-                               class="flex items-center px-2 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_pharm_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span class="ml-8 md:ml-8"><?php echo 'Pharmaceuticals'; ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="his_admin_equipments_inventory.php"
-                               class="flex items-center px-2 py-2 rounded-lg transition-colors
-                      hover:bg-blue-50 hover:text-blue-600
-                      <?php echo basename($_SERVER['PHP_SELF']) == 'his_admin_equipments_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
-                                <span class="ml-8 md:ml-8"><?php echo 'Assets'; ?></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+<!--                <li>-->
+<!--                    --><?php
+//                    $inventoryActive = in_array(basename($_SERVER['PHP_SELF']), ['his_admin_pharm_inventory.php', 'his_admin_equipments_inventory.php']);
+//                    ?>
+<!--                    <button type="button"-->
+<!--                            class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors-->
+<!--                   hover:bg-blue-50 hover:text-blue-600-->
+<!--                   --><?php //echo $inventoryActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?><!--"-->
+<!--                            aria-expanded="--><?php //echo $inventoryActive ? 'true' : 'false' ?><!--"-->
+<!--                            title="Inventory">-->
+<!--                        <div class="flex items-center">-->
+<!--                            <svg class="w-5 h-5 --><?php //echo $inventoryActive ? 'text-blue-500' : 'text-gray-500' ?><!--"-->
+<!--                                 fill="currentColor" viewBox="0 0 24 24">-->
+<!--                                <path d="M3 7a1 1 0 011-1h16a1 1 0 011 1v11a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>-->
+<!--                                <path d="M3 7V5a2 2 0 012-2h14a2 2 0 012 2v2H3z"/>-->
+<!--                            </svg>-->
+<!--                            <span class="ml-3 hidden md:block">Inventory</span>-->
+<!--                        </div>-->
+<!--                        <svg class="w-4 h-4 --><?php //echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?><!-- transform transition-transform hidden md:block"-->
+<!--                             fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                  d="M19 9l-7 7-7-7"></path>-->
+<!--                        </svg>-->
+<!--                    </button>-->
+<!---->
+<!--                    <ul class="mt-1 pl-0 space-y-1 --><?php //echo $inventoryActive ? '' : 'hidden' ?><!--"-->
+<!--                        aria-hidden="--><?php //echo $inventoryActive ? 'false' : 'true' ?><!--">-->
+<!--                        <li>-->
+<!--                            <a href="his_admin_pharm_inventory.php"-->
+<!--                               class="flex items-center px-2 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_pharm_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span class="ml-8 md:ml-8">--><?php //echo 'Pharmaceuticals'; ?><!--</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="his_admin_equipments_inventory.php"-->
+<!--                               class="flex items-center px-2 py-2 rounded-lg transition-colors-->
+<!--                      hover:bg-blue-50 hover:text-blue-600-->
+<!--                      --><?php //echo basename($_SERVER['PHP_SELF']) == 'his_admin_equipments_inventory.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?><!--">-->
+<!--                                <span class="ml-8 md:ml-8">--><?php //echo 'Assets'; ?><!--</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
 
 
                 <!--Reporting-->

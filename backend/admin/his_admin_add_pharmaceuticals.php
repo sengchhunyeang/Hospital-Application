@@ -95,7 +95,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label for="inputPassword4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Quantity (Cartons)</label>
+                                                    <label for="inputPassword4" class="block text-base font-medium text-gray-700 mb-1">Pharmaceutical Quantity (Box)</label>
                                                     <input type="text" required name="phar_qty" id="inputPassword4"
                                                            class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
@@ -108,7 +108,7 @@
                                                     <select id="inputState" required name="phar_cat"
                                                             class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                         <?php
-                                                        $ret="SELECT * FROM hmisphp.his_pharmaceuticals_categories ORDER BY RAND()";
+                                                        $ret="SELECT * FROM hmisphp.his_pharmaceuticals_categories ";
                                                         $stmt= $mysqli->prepare($ret);
                                                         $stmt->execute();
                                                         $res=$stmt->get_result();
@@ -124,7 +124,7 @@
                                                     <select id="inputState" required name="phar_vendor"
                                                             class="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 text-base focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                                         <?php
-                                                        $ret="SELECT * FROM hmisphp.his_vendor ORDER BY RAND()";
+                                                        $ret="SELECT * FROM hmisphp.his_vendor ";
                                                         $stmt= $mysqli->prepare($ret);
                                                         $stmt->execute();
                                                         $res=$stmt->get_result();

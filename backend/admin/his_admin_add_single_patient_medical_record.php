@@ -176,13 +176,9 @@
                                                     while($row=$res->fetch_object())
                                                     {
                                                 ?>
-                                                        <div class="mb-4 ">
-                                                            <label for="editor" class="block text-sm font-medium text-gray-700 mb-1">
-                                                                Patient's Prescription
-                                                            </label>
-                                                            <textarea required name="mdr_pat_prescr" id="editor"
-                                                                      class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                                                      rows="5"><?php echo $row->pres_ins; ?></textarea>
+                                                        <div class="form-group">
+                                                            <label for="inputAddress" class="col-form-label">Patient's Prescription</label>
+                                                            <textarea required="required"  type="text" class="form-control" name="mdr_pat_prescr" id="editor"><?php echo $row->pres_ins;?> </textarea>
                                                         </div>
 
                                                     <?php }?>
@@ -222,10 +218,7 @@
        
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-        <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
-        <script type="text/javascript">
-        CKEDITOR.replace('editor')
-        </script>
+
 
         <!-- Vendor js -->
         <script src="assets/js/vendor.min.js"></script>
