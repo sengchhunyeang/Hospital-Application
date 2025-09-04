@@ -111,8 +111,8 @@ $aid = $_SESSION['ad_id'];
 
                                 <p class="text-gray-700 text-sm">
                                     <strong class="font-medium text-gray-900">Date Recorded:</strong>
-                                    <span class="ml-2">
-                <?php echo date("d/m/Y - H:i", strtotime($mysqlDateTime)); ?>
+                                    <span class="ml-2 text-red-500">
+                <?php echo date("d-M-Y h:iA", strtotime($row->pat_date_joined)); ?>
             </span>
                                 </p>
                             </div>

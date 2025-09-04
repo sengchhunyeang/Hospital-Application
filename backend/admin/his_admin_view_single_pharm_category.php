@@ -75,14 +75,18 @@
                             
                                                 </div>
                                             </div> <!-- end col -->
-                                            <div class="col-xl-7">
+                                            <div class="w-full xl:w-7/12">
                                                 <div class="pl-0 xl:pl-3 mt-3 xl:mt-0">
                                                     <!-- Pharmaceutical Name -->
-                                                    <h2 class="text-xl font-semibold mb-3">Medicine Name: <?php echo $row->pharm_cat_name; ?></h2>
+                                                    <h2 class="text-xl font-semibold mb-3">
+                                                        Medicine Name: <span class="font-normal"><?php echo $row->pharm_cat_name; ?></span>
+                                                    </h2>
                                                     <hr class="mb-3 border-gray-300">
 
                                                     <!-- Pharmaceutical Vendor -->
-                                                    <h6 class="text-red-600 mb-3">Medicine Supplier: <?php echo $row->pharm_cat_vendor; ?></h6>
+                                                    <h6 class="text-red-600 text-lg font-medium mb-3">
+                                                        Medicine Supplier: <span class="font-normal"><?php echo $row->pharm_cat_vendor; ?></span>
+                                                    </h6>
                                                     <hr class="mb-3 border-gray-300">
 
                                                     <!-- Pharmaceutical Description -->
@@ -90,37 +94,9 @@
                                                         <?php echo $row->pharm_cat_desc; ?>
                                                     </p>
                                                     <hr class="border-gray-300">
-
-                                                <!--
-                                                 <form class="form-inline mb-4">
-                                                     <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                     <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                         <option value="1">1</option>
-                                                         <option value="2">2</option>
-                                                         <option value="3">3</option>
-                                                         <option value="4">4</option>
-                                                         <option value="5">5</option>
-                                                         <option value="6">6</option>
-                                                         <option value="7">7</option>
-                                                     </select>
-
-                                                     <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                                     <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                         <option selected>Small</option>
-                                                         <option value="1">Medium</option>
-                                                         <option value="2">Large</option>
-                                                         <option value="3">X-large</option>
-                                                     </select>
-                                                 </form>
-
-                                                 <div>
-                                                     <button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>
-                                                     <button type="button" class="btn btn-success waves-effect waves-light">
-                                                         <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                     </button>
-                                                 </div> -->
                                                 </div>
-                                            </div> <!-- end col -->
+                                            </div>
+                                            <!-- end col -->
                                         </div>
                                         <!-- end row -->
 
