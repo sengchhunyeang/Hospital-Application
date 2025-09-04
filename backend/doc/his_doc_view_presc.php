@@ -96,7 +96,7 @@
                                                 *get details of all prescriptions
                                                 *
                                             */
-                                            $ret="SELECT * FROM  hmisphp.his_prescriptions ORDER BY RAND() ";
+                                            $ret="SELECT * FROM  hmisphp.his_prescriptions  ";
                                             $stmt= $mysqli->prepare($ret) ;
                                             $stmt->execute() ;//ok
                                             $res=$stmt->get_result();

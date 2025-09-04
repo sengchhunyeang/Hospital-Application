@@ -114,7 +114,7 @@ $doc_id = $_SESSION['doc_id'];
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $ret = "SELECT * FROM hmisphp.his_pharmaceuticals_categories ORDER BY RAND()";
+                                            $ret = "SELECT * FROM hmisphp.his_pharmaceuticals_categories ";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute();
                                             $res = $stmt->get_result();

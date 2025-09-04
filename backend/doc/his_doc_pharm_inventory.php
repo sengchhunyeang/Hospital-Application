@@ -98,7 +98,7 @@
                                             </thead>
                                             <tbody>
                                             <?php
-                                            $ret = "SELECT * FROM hmisphp.his_pharmaceuticals ORDER BY RAND()";
+                                            $ret = "SELECT * FROM hmisphp.his_pharmaceuticals";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute();
                                             $res = $stmt->get_result();

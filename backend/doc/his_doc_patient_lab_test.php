@@ -103,7 +103,7 @@ $doc_id = $_SESSION['doc_id'];
                                         *get details of allpatients
                                         *
                                     */
-                                    $ret = "SELECT * FROM  hmisphp.his_patients ORDER BY RAND() ";
+                                    $ret = "SELECT * FROM  hmisphp.his_patients  ";
                                     //sql code to get to ten docs  randomly
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();//ok

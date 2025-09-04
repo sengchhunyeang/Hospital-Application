@@ -132,7 +132,7 @@ if (isset($_POST['add_patient'])) {
                                     <div>
                                         <?php
                                         // Example: all Cambodian addresses
-                                        $addresses = ["Banteay Meanchey - បន្ទាយមានជ័យ", "Battambang - បាត់ដំបង", "Kampong Cham - កំពង់ចាម", "Kampong Chhnang - កំពង់ឆ្នាំង", "Kampong Speu - កំពង់ស្ពឺ", "Kampong Thom - កំពង់ធំ", "Kampot - កំពត", "Kandal - កណ្ដាល", "Kep - កែប", "Koh Kong - កោះកុង", "Kratié - ក្រចេះ", "Mondulkiri - មណ្ឌលគិរី", "Pailin - ប៉ៃលិន", "Phnom Penh - ភ្នំពេញ", "Preah Vihear - ព្រះវិហារ", "Prey Veng - ព្រៃវែង", "Pursat - ពោធិសាត់", "Ratanakiri - រតនគីរី", "Siem Reap - សៀមរាប", "Sihanoukville - សីហនុ", "Stung Treng - ស្ទឹងត្រែង", "Svay Rieng - ស្វាយរៀង", "Takeo - តាកែវ", "Tboung Khmum - ទ្បូងខ្មុំ"];
+                                        $addresses = ["Banteay Meanchey - បន្ទាយមានជ័យ", "Battambang - បាត់ដំបង", "Kampong Cham - កំពង់ចាម", "Kampong Chhnang - កំពង់ឆ្នាំង", "Kampong Speu - កំពង់ស្ពឺ", "Kampong Thom - កំពង់ធំ", "Kampot - កំពត", "Kandal - កណ្ដាល", "Kep - កែប", "Koh Kong - កោះកុង", "Kratié - ក្រចេះ", "Mondulkiri - មណ្ឌលគិរី", "Pailin - ប៉ៃលិន", "Phnom Penh - ភ្នំពេញ", "Preah Vihear - ព្រះវិហារ", "Prey Veng - ព្រៃវែង", "Pursat - ពោធិសាត់", "Ratanakiri - រតនគីរី", "Siem Reap - សៀមរាប", "Sihanoukville - សីហនុ", "Stung Treng - ស្ទឹងត្រែង", "Svay Rieng - ស្វាយរៀង", "Takeo - តាកែវ", "Tboung Khmum - ត្បូងឃ្មុំ"];
 
 
                                         // Handle form submission

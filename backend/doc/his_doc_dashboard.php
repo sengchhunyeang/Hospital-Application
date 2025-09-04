@@ -233,7 +233,7 @@ $doc_number = $_SESSION['doc_number'];
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-100 border border-2">
                                 <?php
-                                $ret = "SELECT * FROM hmisphp.his_patients ORDER BY RAND()";
+                                $ret = "SELECT * FROM hmisphp.his_patients";
                                 $stmt = $mysqli->prepare($ret);
                                 $stmt->execute();
                                 $res = $stmt->get_result();
