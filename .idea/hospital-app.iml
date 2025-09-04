@@ -10,5 +10,6 @@
     <orderEntry type="library" name="flatpickr" level="application" />
     <orderEntry type="library" name="xlsx" level="application" />
     <orderEntry type="library" name="xlsx" level="application" />
+    <orderEntry type="library" name="ckeditor5" level="application" />
   </component>
 </module>

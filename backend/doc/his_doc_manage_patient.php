@@ -139,7 +139,8 @@
                                                 <a href="his_doc_view_single_patient.php?pat_id=<?php echo $row->pat_id;?>&&pat_number=<?php echo $row->pat_number;?>" class="bg-blue-500 text-white px-2 py-1 rounded text-xs inline-block mr-1">
                                                     View
                                                 </a>
-                                                <a href="his_doc_update_single_patient.php?pat_number=<?php echo $row->pat_number;?>" class="bg-yellow-500 text-white px-2 py-1 rounded text-xs inline-block">
+                                                <a href="his_doc_update_single_patient.php?pat_id=<?php echo $row->pat_id; ?>&pat_number=<?php echo $row->pat_number; ?>"
+                                                   class="bg-yellow-500 text-white px-2 py-1 rounded text-xs inline-block">
                                                     Update
                                                 </a>
                                             </td>

@@ -153,33 +153,45 @@
                                             </div>
 
                                             <!-- Phone, Room Number, Type -->
-                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                                <!-- Phone -->
                                                 <div>
-                                                    <label for="pat_phone" class="block text-gray-700 font-medium mb-1">
-                                                        Mobile Number <span class="text-red-500">*</span>
+                                                    <label for="pat_phone" class="block mb-1 font-medium">
+                                                        Mobile Number <span class="text-red-600">*</span>
                                                     </label>
-                                                    <input type="text" required value="<?php echo $row->pat_phone;?>" name="pat_phone" id="pat_phone"
+                                                    <input type="text" required name="pat_phone" id="pat_phone"
+                                                           value="<?php echo $row->pat_phone; ?>"
                                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                 </div>
+
+                                                <!-- Patient Type -->
                                                 <div>
-                                                    <label for="pat_ailment" class="block text-gray-700 font-medium mb-1">
-                                                        Room Number <span class="text-red-500">*</span>
-                                                    </label>
-                                                    <input type="text"  value="<?php echo $row->pat_ailment;?>" name="pat_ailment" id="pat_ailment"
-                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                </div>
-                                                <div>
-                                                    <label for="pat_type" class="block text-gray-700 font-medium mb-1">
-                                                        Patient's Type <span class="text-red-500">*</span>
-                                                    </label>
-                                                    <select id="pat_type" name="pat_type" required
+                                                    <label for="pat_type" class="block mb-1 font-medium">Patient's Type</label>
+                                                    <select id="pat_type" required name="pat_type"
                                                             class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                        <option>Waiting</option>
-                                                        <option>InPatient</option>
-                                                        <option>OutPatient</option>
+                                                        <option value="Waiting"   <?php if($row->pat_type == 'Waiting') echo 'selected'; ?>>Waiting</option>
+                                                        <option value="InPatient" <?php if($row->pat_type == 'InPatient') echo 'selected'; ?>>InPatient</option>
+                                                        <option value="OutPatient"<?php if($row->pat_type == 'OutPatient') echo 'selected'; ?>>OutPatient</option>
                                                     </select>
                                                 </div>
+
+                                                <!-- Ailment -->
+                                                <div id="pat_ailment_div" class="<?php echo ($row->pat_type == 'InPatient') ? '' : 'hidden'; ?>">
+                                                    <label for="pat_ailment" class="block mb-1 font-medium">Patient Ailment</label>
+                                                    <input type="text" name="pat_ailment" id="pat_ailment"
+                                                           value="<?php echo $row->pat_ailment; ?>"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                </div>
+
+                                                <!-- Room Number -->
+                                                <div id="room_number_div" class="<?php echo ($row->pat_type == 'InPatient') ? '' : 'hidden'; ?>">
+                                                    <label for="pat_room_number" class="block mb-1 font-medium">Room Number</label>
+                                                    <input type="text" name="pat_room_number" id="pat_room_number"
+                                                           value="<?php echo $row->pat_room_number; ?>"
+                                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                </div>
                                             </div>
+
 
                                             <!-- Patient Number (hidden or auto-generated) -->
                                             <div class="form-group col-md-2" style="display:none">
@@ -241,7 +253,36 @@
 
         <!-- Buttons init js-->
         <script src="assets/js/pages/loading-btn.init.js"></script>
-        
+        <script>
+            document.getElementById("pat_dob").addEventListener("change", function () {
+                const dob = new Date(this.value);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+
+                // Adjust if birthday hasn't occurred yet this year
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                // Show age in the input field
+                document.getElementById("pat_age").value = age;
+            });
+
+            const patientType = document.getElementById('pat_type');
+            const ailmentDiv = document.getElementById('pat_ailment_div');
+            const roomDiv = document.getElementById('room_number_div');
+
+            patientType.addEventListener('change', function () {
+                if (this.value === 'InPatient') {
+                    ailmentDiv.classList.remove('hidden');
+                    roomDiv.classList.remove('hidden');
+                } else {
+                    ailmentDiv.classList.add('hidden');
+                    roomDiv.classList.add('hidden');
+                }
+            });
+        </script>
     </body>
 
 </html>

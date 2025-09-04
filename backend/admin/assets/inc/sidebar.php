@@ -10,14 +10,14 @@
 
                 <!-- Dashboard -->
                 <li class="text-white"><a href="his_admin_dashboard.php"
-                                          class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                                          class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-200 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                                           title="Dashboard">
                         <svg class="w-5 h-5 <?php echo basename($_SERVER['PHP_SELF']) == 'his_doc_dashboard.php' ? 'text-blue-500' : 'text-gray-500' ?>"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
-                        <span class="ml-3 hidden md:block ">Dashboard</span> </a></li>
+                        <span class="ml-1 hidden md:block ">Dashboard</span> </a></li>
 
 
                 <!-- Patients -->
@@ -33,7 +33,7 @@
                     ?>
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
-                   hover:bg-blue-50 hover:text-blue-600
+                   hover:bg-blue-200 hover:text-blue-600
                    <?php echo $patientsActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $patientsActive ? 'true' : 'false' ?>"
                             title="Patients">
@@ -44,7 +44,7 @@
                                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Patients</span>
+                            <span class="ml-1 hidden md:block">Patients</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $patientsActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@
                                 'his_admin_patient_transfer.php' => 'Discharge'
                         ];
                         foreach ($patientsSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li class="<?php echo $label == 'Patient Transfers' ? 'border-t border-gray-200 my-1' : ''; ?>">
                                 <a href="<?php echo $file; ?>"
@@ -98,7 +98,7 @@
                             <svg class="w-5 h-5 <?php echo $pharmacyActive ? 'text-blue-500' : 'text-gray-500' ?>" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19.79 4.21a5.5 5.5 0 00-7.78 0l-8.5 8.5a5.5 5.5 0 107.78 7.78l8.5-8.5a5.5 5.5 0 000-7.78zM7.5 20a3.5 3.5 0 01-2.47-5.97l4.24-4.24 4.95 4.95-4.24 4.24A3.48 3.48 0 017.5 20z"/>
                             </svg>
-                            <span class="ml-3 hidden md:block">Pharmacy</span>
+                            <span class="ml-1 hidden md:block">Pharmacy</span>
                         </div>
                         <!-- Dropdown arrow -->
                         <svg class="w-4 h-4 <?php echo $pharmacyActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@
                                 echo '<li class="border-t border-gray-200 my-1"></li>';
                                 continue;
                             }
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -151,7 +151,7 @@
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
                    hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $employeeActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                   <?php echo $employeeActive ? 'bg-blue-200 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $employeeActive ? 'true' : 'false' ?>"
                             title="Employee">
                         <div class="flex items-center">
@@ -161,7 +161,7 @@
                                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Employee</span>
+                            <span class="ml-1 hidden md:block ">Employee</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $employeeActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,7 +182,7 @@
                                 'his_admin_transfer_employee.php' => 'Employee Transfers'
                         ];
                         foreach ($employeeSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li class="<?php echo $label == 'Employee Transfers' ? 'border-t border-gray-200 my-1' : ''; ?>">
                                 <a href="<?php echo $file; ?>"
@@ -263,7 +263,7 @@
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
                    hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $reportingActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                   <?php echo $reportingActive ? 'bg-blue-200 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $reportingActive ? 'true' : 'false' ?>"
                             title="Reporting">
                         <div class="flex items-center">
@@ -272,7 +272,7 @@
                                  fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M9 17v-6h2v6H9zm4 0V7h2v10h-2zm-8 0v-2h2v2H5zm12 0v-8h2v8h-2zM3 3h18v2H3V3z"/>
                             </svg>
-                            <span class="ml-3 hidden md:block">Reporting</span>
+                            <span class="ml-1 hidden md:block">Reporting</span>
                         </div>
                         <!-- Dropdown arrow -->
                         <svg class="w-4 h-4 <?php echo $reportingActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
@@ -295,7 +295,7 @@
                                 'his_admin_discharge_records.php' => 'Discharge Records'
                         ];
                         foreach ($reportingSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -321,7 +321,7 @@
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
                    hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $medicalRecordsActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                   <?php echo $medicalRecordsActive ? 'bg-blue-200 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $medicalRecordsActive ? 'true' : 'false' ?>"
                             title="Medical Records">
                         <div class="flex items-center">
@@ -331,7 +331,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5l2 2h5a2 2 0 012 2v12a2 2 0 01-2 2z"/>
                             </svg>
-                            <span class="ml-3 hidden md:block">Medical Records</span>
+                            <span class="ml-1 hidden md:block">Medical Records</span>
                         </div>
                         <!-- Dropdown arrow -->
                         <svg class="w-4 h-4 <?php echo $medicalRecordsActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
@@ -350,7 +350,7 @@
                                 'his_admin_manage_medical_record.php' => 'Manage Medical Records'
                         ];
                         foreach ($medicalSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -379,7 +379,7 @@
                     <button type="button"
                             class="flex items-center justify-between w-full px-2 md:px-3 py-2 rounded-lg transition-colors
                    hover:bg-blue-50 hover:text-blue-600
-                   <?php echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
+                   <?php echo $labActive ? 'bg-blue-200 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $labActive ? 'true' : 'false' ?>"
                             title="Laboratory">
                         <div class="flex items-center">
@@ -389,7 +389,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                       d="M9 2v6l-2 7h10l-2-7V2M9 2h6M4 21h16"/>
                             </svg>
-                            <span class="ml-3 hidden md:block">Laboratory</span>
+                            <span class="ml-1 hidden md:block">Laboratory</span>
                         </div>
                         <!-- Dropdown Arrow -->
                         <svg class="w-4 h-4 <?php echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
@@ -419,7 +419,7 @@
                                 echo '<li class="border-t border-gray-200 my-1"></li>';
                                 continue;
                             }
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -452,7 +452,7 @@
                             title="Payrolls">
                         <div class="flex items-center">
                             <i class="mdi mdi-cash-refund <?php echo $payrollActive ? 'text-blue-500' : 'text-gray-500' ?> text-lg"></i>
-                            <span class="ml-3 hidden md:block">Payrolls</span>
+                            <span class="ml-1 hidden md:block">Payrolls</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $payrollActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -470,7 +470,7 @@
                                 'his_admin_generate_payrolls.php' => 'Generate Payrolls'
                         ];
                         foreach ($payrollSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -503,7 +503,7 @@
                             title="Vendors">
                         <div class="flex items-center">
                             <i class="fas fa-user-tag <?php echo $vendorActive ? 'text-blue-500' : 'text-gray-500' ?> text-lg"></i>
-                            <span class="ml-3 hidden md:block">Vendors</span>
+                            <span class="ml-1 hidden md:block">Vendors</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $vendorActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -520,7 +520,7 @@
                                 'his_admin_manage_vendor.php' => 'Manage Vendors'
                         ];
                         foreach ($vendorSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
@@ -551,7 +551,7 @@
                             title="Password Resets">
                         <div class="flex items-center">
                             <i class="fas fa-lock <?php echo $pwActive ? 'text-blue-500' : 'text-gray-500' ?> text-lg"></i>
-                            <span class="ml-3 hidden md:block">Password Resets</span>
+                            <span class="ml-1 hidden md:block">Password Resets</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $pwActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -565,7 +565,7 @@
                         <?php
                         $pwSubmenu = ['his_admin_manage_password_resets.php' => 'Manage'];
                         foreach ($pwSubmenu as $file => $label):
-                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-50 text-blue-600' : 'text-gray-600';
+                            $active = basename($_SERVER['PHP_SELF']) == $file ? 'bg-blue-200 text-blue-600' : 'text-gray-600';
                             ?>
                             <li>
                                 <a href="<?php echo $file; ?>"
