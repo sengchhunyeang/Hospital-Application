@@ -15,7 +15,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
-                        <span class="ml-3 hidden md:block">Dashboard</span>
+                        <span class="ml-1 hidden md:block">Dashboard</span>
                     </a>
                 </li>
 
@@ -61,7 +61,7 @@
                                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Patients</span>
+                            <span class="ml-1 hidden md:block">Patients</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $patientsActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
                                       d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Pharmacy</span>
+                            <span class="ml-1 hidden md:block">Pharmacy</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $pharmacyActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?> transform transition-transform hidden md:block"
                              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +183,7 @@
                                       d="M11.17 3a1 1 0 01.98.6l1.85 3.8a1 1 0 01-.12 1.07l-4.5 5.9a1 1 0 01-1.51.1l-2.1-2.1a1 1 0 01.1-1.51l5.9-4.5a1 1 0 011.07-.12l3.8 1.85a1 1 0 01.6.98v6.34a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h7.17z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Laboratory</span>
+                            <span class="ml-1 hidden md:block">Laboratory</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $labActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?>
                            transform transition-transform hidden md:block"
@@ -244,7 +244,7 @@
                                 <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
                                 <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
                             </svg>
-                            <span class="ml-3 hidden md:block">Inventory</span>
+                            <span class="ml-1 hidden md:block">Inventory</span>
                         </div>
                         <svg class="w-4 h-4 <?php echo $inventoryActive ? 'text-blue-500 rotate-180' : 'text-gray-500' ?>
                            transform transition-transform hidden md:block"
