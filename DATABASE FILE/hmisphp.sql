@@ -500,6 +500,7 @@ ALTER TABLE `his_vitals`
     MODIFY `vit_id` int(20) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 7;
 DROP TABLE IF EXISTS his_prescription_medicines;
+
 CREATE TABLE his_prescription_medicines
 (
     id            INT AUTO_INCREMENT PRIMARY KEY,
