@@ -91,7 +91,7 @@
                                                 <th class="px-4 py-2 text-left text-sm font-semibold">Patient Name</th>
                                                 <th class="px-4 py-2 text-left text-sm font-semibold">Patient Number</th>
                                                 <th class="px-4 py-2 text-left text-sm font-semibold">Patient Ailment</th>
-                                                <th class="px-4 py-2 text-left text-sm font-semibold">Date Lab Test Conducted</th>
+                                                <th class="px-4 py-2 text-left text-sm font-semibold">Date Lab Test</th>
                                                 <th class="px-4 py-2 text-left text-sm font-semibold">Action</th>
                                             </tr>
                                             </thead>
@@ -118,7 +118,8 @@
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_name; ?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_number; ?></td>
                                                         <td class="px-4 py-2 text-sm text-gray-700"><?php echo $row->lab_pat_ailment; ?></td>
-                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo date("d/m/Y", strtotime($mysqlDateTime)); ?></td>
+                                                        <td class="px-4 py-2 text-sm text-gray-700"><?php echo date("d-M-Y", strtotime($mysqlDateTime)); ?>
+                                                        </td>
                                                         <td class="px-4 py-2">
                                                             <a href="his_doc_add_single_lab_result.php?lab_number=<?php echo $row->lab_number; ?>"
                                                                class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-500 text-white hover:bg-blue-600">
@@ -127,8 +128,6 @@
                                                                 </svg>
                                                                 Add Lab Result
                                                             </a>
-
-
                                                         </td>
                                                     </tr>
                                                     </tbody>
