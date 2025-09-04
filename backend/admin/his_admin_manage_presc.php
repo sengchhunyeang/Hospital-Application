@@ -153,20 +153,28 @@ if (isset($_GET['delete_pres_number'])) {
                 <?php echo $row->pres_pat_type; ?>
             </span>
                                             </td>
-                                            <td class="px-4 py-2 text-sm text-gray-700 hidden sm:table-cell space-x-1">
-                                                <a href="his_admin_view_single_pres.php?pres_number=<?php echo $row->pres_number; ?>"
-                                                   class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700">
-                                                    <i class="fas fa-eye mr-1"></i> View
-                                                </a>
-                                                <a href="his_admin_upate_single_pres.php?pres_number=<?php echo $row->pres_number; ?>"
-                                                   class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded hover:bg-yellow-600">
-                                                    <i class="fas fa-eye-dropper mr-1"></i> Update
-                                                </a>
-                                                <a href="his_admin_manage_presc.php?delete_pres_number=<?php echo $row->pres_number; ?>"
-                                                   class="inline-flex items-center px-3 py-1 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700">
-                                                    <i class="fas fa-trash-alt mr-1"></i> Delete
-                                                </a>
+                                            <td class="px-4 py-2 text-sm text-gray-700">
+                                                <div class="flex flex-wrap gap-2">
+                                                    <!-- View -->
+                                                    <a href="his_admin_view_single_pres.php?pres_number=<?php echo $row->pres_number; ?>"
+                                                       class="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700">
+                                                        <i class="fas fa-eye mr-1"></i> View
+                                                    </a>
+
+                                                    <!-- Update -->
+                                                    <a href="his_admin_upate_single_pres.php?pres_number=<?php echo $row->pres_number; ?>"
+                                                       class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded hover:bg-yellow-600">
+                                                        <i class="fas fa-eye-dropper mr-1"></i> Update
+                                                    </a>
+
+                                                    <!-- Delete -->
+                                                    <a href="his_admin_manage_presc.php?delete_pres_number=<?php echo $row->pres_number; ?>"
+                                                       class="inline-flex items-center px-3 py-1 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700">
+                                                        <i class="fas fa-trash-alt mr-1"></i> Delete
+                                                    </a>
+                                                </div>
                                             </td>
+
                                         </tr>
                                         </tbody>
 

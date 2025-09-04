@@ -131,7 +131,7 @@
                                         <div>
                                             <h2 class="text-2xl font-bold text-center text-blue-700 mb-4 border-b border-blue-200 pb-2">
                                                 Prescription</h2>
-                                            <p class="text-xl text-blue-800 whitespace-pre-wrap leading-relaxed">
+                                            <p class="text-sm text-black whitespace-pre-wrap leading-relaxed">
                                                 <?= ($row->pres_ins); ?>
                                             </p>
                                         </div>
