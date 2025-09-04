@@ -73,7 +73,7 @@
                         <?php foreach ($patientsPages as $page): ?>
                             <li>
                                 <a href="<?php echo $page['file']; ?>"
-                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600' ?>">
+                                   class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors hover:bg-blue-200 hover:text-blue-600 <?php echo basename($_SERVER['PHP_SELF']) == $page['file'] ? 'bg-blue-200 text-blue-600' : 'text-gray-600' ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20">
                                         <?php echo $page['icon']; ?>
                                     </svg>
@@ -138,8 +138,8 @@
                                 <li>
                                     <a href="<?php echo $page['file']; ?>"
                                        class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg transition-colors
-                              hover:bg-blue-50 hover:text-blue-600
-                              <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                              hover:bg-blue-200 hover:text-blue-600
+                              <?php echo $currentPage === $page['file'] ? 'bg-blue-200 text-blue-600' : 'text-gray-600'; ?>"
                                        title="<?php echo $page['label']; ?>">
                                         <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -172,7 +172,7 @@
                     <!-- Main Button -->
                     <button type="button"
                             class="flex items-center justify-center md:justify-between w-full px-2 md:px-3 py-2 rounded-lg
-                   transition-colors hover:bg-blue-50 hover:text-blue-600
+                   transition-colors hover:bg-blue-200 hover:text-blue-600
                    <?php echo $labActive ? 'bg-blue-50 text-blue-600' : 'text-gray-700' ?>"
                             aria-expanded="<?php echo $labActive ? 'true' : 'false' ?>"
                             title="Laboratory">
@@ -202,7 +202,7 @@
                                 <a href="<?php echo $page['file']; ?>"
                                    class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg
                           transition-colors hover:bg-blue-50 hover:text-blue-600
-                          <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                          <?php echo $currentPage === $page['file'] ? 'bg-blue-200 text-blue-600' : 'text-gray-600'; ?>"
                                    title="<?php echo $page['label']; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -262,7 +262,7 @@
                                 <a href="<?php echo $page['file']; ?>"
                                    class="flex items-center justify-center md:justify-start px-2 md:px-3 py-2 rounded-lg
                           transition-colors hover:bg-blue-50 hover:text-blue-600
-                          <?php echo $currentPage === $page['file'] ? 'bg-blue-50 text-blue-600' : 'text-gray-600'; ?>"
+                          <?php echo $currentPage === $page['file'] ? 'bg-blue-200 text-blue-600' : 'text-gray-600'; ?>"
                                    title="<?php echo $page['label']; ?>">
                                     <svg class="w-4 h-4 md:hidden" fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">

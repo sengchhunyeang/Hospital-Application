@@ -79,25 +79,39 @@
                             
                                                 </div>
                                             </div> <!-- end col -->
-                                            <div class="col-xl-7">
-                                                <div class="pl-0 xl:pl-12 mt-3 xl:mt-0 space-y-4">
+                                            <div class="col-span-12 xl:col-span-7">
+                                                <div class="pl-0 xl:pl-12 mt-3 xl:mt-0 space-y-6">
 
-                                                    <h2 class="text-xl font-semibold">Pharmaceutical Name: <?php echo $row->phar_name; ?></h2>
-                                                    <hr class="border-gray-300">
+                                                    <!-- Pharmaceutical Name -->
+                                                    <h2 class="text-2xl font-bold text-blue-700">
+                                                        Pharmaceutical Name: <span class="font-normal text-gray-800"><?php echo $row->phar_name; ?></span>
+                                                    </h2>
+                                                    <hr class="border-gray-200">
 
-                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Vendor: <?php echo $row->phar_vendor; ?></h4>
-                                                    <hr class="border-gray-300">
+                                                    <!-- Vendor -->
+                                                    <h4 class="text-lg font-semibold text-gray-900">
+                                                        Pharmaceutical Vendor:
+                                                        <span class="text-red-600 font-medium"><?php echo $row->phar_vendor; ?></span>
+                                                    </h4>
+                                                    <hr class="border-gray-200">
 
-                                                    <h4 class="text-red-600 font-medium">Pharmaceutical Quantity: <?php echo $row->phar_qty; ?> Box</h4>
-                                                    <hr class="border-gray-300">
+                                                    <!-- Quantity -->
+                                                    <h4 class="text-lg font-semibold text-gray-900">
+                                                        Pharmaceutical Quantity:
+                                                        <span class="text-red-600 font-medium"><?php echo $row->phar_qty; ?> Box</span>
+                                                    </h4>
+                                                    <hr class="border-gray-200">
 
-                                                    <h4 class="text-gray-700 font-semibold">Pharmaceutical Description</h4>
-                                                    <p class="text-gray-600 mb-4"><?php echo $row->phar_desc; ?></p>
-                                                    <hr class="border-gray-300">
+                                                    <!-- Description -->
+                                                    <h4 class="text-lg font-semibold text-gray-900">Pharmaceutical Description</h4>
+                                                    <p class="text-base text-gray-700 leading-relaxed">
+                                                        <?php echo $row->phar_desc; ?>
+                                                    </p>
+                                                    <hr class="border-gray-200">
 
                                                 </div>
-
-                                            </div> <!-- end col -->
+                                            </div>
+                                            <!-- end col -->
                                         </div>
                                         <!-- end row -->
 
